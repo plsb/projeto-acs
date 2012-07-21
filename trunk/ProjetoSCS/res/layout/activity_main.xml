@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:background="#87CEEB"
+     >
+
+    <com.google.android.apps.iosched.ui.widget.DashboardLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+        
+        <Button 
+            android:id="@+id/BtnAgendamento"
+            android:text="Agendamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+        
+        <Button 
+            android:id="@+id/BtnFamilias"
+            android:text="Familias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/home"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+        
+        <Button 
+            android:id="@+id/BtnAcompanhamento"
+            android:text="Acompanhamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:drawableTop="@drawable/acompanhamento"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+            
+        <Button 
+            android:id="@+id/BtnUsuarios"
+            android:text="Usuários"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/users"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+                             
+        <Button 
+            android:id="@+id/BtnSincronizar"
+            android:text="Sincronizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/sincronizar"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+                                      
+        <Button 
+            android:id="@+id/BtnSobre"
+            android:text="Sobre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/sobre"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+        
+    </com.google.android.apps.iosched.ui.widget.DashboardLayout>
+
+</LinearLayout>
