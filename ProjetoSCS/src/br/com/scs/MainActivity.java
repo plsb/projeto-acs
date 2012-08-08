@@ -3,6 +3,7 @@ package br.com.scs;
 import br.com.view.TelaAgendamento;
 import br.com.view.TelaAcompanhamento;
 import br.com.view.TelaFamilia;
+import br.com.view.TelaLogin;
 import br.com.view.TelaSincronizar;
 import br.com.view.TelaUsuario;
 import br.com.view.TelaSobre;
@@ -26,6 +27,7 @@ public class MainActivity extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_main);
+        
         
         btnAgendamento = (Button) findViewById(R.id.BtnAgendamento);
         btnAgendamento.setOnClickListener(this);
