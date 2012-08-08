@@ -25,8 +25,8 @@ public class TelaFamilia extends Activity implements OnClickListener{
 	  }
 	  
 	  public void onClick(View v) {
-		  Intent i = new Intent(this,TelaLogin.class);
-		  startActivity(i);
+		 // Intent i = new Intent(this,MainActivity.class);
+		//  startActivity(i);
 		  //Toast.makeText(this, "Incluir", Toast.LENGTH_SHORT).show();
 	  }
 
