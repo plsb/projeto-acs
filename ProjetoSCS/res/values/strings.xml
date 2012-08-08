@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="app_name">ProjetoSCS</string>
+    <string name="app_name">Projeto SCS</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">Menu Principal</string>
+    <string name="title_activity_main">SCS</string>
 
 </resources>
