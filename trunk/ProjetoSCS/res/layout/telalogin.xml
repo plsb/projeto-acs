@@ -13,8 +13,8 @@
         
      	<EditText 
          	android:id="@+telalogin/Usuario" 
-         	android:nextFocusUp="@+id/LoginButton"
-         	android:nextFocusDown="@+id/Password" 
+         	android:nextFocusUp="@+telalogin/btnLogin"
+         	android:nextFocusDown="@+telalogin/Senha" 
          	android:hint="Usuário"
          	android:inputType="textNoSuggestions" 
          	android:layout_width="fill_parent"
@@ -61,8 +61,8 @@
             android:text="Entrar"
             android:drawableLeft="@drawable/login"
             android:id="@+telalogin/btnLogin"
-            android:nextFocusUp="@+id/RememberLoginBox" 
-            android:nextFocusDown="@+id/Username"
+            android:nextFocusUp="@+telalogin/LembraLoginnBox" 
+            android:nextFocusDown="@+telalogin/Usuario"
             android:textSize="20sp" 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
