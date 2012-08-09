@@ -1,5 +1,6 @@
 package br.com.scs;
 
+import br.com.control.Sessao;
 import br.com.control.VerificaVersoesTabelas;
 import br.com.control.Banco;
 import br.com.scs.R;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static Banco _bd;
 	private int valor;
 	private Cursor _cursor;
+	private Sessao sessao;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,13 +46,20 @@ public class MainActivity extends Activity implements OnClickListener {
 			valor = 0;
 		} else {
 			_bd.open();
+			if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
+				VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(MainActivity.this);
+				VerificaVersoesTabelas.jaVerificouAtualizacao = true;
+			}
 			try {
 				_cursor = _bd.consulta("usuarios", new String[] { "*" },
 									   "USU_MATRICULA = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 0",
 									   new String[] { usuario, senha }, null, null, null, null);
 
 				if (_cursor.getCount() != 0) {
+					sessao = Sessao.getSessao();
+					sessao.setUsuario(usuario,senha);
 					valor = 1;
+					
 				} else {
 					_cursor = null;
 					_cursor = _bd.consulta("usuarios", new String[] { "*" },
@@ -92,15 +101,9 @@ public class MainActivity extends Activity implements OnClickListener {
 					break;
 				// SE FOR 1 é USUARIO NORMAL
 				case 1:
-					/**Intent usuOpcoes = new Intent(TelaLogin.this, UsuarioOpcoes.class);
+					Intent usuOpcoes = new Intent(this, TelaPrincipal.class); 
 					startActivity(usuOpcoes);
-					Usuario _usu = Usuario.getUsuario();
-					_usu.setUsuarioLogado(usuario);
-					finish();**/
-					if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
-						VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(MainActivity.this);
-						VerificaVersoesTabelas.jaVerificouAtualizacao = true;
-					}
+					finish();					
 					break;
 				// SE FOR 2 O LOGIN OU SENHA ESTAO ERRADOS
 				case 2:
