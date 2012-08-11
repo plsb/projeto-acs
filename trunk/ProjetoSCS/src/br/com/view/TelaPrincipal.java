@@ -66,7 +66,7 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 			startActivity(i);
 		}
 		else if (v == btnSincronizar){
-			Toast.makeText(this, "MAT: "+Sessao.getSessao().getMatriculaUsuario(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(this, "MAT: "+Sessao.getSessao().getMatriculaUsuario(), Toast.LENGTH_SHORT).show();
 			Intent i = new Intent(this, TelaSincronizar.class);
 			startActivity(i);
 		}

@@ -26,6 +26,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
+        <activity android:label="Residencia" android:name="br.com.view.TelaResidencia"></activity>
     </application>
 
 </manifest>

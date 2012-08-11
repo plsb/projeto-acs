@@ -21,12 +21,16 @@ public class TelaFamilia extends Activity implements OnClickListener{
 	        
 	        btnIncluir = (Button) findViewById(R.telaFamilia.btnIncluir);
 	        btnIncluir.setOnClickListener(this);
+	        btnEditar  = (Button) findViewById(R.telaFamilia.btnEditar);
+	        btnEditar.setOnClickListener(this);
 	        
 	  }
 	  
 	  public void onClick(View v) {
-		 // Intent i = new Intent(this,MainActivity.class);
-		//  startActivity(i);
+		  if (v == btnIncluir){ 
+		    Intent i = new Intent(this,TelaResidencia.class);
+		    startActivity(i);
+		  }
 		  //Toast.makeText(this, "Incluir", Toast.LENGTH_SHORT).show();
 	  }
 
