@@ -24,21 +24,23 @@ public class TelaResidencia extends Activity {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.telaresidencia);
 		
 		TabHost th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
         TabSpec ts;
         
+        //Primeria Aba
         ts = th.newTabSpec("tag1");
-        ts.setContent(R.id.tab2);
-        ts.setIndicator("Residencia");
+        ts.setContent(R.imovel.tabCadastroResidencia);
+        ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
         th.addTab(ts);
         
+        //Segunda Aba
         ts = th.newTabSpec("tag2");
         ts.setContent(R.imovel.tabMoradiaSaneamento);        
-        ts.setIndicator("Moradia/Saneamento");
+        ts.setIndicator("Moradia/Saneamento",getResources().getDrawable(R.drawable.saneamento));
         SpTipoCasa   	    = (Spinner) findViewById(R.imovel.SpTipoCasa);
 		SpDestinoLixo    	= (Spinner) findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	= (Spinner) findViewById(R.imovel.SpTratamentoAgua);
@@ -46,10 +48,11 @@ public class TelaResidencia extends Activity {
 		SpAbastecimentoAgua = (Spinner) findViewById(R.imovel.SpAbastecimentoAgua);		
 		setOpcoesNosSpinners();	
         th.addTab(ts);
-
+        
+        //Terceira Aba
         ts = th.newTabSpec("tag3");
         ts.setContent(R.id.tab3);
-        ts.setIndicator("Outros");
+        ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
         th.addTab(ts);
 		
 		

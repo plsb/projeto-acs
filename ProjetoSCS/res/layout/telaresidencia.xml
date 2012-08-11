@@ -127,15 +127,18 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/tab2"
+                android:id="@+imovel/tabCadastroResidencia"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Number two"/>
+                <TextView 
+			        android:text=" Cadastro da Residencia Aqui"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
             </LinearLayout>
 
             <LinearLayout
@@ -143,11 +146,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NUmber three" />
+                <TextView 
+			        android:text=" Outras Informações Aqui"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
