@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/bg"
+    
+>
+ <TabHost
+    android:id="@+imovel/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </TabWidget>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:id="@+imovel/tabMoradiaSaneamento"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout 
+		        android:paddingTop="10dp"
+		        android:orientation="vertical"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        >
+		        
+		        <TextView 
+			        android:text=" Tipo de Casa:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <Spinner 
+			        android:id="@+imovel/SpTipoCasa"
+			        android:layout_width="fill_parent"
+			        android:layout_height="45dp"
+			        android:layout_marginBottom="5dp"
+			        />
+		        
+			    <TextView 
+			        android:text=" Destino do Lixo:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <Spinner 
+			        android:id="@+imovel/SpDestinoLixo"
+			        android:layout_width="fill_parent"
+			        android:layout_height="45dp"
+			        android:layout_marginBottom="5dp"
+			        />
+			    
+			    <TextView 
+			        android:text=" Abastecimento de Água"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <Spinner 
+			        android:id="@+imovel/SpAbastecimentoAgua"
+			        android:layout_width="fill_parent"
+			        android:layout_height="45dp"
+			        android:layout_marginBottom="5dp"
+			        />
+			    
+			    <TextView 
+			        android:text=" Tratamento da Água:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <Spinner 
+			        android:id="@+imovel/SpTratamentoAgua"
+			        android:layout_width="fill_parent"
+			        android:layout_height="45dp"
+			        android:layout_marginBottom="5dp"
+			        />
+			    
+			    <TextView 
+			        android:text=" Destino de Fezes e Urina"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <Spinner 
+			        android:id="@+imovel/SpDestFezesUrina"
+			        android:layout_width="fill_parent"
+			        android:layout_height="45dp"
+			        android:layout_marginBottom="5dp"
+			        />
+			    
+		    </LinearLayout>
+    
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number two"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NUmber three" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</TabHost>
+
+    
+
+</ScrollView>
