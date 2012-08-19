@@ -16,7 +16,7 @@
         
         <Button 
             android:id="@+telaFamilia/btnIncluir"
-            android:drawableTop="@drawable/incluir"
+            android:drawableTop="@drawable/add_doc"
             android:background="@null"
             android:text="Incluir"
             android:layout_width="200dp"

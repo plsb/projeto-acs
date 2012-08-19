@@ -7,6 +7,7 @@ import br.com.control.Banco.BancoDados;
 public class VerificaVersoesTabelas {
 	
 	private static final String _nomeTabelaUsuario = "usuarios";
+	private static final String _nomeTabelaUsuarioAux = "usuariosAux";
 
 	public static Boolean jaVerificouAtualizacao = false;
 	
@@ -23,6 +24,7 @@ public class VerificaVersoesTabelas {
 
 	private static void verificaDAO(Context contexto) {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuario, VerificaVersoesTabelas._nomeTabelaUsuario);
+		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuarioAux, VerificaVersoesTabelas._nomeTabelaUsuarioAux);
 	}
 
 }

@@ -17,6 +17,7 @@ public class Banco{
 		private static SQLiteDatabase bd = null;
 		
 		private static String _nomeBanco = "SCS";
+		
 		private static int    _versaoBanco = 1;
 		
 		private BancoDados bdados;
@@ -25,6 +26,9 @@ public class Banco{
 		
 		public static final String[] _sqlTabelaUsuario =  new String[] {"CREATE TABLE if not exists usuarios (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		"USU_MATRICULA text NOT NULL,USU_NOME text NOT NULL,USU_SENHA text NOT NULL,USU_FL_ADMIN integer NOT NULL);"};
+		
+		public static final String[] _sqlTabelaUsuarioAux =  new String[] {"CREATE TABLE if not exists usuariosAux (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																		   "USU_NOME text NOT NULL);"};
 		
 		
 		private static final String _sqlTabelaVersao = "create table versao (_id integer primary key autoincrement, "+
@@ -98,7 +102,7 @@ public class Banco{
 						having, orderby, limit);
 			}
 			
-			//atualiza uma linha d euma tabela
+			//atualiza uma linha de uma tabela
 			public int atualizarDadosTabela(String tabela, long id,
 					ContentValues valores) {
 				return bd.update(tabela, valores, CHAVE + "=" + id, null);
@@ -122,7 +126,8 @@ public class Banco{
 			@Override
 			public void onUpgrade(SQLiteDatabase bd, int versaoAntiga, int versaoNova) {
 				bd.execSQL("DROP TABLE IF EXISTS usuarios");
-				bd.execSQL("DROP TABLE IF EXISTS versao");				
+				bd.execSQL("DROP TABLE IF EXISTS usuariosAux");	
+				bd.execSQL("DROP TABLE IF EXISTS versao");
 				onCreate(bd);				
 			}
 			
@@ -161,5 +166,10 @@ public class Banco{
 	public Cursor consulta(String table, String[] columns, String where, String[] argumentosWhere, String groupby, String having, String orderby, String limit) {
 		return bd.query(table, columns, where, argumentosWhere, groupby, having, orderby, limit);
 	}
+
+	public int atualizarDadosTabela(String tabela, long id,	ContentValues valores) {
+		return bd.update(tabela, valores, CHAVE + "=" + id, null);
+	}
+	
 	
 }

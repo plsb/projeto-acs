@@ -7,19 +7,22 @@ import br.com.scs.R;
 import br.com.view.TelaFamilia;
 import br.com.view.TelaPrincipal;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-	private Button btnLogin;
+	private Button   btnLogin;
 	private EditText edtUsuario, edtSenha;
+	private CheckBox chkLembrarMe;
 
 	private static Banco _bd;
 	private int valor;
@@ -31,12 +34,59 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
+		_bd = new Banco(MainActivity.this);
 
-		edtUsuario = (EditText) findViewById(R.telalogin.Usuario);
-		edtSenha = (EditText) findViewById(R.telalogin.Senha);
-		btnLogin = (Button) findViewById(R.telalogin.btnLogin);
+		chkLembrarMe = (CheckBox) findViewById(R.telalogin.LembraLoginnBox);
+		edtUsuario   = (EditText) findViewById(R.telalogin.Usuario);
+		edtSenha	 = (EditText) findViewById(R.telalogin.Senha);
+		btnLogin 	 = (Button)   findViewById(R.telalogin.btnLogin);
 		btnLogin.setOnClickListener(this);
+		
+		setUsuarioLembrado();
 
+	}
+	
+	public void LembrarMe(String usuario){
+		Cursor cAux = null;
+		ContentValues c = new ContentValues();
+		try{			
+			c.put("USU_NOME", usuario);		 
+			try{
+				_bd.open();
+				cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
+				if (cAux.getCount() > 0){
+					_bd.atualizarDadosTabela("usuariosAux",1,c);
+				}else{
+					_bd.inserirRegistro("usuariosAux", c);
+				}//Fim else
+			}catch(Exception E){
+				Toast.makeText(this, "Erro no método Lembrar-Me "+E.getMessage(), Toast.LENGTH_SHORT).show();
+			}//Fim Catch
+		}finally{
+			cAux.close();
+			_bd.fechaBanco();
+			c    = null;
+		}//Fim Finally
+	}//Fim Método LembrarMe
+	
+	public void setUsuarioLembrado(){		
+		Cursor cAux = null;
+		try{				 
+			try{
+				_bd.open();
+				cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
+				if (cAux.getCount() > 0){
+					cAux.moveToFirst();
+					edtUsuario.setText(cAux.getString(1));
+					chkLembrarMe.setChecked(true);
+				}//Fim else
+			}catch(Exception E){
+				Toast.makeText(this, "Erro no método UsuarioLembrado "+E.getMessage(), Toast.LENGTH_LONG).show();
+			}//Fim Catch
+		}finally{
+			cAux.close();
+			_bd.fechaBanco();
+		}//Fim Finally
 	}
 
 	private int autenticar(String usuario, String senha) {
@@ -74,8 +124,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				}// Fim else
 				_cursor.close();
 			} catch (Exception e) {
-				Toast.makeText(this, "ERRO " + e.getMessage(),
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "ERRO " + e.getMessage(), Toast.LENGTH_SHORT).show();
 			} finally {
 				_cursor.close();
 				_bd.fechaBanco();
@@ -88,9 +137,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		if (v == btnLogin) {
 			try {
-				_bd = new Banco(MainActivity.this);
+				//_bd = new Banco(MainActivity.this);
 				String usuario = edtUsuario.getText().toString();
 				String senha = edtSenha.getText().toString();
+				
+				if (chkLembrarMe.isChecked()){
+					LembrarMe(usuario);
+				}
 
 				switch (autenticar(usuario, senha)) {
 				// SE FOR 0 é ADMINISTRADOR
@@ -105,18 +158,19 @@ public class MainActivity extends Activity implements OnClickListener {
 					startActivity(usuOpcoes);
 					finish();					
 					break;
-				// SE FOR 2 O LOGIN OU SENHA ESTAO ERRADOS
+				// SE FOR 2 O LOGIN OU SENHA ESTÃO ERRADOS
 				case 2:
 					Toast.makeText(this, "USUÁRIO OU SENHA INCORRETOS", Toast.LENGTH_SHORT).show();
-				}
 				
+				}//Fim switch				
 
 			} catch (Exception e) {
 				Toast.makeText(this, "Erro no método logar!" + e.getMessage(), Toast.LENGTH_SHORT).show();
-			}
-		}
+			}//Fim do Catch
+			
+		}//Fim do If
 
-	}
+	}//Fim do Método onClick 
 
 	public void onClose() {
 		_bd.fechaBanco();
