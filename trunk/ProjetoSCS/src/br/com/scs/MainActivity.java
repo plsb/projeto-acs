@@ -48,7 +48,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	public void LembrarMe(String usuario){
 		Cursor cAux = null;
-		ContentValues c = new ContentValues();
+		ContentValues c = new ContentValues(); 
 		try{			
 			c.put("USU_NOME", usuario);		 
 			try{
@@ -74,7 +74,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		try{				 
 			try{
 				_bd.open();
+				if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
+					VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(MainActivity.this);
+					VerificaVersoesTabelas.jaVerificouAtualizacao = true;
+				}
 				cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
+				cAux.moveToFirst();
 				if (cAux.getCount() > 0){
 					cAux.moveToFirst();
 					edtUsuario.setText(cAux.getString(1));
@@ -96,10 +101,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			valor = 0;
 		} else {
 			_bd.open();
-			if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
-				VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(MainActivity.this);
-				VerificaVersoesTabelas.jaVerificouAtualizacao = true;
-			}
 			try {
 				_cursor = _bd.consulta("usuarios", new String[] { "*" },
 									   "USU_MATRICULA = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 0",
