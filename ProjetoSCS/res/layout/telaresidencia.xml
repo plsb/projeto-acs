@@ -130,15 +130,87 @@
                 android:id="@+imovel/tabCadastroResidencia"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
-                <TextView 
-			        android:text=" Cadastro da Residencia Aqui"
-			        android:layout_width="wrap_content"
+                
+                <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
-			        android:textSize="15dp"
-			        android:textColor="#000"
-			        android:layout_marginBottom="3dp"
-			        />
+		        >                
+	                <TextView 
+				        android:text=" Endereço"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <EditText 
+			         	android:id="@+imovel/edtEndereco"  
+			         	android:hint="Digite aqui"
+			         	android:inputType="text" 
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                <TextView 
+				        android:text=" Bairro"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <EditText 
+			         	android:id="@+imovel/edtBairro"  
+			         	android:hint="Digite aqui"
+			         	android:inputType="text" 
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                <TextView 
+				        android:text=" CEP"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <EditText 
+			         	android:id="@+imovel/edtCEP"  
+			         	android:hint="Digite aqui"
+			         	android:inputType="number" 
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                <TextView 
+				        android:text=" Nº"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <EditText 
+			         	android:id="@+imovel/edtNumero"  
+			         	android:hint="123"
+			         	android:inputType="number" 
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="100dp"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	            </LinearLayout>
+	                
             </LinearLayout>
 
             <LinearLayout
