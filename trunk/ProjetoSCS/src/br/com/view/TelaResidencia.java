@@ -6,6 +6,7 @@ import br.com.scs.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -67,10 +68,15 @@ public class TelaResidencia extends Activity {
         ts = th.newTabSpec("tag3");
         ts.setContent(R.id.tab3);
         ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
-        th.addTab(ts);
-		
+        th.addTab(ts);		
 		
 	}
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.telaresidencia, menu);
+        return true;
+    }
 	
 	private void setOpcoesSpinnersTab1(){
 		setOpcoesUF();

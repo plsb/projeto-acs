@@ -226,7 +226,7 @@
 						    android:text=" UF:"
 						    android:layout_width="wrap_content"
 						    android:layout_height="wrap_content"
-						    android:layout_marginLeft="43dp"
+						    android:layout_marginLeft="45dp"
 						    android:textSize="15dp"
 						    android:textColor="#000"
 						    android:layout_marginBottom="3dp"
@@ -252,7 +252,7 @@
 			            <Spinner 
 					        android:id="@+imovel/SpUF"
 					        android:layout_width="100dp"
-					        android:layout_marginLeft="10dp"
+					        android:layout_marginLeft="9dp"
 					        android:layout_height="49dp"
 					        android:layout_marginBottom="5dp"
 					    />		            
@@ -318,7 +318,7 @@
 					      	android:hint="Nº"
 					       	android:inputType="number" 
 					       	android:layout_marginBottom="5dp"
-					       	android:layout_marginLeft="10dp"
+					       	android:layout_marginLeft="9dp"
 					       	android:layout_width="100dp"
 					      	android:layout_height="wrap_content" 
 					    />		     
@@ -328,7 +328,7 @@
 					      	android:hint="Nº"
 					       	android:inputType="number" 
 					       	android:layout_marginBottom="5dp"
-					       	android:layout_marginLeft="10dp"
+					       	android:layout_marginLeft="9dp"
 					       	android:layout_width="100dp"
 					      	android:layout_height="wrap_content" 
 					    />	
