@@ -35,10 +35,10 @@
                 android:layout_height="match_parent" >
 
                 <LinearLayout 
-		        android:paddingTop="10dp"
-		        android:orientation="vertical"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
 		        >
 		        
 		        <TextView 
@@ -343,18 +343,83 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/tab3"
+                android:id="@+imovel/tabOutras"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
-                <TextView 
-			        android:text=" Outras Informações Aqui"
-			        android:layout_width="wrap_content"
+                <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
-			        android:textSize="15dp"
-			        android:textColor="#000"
-			        android:layout_marginBottom="3dp"
-			        />
+		        >
+		        
+			        <TextView 
+				        android:text=" Em caso de doença procura:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <Spinner 
+				        android:id="@+imovel/SpCasoDoente"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Meio de comunicação mais utilizado:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <Spinner 
+				        android:id="@+imovel/SpMeioComunicacao"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				     <TextView 
+				        android:text=" Participa de grupos comunitários:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <Spinner 
+				        android:id="@+imovel/SpGrupoComunitario"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Meio de transporte mais utilizado:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <Spinner 
+				        android:id="@+imovel/SpMeioTransporte"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+				        />
+			    
+				</LinearLayout>    
+			    
             </LinearLayout>
             
         </FrameLayout>

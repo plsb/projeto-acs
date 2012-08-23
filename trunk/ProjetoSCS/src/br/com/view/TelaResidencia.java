@@ -12,22 +12,29 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 public class TelaResidencia extends Activity {
 	
-	Spinner SpTipoCasa,SpDestinoLixo,SpTratamentoAgua,SpDestFezesUrina,SpAbastecimentoAgua,SpUF,SpMunicipio;
-    
+	Spinner  SpUF, SpMunicipio; //TAB1
+	EditText EdtEndereco, Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
+	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
+    Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3
 	
-	ArrayList<String> TipoCasa = new ArrayList<String>();
-	ArrayList<String> DestinoLixo = new ArrayList<String>();
-	ArrayList<String> TratamentoAgua = new ArrayList<String>();
-	ArrayList<String> DestFezesUrina = new ArrayList<String>();
-	ArrayList<String> AbastAgua = new ArrayList<String>();
-	ArrayList<String> UF = new ArrayList<String>();
-	ArrayList<String> Municipio = new ArrayList<String>();
+	ArrayList<String> TipoCasa			  = new ArrayList<String>();
+	ArrayList<String> DestinoLixo		  = new ArrayList<String>();
+	ArrayList<String> TratamentoAgua	  = new ArrayList<String>();
+	ArrayList<String> DestFezesUrina	  = new ArrayList<String>();
+	ArrayList<String> AbastAgua			  = new ArrayList<String>();
+	ArrayList<String> UF				  = new ArrayList<String>();
+	ArrayList<String> Municipio			  = new ArrayList<String>();
+	ArrayList<String> CasoDoente		  = new ArrayList<String>();
+	ArrayList<String> MeiosComunicacao	  = new ArrayList<String>();
+	ArrayList<String> GruposComunitarios  = new ArrayList<String>();
+	ArrayList<String> TransporteUtilizado = new ArrayList<String>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -47,8 +54,15 @@ public class TelaResidencia extends Activity {
         ts = th.newTabSpec("tag1");
         ts.setContent(R.imovel.tabCadastroResidencia);
         ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
-        SpUF                = (Spinner) findViewById(R.imovel.SpUF);
-		SpMunicipio         = (Spinner) findViewById(R.imovel.SpMunicipio);
+        SpUF                = (Spinner)  findViewById(R.imovel.SpUF);
+		SpMunicipio         = (Spinner)  findViewById(R.imovel.SpMunicipio);
+		EdtEndereco         = (EditText) findViewById(R.imovel.edtEndereco);
+		Edtbairro 		    = (EditText) findViewById(R.imovel.edtBairro);
+		EdtCep			    = (EditText) findViewById(R.imovel.edtCEP);
+		EdtNumero		    = (EditText) findViewById(R.imovel.edtNumero);
+		EdtSegTerritorial   = (EditText) findViewById(R.imovel.edtSegTerritorial);
+		EdtArea			    = (EditText) findViewById(R.imovel.edtArea);
+		EdtMicArea			= (EditText) findViewById(R.imovel.edtMicroArea);
         setOpcoesSpinnersTab1();
         th.addTab(ts);
         
@@ -61,13 +75,18 @@ public class TelaResidencia extends Activity {
 		SpTratamentoAgua 	= (Spinner) findViewById(R.imovel.SpTratamentoAgua);
 		SpDestFezesUrina    = (Spinner) findViewById(R.imovel.SpDestFezesUrina);
 		SpAbastecimentoAgua = (Spinner) findViewById(R.imovel.SpAbastecimentoAgua);	
-		setOpcoesNosSpinners();	
+		setOpcoesSpinnerTab2();
         th.addTab(ts);
         
         //Terceira Aba
         ts = th.newTabSpec("tag3");
-        ts.setContent(R.id.tab3);
+        ts.setContent(R.imovel.tabOutras);        
         ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
+        SpCasoDoente 			= (Spinner) findViewById(R.imovel.SpCasoDoente);
+        SpMeiosComunicacao 		= (Spinner) findViewById(R.imovel.SpMeioComunicacao);
+        SpGruposComunitarios 	= (Spinner) findViewById(R.imovel.SpGrupoComunitario);
+        SpTransporteUtilizado	= (Spinner) findViewById(R.imovel.SpMeioTransporte);
+        setOpcoesSpinnerTab3();
         th.addTab(ts);		
 		
 	}
@@ -82,11 +101,68 @@ public class TelaResidencia extends Activity {
 		setOpcoesUF();
 		setOpcoesMunicipios();
 	}
+
+	public void setOpcoesSpinnerTab2(){
+		setOpcoesTipoCasa();
+		setOpcoesDestLixo();	
+		setOpcoesTratAgua();
+		setOpcoesDestFezes();
+		setOpcoesAbastAgua();
+	}
+	
+	private void setOpcoesSpinnerTab3(){
+		setOpcoesCasoDoente();
+		setOpcoesMeiosComunicacao();
+		setOpcoesGruposComunitarios();
+		setOpcoesTransporteUtilizado();
+	}
 	
 	private void setOpcoesUF(){
 		UF.clear();
 		UF.add("CE");
 		PreencheSpinner(SpUF, UF);
+	}
+	
+	private void setOpcoesCasoDoente(){
+		CasoDoente.clear();
+		CasoDoente.add("Selecione");
+		CasoDoente.add("Hospital");
+		CasoDoente.add("Posto de Saude");
+		CasoDoente.add("Auto Medicar");
+		CasoDoente.add("Outro");
+		PreencheSpinner(SpCasoDoente, CasoDoente);
+	}
+	
+	private void setOpcoesMeiosComunicacao(){
+		MeiosComunicacao.clear();
+		MeiosComunicacao.add("Selecione");
+		MeiosComunicacao.add("Telefone Fixo");
+		MeiosComunicacao.add("Celular");
+		MeiosComunicacao.add("Internet");
+		MeiosComunicacao.add("Outro");
+		PreencheSpinner(SpMeiosComunicacao, MeiosComunicacao);
+	}
+	
+	private void setOpcoesGruposComunitarios(){
+		GruposComunitarios.clear();
+		GruposComunitarios.add("Selecione");
+		GruposComunitarios.add("Sim");
+		GruposComunitarios.add("Nao");
+		PreencheSpinner(SpGruposComunitarios, GruposComunitarios);
+	}
+	
+	private void setOpcoesTransporteUtilizado(){
+		TransporteUtilizado.clear();
+		TransporteUtilizado.add("Selecione");
+		TransporteUtilizado.add("Carro Proprio");
+		TransporteUtilizado.add("Taxi");
+		TransporteUtilizado.add("Ônibus");
+		TransporteUtilizado.add("Metrô");
+		TransporteUtilizado.add("Moto");
+		TransporteUtilizado.add("Bicicleta");
+		TransporteUtilizado.add("Nenhum");
+		PreencheSpinner(SpTransporteUtilizado, TransporteUtilizado);
+		
 	}
 	
 	private void setOpcoesMunicipios(){
@@ -146,13 +222,7 @@ public class TelaResidencia extends Activity {
 		PreencheSpinner(SpAbastecimentoAgua, AbastAgua);
 	}
 	
-	public void setOpcoesNosSpinners(){
-		setOpcoesTipoCasa();
-		setOpcoesDestLixo();	
-		setOpcoesTratAgua();
-		setOpcoesDestFezes();
-		setOpcoesAbastAgua();
-	}
+	
 	
 	public void PreencheSpinner(Spinner s,ArrayList<String> a){
 		
