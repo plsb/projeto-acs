@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:layout_gravity="center"
+    >
+    
+    
+   <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+        
+        <TextView 
+            android:text="Nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            />
+        
+        <EditText 
+            android:id="@+cadastrofamilia/EdtNome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            />
+        
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+        	
+        	<TextView 
+            	android:text="Data Nascimento"
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:layout_weight="1"
+            	android:paddingBottom="5dp"
+            />
+        
+       		<TextView 
+            	android:text="Idade"
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:layout_weight="2"
+            	android:paddingBottom="5dp"
+            /> 
+            
+       </LinearLayout>
+            	
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           >
+          
+           <EditText 
+            	android:id="@+cadastrofamilia/EdtDataNascimento"
+           	 	android:layout_width="fill_parent"
+           	 	android:layout_height="wrap_content"
+           	 	android:layout_weight="1"
+            	android:inputType="date"
+            	android:paddingBottom="5dp"
+            />
+           
+             <EditText 
+            	android:id="@+cadastrofamilia/EdtIdade"
+           	 	android:layout_width="fill_parent"
+           	 	android:layout_height="wrap_content"
+           	 	android:layout_weight="2"
+            	android:inputType="number"
+            	android:paddingBottom="5dp"
+            />
+       </LinearLayout>
+       
+     <TextView 
+         android:text="Sexo"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         />
+     <RadioGroup 
+         android:orientation="horizontal"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:id="@+cadastrofamilia/RgSexo"
+         >
+             
+         <RadioButton 
+             android:id="@+cadastrofamilia/RbMasculino"
+             android:text="Masculino"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             />
+         
+         <RadioButton 
+             android:id="@+cadastrofamilia/RbFeminino"
+             android:text="Feminino"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             />
+         
+         
+     </RadioGroup>
+     
+     	<LinearLayout 
+     	    android:orientation="horizontal"
+     	    android:layout_width="fill_parent"
+     	    android:layout_height="wrap_content"
+     	    android:paddingBottom="5dp"
+     	    >
+         
+     	    <TextView 
+     	        android:text="Frequenta Esc."
+     	        android:layout_width="wrap_content"
+     	        android:layout_height="wrap_content"
+     	        />
+     	    
+     	    <TextView 
+     	        android:text="Alfabetizado"
+     	        android:layout_width="wrap_content"
+     	        android:layout_height="wrap_content"
+     	        android:layout_marginLeft="60dp"
+     	        />
+     	    
+     	</LinearLayout>
+     	
+     	<LinearLayout 
+     	    android:orientation="horizontal"
+     	    android:layout_width="fill_parent"
+     	    android:layout_height="wrap_content"
+     	    android:paddingBottom="5dp"
+     	    >
+     	    
+     	    <Spinner 
+     	        android:id="@+cadastrofamilia/SpFrequenEsc"
+     	        android:layout_width="fill_parent"
+     	        android:layout_height="40dp"
+     	        android:layout_weight="1"
+     	        />
+     	    
+     	    <Spinner 
+     	        android:id="@+cadastrofamilia/SpAlfabetizado"
+     	        android:layout_width="fill_parent"
+     	        android:layout_height="40dp"
+     	        android:layout_weight="1"
+     	        />
+     	</LinearLayout>
+     	
+    <TextView 
+        android:text="Ocupação"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <Spinner 
+        android:id="@+cadastrofamilia/SpOcupacao"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        />
+    
+    <TextView 
+        android:text="Doença ou condição referida"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+  
+        
+    </LinearLayout>
+
+</ScrollView>
