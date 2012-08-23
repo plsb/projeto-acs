@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import br.com.scs.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -14,18 +17,26 @@ import android.widget.TabHost.TabSpec;
 
 public class TelaResidencia extends Activity {
 	
-	Spinner SpTipoCasa,SpDestinoLixo,SpTratamentoAgua,SpDestFezesUrina,SpAbastecimentoAgua;
+	Spinner SpTipoCasa,SpDestinoLixo,SpTratamentoAgua,SpDestFezesUrina,SpAbastecimentoAgua,SpUF,SpMunicipio;
+    
 	
 	ArrayList<String> TipoCasa = new ArrayList<String>();
 	ArrayList<String> DestinoLixo = new ArrayList<String>();
 	ArrayList<String> TratamentoAgua = new ArrayList<String>();
 	ArrayList<String> DestFezesUrina = new ArrayList<String>();
 	ArrayList<String> AbastAgua = new ArrayList<String>();
+	ArrayList<String> UF = new ArrayList<String>();
+	ArrayList<String> Municipio = new ArrayList<String>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.telaresidencia);
+		
+		//Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+		//int largura = display.getWidth();  
+        //int altura  = display.getHeight(); 
+		
 		
 		TabHost th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
@@ -35,6 +46,9 @@ public class TelaResidencia extends Activity {
         ts = th.newTabSpec("tag1");
         ts.setContent(R.imovel.tabCadastroResidencia);
         ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
+        SpUF                = (Spinner) findViewById(R.imovel.SpUF);
+		SpMunicipio         = (Spinner) findViewById(R.imovel.SpMunicipio);
+        setOpcoesSpinnersTab1();
         th.addTab(ts);
         
         //Segunda Aba
@@ -45,7 +59,7 @@ public class TelaResidencia extends Activity {
 		SpDestinoLixo    	= (Spinner) findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	= (Spinner) findViewById(R.imovel.SpTratamentoAgua);
 		SpDestFezesUrina    = (Spinner) findViewById(R.imovel.SpDestFezesUrina);
-		SpAbastecimentoAgua = (Spinner) findViewById(R.imovel.SpAbastecimentoAgua);		
+		SpAbastecimentoAgua = (Spinner) findViewById(R.imovel.SpAbastecimentoAgua);	
 		setOpcoesNosSpinners();	
         th.addTab(ts);
         
@@ -56,6 +70,25 @@ public class TelaResidencia extends Activity {
         th.addTab(ts);
 		
 		
+	}
+	
+	private void setOpcoesSpinnersTab1(){
+		setOpcoesUF();
+		setOpcoesMunicipios();
+	}
+	
+	private void setOpcoesUF(){
+		UF.clear();
+		UF.add("CE");
+		PreencheSpinner(SpUF, UF);
+	}
+	
+	private void setOpcoesMunicipios(){
+		Municipio.clear();
+		Municipio.add("Selecione");
+		Municipio.add("2304202-CRATO");
+		Municipio.add("2307304-JUAZEIRO DO NORTE");
+		PreencheSpinner(SpMunicipio, Municipio);
 	}
 	
 	private void setOpcoesTipoCasa(){

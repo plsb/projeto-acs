@@ -74,7 +74,7 @@
 			        />
 			    
 			    <TextView 
-			        android:text=" Abastecimento de Água"
+			        android:text=" Abastecimento de Água:"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
@@ -106,7 +106,7 @@
 			        />
 			    
 			    <TextView 
-			        android:text=" Destino de Fezes e Urina"
+			        android:text=" Destino de Fezes e Urina:"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
@@ -138,7 +138,7 @@
 			        android:layout_height="wrap_content"
 		        >                
 	                <TextView 
-				        android:text=" Endereço"
+				        android:text=" Endereço:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -156,7 +156,7 @@
 			     	/>
 	                
 	                <TextView 
-				        android:text=" Bairro"
+				        android:text=" Bairro:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -174,7 +174,7 @@
 			     	/>
 	                
 	                <TextView 
-				        android:text=" CEP"
+				        android:text=" CEP:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -190,9 +190,9 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
 			     	/>
-	                
+	               
 	                <TextView 
-				        android:text=" Nº"
+				        android:text=" Município:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -200,14 +200,143 @@
 				        android:layout_marginBottom="3dp"
 				        />
 	                
-	                <EditText 
-			         	android:id="@+imovel/edtNumero"  
-			         	android:hint="123"
-			         	android:inputType="number" 
-			         	android:layout_marginBottom="5dp"
-			         	android:layout_width="100dp"
-			        	android:layout_height="wrap_content" 
-			     	/>
+	                <Spinner 
+				        android:id="@+imovel/SpMunicipio"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				    />
+	                
+	                <LinearLayout 
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+				    >
+	                
+		               <TextView 
+						    android:text=" Número:"
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:textSize="15dp"
+						    android:textColor="#000"
+						    android:layout_marginBottom="3dp"
+						/>
+		               
+		               <TextView 
+						    android:text=" UF:"
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:layout_marginLeft="43dp"
+						    android:textSize="15dp"
+						    android:textColor="#000"
+						    android:layout_marginBottom="3dp"
+						/>
+		               
+		            </LinearLayout>	
+		             
+	                <LinearLayout 
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+				    >
+			                
+			            <EditText 
+					     	android:id="@+imovel/edtNumero"  
+					      	android:hint="123"
+					       	android:inputType="number" 
+					       	android:layout_marginBottom="5dp"
+					       	android:layout_width="100dp"
+					      	android:layout_height="wrap_content" 
+					    />	    	                
+			                
+			            <Spinner 
+					        android:id="@+imovel/SpUF"
+					        android:layout_width="100dp"
+					        android:layout_marginLeft="10dp"
+					        android:layout_height="49dp"
+					        android:layout_marginBottom="5dp"
+					    />		            
+				    
+		            </LinearLayout>	   
+		            
+	                
+	                
+	                <LinearLayout 
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+				    >
+	                
+		               <TextView 
+						    android:text=" Seg. Territ."
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:textSize="15dp"
+						    android:textColor="#000"
+						    android:layout_marginBottom="3dp"
+						/>
+		               
+		               <TextView 
+						    android:text=" Área:"
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:layout_marginLeft="35dp"
+						    android:textSize="15dp"
+						    android:textColor="#000"
+						    android:layout_marginBottom="3dp"
+						/>
+		               
+		               <TextView 
+						    android:text=" Mic. Área:"
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:layout_marginLeft="67dp"
+						    android:textSize="15dp"
+						    android:textColor="#000"
+						    android:layout_marginBottom="3dp"
+						/>
+		               
+		            </LinearLayout>	
+		             
+	                <LinearLayout 
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+				    >
+			                
+			            <EditText 
+					     	android:id="@+imovel/edtSegTerritorial"  
+					      	android:hint="Nº"
+					       	android:inputType="number" 
+					       	android:layout_marginBottom="5dp"
+					       	android:layout_width="100dp"
+					      	android:layout_height="wrap_content" 
+					    />	    	                
+			                
+			            <EditText 
+					     	android:id="@+imovel/edtArea"  
+					      	android:hint="Nº"
+					       	android:inputType="number" 
+					       	android:layout_marginBottom="5dp"
+					       	android:layout_marginLeft="10dp"
+					       	android:layout_width="100dp"
+					      	android:layout_height="wrap_content" 
+					    />		     
+					    
+			            <EditText 
+					     	android:id="@+imovel/edtMicroArea"  
+					      	android:hint="Nº"
+					       	android:inputType="number" 
+					       	android:layout_marginBottom="5dp"
+					       	android:layout_marginLeft="10dp"
+					       	android:layout_width="100dp"
+					      	android:layout_height="wrap_content" 
+					    />	
+				    
+		            </LinearLayout>	 
+	                
+	                
+	                		                 
 	                
 	            </LinearLayout>
 	                
@@ -227,7 +356,9 @@
 			        android:layout_marginBottom="3dp"
 			        />
             </LinearLayout>
+            
         </FrameLayout>
+        
     </LinearLayout>
 
 </TabHost>
