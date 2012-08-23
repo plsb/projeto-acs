@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class TelaFamilia extends Activity implements OnClickListener{
 	
-	private Button btnIncluir, btnEditar;
+	private Button btnIncluir, btnEditar, btnIncluirFamiliar, btnEditarFamiliar;
 	
 	  @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,11 @@ public class TelaFamilia extends Activity implements OnClickListener{
 	        btnIncluir.setOnClickListener(this);
 	        btnEditar  = (Button) findViewById(R.telaFamilia.btnEditar);
 	        btnEditar.setOnClickListener(this);
+	        btnIncluirFamiliar = (Button) findViewById(R.telaFamilia.btnIncluirFamiliar);
+	        btnIncluirFamiliar.setOnClickListener(this);
+	        btnEditarFamiliar = (Button) findViewById(R.telaFamilia.btnEditarFamiliar);
+	        btnEditarFamiliar.setOnClickListener(this);
+	        
 	        
 	  }
 	  
@@ -30,6 +35,10 @@ public class TelaFamilia extends Activity implements OnClickListener{
 		  if (v == btnIncluir){ 
 		    Intent i = new Intent(this,TelaResidencia.class);
 		    startActivity(i);
+		  }
+		  if (v == btnIncluirFamiliar){
+			  Intent i = new Intent(this, TelaCadastroFamilia.class);
+			  startActivity(i);
 		  }
 		  //Toast.makeText(this, "Incluir", Toast.LENGTH_SHORT).show();
 	  }
