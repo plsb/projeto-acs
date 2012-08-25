@@ -30,6 +30,29 @@ public class Banco{
 		public static final String[] _sqlTabelaUsuarioAux =  new String[] {"CREATE TABLE if not exists usuariosAux (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		   "USU_NOME text NOT NULL);"};
 		
+		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+
+																		   "UF TEXT NOT NULL, 		     "+
+																		   "ENDERECO TEXT NOT NULL, 	 "+
+																		   "NUMERO TEXT NOT NULL, 		 "+
+																		   "BAIRRO TEXT NOT NULL, 		 "+
+																		   "CEP TEXT, 					 "+
+																		   "MUNICIPIO TEXT NOT NULL, 	 "+
+																		   "SEG_TERRIT TEXT, 			 "+
+																		   "AREA TEXT, 					 "+
+																		   "MICROAREA TEXT, 			 "+ 
+																		   "COD_FAMILIA TEXT,   		 "+
+																		   "DATA_CADASTRO TEXT NOT NULL, "+
+																		   "TIPO_CASA TEXT, 			 "+
+																		   "DEST_LIXO TEXT, 			 "+
+																		   "TRAT_AGUA TEXT,				 "+
+																		   "ABAST_AGUA TEXT,			 "+
+																		   "DEST_FEZES TEXT,			 "+
+																		   "CASO_DOENCA TEXT,			 "+
+																		   "MEIO_COMUNICACAO TEXT,		 "+
+																		   "PART_GRUPOS TEXT,		   	 "+
+																		   "MEIO_TRANSPORTE TEXT);	     "};
+
+		
 		
 		private static final String _sqlTabelaVersao = "create table versao (_id integer primary key autoincrement, "+
 				 									   "nometabela text not null, versao integer not null);";
