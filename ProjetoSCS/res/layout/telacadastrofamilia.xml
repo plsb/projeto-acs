@@ -3,9 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" 
     android:layout_gravity="center"
+    android:background="@drawable/bg"
     >
-    
-    
    <LinearLayout 
         android:orientation="vertical"
         android:layout_width="fill_parent"
@@ -18,7 +17,9 @@
             android:text="Nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:paddingBottom="5dp"
+            android:textStyle="bold"
             />
         
         <EditText 
@@ -28,19 +29,38 @@
             android:paddingBottom="5dp"
             />
         
-        <LinearLayout 
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            >
-        	
-        	<TextView 
+  		<TextView 
             	android:text="Data Nascimento"
             	android:layout_width="fill_parent"
             	android:layout_height="wrap_content"
             	android:layout_weight="1"
             	android:paddingBottom="5dp"
+            	android:textStyle="bold"
             />
+        
+       <DatePicker
+               android:id="@+cadastrofamilia/DpDataNascimento"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:inputType="date"
+               android:maxLength="10"
+               android:layout_weight="2"
+               android:paddingBottom="5dp"
+               
+               />
+        
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+		 	<TextView 
+         		android:text="Sexo"
+         		android:layout_width="fill_parent"
+         		android:layout_height="wrap_content"
+         		android:layout_weight="1"
+         		android:textStyle="bold"
+         	/>
         
        		<TextView 
             	android:text="Idade"
@@ -48,44 +68,20 @@
             	android:layout_height="wrap_content"
             	android:layout_weight="2"
             	android:paddingBottom="5dp"
+            	android:textStyle="bold"
             /> 
             
        </LinearLayout>
             	
-       <LinearLayout
+     <LinearLayout
            android:orientation="horizontal"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
            >
-          
-           <br.com.control.DateEditText
-               android:id="@+cadastrofamilia/EdtDataNascimento"
-               android:layout_width="fill_parent"
-               android:layout_height="wrap_content"
-               android:inputType="date"
-               android:layout_weight="1"
-               android:paddingBottom="5dp"
-               
-               />
-           
-             <EditText 
-            	android:id="@+cadastrofamilia/EdtIdade"
-           	 	android:layout_width="fill_parent"
-           	 	android:layout_height="wrap_content"
-           	 	android:layout_weight="2"
-            	android:inputType="number"
-            	android:paddingBottom="5dp"
-            />
-       </LinearLayout>
-       
-     <TextView 
-         android:text="Sexo"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         />
+
      <RadioGroup 
-         android:orientation="horizontal"
-         android:layout_width="fill_parent"
+         android:orientation="vertical"
+         android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:id="@+cadastrofamilia/RgSexo"
          >
@@ -93,7 +89,7 @@
          <RadioButton 
              android:id="@+cadastrofamilia/RbMasculino"
              android:text="Masculino"
-             android:layout_width="fill_parent"
+             android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_weight="1"
              />
@@ -101,13 +97,24 @@
          <RadioButton 
              android:id="@+cadastrofamilia/RbFeminino"
              android:text="Feminino"
-             android:layout_width="fill_parent"
+             android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_weight="1"
              />
          
-         
-     </RadioGroup>
+     </RadioGroup>              
+      
+     <Spinner 
+            	android:id="@+cadastrofamilia/SpIdade"
+           	 	android:layout_width="120dp"
+           	 	android:layout_height="90dp"
+           	 	android:layout_marginLeft="40dp"
+            	android:paddingBottom="5dp"
+      />
+      
+     </LinearLayout>
+       
+    
      
      	<LinearLayout 
      	    android:orientation="horizontal"
@@ -120,6 +127,7 @@
      	        android:text="Frequenta Esc."
      	        android:layout_width="wrap_content"
      	        android:layout_height="wrap_content"
+     	        android:textStyle="bold"
      	        />
      	    
      	    <TextView 
@@ -127,6 +135,7 @@
      	        android:layout_width="wrap_content"
      	        android:layout_height="wrap_content"
      	        android:layout_marginLeft="60dp"
+     	        android:textStyle="bold"
      	        />
      	    
      	</LinearLayout>
@@ -157,12 +166,14 @@
         android:text="Ocupação"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
         />
     
-    <Spinner 
-        android:id="@+cadastrofamilia/SpOcupacao"
+    <EditText 
+        android:id="@+cadastrofamilia/EdtOcupacao"
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         />
     
@@ -170,7 +181,123 @@
         android:text="Doença ou condição referida"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         />
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChHanseniase"
+            android:text="Hanseníase"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChHipertensao"
+            android:text="Hipertensão"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+        <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChGestante"
+            android:text="Gestante"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChTuberculose"
+            android:text="Tuberculose"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+        <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChAlcolismo"
+            android:text="Alcolismo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChChagas"
+            android:text="Chagas"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChDeficiencia"
+            android:text="Deficiência"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChMalaria"
+            android:text="Malária"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChDiabetes"
+            android:text="Diabetes"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+cadastrofamilia/ChEpilepsia"
+            android:text="Epilepsia"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
   
         
     </LinearLayout>

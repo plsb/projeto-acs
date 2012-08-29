@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
         <activity android:label="Residencia" android:name="br.com.view.TelaResidencia"></activity>
-        <activity android:label="Cadastro Familiar" android:name="br.com.view.TelaCadastroFamilia"></activity>
+
+        <activity android:name="br.com.view.TelaCadastroFamilia" android:label="Cadastro Familiar"></activity>
     </application>
 
 </manifest>
