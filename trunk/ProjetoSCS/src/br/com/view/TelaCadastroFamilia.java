@@ -21,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class TelaCadastroFamilia extends Activity{
-	
+	 
 
 	Spinner SpAlfabetizado, SpFreqEscola, SpIdade;
 	DatePicker DtNascimento;
@@ -33,7 +33,7 @@ public class TelaCadastroFamilia extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.telacadastrofamilia);
-		
+	 	
 		SpIdade = (Spinner) findViewById(R.cadastrofamilia.SpIdade);
 		SpAlfabetizado = (Spinner) findViewById(R.cadastrofamilia.SpAlfabetizado);
 		SpFreqEscola = (Spinner) findViewById(R.cadastrofamilia.SpFrequenEsc);
@@ -70,7 +70,7 @@ public int CalculaIdade(int _dia, int _mes, int _ano){
 	int mes = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));
 	f = new SimpleDateFormat("yyyy");
 	int ano = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));	
-	if ((_dia >= dia)&&(_mes >= mes)){
+	if ((_dia <= dia)&&(_mes <= mes)){
 		return (ano - _ano);
 	}else{
 		return ((ano - _ano) -1);
@@ -93,7 +93,7 @@ public void PreencheSpinner(Spinner s,ArrayList<String> a){
 			//imprime um Toast na tela com o nome que foi selecionado
 			//Toast.makeText(this, "Nome Selecionado: " + nome, Toast.LENGTH_LONG).show();
 			
-		}
+		} 
 
 		public void onNothingSelected(AdapterView<?> parent) {
 			
