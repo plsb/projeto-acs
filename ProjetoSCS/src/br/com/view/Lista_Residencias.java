@@ -26,23 +26,18 @@ public class Lista_Residencias extends ListActivity {
         HashMap<String,String> item;
         _bd.open();
         try{
+        	list.clear();
         	Cursor _cursor = _bd.consulta("residencia", new String[] { "*" },null,null,null,null,null,null);
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst();
-        	item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", "+
-        					   _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
-        	item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
-		  			 		   _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
-	        list.add( item );
-        	while (_cursor.moveToNext()){	
+        	do{	
         	  item = new HashMap<String,String>();
         	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", "+
 					             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
         	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
         			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
 	          list.add( item );
-	          _cursor.moveToNext();
-	        }
+	        }while (_cursor.moveToNext());			
         	_cursor.close();
         	_bd.fechaBanco();
         }catch(Exception e){
