@@ -34,9 +34,6 @@ public class TelaCadastroFamilia extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.telacadastrofamilia);
-	 	
-		SpIdade = (Spinner) findViewById(R.cadastrofamilia.SpIdade);
 		setContentView(R.layout.telacadastrofamilia);		
 	
 		SpAlfabetizado = (Spinner) findViewById(R.cadastrofamilia.SpAlfabetizado);
