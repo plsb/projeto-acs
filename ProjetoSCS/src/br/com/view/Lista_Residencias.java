@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.Toast; 
 
 public class Lista_Residencias extends ListActivity {
 	Banco _bd = new Banco(this);
