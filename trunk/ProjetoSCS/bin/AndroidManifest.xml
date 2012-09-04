@@ -29,6 +29,7 @@
         <activity android:label="Residencia" android:name="br.com.view.TelaResidencia"></activity>
 
         <activity android:name="br.com.view.TelaCadastroFamilia" android:label="Cadastro Familiar"></activity>
+        <activity android:name="br.com.view.TelaDoenca" android:label="Doenças"></activity>
     </application>
 
 </manifest>

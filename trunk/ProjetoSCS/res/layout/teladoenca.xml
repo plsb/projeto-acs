@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/bg"
+    
+>
+ <TabHost
+    android:id="@+teladoenca/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </TabWidget>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:id="@+teladoenca/tabHanseniase"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+		        >
+		        
+		        <TextView 
+			        android:text=" Data Visita:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <DatePicker 
+			        android:id="@+teladoenca/DtHDataProfissional"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
+			        />
+		        
+			    <TextView 
+			        android:text=" Toma Medicação Diaria:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <RadioGroup 
+			        android:id="@+teladoenca/RgMedicacaoDiaria"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:layout_marginBottom="5dp">
+			       
+			    
+			    <RadioButton 
+			        android:text="Sim"
+			        android:id="@+teladoenca/RbMSim"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    
+			    <RadioButton 
+			        android:id="@+teladoenca/RbMNao"
+			        android:text="Não"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    </RadioGroup>
+			    
+			    <TextView 
+			        android:text="Data da ultima dose supervisionada:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <DatePicker 
+			        android:id="@+teladoenca/DtUltimaData"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
+			        />
+			    
+			    <TextView 
+			        android:text="Faz autos Cuidados:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <RadioGroup 
+			        android:id="@+teladoenca/RgAutoCuidados"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:layout_marginBottom="5dp">
+			    
+			    
+			    <RadioButton 
+			        android:text="Sim"
+			        android:id="@+teladoenca/RbASim"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    
+			    <RadioButton 
+			        android:id="@+teladoenca/RbANao"
+			        android:text="Não"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    </RadioGroup>
+			    
+			    <TextView 
+			        android:text="Comunicantes Examinados ???"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			       />
+			    
+			   <TextView 
+			       android:text="Comunicantes que receberam BCG ????"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			      />
+			    
+		    </LinearLayout>
+    
+
+            </LinearLayout><!--  HANSENIASE -->
+
+            <LinearLayout
+                android:id="@+teladoenca/tabDiabetes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+                
+                <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+		        >                
+	                <TextView 
+				        android:text=" Data da visita do Profissional:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <DatePicker 
+			         	android:id="@+teladoenca/DtDataProfissional"  
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                <TextView 
+				        android:text=" Faz Dieta:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+			         	android:id="@+teladoenca/RgDieta"  
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" >
+			    
+	                    
+			    		<RadioButton 
+			        		android:text="Sim"
+			        		android:id="@+teladoenca/RbDSim"
+			        		android:layout_width="fill_parent"
+			        		android:layout_height="wrap_content"
+			        		android:layout_weight="1"
+			        		android:textSize="15dp"
+			        		android:textColor="#000"
+			        	/>
+			    
+			    		<RadioButton 
+			       		 	android:id="@+teladoenca/RbDNao"
+			       		 	android:text="Não"
+			      		  	android:layout_width="fill_parent"
+			        		android:layout_height="wrap_content"
+			        		android:layout_weight="1"
+			        		android:textSize="15dp"
+			        		android:textColor="#000"
+			        	/>  
+	                    
+			     	</RadioGroup>
+	                
+	                <TextView 
+				        android:text="  Faz Exercicios Fisicos:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp">
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbESim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                  
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbENao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                 </RadioGroup>
+	               
+	                <TextView 
+				        android:text=" Usa Insulina"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp">
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbISim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                  
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbINao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                 </RadioGroup>
+	                 
+	                <TextView 
+				        android:text=" Toma Hipoglicemiante Oral:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp">
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbHSim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                  
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbHNao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                 </RadioGroup>	
+	                 
+	                 <DatePicker 
+			         	android:id="@+teladoenca/DtDUltimaConsulta"  
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	            </LinearLayout>
+	                
+            </LinearLayout><!--  DIABETES -->
+
+            <LinearLayout
+                android:id="@+teladoenca/tabTuberculose"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+               <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+		        >
+		        
+			        <TextView 
+				        android:text=" Data da Visita:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <DatePicker 
+				        android:id="@+teladoenca/DtTDataVisita"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Toma Medicação Diaria:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <RadioGroup 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp">
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbTSim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                  
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbTNao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                 </RadioGroup>	
+	                 
+				    
+				     <TextView 
+				        android:text=" Reações Indesejaveis ????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				 
+				    
+				    <TextView 
+				        android:text=" Exame de Escarro ????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				 	 
+				    <TextView 
+				        android:text=" Comunicantes Examinados ????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				   
+				     
+				    <TextView 
+				        android:text=" Menor de 5 anos com BCG ????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+			    
+				</LinearLayout> 
+				</LinearLayout><!--  TUBERCULOSE -->
+				
+               <LinearLayout
+                android:id="@+teladoenca/tabGestante"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+				    
+                   
+               <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+		        >
+	                
+                <TextView 
+				        android:text=" Data da Ultima Regra:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <DatePicker 
+				        android:id="@+teladoenca/DtDataRegra"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				 <TextView 
+				        android:text=" Data Provavel do Parto:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <DatePicker 
+				        android:id="@+teladoenca/DtDataRegra"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Data da Vacina ?????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <TextView 
+				        android:text="Estado Nutricional ????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				      <TextView 
+				        android:text=" Data da Consulta de Pre Natal ?????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				      
+				       <TextView 
+				        android:text=" Fatores de Risco"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				       
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+teladoenca/ChGestacoes"
+            				android:text="6 ou mais gestações"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+            			/>
+        				<CheckBox 
+          				  	android:id="@+teladoenca/ChAborto"
+            			 	android:text="Natimorto/Aborto"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+            			/>
+        
+    			     </LinearLayout>
+    			     
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+teladoenca/ChIdade36"
+            				android:text="36 anos ou mais"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+            			/>
+        				<CheckBox 
+          				  	android:id="@+teladoenca/ChIdade20"
+            			 	android:text="Menos de 20 anos"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+            			/>
+        
+    			     </LinearLayout>
+    			     
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+teladoenca/ChSangue"
+            				android:text="Sangramento"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+            			/>
+        				<CheckBox 
+          				  	android:id="@+teladoenca/ChEdema"
+            			 	android:text="Edema"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+            			/>
+        
+    			     </LinearLayout>
+    			     
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+teladoenca/ChDiabetes"
+            				android:text="Diabetes"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+            			/>
+        				<CheckBox 
+          				  	android:id="@+teladoenca/ChPressao"
+            			 	android:text="Pressão Alta"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+            			/>
+        
+    			     </LinearLayout>
+				      
+				 <TextView 
+				        android:text=" Resultado da Gestacão Atual ?????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        /> 
+				       
+				 <TextView 
+				        android:text=" Data da Consulta de Puerbio?????"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        /> 
+
+                </LinearLayout>
+             
+               </LinearLayout><!--  GESTANTE -->
+               
+               <LinearLayout
+                android:id="@+teladoenca/tabHipertensao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+				    
+                   
+               <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+		        >
+				
+                   <TextView 
+				        android:text=" Data da Ultima Visita:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <DatePicker 
+				        android:id="@+teladoenca/DtHiperDataVisita"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Faz Dieta:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+			         	android:id="@+teladoenca/RgDieta"  
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" >
+			    
+	                    
+			    		<RadioButton 
+			        		android:text="Sim"
+			        		android:id="@+teladoenca/RbHiperSim"
+			        		android:layout_width="fill_parent"
+			        		android:layout_height="wrap_content"
+			        		android:layout_weight="1"
+			        		android:textSize="15dp"
+			        		android:textColor="#000"
+			        	/>
+			    
+			    		<RadioButton 
+			       		 	android:id="@+teladoenca/RbHiperNao"
+			       		 	android:text="Não"
+			      		  	android:layout_width="fill_parent"
+			        		android:layout_height="wrap_content"
+			        		android:layout_weight="1"
+			        		android:textSize="15dp"
+			        		android:textColor="#000"
+			        	/>  
+	                    
+			     	</RadioGroup>
+			     	
+	                <TextView 
+				        android:text=" Toma a Medicação:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+			         	android:id="@+teladoenca/RgMedicacao"  
+			         	android:layout_marginBottom="5dp"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" >
+			    
+	                    
+			    		<RadioButton 
+			        		android:text="Sim"
+			        		android:id="@+teladoenca/RbHiperSim"
+			        		android:layout_width="fill_parent"
+			        		android:layout_height="wrap_content"
+			        		android:layout_weight="1"
+			        		android:textSize="15dp"
+			        		android:textColor="#000"
+			        	/>
+			    
+			    		<RadioButton 
+			       		 	android:id="@+teladoenca/RbHiperNao"
+			       		 	android:text="Não"
+			      		  	android:layout_width="fill_parent"
+			        		android:layout_height="wrap_content"
+			        		android:layout_weight="1"
+			        		android:textSize="15dp"
+			        		android:textColor="#000"
+			        	/>  
+	                    
+			     	</RadioGroup>
+			     	
+	                <TextView 
+				        android:text="  Faz Exercicios Fisicos:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+	                
+	                <RadioGroup 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp">
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbHiperSim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                  
+	                <RadioButton 
+			         	android:id="@+teladoenca/RbHiperNao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content" 
+			     	/>
+	                
+	                 </RadioGroup>
+	                 
+	                <TextView 
+				        android:text=" Pressao Arterial:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                   <EditText 
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:hint="Pressao arterial"
+                       />
+                   
+                   <TextView 
+				        android:text=" Data da Ultima Visita:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                   <DatePicker 
+				      	android:id="@+teladoenca/DtHipeUltimaVisita"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+                       />
+			   </LinearLayout>
+			   
+			   </LinearLayout><!--  HIPERTENSAO -->
+            
+        </FrameLayout>
+        
+    </LinearLayout><!--  TAB CONTENT -->
+
+</TabHost>
+
+    
+
+</ScrollView>

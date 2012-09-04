@@ -4,27 +4,29 @@ package br.com.view;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-
 import br.com.scs.R;
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 
 public class TelaCadastroFamilia extends Activity{
+	public static int hanseniase, hipertensao, diabetes, tuberculose, gestante;
 	 
 
 	Spinner SpAlfabetizado, SpFreqEscola, SpIdade;
 	DatePicker DtNascimento;
+	CheckBox Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante;
 	ArrayList<String> Opcao = new ArrayList<String>();
 	ArrayList<String> Idade = new ArrayList<String>();
 	
@@ -35,15 +37,58 @@ public class TelaCadastroFamilia extends Activity{
 		setContentView(R.layout.telacadastrofamilia);
 	 	
 		SpIdade = (Spinner) findViewById(R.cadastrofamilia.SpIdade);
+		setContentView(R.layout.telacadastrofamilia);		
+	
 		SpAlfabetizado = (Spinner) findViewById(R.cadastrofamilia.SpAlfabetizado);
 		SpFreqEscola = (Spinner) findViewById(R.cadastrofamilia.SpFrequenEsc);
 		DtNascimento = (DatePicker) findViewById(R.cadastrofamilia.DpDataNascimento);
+		Hanseniase = (CheckBox) findViewById(R.cadastrofamilia.ChHanseniase);
+		Hipertensao = (CheckBox) findViewById(R.cadastrofamilia.ChHipertensao);
+		Diabetes = (CheckBox) findViewById(R.cadastrofamilia.ChDiabetes);
+		Tuberculose = (CheckBox) findViewById(R.cadastrofamilia.ChTuberculose);
+		Gestante = (CheckBox) findViewById(R.cadastrofamilia.ChGestante);
 		
 		OpcaoSpinner();
-		SpinnerIdade();
-			
+		
 
 }	
+
+@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cadastrofamilia, menu);        
+        return true;
+    }
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+
+		case R.id.menu_continuar:
+			
+			if(Hanseniase.isChecked()){
+				hanseniase = 1;
+			}
+			if (Hipertensao.isChecked()){
+				hipertensao = 1;
+			}
+			if (Tuberculose.isChecked()){
+				tuberculose = 1;
+			}
+			if (Gestante.isChecked()){
+				gestante = 1;
+			}
+			if (Diabetes.isChecked()){
+				diabetes = 1;
+			}
+			
+			Intent teladoenca = new Intent(this, TelaDoenca.class);
+			startActivity(teladoenca);
+			
+			break;
+		}
+		return true;
+	}
 	
 public void OpcaoSpinner(){
 		Opcao.clear();
@@ -53,13 +98,8 @@ public void OpcaoSpinner(){
 		PreencheSpinner(SpFreqEscola, Opcao);	
 	}
 
-public void SpinnerIdade(){
-	  Idade.clear();
-	  for (int i = 1; i <=100; i++){
-		  Idade.add(String.valueOf(i));
-	  }
-	  PreencheSpinner(SpIdade, Idade);
-}
+
+
 
 @SuppressLint("ParserError")
 public int CalculaIdade(int _dia, int _mes, int _ano){
@@ -100,6 +140,10 @@ public void PreencheSpinner(Spinner s,ArrayList<String> a){
 		}
 		
 	});
+}
+
+public void PreparaInsercao(){
+	
 }
 
 	
