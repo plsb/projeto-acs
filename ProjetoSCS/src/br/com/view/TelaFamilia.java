@@ -40,6 +40,10 @@ public class TelaFamilia extends Activity implements OnClickListener{
 			  Intent i = new Intent(this, TelaCadastroFamilia.class);
 			  startActivity(i);
 		  }
+		  if (v == btnEditar){
+			  Intent i = new Intent(this, Lista_Residencias.class);
+			  startActivity(i);
+		  }
 		  //Toast.makeText(this, "Incluir", Toast.LENGTH_SHORT).show();
 	  }
 
