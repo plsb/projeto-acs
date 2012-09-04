@@ -32,6 +32,25 @@
        /> 
        
        <TextView 
+           android:text="One Team Tecnologia"
+           android:textSize="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+       />
+       
+       <TextView 
+           android:layout_marginTop="15dp"
+           android:text="Desenvolvedores:"
+           android:textSize="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+       />
+       
+       <TextView 
            android:text="Karlos Kelvin A. Santos"
            android:textSize="15dp"
            android:layout_width="wrap_content"

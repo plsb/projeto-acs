@@ -63,6 +63,8 @@ public class TelaCadastroFamilia extends Activity{
 
 		case R.id.menu_continuar:
 			
+			Intent teladoenca = new Intent(this, br.com.scs.R.teladoenca.class);
+			
 			if(Hanseniase.isChecked()){
 				hanseniase = 1;
 			}else{
@@ -88,7 +90,6 @@ public class TelaCadastroFamilia extends Activity{
 				diabetes = 0;
 			}
 			
-			Intent teladoenca = new Intent(this, TelaDoenca.class);
 			startActivity(teladoenca);
 			
 			break;
