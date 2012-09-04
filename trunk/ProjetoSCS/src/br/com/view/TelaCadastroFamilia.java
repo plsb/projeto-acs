@@ -65,18 +65,27 @@ public class TelaCadastroFamilia extends Activity{
 			
 			if(Hanseniase.isChecked()){
 				hanseniase = 1;
-			}
+			}else{
+				hanseniase = 0;
+			}	
 			if (Hipertensao.isChecked()){
 				hipertensao = 1;
+			}else{
+				hipertensao = 0;
 			}
 			if (Tuberculose.isChecked()){
 				tuberculose = 1;
-			}
+			}else
+				tuberculose = 0;
 			if (Gestante.isChecked()){
 				gestante = 1;
+			}else{
+				gestante = 0;
 			}
 			if (Diabetes.isChecked()){
 				diabetes = 1;
+			}else{
+				diabetes = 0;
 			}
 			
 			Intent teladoenca = new Intent(this, TelaDoenca.class);

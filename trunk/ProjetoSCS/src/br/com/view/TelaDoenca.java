@@ -17,36 +17,36 @@ public class TelaDoenca extends Activity{
         th.setup();
         TabSpec ts;
         
-        //if (TelaCadastroFamilia.hanseniase == 1){
+        if (TelaCadastroFamilia.hanseniase != 0){
         	ts = th.newTabSpec("tag1");
             ts.setContent(R.teladoenca.tabHanseniase);
-            //ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
+            ts.setIndicator("Hanseniase",getResources().getDrawable(R.drawable.hanseniase));
             th.addTab(ts);
-       // }
-       //if (TelaCadastroFamilia.diabetes == 1){
+        }
+        if (TelaCadastroFamilia.diabetes != 0){
         	ts = th.newTabSpec("tag2");
             ts.setContent(R.teladoenca.tabDiabetes);
-            //ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
+            ts.setIndicator("Diabetes",getResources().getDrawable(R.drawable.diabetes));
             th.addTab(ts);
-       // }
-       // if (TelaCadastroFamilia.hipertensao == 1){
+        }
+       if (TelaCadastroFamilia.hipertensao != 0){
         	ts = th.newTabSpec("tag3");
             ts.setContent(R.teladoenca.tabHipertensao);
-            //ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
+            ts.setIndicator("Hipertensao",getResources().getDrawable(R.drawable.hipertensao));
             th.addTab(ts);
-      //  }
-      //  if (TelaCadastroFamilia.gestante == 1){
+        }
+        if (TelaCadastroFamilia.gestante != 0){
         	ts = th.newTabSpec("tag4");
             ts.setContent(R.teladoenca.tabGestante);
-            //ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
+            ts.setIndicator("Gestante",getResources().getDrawable(R.drawable.gestante));
             th.addTab(ts);
-     //   }
-      //  if (TelaCadastroFamilia.tuberculose == 1){
+       }
+        if (TelaCadastroFamilia.tuberculose != 0){
         	ts = th.newTabSpec("tag5");
             ts.setContent(R.teladoenca.tabTuberculose);
-            //ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
+            ts.setIndicator("Tuberculose",getResources().getDrawable(R.drawable.tuberculose));
             th.addTab(ts);
-      //  }
+       }
 	}
 
 }
