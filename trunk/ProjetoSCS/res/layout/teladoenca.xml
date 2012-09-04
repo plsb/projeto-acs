@@ -30,9 +30,9 @@
 
             <LinearLayout
                 android:id="@+teladoenca/tabHanseniase"
-
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent" 
+                >
 
                 <LinearLayout 
 			        android:paddingTop="10dp"
@@ -41,13 +41,15 @@
 			        android:layout_height="wrap_content"
 		        >
 		        
-		        <TextView 
+		        <TextView
+		            android:id="@+teladoenca/TxtHDataVisita"
 			        android:text=" Data Visita:"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:visibility="invisible"
 			        />
 			    
 			    <DatePicker 
@@ -55,23 +57,27 @@
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_marginBottom="5dp"
+			        android:visibility="invisible"
 			        />
 		        
-			    <TextView 
+			    <TextView
+			        android:id="@+teladoenca/TxtHMedicacaoDiaria"
 			        android:text=" Toma Medicação Diaria:"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:visibility="invisible"
 			        />
 			    
 			    <RadioGroup 
-			        android:id="@+teladoenca/RgMedicacaoDiaria"
+			        android:id="@+teladoenca/RgHMedicacaoDiaria"
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 			        android:orientation="horizontal"
-			        android:layout_marginBottom="5dp">
+			        android:layout_marginBottom="5dp"
+			        android:visibility="invisible">
 			       
 			    
 			    <RadioButton 
@@ -82,6 +88,7 @@
 			        android:layout_weight="1"
 			        android:textSize="15dp"
 			        android:textColor="#000"
+
 			        />
 			    
 			    <RadioButton 
@@ -95,37 +102,46 @@
 			        />
 			    </RadioGroup>
 			    
-			    <TextView 
+			    <TextView
+			        android:id="@+teladoenca/TxtHDataUltimaDose" 
 			        android:text="Data da ultima dose supervisionada:"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:visibility="invisible"
+
 			        />
 			    
 			    <DatePicker 
-			        android:id="@+teladoenca/DtUltimaData"
+			        android:id="@+teladoenca/DtHUltimaData"
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_marginBottom="5dp"
+			        android:visibility="invisible"
+
 			        />
 			    
-			    <TextView 
+			    <TextView
+			        android:id="@+teladoenca/TxtHFazCuidados" 
 			        android:text="Faz autos Cuidados:"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:visibility="invisible"
+
 			        />
 			    
 			    <RadioGroup 
-			        android:id="@+teladoenca/RgAutoCuidados"
+			        android:id="@+teladoenca/RgHAutoCuidados"
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 			        android:orientation="horizontal"
-			        android:layout_marginBottom="5dp">
+			        android:layout_marginBottom="5dp"
+			        android:visibility="invisible">
 			    
 			    
 			    <RadioButton 
@@ -136,6 +152,7 @@
 			        android:layout_weight="1"
 			        android:textSize="15dp"
 			        android:textColor="#000"
+	
 			        />
 			    
 			    <RadioButton 
@@ -146,23 +163,30 @@
 			        android:layout_weight="1"
 			        android:textSize="15dp"
 			        android:textColor="#000"
+	
 			        />
 			    </RadioGroup>
 			    
-			    <TextView 
+			    <TextView
+			        android:id="@+teladoenca/TxtHComunicantes" 
 			        android:text="Comunicantes Examinados ???"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
+			        android:visibility="invisible"
+		
 			       />
 			    
-			   <TextView 
+			   <TextView
+			       android:id="@+teladoenca/TxtHBCG" 
 			       android:text="Comunicantes que receberam BCG ????"
 			       android:layout_width="wrap_content"
 			       android:layout_height="wrap_content"
 			       android:textSize="15dp"
 			       android:textColor="#000"
+			       android:visibility="invisible"
+		
 			      />
 			    
 		    </LinearLayout>
@@ -188,13 +212,17 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+	
 				        />
 	                
 	                <DatePicker 
 			         	android:id="@+teladoenca/DtDataProfissional"  
 			         	android:layout_marginBottom="5dp"
 			         	android:layout_width="fill_parent"
-			        	android:layout_height="wrap_content" 
+			        	android:layout_height="wrap_content"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                <TextView 
@@ -204,6 +232,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+	
 				        />
 	                
 	                <RadioGroup 
@@ -211,7 +241,8 @@
 			         	android:layout_marginBottom="5dp"
 			            android:orientation="horizontal"
 			         	android:layout_width="fill_parent"
-			        	android:layout_height="wrap_content" >
+			        	android:layout_height="wrap_content" 
+			        	android:visibility="invisible">
 			    
 	                    
 			    		<RadioButton 
@@ -222,6 +253,8 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
+			        		android:visibility="invisible"
+	
 			        	/>
 			    
 			    		<RadioButton 
@@ -232,6 +265,8 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
+			        		android:visibility="invisible"
+			
 			        	/>  
 	                    
 			     	</RadioGroup>
@@ -243,13 +278,16 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 	                
 	                <RadioGroup 
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
-				        android:layout_marginBottom="5dp">
+				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible">
 				       
 	                
 	                <RadioButton 
@@ -260,6 +298,8 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
 			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                  
@@ -271,6 +311,8 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
 			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+	
 			     	/>
 	                
 	                 </RadioGroup>
@@ -282,13 +324,16 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+	
 				        />
 	                
 	                <RadioGroup 
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
-				        android:layout_marginBottom="5dp">
+				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible">
 				       
 	                
 	                <RadioButton 
@@ -298,7 +343,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1" 
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                  
@@ -309,7 +356,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1" 
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+			
 			     	/>
 	                
 	                 </RadioGroup>
@@ -321,13 +370,16 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+	
 				        />
 	                
 	                <RadioGroup 
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
-				        android:layout_marginBottom="5dp">
+				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible">
 				       
 	                
 	                <RadioButton 
@@ -337,7 +389,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1" 
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                  
@@ -348,7 +402,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
-			        	android:layout_weight="1" 
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                 </RadioGroup>	
@@ -357,7 +413,9 @@
 			         	android:id="@+teladoenca/DtDUltimaConsulta"  
 			         	android:layout_marginBottom="5dp"
 			         	android:layout_width="fill_parent"
-			        	android:layout_height="wrap_content" 
+			        	android:layout_height="wrap_content"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	            </LinearLayout>
@@ -383,6 +441,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
 				    
 				    <DatePicker 
@@ -390,6 +450,8 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible"
+
 				        />
 				    
 				    <TextView 
@@ -399,13 +461,16 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+
 				        />
 				    
 				    <RadioGroup 
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
-				        android:layout_marginBottom="5dp">
+				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible">
 				       
 	                
 	                <RadioButton 
@@ -415,7 +480,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1"  
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+	
 			     	/>
 	                
 	                  
@@ -426,7 +493,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1" 
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                 </RadioGroup>	
@@ -439,6 +508,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				 
@@ -450,6 +521,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				 	 
@@ -460,6 +533,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
 				   
 				     
@@ -470,6 +545,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 			    
 				</LinearLayout> 
@@ -495,6 +572,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				    <DatePicker 
@@ -502,6 +581,8 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				 <TextView 
@@ -511,6 +592,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				    <DatePicker 
@@ -518,6 +601,8 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				    <TextView 
@@ -527,6 +612,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
 				    
 				    <TextView 
@@ -534,6 +621,8 @@
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				      <TextView 
@@ -543,6 +632,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 				      
 				       <TextView 
@@ -552,6 +643,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
 				       
 				   <LinearLayout 
@@ -566,6 +659,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
             				android:layout_weight="1"
+            				android:visibility="invisible"
+      
             			/>
         				<CheckBox 
           				  	android:id="@+teladoenca/ChAborto"
@@ -573,6 +668,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
            					android:layout_weight="1"
+           					android:visibility="invisible"
+       
             			/>
         
     			     </LinearLayout>
@@ -589,6 +686,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
             				android:layout_weight="1"
+            				android:visibility="invisible"
+            	
             			/>
         				<CheckBox 
           				  	android:id="@+teladoenca/ChIdade20"
@@ -596,6 +695,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
            					android:layout_weight="1"
+           					android:visibility="invisible"
+          
             			/>
         
     			     </LinearLayout>
@@ -612,6 +713,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
             				android:layout_weight="1"
+            				android:visibility="invisible"
+            	
             			/>
         				<CheckBox 
           				  	android:id="@+teladoenca/ChEdema"
@@ -619,6 +722,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
            					android:layout_weight="1"
+           					android:visibility="invisible"
+           
             			/>
         
     			     </LinearLayout>
@@ -635,6 +740,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
             				android:layout_weight="1"
+            				android:visibility="invisible"
+    
             			/>
         				<CheckBox 
           				  	android:id="@+teladoenca/ChPressao"
@@ -642,6 +749,8 @@
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
            					android:layout_weight="1"
+           					android:visibility="invisible"
+      
             			/>
         
     			     </LinearLayout>
@@ -653,6 +762,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        /> 
 				       
 				 <TextView 
@@ -662,6 +773,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        /> 
 
                 </LinearLayout>
@@ -688,6 +801,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
 				    
 				    <DatePicker 
@@ -695,6 +810,8 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible"
+		
 				        />
 				    
 				    <TextView 
@@ -704,6 +821,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
 	                
 	                <RadioGroup 
@@ -711,7 +830,8 @@
 			         	android:layout_marginBottom="5dp"
 			         	android:orientation="horizontal"
 			         	android:layout_width="fill_parent"
-			        	android:layout_height="wrap_content" >
+			        	android:layout_height="wrap_content" 
+			        	android:visibility="invisible">
 			    
 	                    
 			    		<RadioButton 
@@ -722,6 +842,8 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
+			        		android:visibility="invisible"
+	
 			        	/>
 			    
 			    		<RadioButton 
@@ -732,6 +854,8 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
+			        		android:visibility="invisible"
+			  
 			        	/>  
 	                    
 			     	</RadioGroup>
@@ -743,6 +867,8 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+
 				        />
 	                
 	                <RadioGroup 
@@ -750,7 +876,8 @@
 			         	android:layout_marginBottom="5dp"
 			         	android:layout_width="fill_parent"
 			         	android:orientation="horizontal"
-			        	android:layout_height="wrap_content" >
+			        	android:layout_height="wrap_content"
+			        	android:visibility="invisible" >
 			    
 	                    
 			    		<RadioButton 
@@ -761,6 +888,8 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
+			        		android:visibility="invisible"
+		
 			        	/>
 			    
 			    		<RadioButton 
@@ -771,6 +900,8 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
+			        		android:visibility="invisible"
+			
 			        	/>  
 	                    
 			     	</RadioGroup>
@@ -782,13 +913,16 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
 	                
 	                <RadioGroup 
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
-				        android:layout_marginBottom="5dp">
+				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible">
 				       
 	                
 	                <RadioButton 
@@ -798,7 +932,9 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1" 
+			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+			
 			     	/>
 	                
 	                  
@@ -810,6 +946,8 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
 			        	android:layout_weight="1"
+			        	android:visibility="invisible"
+		
 			     	/>
 	                
 	                 </RadioGroup>
@@ -821,11 +959,16 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+		
 				        />
+	                
                    <EditText 
                        android:layout_width="fill_parent"
                        android:layout_height="wrap_content"
                        android:hint="Pressao arterial"
+                       android:visibility="invisible"
+         
                        />
                    
                    <TextView 
@@ -835,12 +978,17 @@
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:visibility="invisible"
+			
 				        />
+                   
                    <DatePicker 
 				      	android:id="@+teladoenca/DtHipeUltimaVisita"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
+				        android:visibility="invisible"
+		
                        />
 			   </LinearLayout>
 			   
