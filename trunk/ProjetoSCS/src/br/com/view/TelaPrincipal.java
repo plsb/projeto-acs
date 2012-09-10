@@ -1,24 +1,31 @@
 package br.com.view;
 
+import java.io.IOException;
 import java.security.PublicKey;
 
+import org.ksoap2.serialization.SoapPrimitive;
+import org.xmlpull.v1.XmlPullParserException;
+
 import br.com.control.Sessao;
+import br.com.control.WSCliente;
 import br.com.scs.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TelaPrincipal extends Activity implements OnClickListener{
 
 	private Button btnAgendamento, btnFamilias, btnAcompanhamento,
 				   btnUsuarios, btnSincronizar, btnSobre;
-	
+	TextView tv1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,38 @@ public class TelaPrincipal extends Activity implements OnClickListener{
         btnSobre = (Button) findViewById(R.id.BtnSobre);
         btnSobre.setOnClickListener(this);
         
+        VerificaWebService();   
+        
+    }
+    
+    public void VerificaWebService(){
+    	
+    	WSCliente ws = new WSCliente("estaConectado","http://webservice.scs/");
+        
+    	try {
+    		boolean conectado;
+    		
+    		if (ws.Execute()==true){
+    			SoapPrimitive retorno = ws.getRetorno();
+    			conectado = Boolean.valueOf(retorno.toString());
+    		}else{
+    			conectado = false;
+    		}   		
+			
+			if (conectado==true){									
+				Log.i(WINDOW_SERVICE,"WebService Ativo");
+			}else{
+				btnSincronizar.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.semsincronia), null, null);
+				Log.i(WINDOW_SERVICE,"WebService Inativo");
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
@@ -65,13 +104,13 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 			Intent i = new Intent(this, TelaUsuario.class);
 			startActivity(i);
 		}
-		else if (v == btnSincronizar){
-			//Toast.makeText(this, "MAT: "+Sessao.getSessao().getMatriculaUsuario(), Toast.LENGTH_SHORT).show();
-			Intent i = new Intent(this, TelaSincronizar.class);
+		else if (v == btnSincronizar){		
+			Intent i = new Intent(this, TelaSincronizar.class);	
 			startActivity(i);
 		}
+		
 		else if (v == btnSobre){
-			Intent i = new Intent(this, TelaSobre.class);
+			Intent i = new Intent(this, TelaSobre.class);			 
 			startActivity(i);
 		}
 		

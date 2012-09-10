@@ -29,7 +29,7 @@ public class Lista_Residencias extends ListActivity {
         	list.clear();
         	Cursor _cursor = _bd.consulta("residencia", new String[] { "*" },null,null,null,null,null,null);
         	item = new HashMap<String,String>();
-        	_cursor.moveToFirst();
+        	_cursor.moveToFirst(); 
         	do{	
         	  item = new HashMap<String,String>();
         	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", "+

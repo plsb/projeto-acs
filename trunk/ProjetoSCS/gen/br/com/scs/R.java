@@ -60,12 +60,13 @@ public final class R {
         public static final int saneamento=0x7f020015;
         public static final int save=0x7f020016;
         public static final int scs_icone=0x7f020017;
-        public static final int sincronizar=0x7f020018;
-        public static final int sincronizar_off=0x7f020019;
-        public static final int sobre=0x7f02001a;
-        public static final int sobre_off=0x7f02001b;
-        public static final int tuberculose=0x7f02001c;
-        public static final int users=0x7f02001d;
+        public static final int semsincronia=0x7f020018;
+        public static final int sincronizar=0x7f020019;
+        public static final int sincronizar_off=0x7f02001a;
+        public static final int sobre=0x7f02001b;
+        public static final int sobre_off=0x7f02001c;
+        public static final int tuberculose=0x7f02001d;
+        public static final int users=0x7f02001e;
     }
     public static final class id {
         public static final int BtnAcompanhamento=0x7f080007;
@@ -78,10 +79,11 @@ public final class R {
         public static final int line_a=0x7f080001;
         public static final int line_b=0x7f080002;
         public static final int linearLayout1=0x7f080004;
-        public static final int menu_continuar=0x7f08000c;
-        public static final int menu_gravar=0x7f08000d;
-        public static final int menu_settings=0x7f08000b;
+        public static final int menu_continuar=0x7f08000d;
+        public static final int menu_gravar=0x7f08000e;
+        public static final int menu_settings=0x7f08000c;
         public static final int textView1=0x7f080000;
+        public static final int tvSincronizar=0x7f08000b;
     }
     public static final class imovel {
         public static final int SpAbastecimentoAgua=0x7f0d0004;

@@ -14,7 +14,7 @@ public class TelaDoenca extends Activity{
 	TextView datavisita, medicacaodiaria, ultimadose, cuidados, comunicantes, bcg; //Hanseniase
 	DatePicker dataprofissional, ultimadata; //hanseniase
 	RadioGroup rgmedicacaodiaria, autocuidados; //hanseniase
-	
+	 
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
