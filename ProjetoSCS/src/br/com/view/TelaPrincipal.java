@@ -1,18 +1,24 @@
 package br.com.view;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.PublicKey;
+import java.util.Iterator;
 
+import org.jdom2.JDOMException;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.xmlpull.v1.XmlPullParserException;
 
 import br.com.control.Sessao;
 import br.com.control.WSCliente;
+import br.com.control.CarregarXML;
 import br.com.scs.R;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
+import org.jdom2.Element;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -46,7 +52,7 @@ public class TelaPrincipal extends Activity implements OnClickListener{
         btnSobre = (Button) findViewById(R.id.BtnSobre);
         btnSobre.setOnClickListener(this);
         
-        VerificaWebService();   
+        //VerificaWebService();   
         
     }
     
@@ -86,7 +92,8 @@ public class TelaPrincipal extends Activity implements OnClickListener{
         return true;
     }
 
-    public void onClick(View v) {
+    @SuppressLint("ParserError")
+	public void onClick(View v) {
 		
 		if (v == btnAgendamento){
 			Intent i = new Intent(this, TelaAgendamento.class);
@@ -101,8 +108,36 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 			startActivity(i);
 		}
 		else if (v == btnUsuarios){
-			Intent i = new Intent(this, TelaUsuario.class);
-			startActivity(i);
+			
+			CarregarXML xml = new CarregarXML();	
+			
+			try {
+				if (!(xml.carregar("usuarios.xml") == null)){
+					
+					@SuppressWarnings("rawtypes")
+					Iterator it = xml.carregar("usuarios.xml");
+					
+					while (it.hasNext()){
+						Element element = (Element) it.next(); 					
+						Toast.makeText(this,element.getChildText("codigo")+" - "+ 
+											element.getChildText("nome"), Toast.LENGTH_SHORT).show();
+					}
+				}else{
+					Toast.makeText(this, "Arquivo XML não encontrado ou vazio!", Toast.LENGTH_LONG).show();
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JDOMException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//Intent i = new Intent(this, TelaUsuario.class);
+			//startActivity(i);
 		}
 		else if (v == btnSincronizar){		
 			Intent i = new Intent(this, TelaSincronizar.class);	
