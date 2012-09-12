@@ -49,6 +49,7 @@
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
 			        android:visibility="invisible"
 			        />
 			    
@@ -68,6 +69,7 @@
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
 			        android:visibility="invisible"
 			        />
 			    
@@ -110,6 +112,7 @@
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
 			        android:visibility="invisible"
 
 			        />
@@ -131,6 +134,7 @@
 			        android:textSize="15dp"
 			        android:textColor="#000"
 			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
 			        android:visibility="invisible"
 
 			        />
@@ -174,6 +178,7 @@
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
+			        android:textStyle="bold"
 			        android:visibility="invisible"
 		
 			       />
@@ -185,6 +190,7 @@
 			       android:layout_height="wrap_content"
 			       android:textSize="15dp"
 			       android:textColor="#000"
+			       android:textStyle="bold"
 			       android:visibility="invisible"
 		
 			      />
@@ -205,19 +211,21 @@
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 		        >                
-	                <TextView 
+	                <TextView
+	                    android:id="@+teladoenca/TxtDDataVisita" 
 				        android:text=" Data da visita do Profissional:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
 				        android:visibility="invisible"
 	
 				        />
 	                
 	                <DatePicker 
-			         	android:id="@+teladoenca/DtDataProfissional"  
+			         	android:id="@+teladoenca/DtDDataProfissional"  
 			         	android:layout_marginBottom="5dp"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
@@ -225,19 +233,21 @@
 		
 			     	/>
 	                
-	                <TextView 
+	                <TextView
+	                    android:id="@+teladoenca/TxtDFazDieta" 
 				        android:text=" Faz Dieta:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
 				        android:visibility="invisible"
 	
 				        />
 	                
 	                <RadioGroup 
-			         	android:id="@+teladoenca/RgDieta"  
+			         	android:id="@+teladoenca/RgDDieta"  
 			         	android:layout_marginBottom="5dp"
 			            android:orientation="horizontal"
 			         	android:layout_width="fill_parent"
@@ -253,7 +263,6 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
-			        		android:visibility="invisible"
 	
 			        	/>
 			    
@@ -265,24 +274,26 @@
 			        		android:layout_weight="1"
 			        		android:textSize="15dp"
 			        		android:textColor="#000"
-			        		android:visibility="invisible"
 			
 			        	/>  
 	                    
 			     	</RadioGroup>
 	                
-	                <TextView 
+	                <TextView
+	                    android:id="@+teladoenca/TxtDFazExercicio" 
 				        android:text="  Faz Exercicios Fisicos:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
 				        android:visibility="invisible"
 			
 				        />
 	                
-	                <RadioGroup 
+	                <RadioGroup
+	                    android:id="@+teladoenca/RgDFazExercicio" 
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
@@ -297,9 +308,7 @@
 				        android:textColor="#000"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
-			        	android:layout_weight="1"
-			        	android:visibility="invisible"
-		
+			        	android:layout_weight="1"		
 			     	/>
 	                
 	                  
@@ -311,24 +320,24 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
 			        	android:layout_weight="1"
-			        	android:visibility="invisible"
-	
 			     	/>
 	                
 	                 </RadioGroup>
 	               
-	                <TextView 
+	                <TextView
+	                    android:id="@+teladoenca/TxtDInsulina"
 				        android:text=" Usa Insulina"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
 				        android:visibility="invisible"
-	
 				        />
 	                
 	                <RadioGroup 
+	                    android:id="@+teladoenca/RgDInsulina"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
@@ -344,8 +353,6 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
 			        	android:layout_weight="1"
-			        	android:visibility="invisible"
-		
 			     	/>
 	                
 	                  
@@ -357,24 +364,26 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
 			        	android:layout_weight="1"
-			        	android:visibility="invisible"
 			
 			     	/>
 	                
 	                 </RadioGroup>
 	                 
-	                <TextView 
+	                <TextView
+	                    android:id="@+teladoenca/TxtDHipoglicemiante"
 				        android:text=" Toma Hipoglicemiante Oral:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
 				        android:visibility="invisible"
 	
 				        />
 	                
 	                <RadioGroup 
+	                    android:id="@+teladoenca/RgDHipoglicemiante"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
@@ -390,8 +399,6 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content"
 			        	android:layout_weight="1"
-			        	android:visibility="invisible"
-		
 			     	/>
 	                
 	                  
@@ -403,13 +410,23 @@
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 
 			        	android:layout_weight="1"
-			        	android:visibility="invisible"
-		
 			     	/>
 	                
-	                 </RadioGroup>	
+	                 </RadioGroup>
 	                 
-	                 <DatePicker 
+	               	<TextView 
+	                    android:id="@+teladoenca/TxtDUltimaVisita"
+				        android:text=" Data Ultima Visita:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
+				        android:visibility="invisible"
+	                   />	
+	                 
+	                 <DatePicker     
 			         	android:id="@+teladoenca/DtDUltimaConsulta"  
 			         	android:layout_marginBottom="5dp"
 			         	android:layout_width="fill_parent"
