@@ -71,6 +71,42 @@ public class ResidenciaAux {
 		}
 	}
 	
+	public boolean Atualizar(Context contexto,int indice){
+		try{
+			_bd = new Banco(contexto);
+			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+			
+			c.put("UF", UF);
+			c.put("ENDERECO", ENDERECO);
+			c.put("NUMERO", NUMERO);
+			c.put("BAIRRO", BAIRRO);
+			c.put("CEP", CEP);
+			c.put("MUNICIPIO", MUNICIPIO);
+			c.put("SEG_TERRIT", SEG_TERRIT);
+			c.put("AREA", AREA);
+			c.put("MICROAREA", MICROAREA);
+			c.put("COD_FAMILIA", COD_FAMILIA);
+			c.put("DATA_CADASTRO", DATA_CADASTRO);
+			c.put("TIPO_CASA", TIPO_CASA);
+			c.put("DEST_LIXO", DEST_LIXO);
+			c.put("TRAT_AGUA", TRAT_AGUA);
+			c.put("ABAST_AGUA", ABAST_AGUA);
+			c.put("DEST_FEZES", DEST_FEZES);
+			c.put("CASO_DOENCA", CASO_DOENCA);
+			c.put("MEIO_COMUNICACAO", MEIO_COMUNICACAO);
+			c.put("PART_GRUPOS", PART_GRUPOS);
+			c.put("MEIO_TRANSPORTE", MEIO_TRANSPORTE);
+			c.put("DATA_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
+			_bd.open();
+			_bd.atualizarDadosTabela("residencia",indice, c);
+			_bd.fechaBanco();
+			Limpar();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	}
+	
 	public void Limpar(){
 		UF = "";
 		ENDERECO = "";
