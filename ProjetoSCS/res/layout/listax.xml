@@ -4,13 +4,40 @@
   android:layout_height="fill_parent"
   android:orientation="vertical"
   android:background="#555555" >
-  
-  <EditText 
+  
+  <LinearLayout
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/edFiltro"
-      android:hint="Filtro por rua"
-      />
+      android:layout_height="56dp"
+      android:gravity="left"
+      android:orientation="horizontal"
+      android:paddingTop="5dp"
+      android:background="@drawable/bgbucar" >
+
+      <TableLayout
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent" >
+
+          <TableRow
+              android:id="@+id/tableRow1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" >
+              
+              <EditText
+			      android:id="@+id/edtFiltro"
+			      android:layout_width="265dp"
+			      android:layout_height="wrap_content"
+			      android:hint="Filtro por rua" />
+          </TableRow>
+          
+      </TableLayout>
+
+      <Button
+          android:id="@+id/btnFiltrar"
+          android:layout_width="wrap_content"
+          android:layout_height="48dp"
+          android:drawableTop="@drawable/filtropequeno" />
+      
+  </LinearLayout>
   
   <ListView android:layout_height="wrap_content"
     android:layout_width="fill_parent"

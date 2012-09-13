@@ -83,7 +83,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 			}
 		}//Fim do Onclick do Botão Importar Usuário
 		
-		if (v == btnImportarRuas){
+		if (v==btnImportarRuas){
 			CarregarXML xml = new CarregarXML();	
 			
 			try {
