@@ -35,9 +35,9 @@
         
         	<Button 
             	android:id="@+telaFamilia/btnEditar"
-            	android:drawableTop="@drawable/editar"
+            	android:drawableTop="@drawable/buscar"
             	android:background="@null"
-            	android:text="Editar Residência"
+            	android:text="Listar Residências"
             	android:layout_width="150dp"
             	android:layout_height="100dp"
             	android:textSize="14dp"
