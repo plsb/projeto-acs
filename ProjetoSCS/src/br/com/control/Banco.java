@@ -4,7 +4,6 @@ package br.com.control;
  *Classe de acesso ao banco criada por Lucas de Souza Sales. 
  */
 
-import br.com.control.VerificaVersoesTabelas;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.*;
@@ -25,7 +24,24 @@ public class Banco{
 		private final Context ctx;
 		
 		public static final String[] _sqlTabelaUsuario =  new String[] {"CREATE TABLE if not exists usuarios (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-																		"USU_MATRICULA text NOT NULL,USU_NOME text NOT NULL,USU_SENHA text NOT NULL,USU_FL_ADMIN integer NOT NULL);"};
+																		"USU_MATRICULA text NOT NULL, "+
+																		"USU_NOME text NOT NULL,      "+
+																		"USU_LOGIN text NOT NULL,     "+
+																		"USU_SENHA text NOT NULL,     "+
+																		"USU_ATIVO text NOT NULL,     "+
+																		"USU_FL_ADMIN integer NOT NULL);"};
+		
+		public static final String[] _sqlTabelaRuas =  new String[] {"CREATE TABLE if not exists ruas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	 "COD_RET integer NOT NULL, 	"+
+																	 "DESCRICAO text NOT NULL,      "+
+																	 "BAIRRO text NOT NULL,         "+
+																	 "USU_VINCULADO text NOT NULL );"};
+		
+		public static final String[] _sqlTabelaSessao =  new String[] {"CREATE TABLE if not exists sessao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	   "USU_MATRICULA text,  	   "+
+																	   "USU_NOME text,             "+
+																	   "ULTIMO_USU_LOGADO text,    "+
+																	   "DATA text );			   "};
 		
 		public static final String[] _sqlTabelaUsuarioAux =  new String[] {"CREATE TABLE if not exists usuariosAux (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		   "USU_NOME text NOT NULL);"};

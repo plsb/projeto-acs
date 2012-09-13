@@ -96,28 +96,33 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private int autenticar(String usuario, String senha) {
 
-		if (usuario.equalsIgnoreCase("admin")
-				&& (senha.equalsIgnoreCase("040908"))) {
+		if (usuario.equalsIgnoreCase("admin") && (senha.equalsIgnoreCase("040908"))) {
+			sessao = Sessao.getSessao();
+			sessao.setUsuario(this,"0000","Administrador");
 			valor = 0;
 		} else {
 			_bd.open();
 			try {
 				_cursor = _bd.consulta("usuarios", new String[] { "*" },
-									   "USU_MATRICULA = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 0",
+									   "USU_LOGIN = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 0 AND USU_ATIVO = 'S' ",
 									   new String[] { usuario, senha }, null, null, null, null);
 
 				if (_cursor.getCount() != 0) {
+					_cursor.moveToFirst();
 					sessao = Sessao.getSessao();
-					sessao.setUsuario(usuario,senha);
+					sessao.setUsuario(this,_cursor.getString(_cursor.getColumnIndex("USU_MATRICULA")).toString(),_cursor.getString(_cursor.getColumnIndex("USU_NOME")).toString());
 					valor = 1;
 					
 				} else {
 					_cursor = null;
 					_cursor = _bd.consulta("usuarios", new String[] { "*" },
-										   "USU_MATRICULA = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 1",
+										   "USU_LOGIN = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 1 AND USU_ATIVO = 'S' ",
 										   new String[] { usuario, senha }, null, null, null, null);
 
 					if (_cursor.getCount() != 0) {
+						_cursor.moveToFirst();
+						sessao = Sessao.getSessao();
+						sessao.setUsuario(this,_cursor.getString(_cursor.getColumnIndex("USU_MATRICULA")).toString(),_cursor.getString(_cursor.getColumnIndex("USU_NOME")).toString());
 						valor = 0;
 					} else {
 						valor = 2;
