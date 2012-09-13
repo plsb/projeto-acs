@@ -6,9 +6,11 @@ import br.com.control.Banco.BancoDados;
 
 public class VerificaVersoesTabelas {
 	
-	private static final String _nomeTabelaUsuario = "usuarios";
+	private static final String _nomeTabelaUsuario 	  = "usuarios";
 	private static final String _nomeTabelaUsuarioAux = "usuariosAux";
 	private static final String _nomeTabelaResidencia = "residencia";
+	private static final String _nomeTabelaRuas       = "ruas";
+	private static final String _nomeTabelaSessao     = "sessao";
 
 	public static Boolean jaVerificouAtualizacao = false;
 	
@@ -27,6 +29,8 @@ public class VerificaVersoesTabelas {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuario, VerificaVersoesTabelas._nomeTabelaUsuario);
 		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuarioAux, VerificaVersoesTabelas._nomeTabelaUsuarioAux);
 		BancoDados.getDAO(contexto, Banco._sqlTabelaResidencia, VerificaVersoesTabelas._nomeTabelaResidencia);
+		BancoDados.getDAO(contexto, Banco._sqlTabelaRuas, VerificaVersoesTabelas._nomeTabelaRuas);
+		BancoDados.getDAO(contexto, Banco._sqlTabelaSessao, VerificaVersoesTabelas._nomeTabelaSessao);
 	}
 
 }

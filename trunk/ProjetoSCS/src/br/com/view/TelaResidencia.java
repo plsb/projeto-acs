@@ -2,12 +2,16 @@ package br.com.view;
 
 import java.util.ArrayList;
 
+import br.com.control.Banco;
 import br.com.control.ResidenciaAux;
+import br.com.control.Sessao;
 import br.com.scs.R;
 import br.com.scs.R.menu;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +28,8 @@ import android.widget.TabHost.TabSpec;
 
 public class TelaResidencia extends Activity {
 	
-	Spinner  SpUF, SpMunicipio; //TAB1
-	EditText EdtEndereco, Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
+	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
+	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3
 	
@@ -40,6 +44,8 @@ public class TelaResidencia extends Activity {
 	ArrayList<String> MeiosComunicacao	  = new ArrayList<String>();
 	ArrayList<String> GruposComunitarios  = new ArrayList<String>();
 	ArrayList<String> TransporteUtilizado = new ArrayList<String>();
+	ArrayList<String> Enderecos           = new ArrayList<String>();
+	ArrayList<String> Bairros             = new ArrayList<String>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -52,7 +58,7 @@ public class TelaResidencia extends Activity {
 		
 		SpUF                  = (Spinner)  findViewById(R.imovel.SpUF);
 		SpMunicipio           = (Spinner)  findViewById(R.imovel.SpMunicipio);
-		EdtEndereco           = (EditText) findViewById(R.imovel.edtEndereco);
+		SpEndereco            = (Spinner)  findViewById(R.imovel.SpEndereco);
 		Edtbairro 		      = (EditText) findViewById(R.imovel.edtBairro);
 		EdtCep			      = (EditText) findViewById(R.imovel.edtCEP);
 		EdtNumero		      = (EditText) findViewById(R.imovel.edtNumero);
@@ -92,7 +98,8 @@ public class TelaResidencia extends Activity {
         ts.setContent(R.imovel.tabOutras);        
         ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
         setOpcoesSpinnerTab3();
-        th.addTab(ts);		
+        th.addTab(ts);	
+      
 		
 	}
 	
@@ -117,6 +124,7 @@ public class TelaResidencia extends Activity {
 	private void setOpcoesSpinnersTab1(){
 		setOpcoesUF();
 		setOpcoesMunicipios();
+		setOpcoesEnderecos();
 	}
 
 	public void setOpcoesSpinnerTab2(){
@@ -138,6 +146,37 @@ public class TelaResidencia extends Activity {
 		UF.clear();
 		UF.add("CE");
 		PreencheSpinner(SpUF, UF);
+	}
+	
+	private void setOpcoesEnderecos(){
+		Enderecos.clear();
+		Bairros.clear();
+		Banco bd = null;
+		Cursor csr = null;
+		String codUser = Sessao.SESSAO.getMatriculaUsuario(this);
+		try{
+			try{
+				bd = new Banco(this);
+				bd.open();
+				csr = bd.consulta("ruas", new String[]{"*"}, "USU_VINCULADO = ? ", new String[] {codUser}, null, null, null, null);
+				csr.moveToFirst();
+				for (int i = 0;i < csr.getCount(); i++){
+					Enderecos.add(csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+					Bairros.add(csr.getString(csr.getColumnIndex("BAIRRO")).toString());
+					csr.moveToNext();
+				}
+				PreencheSpinner(SpEndereco, Enderecos);
+			}catch(Exception e){
+				Log.i("Método SetOpcoesEndereco", e.getMessage());
+			}
+		}finally{
+			if (csr != null){
+				csr.close();
+			}
+			if (bd != null){
+				bd.fechaBanco();
+			}
+		}
 	}
 	
 	private void setOpcoesCasoDoente(){
@@ -242,7 +281,7 @@ public class TelaResidencia extends Activity {
 	public void PreparaInsercao(){
 		ResidenciaAux r = new ResidenciaAux();
 		r.UF			   = SpUF.getItemAtPosition(SpUF.getSelectedItemPosition()).toString();
-		r.ENDERECO		   = EdtEndereco.getText().toString();
+		r.ENDERECO		   = SpEndereco.getItemAtPosition(SpEndereco.getSelectedItemPosition()).toString();
 		r.NUMERO		   = EdtNumero.getText().toString();
 		r.BAIRRO		   = Edtbairro.getText().toString();
 		r.CEP			   = EdtCep.getText().toString();
@@ -270,7 +309,7 @@ public class TelaResidencia extends Activity {
 		}
 	}
 	
-	public void PreencheSpinner(Spinner s,ArrayList<String> a){
+	public void PreencheSpinner(final Spinner s,ArrayList<String> a){
 		
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, a);		
 		ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;		
@@ -284,6 +323,10 @@ public class TelaResidencia extends Activity {
 				//String nome = parent.getItemAtPosition(posicao).toString();
 				//imprime um Toast na tela com o nome que foi selecionado
 				//Toast.makeText(this, "Nome Selecionado: " + nome, Toast.LENGTH_LONG).show();
+				
+				if (s == SpEndereco){
+					Edtbairro.setText(Bairros.get(posicao));
+				}
 				
 			}
 

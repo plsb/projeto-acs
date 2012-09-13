@@ -145,15 +145,13 @@
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
 				        />
-	                
-	                <EditText 
-			         	android:id="@+imovel/edtEndereco"  
-			         	android:hint="Digite aqui"
-			         	android:inputType="text" 
-			         	android:layout_marginBottom="5dp"
-			         	android:layout_width="fill_parent"
-			        	android:layout_height="wrap_content" 
-			     	/>
+	             
+			     	<Spinner 
+				        android:id="@+imovel/SpEndereco"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+			        />
 	                
 	                <TextView 
 				        android:text=" Bairro:"
@@ -168,6 +166,7 @@
 			         	android:id="@+imovel/edtBairro"  
 			         	android:hint="Digite aqui"
 			         	android:inputType="text" 
+			         	android:enabled="false"
 			         	android:layout_marginBottom="5dp"
 			         	android:layout_width="fill_parent"
 			        	android:layout_height="wrap_content" 

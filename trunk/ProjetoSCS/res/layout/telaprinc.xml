@@ -47,11 +47,11 @@
             
         <Button 
             android:id="@+id/BtnUsuarios"
-            android:text="Usuários"
+            android:text="Aparelho"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/users"
-            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/android"
+            android:drawablePadding="15dp"
             android:background="@null"
             android:textStyle="bold"
             />

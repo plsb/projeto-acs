@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
+        android:paddingTop="60dp"
     >
         
        <TextView 
@@ -23,7 +24,7 @@
        /> 
        
        <TextView 
-           android:text="Desenvolvido por:"
+           android:text="Empresa"
            android:textSize="15dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"

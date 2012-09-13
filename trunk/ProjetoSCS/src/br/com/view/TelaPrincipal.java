@@ -21,6 +21,7 @@ import android.content.Intent;
 import org.jdom2.Element;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -91,6 +92,18 @@ public class TelaPrincipal extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+
+		case R.id.menu_settings:
+			finish();
+			break;
+		}
+		return true;
+	}
 
     @SuppressLint("ParserError")
 	public void onClick(View v) {
@@ -107,37 +120,9 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 			Intent i = new Intent(this, TelaAcompanhamento.class);
 			startActivity(i);
 		}
-		else if (v == btnUsuarios){
-			
-			CarregarXML xml = new CarregarXML();	
-			
-			try {
-				if (!(xml.carregar("usuarios.xml") == null)){
-					
-					@SuppressWarnings("rawtypes")
-					Iterator it = xml.carregar("usuarios.xml");
-					
-					while (it.hasNext()){
-						Element element = (Element) it.next(); 					
-						Toast.makeText(this,element.getChildText("codigo")+" - "+ 
-											element.getChildText("nome"), Toast.LENGTH_SHORT).show();
-					}
-				}else{
-					Toast.makeText(this, "Arquivo XML não encontrado ou vazio!", Toast.LENGTH_LONG).show();
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JDOMException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			//Intent i = new Intent(this, TelaUsuario.class);
-			//startActivity(i);
+		else if (v == btnUsuarios){			
+			Intent i = new Intent(this, TelaInfo.class);
+			startActivity(i);
 		}
 		else if (v == btnSincronizar){		
 			Intent i = new Intent(this, TelaSincronizar.class);	

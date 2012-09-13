@@ -19,6 +19,7 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity android:name="br.com.view.Lista_Residencias" android:label="Residencias Cadastradas"></activity>
+        <activity android:name="br.com.view.TelaInfo" android:label="Informações do Aparelho"></activity>
         <activity android:name="br.com.view.TelaFamilia" android:label="Familia"></activity>
         <activity android:name="br.com.view.TelaAgendamento" android:label="Agendamento"></activity>
         <activity android:name="br.com.view.TelaAcompanhamento" android:label="Acompanhamento"></activity>
