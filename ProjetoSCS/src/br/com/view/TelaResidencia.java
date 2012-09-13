@@ -6,18 +6,14 @@ import br.com.control.Banco;
 import br.com.control.ResidenciaAux;
 import br.com.control.Sessao;
 import br.com.scs.R;
-import br.com.scs.R.menu;
 import android.app.Activity;
-import android.content.Intent;
+import android.app.PendingIntent.OnFinished;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,6 +28,12 @@ public class TelaResidencia extends Activity {
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3
+    
+    public static int ID = 0;
+    
+    Banco bd = null;
+    Cursor c = null;
+    
 	
 	ArrayList<String> TipoCasa			  = new ArrayList<String>();
 	ArrayList<String> DestinoLixo		  = new ArrayList<String>();
@@ -83,25 +85,73 @@ public class TelaResidencia extends Activity {
         ts = th.newTabSpec("tag1");
         ts.setContent(R.imovel.tabCadastroResidencia);
         ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
-        setOpcoesSpinnersTab1();
+        setOpcoesSpinnersTab1("","","","");
+        PreencheCampos(String.valueOf(ID), 1);
         th.addTab(ts);
         
         //Segunda Aba
         ts = th.newTabSpec("tag2");
         ts.setContent(R.imovel.tabMoradiaSaneamento);        
         ts.setIndicator("Moradia/Saneamento",getResources().getDrawable(R.drawable.saneamento));
-		setOpcoesSpinnerTab2();
+		setOpcoesSpinnerTab2("","","","","");
+		PreencheCampos(String.valueOf(ID), 2);
         th.addTab(ts);
         
         //Terceira Aba
         ts = th.newTabSpec("tag3");
         ts.setContent(R.imovel.tabOutras);        
         ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
-        setOpcoesSpinnerTab3();
+        setOpcoesSpinnerTab3("","","","");
+        PreencheCampos(String.valueOf(ID), 3);
         th.addTab(ts);	
       
 		
 	}
+	
+	public void PreencheCampos(String pID,int pTab){
+		try{
+			try{
+				bd = new Banco(this);
+				bd.open();
+				c = bd.consulta("residencia", new String[]{"*"}, "_ID = "+pID, null, null, null, null, null);
+				c.moveToFirst();
+				if (c.getCount() > 0){
+					if (pTab == 1){
+						setOpcoesSpinnersTab1(c.getString(c.getColumnIndex("UF")).toString(),
+											  c.getString(c.getColumnIndex("MUNICIPIO")).toString(), 
+											  c.getString(c.getColumnIndex("ENDERECO")).toString(), 
+											  c.getString(c.getColumnIndex("BAIRRO")).toString());
+						EdtCep.setText(c.getString(c.getColumnIndex("CEP")).toString());
+						EdtNumero.setText(c.getString(c.getColumnIndex("NUMERO")).toString());
+						EdtSegTerritorial.setText(c.getString(c.getColumnIndex("SEG_TERRIT")).toString());
+						EdtArea.setText(c.getString(c.getColumnIndex("AREA")).toString());
+						EdtMicArea.setText(c.getString(c.getColumnIndex("MICROAREA")).toString());
+					}else if(pTab == 2){
+						setOpcoesSpinnerTab2(c.getString(c.getColumnIndex("TIPO_CASA")).toString(), 
+											 c.getString(c.getColumnIndex("DEST_LIXO")).toString(), 
+											 c.getString(c.getColumnIndex("TRAT_AGUA")).toString(), 
+											 c.getString(c.getColumnIndex("DEST_FEZES")).toString(), 
+											 c.getString(c.getColumnIndex("ABAST_AGUA")).toString());
+					}else if(pTab == 3){
+						setOpcoesSpinnerTab3(c.getString(c.getColumnIndex("CASO_DOENCA")).toString(), 
+										     c.getString(c.getColumnIndex("MEIO_COMUNICACAO")).toString(), 
+										     c.getString(c.getColumnIndex("PART_GRUPOS")).toString(), 
+										     c.getString(c.getColumnIndex("MEIO_TRANSPORTE")).toString());
+					}
+					
+				}
+			}catch(Exception e){
+				Log.i("Erro no método PreencheCampos", e.getMessage());
+			}
+		}finally{
+			if (c != null){
+				c.close();
+			}
+			if (bd != null){
+				bd.fechaBanco();
+			}
+		}
+	}//Fim do Método PreencheCampos
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,36 +171,43 @@ public class TelaResidencia extends Activity {
 		return true;
 	}
 	
-	private void setOpcoesSpinnersTab1(){
-		setOpcoesUF();
-		setOpcoesMunicipios();
-		setOpcoesEnderecos();
+	private void setOpcoesSpinnersTab1(String pUF,String pCidade, String pEndereco,String pBairro){
+		setOpcoesUF(pUF);
+		setOpcoesMunicipios(pCidade);
+		setOpcoesEnderecos(pEndereco, pBairro);
 	}
 
-	public void setOpcoesSpinnerTab2(){
-		setOpcoesTipoCasa();
-		setOpcoesDestLixo();	
-		setOpcoesTratAgua();
-		setOpcoesDestFezes();
-		setOpcoesAbastAgua();
+	public void setOpcoesSpinnerTab2(String pTpCasa, String pDestLixo, String pTratAgua, String pDestFezes,String pAbastAgua){
+		setOpcoesTipoCasa(pTpCasa);
+		setOpcoesDestLixo(pDestLixo);	
+		setOpcoesTratAgua(pTratAgua);
+		setOpcoesDestFezes(pDestFezes);
+		setOpcoesAbastAgua(pAbastAgua);
 	}
 	
-	private void setOpcoesSpinnerTab3(){
-		setOpcoesCasoDoente();
-		setOpcoesMeiosComunicacao();
-		setOpcoesGruposComunitarios();
-		setOpcoesTransporteUtilizado();
+	private void setOpcoesSpinnerTab3(String pCasoDoente, String pMeiosComunic, String pGrupoComunit,String pTransporteUtilizado){
+		setOpcoesCasoDoente(pCasoDoente);
+		setOpcoesMeiosComunicacao(pMeiosComunic);
+		setOpcoesGruposComunitarios(pGrupoComunit);
+		setOpcoesTransporteUtilizado(pTransporteUtilizado);
 	}
 	
-	private void setOpcoesUF(){
+	private void setOpcoesUF(String pUF){
 		UF.clear();
-		UF.add("CE");
+		if (pUF.length()>0){
+			UF.add(pUF);
+		}
+		UF.add("CE");		
 		PreencheSpinner(SpUF, UF);
 	}
 	
-	private void setOpcoesEnderecos(){
+	private void setOpcoesEnderecos(String pEnd,String pBairro){
 		Enderecos.clear();
 		Bairros.clear();
+		if ((pEnd.length()>0)&&(pBairro.length()>0)){
+			Enderecos.add(pEnd);
+			Bairros.add(pBairro);
+		}
 		Banco bd = null;
 		Cursor csr = null;
 		String codUser = Sessao.SESSAO.getMatriculaUsuario(this);
@@ -165,6 +222,7 @@ public class TelaResidencia extends Activity {
 					Bairros.add(csr.getString(csr.getColumnIndex("BAIRRO")).toString());
 					csr.moveToNext();
 				}
+				
 				PreencheSpinner(SpEndereco, Enderecos);
 			}catch(Exception e){
 				Log.i("Método SetOpcoesEndereco", e.getMessage());
@@ -179,36 +237,48 @@ public class TelaResidencia extends Activity {
 		}
 	}
 	
-	private void setOpcoesCasoDoente(){
+	private void setOpcoesCasoDoente(String pDoente){
 		CasoDoente.clear();
+		if (pDoente.length()>0){
+			CasoDoente.add(pDoente);
+		}
 		CasoDoente.add("Selecione");
 		CasoDoente.add("Hospital");
 		CasoDoente.add("Posto de Saude");
 		CasoDoente.add("Auto Medicar");
-		CasoDoente.add("Outro");
+		CasoDoente.add("Outro");			
 		PreencheSpinner(SpCasoDoente, CasoDoente);
 	}
 	
-	private void setOpcoesMeiosComunicacao(){
+	private void setOpcoesMeiosComunicacao(String pMeiosComunic){
 		MeiosComunicacao.clear();
+		if (pMeiosComunic.length()>0){
+			MeiosComunicacao.add(pMeiosComunic);
+		}
 		MeiosComunicacao.add("Selecione");
 		MeiosComunicacao.add("Telefone Fixo");
 		MeiosComunicacao.add("Celular");
 		MeiosComunicacao.add("Internet");
-		MeiosComunicacao.add("Outro");
+		MeiosComunicacao.add("Outro");		
 		PreencheSpinner(SpMeiosComunicacao, MeiosComunicacao);
 	}
 	
-	private void setOpcoesGruposComunitarios(){
+	private void setOpcoesGruposComunitarios(String pGrupoComunit){
 		GruposComunitarios.clear();
+		if (pGrupoComunit.length() > 0){
+			GruposComunitarios.add(pGrupoComunit);
+		}
 		GruposComunitarios.add("Selecione");
 		GruposComunitarios.add("Sim");
-		GruposComunitarios.add("Nao");
+		GruposComunitarios.add("Nao");		
 		PreencheSpinner(SpGruposComunitarios, GruposComunitarios);
 	}
 	
-	private void setOpcoesTransporteUtilizado(){
+	private void setOpcoesTransporteUtilizado(String pTranspUtilizado){
 		TransporteUtilizado.clear();
+		if (pTranspUtilizado.length()>0){
+			TransporteUtilizado.add(pTranspUtilizado);
+		}
 		TransporteUtilizado.add("Selecione");
 		TransporteUtilizado.add("Carro Proprio");
 		TransporteUtilizado.add("Taxi");
@@ -216,61 +286,79 @@ public class TelaResidencia extends Activity {
 		TransporteUtilizado.add("Metrô");
 		TransporteUtilizado.add("Moto");
 		TransporteUtilizado.add("Bicicleta");
-		TransporteUtilizado.add("Nenhum");
+		TransporteUtilizado.add("Nenhum");		
 		PreencheSpinner(SpTransporteUtilizado, TransporteUtilizado);
 		
 	}
 	
-	private void setOpcoesMunicipios(){
+	private void setOpcoesMunicipios(String pMunicipio){
 		Municipio.clear();
+		if (pMunicipio.length()>0){
+			Municipio.add(pMunicipio);
+		}
 		Municipio.add("Selecione");
 		Municipio.add("2304202-CRATO");
-		Municipio.add("2307304-JUAZEIRO DO NORTE");
+		Municipio.add("2307304-JUAZEIRO DO NORTE");		
 		PreencheSpinner(SpMunicipio, Municipio);
 	}
 	
-	private void setOpcoesTipoCasa(){
+	private void setOpcoesTipoCasa(String pTipoCasa){
 		TipoCasa.clear();
+		if (pTipoCasa.length()>0){
+			TipoCasa.add(pTipoCasa);
+		}
 		TipoCasa.add("Selecione");
 		TipoCasa.add("Tijolo/Adobe");
 		TipoCasa.add("Taipa Revestida");
 		TipoCasa.add("Taipa Não Revestida");
 		TipoCasa.add("Madeira");
 		TipoCasa.add("Material Aproveitado");
-		TipoCasa.add("Outro");
+		TipoCasa.add("Outro");		
 		PreencheSpinner(SpTipoCasa, TipoCasa);
 	}
 	
-	private void setOpcoesDestLixo(){
+	private void setOpcoesDestLixo(String pDepLixo){
 		DestinoLixo.clear();
+		if (pDepLixo.length()>0){
+			DestinoLixo.add(pDepLixo);
+		}
 		DestinoLixo.add("Selecione");
 		DestinoLixo.add("Coletado");
 		DestinoLixo.add("Queimado/Enterrado");
-		DestinoLixo.add("Ceu Aberto");
+		DestinoLixo.add("Ceu Aberto");		
 		PreencheSpinner(SpDestinoLixo, DestinoLixo);
 	}
 	
-	private void setOpcoesTratAgua(){
+	private void setOpcoesTratAgua(String pTratAgua){
 		TratamentoAgua.clear();
+		if (pTratAgua.length()>0){
+			TratamentoAgua.add(pTratAgua);
+		}
 		TratamentoAgua.add("Selecione");
 		TratamentoAgua.add("Filtracao");
 		TratamentoAgua.add("Fervura");
 		TratamentoAgua.add("Cloracao");
-		TratamentoAgua.add("Sem Tratamento");
+		TratamentoAgua.add("Sem Tratamento");		
 		PreencheSpinner(SpTratamentoAgua, TratamentoAgua);
 	}
 	
-	private void setOpcoesDestFezes(){
+	private void setOpcoesDestFezes(String pDestFezes){
 		DestFezesUrina.clear();
+		if (pDestFezes.length()>0){
+			DestFezesUrina.add(pDestFezes);
+		}
 		DestFezesUrina.add("Selecione");
 		DestFezesUrina.add("Sistema de Esgoto");
 		DestFezesUrina.add("Fossa");
-		DestFezesUrina.add("Ceu Aberto");
+		DestFezesUrina.add("Ceu Aberto");		
 		PreencheSpinner(SpDestFezesUrina, DestFezesUrina);
 	}
 	
-	private void setOpcoesAbastAgua(){
+	private void setOpcoesAbastAgua(String pAbastecAgua){
 		AbastAgua.clear();
+		if (pAbastecAgua.length()>0){
+			AbastAgua.add(pAbastecAgua);
+		}
 		AbastAgua.add("Selecione");
 		AbastAgua.add("Rede Publica");
 		AbastAgua.add("Poco ou Nascente");
@@ -301,12 +389,34 @@ public class TelaResidencia extends Activity {
 		r.PART_GRUPOS	   = SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString();
 		r.MEIO_TRANSPORTE  = SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString();
 		
-		if (r.Inserir(TelaResidencia.this)==true){
-			Toast.makeText(this, "Sucesso ao Gravar!", Toast.LENGTH_LONG).show();
-			finish();
+		if (this.ID == 0){		
+			if (r.Inserir(TelaResidencia.this)==true){
+				Toast.makeText(this, "Sucesso ao Gravar!", Toast.LENGTH_LONG).show();
+				finish();
+			}else{
+				Toast.makeText(this, "Erro ao Gravar!", Toast.LENGTH_LONG).show();
+			}
 		}else{
-			Toast.makeText(this, "Erro ao Gravar!", Toast.LENGTH_LONG).show();
+			if (r.Atualizar(TelaResidencia.this, this.ID)==true){
+				Toast.makeText(this, "Sucesso ao Atulizar!", Toast.LENGTH_LONG).show();
+				ClearID();
+				finish();
+			}else{
+				Toast.makeText(this, "Erro ao Atulizar!", Toast.LENGTH_LONG).show();
+			}
 		}
+	}
+	
+	public void ClearID(){
+		this.ID = 0;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		if (this.ID > 0){
+			ClearID();
+		}
+		super.onDestroy();
 	}
 	
 	public void PreencheSpinner(final Spinner s,ArrayList<String> a){
