@@ -24,7 +24,7 @@ public class TelaCadastroFamilia extends Activity{
 	public static int hanseniase, hipertensao, diabetes, tuberculose, gestante;
 	 
 
-	Spinner SpAlfabetizado, SpFreqEscola, SpIdade;
+	Spinner SpAlfabetizado, SpFreqEscola, SpRua, SpNumero;
 	DatePicker DtNascimento;
 	CheckBox Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante;
 	ArrayList<String> Opcao = new ArrayList<String>();
@@ -38,6 +38,8 @@ public class TelaCadastroFamilia extends Activity{
 	
 		SpAlfabetizado = (Spinner) findViewById(R.cadastrofamilia.SpAlfabetizado);
 		SpFreqEscola = (Spinner) findViewById(R.cadastrofamilia.SpFrequenEsc);
+		SpRua = (Spinner) findViewById(R.cadastrofamilia.SpRua);
+		SpNumero = (Spinner) findViewById(R.cadastrofamilia.SpNumero);
 		DtNascimento = (DatePicker) findViewById(R.cadastrofamilia.DpDataNascimento);
 		Hanseniase = (CheckBox) findViewById(R.cadastrofamilia.ChHanseniase);
 		Hipertensao = (CheckBox) findViewById(R.cadastrofamilia.ChHipertensao);
