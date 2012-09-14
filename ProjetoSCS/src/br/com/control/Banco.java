@@ -1,7 +1,7 @@
 package br.com.control;
 
 /*
- *Classe de acesso ao banco criada por Lucas de Souza Sales. 
+ *Classe de acesso ao banco de dados criada por Lucas de Souza Sales. 
  */
 
 import android.content.ContentValues;
@@ -45,6 +45,27 @@ public class Banco{
 		
 		public static final String[] _sqlTabelaUsuarioAux =  new String[] {"CREATE TABLE if not exists usuariosAux (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		   "USU_NOME text NOT NULL);"};
+		
+		public static final String[] _sqlTabelaResidentes =  new String[] {"CREATE TABLE if not exists residente (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																		   "NOME TEXT NOT NULL,      	  "+
+																		   "ENDERECO TEXT NOT NULL,       "+
+																		   "NUMERO TEXT NOT NULL,	      "+
+																		   "DTNASCIMENTO TEXT,   "+
+																		   "SEXO TEXT,			  "+
+																		   "FREQ_ESCOLA TEXT,	  "+
+																		   "ALFABETIZADO TEXT,	  "+
+																		   "OCUPACAO TEXT,		  "+
+																		   "FL_HANSENIASE TEXT,  "+
+																		   "FL_HIPERTENSAO TEXT, "+
+																		   "FL_GESTANTE TEXT,	  "+
+																		   "FL_TURBECULOSE TEXT, "+
+																		   "FL_ALCOLISMO TEXT,   "+
+																		   "FL_CHAGAS TEXT,      "+
+																		   "FL_DEFICIENTE TEXT,  "+
+																		   "FL_MALARIA TEXT,     "+
+																		   "FL_DIABETE TEXT,     "+
+																		   "FL_EPILETICO TEXT,   "+
+																		   "DATA_ATUALIZACAO TEXT);"};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+
 																		   "UF TEXT NOT NULL, 		     "+

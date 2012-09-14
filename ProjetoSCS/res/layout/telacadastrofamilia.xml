@@ -6,12 +6,14 @@
     android:layout_gravity="center"
     android:background="@drawable/bg"
     >
+    
    <LinearLayout 
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
+        android:paddingTop="20dp"
         >
         
         <TextView 
@@ -29,14 +31,9 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:hint="Digite Aqui"
+            android:inputType="textCapCharacters"
             />
-        
-       <LinearLayout 
-          android:orientation="horizontal"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="3dp"
-          >
+       
         <TextView 
             android:text="Rua"
             android:layout_width="fill_parent"
@@ -44,16 +41,6 @@
             android:layout_weight="1"
             android:textStyle="bold"
             />
-        
-        <TextView 
-            android:text="Número"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            />
-        
-      </LinearLayout>
       
       <LinearLayout 
           android:orientation="horizontal"
@@ -69,14 +56,31 @@
             android:layout_weight="1"
             />
         
-        <Spinner
+      </LinearLayout>
+      
+      <TextView 
+            android:text="Número"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            />  
+      
+      <LinearLayout 
+          android:orientation="horizontal"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="5dp"
+          >  
+      
+      <Spinner
             android:id="@+cadastrofamilia/SpNumero" 
             android:text="Nº"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />
-        
+      
       </LinearLayout>
         
   		<TextView 
@@ -95,8 +99,7 @@
                android:inputType="date"
                android:maxLength="10"
                android:layout_weight="2"
-               android:paddingBottom="5dp"
-               
+               android:paddingBottom="5dp"               
                />
    <TextView 
          android:text="Sexo"
@@ -192,6 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:hint="Digite Aqui"
+        android:inputType="textCapCharacters"
         />
     
     <TextView 

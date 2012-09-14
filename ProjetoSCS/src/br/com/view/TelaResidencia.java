@@ -7,7 +7,6 @@ import br.com.control.ResidenciaAux;
 import br.com.control.Sessao;
 import br.com.scs.R;
 import android.app.Activity;
-import android.app.PendingIntent.OnFinished;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -282,8 +281,8 @@ public class TelaResidencia extends Activity {
 		TransporteUtilizado.add("Selecione");
 		TransporteUtilizado.add("Carro Proprio");
 		TransporteUtilizado.add("Taxi");
-		TransporteUtilizado.add("Ônibus");
-		TransporteUtilizado.add("Metrô");
+		TransporteUtilizado.add("Onibus");
+		TransporteUtilizado.add("Metro");
 		TransporteUtilizado.add("Moto");
 		TransporteUtilizado.add("Bicicleta");
 		TransporteUtilizado.add("Nenhum");		

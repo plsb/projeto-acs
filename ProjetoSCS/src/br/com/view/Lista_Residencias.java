@@ -66,37 +66,9 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
     	
     	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
     	
-    	Intent i = new Intent(this, TelaResidencia.class);
-    	
-    	TelaResidencia.ID = Integer.valueOf(_ID.trim());
-    	
+    	Intent i = new Intent(this, TelaResidencia.class);    	
+    	TelaResidencia.ID = Integer.valueOf(_ID.trim());    	
     	startActivity(i);
-    	
-    	/*Banco bd = null;
-    	Cursor c = null;
-    	try{
-	    	try{
-		    	bd = new Banco(this);
-		    	bd.open();
-		    	c = bd.consulta("residencia", new String[]{"*"}, "endereco = ? and numero = ? ", new String[]{endereco,numero}, null, null, null, null);
-		    	c.moveToFirst();
-		    	if (c.getCount() > 0){
-		    		Toast.makeText(this, "Código no Banco: "+c.getString(c.getColumnIndex("_ID")).toString(),Toast.LENGTH_SHORT).show();
-		    	}
-		    	
-	    	}catch(Exception e){
-	    		Log.i(WINDOW_SERVICE, e.getMessage());
-	    	}
-    	}finally{
-    		if (c != null){
-    			c.close();
-    		}
-    		if (bd != null){
-    			bd.fechaBanco();
-    		}
-    	}
-    	//startActivity(i);*/
-    	//Toast.makeText(this, "Você Selecionou: "+ _ID+" numero:"+numero,Toast.LENGTH_SHORT).show();
     	
     }
     

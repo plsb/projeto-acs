@@ -4,7 +4,7 @@
   android:layout_height="fill_parent"
   android:orientation="vertical"
   android:background="#555555" >
-  
+  
   <LinearLayout
       android:layout_width="fill_parent"
       android:layout_height="56dp"
@@ -26,11 +26,11 @@
 			      android:id="@+id/edtFiltro"
 			      android:layout_width="265dp"
 			      android:layout_height="wrap_content"
-			      android:hint="Filtro por rua" />
+			      android:hint="Filtro por logradouro" />
           </TableRow>
           
       </TableLayout>
-
+      
       <Button
           android:id="@+id/btnFiltrar"
           android:layout_width="wrap_content"
