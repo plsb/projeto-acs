@@ -11,9 +11,11 @@ import br.com.control.Banco;
 import br.com.control.CarregarXML;
 import br.com.scs.R;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,16 +24,17 @@ import android.widget.Toast;
 public class TelaSincronizar extends Activity implements OnClickListener{
 	
 	  private Button  btnImportarUsuario,btnImportarRuas,btnVoltar;
-	  private Banco   bd;
+	  private Banco   bd;	  
 	
 	  @Override
 	  public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        
+
 	        setContentView(R.layout.telasincronizar);
 	        
-	        CarregarObjetos();	        
-	  }
+	        CarregarObjetos();	
+	  }  
+	
 
 	public void onClick(View v) {
 		
@@ -45,8 +48,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 					Iterator it = xml.carregar("usuarios.xml");
 					Cursor cAux = null;
 					bd = new Banco(this);
-					bd.open();
-					//bd.ExecutaSql("delete from usuarios");
+					bd.open();				
 					ContentValues c = new ContentValues();
 					
 					while (it.hasNext()){
@@ -56,20 +58,20 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 						c.put("USU_NOME", element.getChildText("nome"));
 						c.put("USU_LOGIN", element.getChildText("login"));
 						c.put("USU_SENHA", element.getChildText("senha"));
-						c.put("USU_ATIVO", "S");
+						c.put("USU_ATIVO", element.getChildText("ativo"));
 						c.put("USU_FL_ADMIN", 1);						
 						cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { element.getChildText("codigo") }, null, null, null, null);
-						cAux.moveToFirst();
+						cAux.moveToFirst();	
 						
 						if (cAux.getCount() > 0){
-							bd.atualizarDadosTabela("usuarios",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);
+							bd.atualizarDadosTabela("usuarios",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);						
 							Toast.makeText(this,"Atualizado - "+	element.getChildText("nome"), Toast.LENGTH_SHORT).show();
 						}else{						
 							bd.inserirRegistro("usuarios", c);
 							Toast.makeText(this,"Importado - "+	element.getChildText("nome"), Toast.LENGTH_SHORT).show();
 						}//Fim else
-					}//Fim while
-					Toast.makeText(this,"Importação Concluída!", Toast.LENGTH_LONG).show();
+					}//Fim while					
+					Toast.makeText(this,"Importação Concluída!", Toast.LENGTH_LONG).show();				
 					bd.fechaBanco();
 				} else {
 					Toast.makeText(this, "Arquivo XML não encontrado ou vazio!", Toast.LENGTH_LONG).show();
@@ -82,6 +84,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 				e.printStackTrace();
 			}
 		}//Fim do Onclick do Botão Importar Usuário
+				
 		
 		if (v==btnImportarRuas){
 			CarregarXML xml = new CarregarXML();	
@@ -107,13 +110,14 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 						cAux.moveToFirst();
 						
 						if (cAux.getCount() > 0){
-							bd.atualizarDadosTabela("ruas",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);
-						    Toast.makeText(this,"Atualizado - "+	element.getChildText("descricao"), Toast.LENGTH_SHORT).show();
+							bd.atualizarDadosTabela("ruas",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);													
+						    Toast.makeText(this,"Atualizado - "+	element.getChildText("descricao"), Toast.LENGTH_SHORT).show();							
 						}else{						
 							bd.inserirRegistro("ruas", c);
 							Toast.makeText(this,"Importado - "+	element.getChildText("descricao"), Toast.LENGTH_SHORT).show();
 						}//Fim else
 					}//Fim while
+					Toast.makeText(this,"Importação Concluída!", Toast.LENGTH_LONG).show();						
 					bd.fechaBanco();
 				} else {
 					Toast.makeText(this, "Arquivo XML não encontrado ou vazio!", Toast.LENGTH_LONG).show();

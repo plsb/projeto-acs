@@ -1,6 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_continuar"
-        android:title="Continuar"
+    <item android:id="@+MenuTelaFamilia/menu_gravar"
+        android:title="Salvar"
         android:icon="@drawable/save"
+        android:orderInCategory="100" />
+    <item android:id="@+MenuTelaFamilia/menu_continuar" 
+        android:title="Continuar"
+        android:icon="@drawable/prosseguir"
         android:orderInCategory="100" />
 </menu>

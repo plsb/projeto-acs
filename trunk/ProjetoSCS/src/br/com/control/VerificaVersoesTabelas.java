@@ -11,7 +11,8 @@ public class VerificaVersoesTabelas {
 	private static final String _nomeTabelaResidencia = "residencia";
 	private static final String _nomeTabelaRuas       = "ruas";
 	private static final String _nomeTabelaSessao     = "sessao";
-
+	private static final String _nomeTabelaResidente  = "residente";
+	
 	public static Boolean jaVerificouAtualizacao = false;
 	
 	private BancoDados _dao;
@@ -31,6 +32,7 @@ public class VerificaVersoesTabelas {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaResidencia, VerificaVersoesTabelas._nomeTabelaResidencia);
 		BancoDados.getDAO(contexto, Banco._sqlTabelaRuas, VerificaVersoesTabelas._nomeTabelaRuas);
 		BancoDados.getDAO(contexto, Banco._sqlTabelaSessao, VerificaVersoesTabelas._nomeTabelaSessao);
+		BancoDados.getDAO(contexto, Banco._sqlTabelaResidentes, VerificaVersoesTabelas._nomeTabelaResidente);
 	}
 
 }

@@ -23,7 +23,7 @@
         
         	<Button 
             	android:id="@+telaFamilia/btnIncluir"
-            	android:drawableTop="@drawable/add_doc"
+            	android:drawableTop="@drawable/home_add"
             	android:background="@null"
             	android:text="Incluir Residência"
             	android:layout_width="150dp"
@@ -55,7 +55,7 @@
         	
         	<Button
              	android:id="@+telaFamilia/btnIncluirFamiliar"
-            	android:drawableTop="@drawable/add_doc"
+            	android:drawableTop="@drawable/people_add"
             	android:background="@null"
             	android:text="Incluir Familiar"
             	android:layout_width="150dp"
@@ -77,6 +77,26 @@
             />
         
        </LinearLayout>
+       
+       <LinearLayout 
+           android:orientation="horizontal"
+		   android:layout_width="fill_parent" 
+		   android:layout_height="wrap_content"
+		   android:gravity="center">
+        	
+           <Button 
+	     	    android:id="@+telaFamilia/btnVoltar"
+	     	    android:text="Voltar"
+	     	    android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:drawableTop="@drawable/voltar"
+	            android:drawablePadding="10dp"
+	            android:background="@null"
+	            android:textStyle="bold"
+	            android:layout_gravity="center"
+     	    />
+        	
+       </LinearLayout>  
        
     </LinearLayout>
 </ScrollView>
