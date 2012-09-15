@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:orientation="vertical"
-  android:background="#555555" >
+  android:background="#FFFFFF" >
+  
+  <LinearLayout 
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="#FFFFFF" >  
   
   <LinearLayout
       android:layout_width="fill_parent"
@@ -49,21 +55,24 @@
     android:layout_width="fill_parent"
     android:id="@+id/android:list"
     />
+  </LinearLayout>
   
   <LinearLayout 
     android:orientation="horizontal"
 	android:layout_width="fill_parent" 
-    android:layout_height="30dp" 
+    android:layout_height="35dp" 
     android:gravity="center"
+    android:layout_alignParentBottom="true"
     android:background="@drawable/bglistabottom">
   
 	  <TextView android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:gravity="center"
+	    android:textStyle="bold"
 	    android:textColor="#FFFFFF"
 	    android:text="Desenvolvido por One Team" 
 	    />
           
-  </LinearLayout>  
-</LinearLayout>
+  </LinearLayout> 
+  </RelativeLayout> 
