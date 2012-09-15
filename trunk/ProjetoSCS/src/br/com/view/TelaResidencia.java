@@ -112,7 +112,7 @@ public class TelaResidencia extends Activity {
 			try{
 				bd = new Banco(this);
 				bd.open();
-				c = bd.consulta("residencia", new String[]{"*"}, "_ID = "+pID, null, null, null, null, null);
+				c = bd.consulta("residencia", new String[]{"*"},"_ID = "+pID, null, null, null, null, null);
 				c.moveToFirst();
 				if (c.getCount() > 0){
 					if (pTab == 1){

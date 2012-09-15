@@ -21,11 +21,13 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast; 
 
 @SuppressLint("ParserError")
-public class Lista_Residencias extends ListActivity implements OnClickListener {
-	Banco _bd = new Banco(this);
+public class Lista_Residentes extends ListActivity implements OnClickListener {
+Banco _bd = new Banco(this);
 	
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
+	
+	public static String END,NUM = "";
 	
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
@@ -33,15 +35,15 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listax);
+        setContentView(R.layout.listaresidente);
         
-        edtFiltro  = (EditText) findViewById(R.id.edtFiltro);
-        btnFiltrar = (Button) findViewById(R.id.btnFiltrar);
+        edtFiltro  = (EditText) findViewById(R.listaResidente.edtFiltro);
+        btnFiltrar = (Button) findViewById(R.listaResidente.btnFiltrar);
         btnFiltrar.setOnClickListener(this);  
-        btnVoltar  = (Button) findViewById(R.id.btnVoltarLista);
+        btnVoltar  = (Button) findViewById(R.listaResidente.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
         
-        ListarResidencias(false);
+        ListarResidentes(true);
         
     }//Fim do método Main
     
@@ -56,7 +58,7 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
     	
     	super.onListItemClick(l, v, position, id);
     	
-    	Object o = this.getListAdapter().getItem(position);
+    	/**Object o = this.getListAdapter().getItem(position);
     	
     	Log.i("Retorno", o.toString());
     	    	
@@ -70,20 +72,20 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
     	
     	Intent i = new Intent(this, TelaResidencia.class); 
     	TelaResidencia.ID = Integer.valueOf(_ID.trim());    	
-    	startActivity(i);
+    	startActivity(i);**/
     	
     }
     
-    public void ListarResidencias(boolean usaFiltro){
+    public void ListarResidentes(boolean usaFiltro){
     	HashMap<String,String> item;
         _bd.open();
         try{
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },null,null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },null,null,null,null,null,null);
         	}else{
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },"endereco like '%"+edtFiltro.getText().toString()+"%' ",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND NUMERO = '"+NUM.trim()+"'",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
@@ -91,10 +93,9 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
 	        	do{	
 	        	  item = new HashMap<String,String>();
 	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("_ID")).toString()+"-"+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
-						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
-	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
+	        			  			 _cursor.getString(_cursor.getColumnIndex("NOME")).toString());
+	        	  item.put( "line2", "Sexo: "+_cursor.getString(_cursor.getColumnIndex("SEXO")).toString()+" - Dt. Nascimento: "+
+	        			  			 _cursor.getString(_cursor.getColumnIndex("DTNASCIMENTO")).toString());
 		          list.add( item );
 		        }while (_cursor.moveToNext());	
         	}
@@ -118,7 +119,7 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
 		switch (item.getItemId()) {
 
 		case R.listaresidencia.menu_filtrar:
-			ListarResidencias(true);
+			ListarResidentes(true);
 			break;
 		}
 		return true;
@@ -127,11 +128,10 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
 	public void onClick(View v) {
 		
 		if (v == btnFiltrar){
-			ListarResidencias(true);
+			ListarResidentes(true);
 		}
 		if (v == btnVoltar){
 			finish();
 		}		
 	}
-    
 }

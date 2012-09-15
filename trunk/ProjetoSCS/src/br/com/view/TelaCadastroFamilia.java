@@ -260,7 +260,7 @@ public void InsereBD(){
 		r.NOME         = EdtNome.getText().toString();
 		r.ENDERECO     = SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString();
 		r.NUMERO       = SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString();
-		r.DTNASCIMENTO = String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth())+"/"+String.valueOf(DtNascimento.getYear());
+		r.DTNASCIMENTO = String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth()+1)+"/"+String.valueOf(DtNascimento.getYear());
 		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString();
 		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString();
 		r.OCUPACAO     = EdtOcupacao.getText().toString();
