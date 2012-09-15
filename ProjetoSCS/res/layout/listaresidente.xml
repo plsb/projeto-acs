@@ -14,7 +14,7 @@
       android:background="@drawable/bgbucar" >
       
       <Button
-          android:id="@+id/btnVoltarLista"
+          android:id="@+listaResidente/btnVoltarLista"
           android:layout_width="wrap_content"
           android:layout_height="48dp"
           android:drawableTop="@drawable/voltarpequeno" />
@@ -24,22 +24,22 @@
           android:layout_height="match_parent" >
 
           <TableRow
-              android:id="@+id/tableRow1"
+              android:id="@+listaResidente/tableRow1"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content" >
               
               <EditText
-			      android:id="@+id/edtFiltro"
+			      android:id="@+listaResidente/edtFiltro"
 			      android:layout_width="215dp"
 			      android:layout_height="wrap_content"
-			      android:hint="Filtro por Logradouro" />
+			      android:hint="Filtro por Nome" />
           </TableRow>
           
       </TableLayout>
       
       <Button
-          android:id="@+id/btnFiltrar"
-          android:layout_width="wrap_content"
+          android:id="@+listaResidente/btnFiltrar"
+          android:layout_width="wrap_content" 
           android:layout_height="48dp"
           android:drawableTop="@drawable/filtropequeno" />
       
