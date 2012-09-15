@@ -43,7 +43,7 @@ Banco _bd = new Banco(this);
         btnVoltar  = (Button) findViewById(R.listaResidente.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
         
-        ListarResidentes(true);
+        ListarResidentes(false);
         
     }//Fim do método Main
     
@@ -83,9 +83,9 @@ Banco _bd = new Banco(this);
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residente", new String[] { "*" },null,null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"'",null,null,null,null,null);
         	}else{
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND NUMERO = '"+NUM.trim()+"'",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
