@@ -66,36 +66,40 @@ public final class R {
         public static final int diabetes=0x7f02000e;
         public static final int editar=0x7f02000f;
         public static final int exit=0x7f020010;
-        public static final int familia=0x7f020011;
-        public static final int filtro=0x7f020012;
-        public static final int filtropequeno=0x7f020013;
-        public static final int gestante=0x7f020014;
-        public static final int hanseniase=0x7f020015;
-        public static final int hipertensao=0x7f020016;
-        public static final int home=0x7f020017;
-        public static final int home_add=0x7f020018;
-        public static final int home_off=0x7f020019;
-        public static final int ic_action_search=0x7f02001a;
-        public static final int ic_launcher=0x7f02001b;
-        public static final int importuser=0x7f02001c;
-        public static final int incluir=0x7f02001d;
-        public static final int login=0x7f02001e;
-        public static final int outros=0x7f02001f;
-        public static final int people_add=0x7f020020;
-        public static final int prosseguir=0x7f020021;
-        public static final int ruasimportar=0x7f020022;
-        public static final int saneamento=0x7f020023;
-        public static final int save=0x7f020024;
-        public static final int scs_icone=0x7f020025;
-        public static final int semsincronia=0x7f020026;
-        public static final int sincronizar=0x7f020027;
-        public static final int sincronizar_off=0x7f020028;
-        public static final int sobre=0x7f020029;
-        public static final int sobre_off=0x7f02002a;
-        public static final int tuberculose=0x7f02002b;
-        public static final int users=0x7f02002c;
-        public static final int voltar=0x7f02002d;
-        public static final int voltarpequeno=0x7f02002e;
+        public static final int export=0x7f020011;
+        public static final int exportarxml=0x7f020012;
+        public static final int familia=0x7f020013;
+        public static final int filtro=0x7f020014;
+        public static final int filtropequeno=0x7f020015;
+        public static final int gestante=0x7f020016;
+        public static final int hanseniase=0x7f020017;
+        public static final int hipertensao=0x7f020018;
+        public static final int home=0x7f020019;
+        public static final int home_add=0x7f02001a;
+        public static final int home_off=0x7f02001b;
+        public static final int ic_action_search=0x7f02001c;
+        public static final int ic_launcher=0x7f02001d;
+        public static final int importfile=0x7f02001e;
+        public static final int importuser=0x7f02001f;
+        public static final int incluir=0x7f020020;
+        public static final int login=0x7f020021;
+        public static final int outros=0x7f020022;
+        public static final int people_add=0x7f020023;
+        public static final int prosseguir=0x7f020024;
+        public static final int ruasimportar=0x7f020025;
+        public static final int saneamento=0x7f020026;
+        public static final int save=0x7f020027;
+        public static final int scs_icone=0x7f020028;
+        public static final int semsincronia=0x7f020029;
+        public static final int sincronizar=0x7f02002a;
+        public static final int sincronizar_off=0x7f02002b;
+        public static final int sobre=0x7f02002c;
+        public static final int sobre_off=0x7f02002d;
+        public static final int sync=0x7f02002e;
+        public static final int tuberculose=0x7f02002f;
+        public static final int users=0x7f020030;
+        public static final int voltar=0x7f020031;
+        public static final int voltarpequeno=0x7f020032;
     }
     public static final class id {
         public static final int BtnAcompanhamento=0x7f08000a;
@@ -184,13 +188,14 @@ public final class R {
     public static final class telaFamilia {
         public static final int btnEditar=0x7f0d0001;
         public static final int btnEditarFamiliar=0x7f0d0003;
+        public static final int btnExportarXML=0x7f0d0005;
         public static final int btnIncluir=0x7f0d0000;
         public static final int btnIncluirFamiliar=0x7f0d0002;
         public static final int btnVoltar=0x7f0d0004;
     }
     public static final class telaSincrozinar {
-        public static final int btnImportarRuas=0x7f100001;
-        public static final int btnImportarUsuario=0x7f100000;
+        public static final int btnImportarXmls=0x7f100000;
+        public static final int btnVisualizarUsuarios=0x7f100001;
         public static final int btnVoltar=0x7f100002;
     }
     public static final class teladoenca {

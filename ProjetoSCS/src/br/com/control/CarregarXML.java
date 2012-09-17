@@ -36,17 +36,8 @@ public Iterator carregar(String nome_arquivo) throws FileNotFoundException, IOEx
 	   List elements = mural.getChildren();  
 	   
 	   Iterator i = elements.iterator();  
-	  
-	   //Iteramos com os elementos filhos, e filhos do dos filhos  
-	   /**while (i.hasNext()) {  
-	      Element element = (Element) i.next();  
-	      System.out.println("Códido:"+ element.getAttributeValue("codigo"));  
-	      //System.out.println("Prioridade:"+ element.getAttributeValue("prioridade"));  
-	      //System.out.println("Para:"+ element.getChildText("para"));  
-	      //System.out.println("De:"+ element.getChildText("de"));  
-	      //System.out.println("Corpo:"+ element.getChildText("corpo"));  
-	   }**/
-	return i;  
+
+	   return i;  
   
     }
 
