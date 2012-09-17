@@ -1,19 +1,29 @@
 package br.com.view;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.Iterator;
 
+import org.jdom2.Attribute;
+import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
+import org.jdom2.output.XMLOutputter;
 
 import br.com.control.Banco;
 import br.com.control.CarregarXML;
+import br.com.control.ExportarXML;
 import br.com.control.Mensagem;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +33,7 @@ import android.widget.Toast;
 
 public class TelaSincronizar extends Activity implements OnClickListener{
 	
-	  private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar;
+	  private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar,btnExportarVisitas;
 	  private Banco   bd;
 	  private CarregarXML xml;
 	
@@ -63,7 +73,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 						c.put("USU_NOME", element.getChildText("nome"));
 						c.put("USU_LOGIN", element.getChildText("login"));
 						c.put("USU_SENHA", element.getChildText("senha"));
-						c.put("USU_ATIVO", element.getChildText("ativo"));
+						c.put("USU_ATIVO", element.getChildText("ativo").trim());
 						c.put("USU_FL_ADMIN", 1);						
 						cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { element.getChildText("codigo") }, null, null, null, null);
 						cAux.moveToFirst();						
@@ -136,11 +146,19 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 				
 		
 		if (v==btnVisulizarUsuarios){
-			
+			Intent i = new Intent(this, Lista_Usuarios.class);
+			startActivity(i);
 		}//Fim do Método OnClick da Importação de Ruas
 		
 		if (v == btnVoltar){
 			finish();
+		}
+		
+		if (v == btnExportarVisitas){
+			ExportarXML e = new ExportarXML();
+			if (e.ExportarResidencias(this)==true){
+				Mensagem.exibeMessagem(this, "Exportação", "Exportação Realizada!");
+			}
 		}
 		
 	}//Fim do Método onClick
@@ -150,8 +168,10 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		btnImportarXmls.setOnClickListener(this);
 		btnVisulizarUsuarios = (Button) findViewById(R.telaSincrozinar.btnVisualizarUsuarios);
 		btnVisulizarUsuarios.setOnClickListener(this);
-		btnVoltar       = (Button) findViewById(R.telaSincrozinar.btnVoltar);
+		btnVoltar          = (Button) findViewById(R.telaSincrozinar.btnVoltar);
 		btnVoltar.setOnClickListener(this);
+		btnExportarVisitas = (Button) findViewById(R.telaSincrozinar.btnExportarXML);
+		btnExportarVisitas.setOnClickListener(this);
 	}
 
 }

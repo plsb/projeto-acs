@@ -54,7 +54,7 @@
         >
         	
         	<Button
-             	android:id="@+telaFamilia/btnExportarXML"
+             	android:id="@+telaSincrozinar/btnExportarXML"
             	android:drawableTop="@drawable/exportarxml"
             	android:background="@null"
             	android:text="Exportar Visitas"

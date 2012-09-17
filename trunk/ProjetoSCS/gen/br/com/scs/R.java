@@ -188,15 +188,15 @@ public final class R {
     public static final class telaFamilia {
         public static final int btnEditar=0x7f0d0001;
         public static final int btnEditarFamiliar=0x7f0d0003;
-        public static final int btnExportarXML=0x7f0d0005;
         public static final int btnIncluir=0x7f0d0000;
         public static final int btnIncluirFamiliar=0x7f0d0002;
         public static final int btnVoltar=0x7f0d0004;
     }
     public static final class telaSincrozinar {
+        public static final int btnExportarXML=0x7f100002;
         public static final int btnImportarXmls=0x7f100000;
         public static final int btnVisualizarUsuarios=0x7f100001;
-        public static final int btnVoltar=0x7f100002;
+        public static final int btnVoltar=0x7f100003;
     }
     public static final class teladoenca {
         public static final int ChAborto=0x7f0c003d;

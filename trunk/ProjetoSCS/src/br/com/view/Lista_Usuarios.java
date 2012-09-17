@@ -21,13 +21,12 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast; 
 
 @SuppressLint("ParserError")
-public class Lista_Residentes extends ListActivity implements OnClickListener {
-Banco _bd = new Banco(this);
+public class Lista_Usuarios extends ListActivity implements OnClickListener {
+	
+	Banco _bd = new Banco(this);
 	
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
-	
-	public static String END,NUM = "";
 	
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
@@ -35,7 +34,7 @@ Banco _bd = new Banco(this);
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listaresidente); 
+        setContentView(R.layout.listaresidente);
         
         edtFiltro  = (EditText) findViewById(R.listaResidente.edtFiltro);
         btnFiltrar = (Button) findViewById(R.listaResidente.btnFiltrar);
@@ -43,7 +42,7 @@ Banco _bd = new Banco(this);
         btnVoltar  = (Button) findViewById(R.listaResidente.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
         
-        ListarResidentes(false);
+        ListarUsuarios(false);
         
     }//Fim do método Main
     
@@ -58,11 +57,11 @@ Banco _bd = new Banco(this);
     	
     	super.onListItemClick(l, v, position, id);
     	
-    	/**Object o = this.getListAdapter().getItem(position);
+    	Object o = this.getListAdapter().getItem(position);
     	
     	Log.i("Retorno", o.toString());
     	    	
-    	String _ID = o.toString();
+    	/**String _ID = o.toString();
     	
     	_ID = _ID.substring(_ID.indexOf("{line1=")+7, _ID.indexOf("-"));
     	
@@ -76,16 +75,16 @@ Banco _bd = new Banco(this);
     	
     }
     
-    public void ListarResidentes(boolean usaFiltro){
+    public void ListarUsuarios(boolean usaFiltro){
     	HashMap<String,String> item;
         _bd.open();
         try{
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"'",null,null,null,null,null);
+        		_cursor = _bd.consulta("usuarios", new String[] { "*" },null,null,null,null,null,null);
         	}else{
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
+        		_cursor = _bd.consulta("usuarios", new String[] { "*" },"usu_nome like '%"+edtFiltro.getText().toString()+"%' ",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
@@ -93,9 +92,12 @@ Banco _bd = new Banco(this);
 	        	do{	
 	        	  item = new HashMap<String,String>();
 	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("_ID")).toString()+"-"+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("NOME")).toString());
-	        	  item.put( "line2", "Sexo: "+_cursor.getString(_cursor.getColumnIndex("SEXO")).toString()+" - Dt. Nascimento: "+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("DTNASCIMENTO")).toString());
+	        			  			 _cursor.getString(_cursor.getColumnIndex("USU_NOME")).toString());
+	        	  if (_cursor.getString(_cursor.getColumnIndex("USU_ATIVO")).toString().equals("S")){
+	        		  item.put( "line2", "Status: Usuário liberado.");
+	        	  }else{
+	        		  item.put( "line2", "Status: Usuário bloqueado");
+	        	  }	        	  
 		          list.add( item );
 		        }while (_cursor.moveToNext());	
         	}
@@ -119,7 +121,7 @@ Banco _bd = new Banco(this);
 		switch (item.getItemId()) {
 
 		case R.listaresidencia.menu_filtrar:
-			ListarResidentes(true);
+			ListarUsuarios(true);
 			break;
 		}
 		return true;
@@ -128,10 +130,11 @@ Banco _bd = new Banco(this);
 	public void onClick(View v) {
 		
 		if (v == btnFiltrar){
-			ListarResidentes(true);
+			ListarUsuarios(true);
 		}
 		if (v == btnVoltar){
 			finish();
 		}		
 	}
+    
 }
