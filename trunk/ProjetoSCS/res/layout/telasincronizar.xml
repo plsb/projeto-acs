@@ -22,10 +22,10 @@
         >
         
         	<Button 
-            	android:id="@+telaSincrozinar/btnImportarUsuario"
-            	android:drawableTop="@drawable/importuser"
+            	android:id="@+telaSincrozinar/btnImportarXmls"
+            	android:drawableTop="@drawable/importfile"
             	android:background="@null"
-            	android:text="Importar Usuário"
+            	android:text="Importar Xml's"
             	android:layout_width="150dp"
             	android:layout_height="100dp"
             	android:textSize="14dp"
@@ -34,10 +34,10 @@
             />
         
         	<Button 
-            	android:id="@+telaSincrozinar/btnImportarRuas"
-            	android:drawableTop="@drawable/ruasimportar"
+            	android:id="@+telaSincrozinar/btnVisualizarUsuarios"
+            	android:drawableTop="@drawable/importuser"
             	android:background="@null"
-            	android:text="Importar Ruas"
+            	android:text="Visualizar Usuários"
             	android:layout_width="150dp"
             	android:layout_height="100dp"
             	android:textSize="14dp"
@@ -54,10 +54,10 @@
         >
         	
         	<Button
-             	android:id="@+telaFamilia/btnIncluirFamiliar"
-            	android:drawableTop="@drawable/add_doc"
+             	android:id="@+telaFamilia/btnExportarXML"
+            	android:drawableTop="@drawable/exportarxml"
             	android:background="@null"
-            	android:text="Incluir Familiar"
+            	android:text="Exportar Visitas"
             	android:layout_width="150dp"
             	android:layout_height="100dp"
             	android:textSize="14dp"

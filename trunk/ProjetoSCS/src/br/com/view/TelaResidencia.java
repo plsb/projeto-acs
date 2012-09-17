@@ -164,10 +164,43 @@ public class TelaResidencia extends Activity {
 		switch (item.getItemId()) {
 
 		case R.id.menu_gravar:
-			PreparaInsercao();
+			if (validaCampos()==true){
+				PreparaInsercao();
+			}
 			break;
 		}
 		return true;
+	}
+	
+	public boolean validaCampos(){
+		
+		boolean retorno = false;
+		
+		if (EdtNumero.getText().toString().length() == 0){
+			EdtNumero.setError("Informe o Número da Casa!");
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (EdtSegTerritorial.getText().toString().length() == 0){
+			EdtSegTerritorial.setError("Informe o Seguimento Territorial!");
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (EdtArea.getText().toString().length() == 0){
+			EdtArea.setError("Informe o Código da Área!");
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (EdtMicArea.getText().toString().length() == 0){
+			EdtMicArea.setError("Informe o Código da Área!");
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		return retorno;
 	}
 	
 	private void setOpcoesSpinnersTab1(String pUF,String pCidade, String pEndereco,String pBairro){
