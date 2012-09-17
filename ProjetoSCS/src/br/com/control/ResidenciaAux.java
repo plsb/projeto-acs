@@ -50,7 +50,6 @@ public class ResidenciaAux {
 			c.put("AREA", AREA);
 			c.put("MICROAREA", MICROAREA);
 			c.put("COD_FAMILIA", COD_FAMILIA);
-			c.put("DATA_CADASTRO", DATA_CADASTRO);
 			c.put("TIPO_CASA", TIPO_CASA);
 			c.put("DEST_LIXO", DEST_LIXO);
 			c.put("TRAT_AGUA", TRAT_AGUA);
