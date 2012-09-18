@@ -3,9 +3,11 @@ package br.com.view;
 import br.com.scs.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -32,6 +34,12 @@ public class TelaDoenca extends Activity{
 	DatePicker DtHtDataVisita, DtHtUltimaVisita;
 	RadioGroup RgHtFd, RgHtTm, RgHtFe;
 	EditText EdtHtPe;
+	
+	TextView TxtGDtUltimaRegra, TxtGDtParto, TxtGDtVacina, TxtGEn, TxtGDtPN, TxtGFr, TxtGRG, TxtGDtPuerbio, TxtGEnMes;
+	DatePicker GDtUltimaRegra, GDtParto, GDtVacina, GDtPuerbio, DtGPreNatal;
+	CheckBox ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao, ChGUm, ChG2, ChGR;
+	EditText EdtGEn;
+	Spinner SpGEn;
 	
 
 	@Override
@@ -97,6 +105,41 @@ public class TelaDoenca extends Activity{
 		RgHtFe = (RadioGroup) findViewById(R.teladoenca.RgHtFazExercicio);
 		EdtHtPe = (EditText) findViewById(R.teladoenca.EdtHtPressaoArterial);
 		
+		//Componentes Gestante
+		TxtGDtUltimaRegra = (TextView) findViewById(R.teladoenca.TxtGDtUltimaRegra);
+		TxtGDtParto = (TextView) findViewById(R.teladoenca.TxtGParto);
+		TxtGDtVacina = (TextView) findViewById(R.teladoenca.TxtGVacina);
+		TxtGEn = (TextView) findViewById(R.teladoenca.TxtGEn);
+		TxtGDtPN = (TextView) findViewById(R.teladoenca.TxtGPreNatal);
+		TxtGFr = (TextView) findViewById(R.teladoenca.TxtGFr);
+		TxtGRG = (TextView) findViewById(R.teladoenca.TxtGRga);
+		TxtGDtPuerbio = (TextView) findViewById(R.teladoenca.TxtGDtPuerbio);
+		TxtGEnMes = (TextView) findViewById(R.teladoenca.TxtGEnMes);
+		GDtUltimaRegra = (DatePicker) findViewById(R.teladoenca.DtGDataRegra);
+		GDtParto = (DatePicker) findViewById(R.teladoenca.DtGParto);
+		GDtVacina = (DatePicker) findViewById(R.teladoenca.DtGVacina);
+		GDtPuerbio = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
+		SpGEn = (Spinner) findViewById(R.teladoenca.SpGEnMes);
+		GDtUltimaRegra = (DatePicker) findViewById(R.teladoenca.DtGDataRegra); 
+		GDtParto = (DatePicker) findViewById(R.teladoenca.DtGParto);  
+		GDtVacina = (DatePicker) findViewById(R.teladoenca.DtGVacina);  
+		GDtPuerbio = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
+		DtGPreNatal = (DatePicker) findViewById(R.teladoenca.DtGPreNatal);
+		EdtGEn = (EditText) findViewById(R.teladoenca.EdtGEn);
+		ChGGestacoes = (CheckBox) findViewById(R.teladoenca.ChGGestacoes); 
+		ChGAborto = (CheckBox) findViewById(R.teladoenca.ChGAborto);  
+		ChGIdade36 = (CheckBox) findViewById(R.teladoenca.ChGIdade36);  
+		ChGIdade20 = (CheckBox) findViewById(R.teladoenca.ChGIdade20); 
+		ChGSangue = (CheckBox) findViewById(R.teladoenca.ChGSangue); 
+		ChGEdema = (CheckBox) findViewById(R.teladoenca.ChGEdema); 
+		ChGDiabetes = (CheckBox) findViewById(R.teladoenca.ChGDiabetes); 
+		ChGPressao = (CheckBox) findViewById(R.teladoenca.ChGPressao);
+		ChGUm = (CheckBox) findViewById(R.teladoenca.ChGUm); 
+		ChG2 = (CheckBox) findViewById(R.teladoenca.ChG2);
+		ChGR = (CheckBox) findViewById(R.teladoenca.ChGR);
+	
+		
+		
 		
 		TabHost th = (TabHost) findViewById(R.teladoenca.tabhost);
         th.setup();
@@ -125,6 +168,7 @@ public class TelaDoenca extends Activity{
         }
         if (TelaCadastroFamilia.gestante != 0){
         	ts = th.newTabSpec("tag4");
+        	ComponentesGestante();
             ts.setContent(R.teladoenca.tabGestante);
             ts.setIndicator("Gestante",getResources().getDrawable(R.drawable.gestante));
             th.addTab(ts);
@@ -181,11 +225,36 @@ public class TelaDoenca extends Activity{
 		RgTRi.setVisibility(0);
 		EdtTCe.setVisibility(0);
 		EdtTM5Bcg.setVisibility(0);
-		
+
 	}
 	
 	public void ComponentesGestante(){
-		
+		TxtGDtUltimaRegra.setVisibility(0); 
+		TxtGDtParto.setVisibility(0) ;
+		TxtGDtVacina.setVisibility(0); 
+		TxtGEn.setVisibility(0);
+		TxtGDtPN.setVisibility(0); 
+		TxtGFr.setVisibility(0); 
+		TxtGRG.setVisibility(0); 
+		TxtGDtPuerbio.setVisibility(0);
+		TxtGEnMes.setVisibility(0);
+		GDtUltimaRegra.setVisibility(0); 
+		GDtParto.setVisibility(0);  
+		GDtVacina.setVisibility(0);  
+		GDtPuerbio.setVisibility(0);
+		DtGPreNatal.setVisibility(0);
+		EdtGEn.setVisibility(0);
+		ChGGestacoes.setVisibility(0); 
+		ChGAborto.setVisibility(0); 
+		ChGIdade36.setVisibility(0); 
+		ChGIdade20.setVisibility(0); 
+		ChGSangue.setVisibility(0);
+		ChGEdema.setVisibility(0);
+		ChGDiabetes.setVisibility(0);
+		ChGPressao.setVisibility(0);
+		ChGUm.setVisibility(0); 
+		ChG2.setVisibility(0);
+		ChGR.setVisibility(0);
 	}
 	
 	public void ComponentesHiperTensao(){

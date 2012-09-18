@@ -700,7 +700,8 @@
 			        android:layout_height="wrap_content"
 		        >
 	                
-                <TextView 
+                <TextView
+                        android:id="@+teladoenca/TxtGDtUltimaRegra"
 				        android:text=" Data da Ultima Regra:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
@@ -708,19 +709,18 @@
 				        android:textColor="#000"
 				        android:layout_marginBottom="3dp"
 				        android:visibility="invisible"
-			
 				        />
 				    
 				    <DatePicker 
-				        android:id="@+teladoenca/DtDataRegra"
+				        android:id="@+teladoenca/DtGDataRegra"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
 				        android:visibility="invisible"
-			
 				        />
 				    
 				 <TextView 
+				        android:id="@+teladoenca/TxtGParto"
 				        android:text=" Data Provavel do Parto:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
@@ -732,16 +732,23 @@
 				        />
 				    
 				    <DatePicker 
-				        android:id="@+teladoenca/DtDataRegra"
+				        android:id="@+teladoenca/DtGParto"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
 				        android:visibility="invisible"
 			
 				        />
-				    
+				    			    
+				    <LinearLayout 
+				        android:orientation="horizontal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        >
 				    <TextView 
-				        android:text=" Data da Vacina ?????"
+				        android:id="@+teladoenca/TxtGVacina"
+				        android:text=" Data da Vacina:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -750,29 +757,108 @@
 				        android:visibility="invisible"
 		
 				        />
+				     <CheckBox 
+				          android:id="@+teladoenca/ChGUm"
+				          android:text="1"
+				          android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginLeft="10dp"
+				          android:visibility="invisible"
+				          />
+				         <CheckBox 
+				          android:id="@+teladoenca/ChG2"
+				          android:text="2"
+				          android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginLeft="10dp"
+				           android:visibility="invisible"
+				          />
+				       <CheckBox 
+				          android:id="@+teladoenca/ChGR"
+				          android:text="R"
+				          android:layout_width="wrap_content"
+				          android:layout_height="wrap_content"
+				          android:layout_marginLeft="10dp"
+				          android:visibility="invisible"
+				          />
+					</LinearLayout>
 				    
-				    <TextView 
-				        android:text="Estado Nutricional ????"
-				        android:layout_width="wrap_content"
+				    <DatePicker 
+				        android:id="@+teladoenca/DtGVacina"
+				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
-				        android:layout_marginBottom="5dp"
 				        android:visibility="invisible"
-			
+				        android:layout_marginBottom="5dp"
 				        />
 				    
+				    <LinearLayout 
+				        android:orientation="horizontal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        >
+	                
+				    <TextView 
+				        android:id="@+teladoenca/TxtGEn"
+				        android:text="Estado Nutricional:"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:visibility="invisible"
+				        />
+				    <TextView 
+				        android:id="@+teladoenca/TxtGEnMes"
+				        android:text="Mês Gestação:"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:visibility="invisible"
+				        />
+				    </LinearLayout>
+				    
+				    <LinearLayout 
+				        android:orientation="horizontal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        >
+	                
+				    <EditText 
+				        android:id="@+teladoenca/EdtGEn"
+				        android:layout_width="130dp"
+				        android:layout_height="wrap_content"
+				        android:hint="N ou D"
+				     />
+				    
+				    <Spinner 
+				        android:id="@+teladoenca/SpGEnMes"
+				        android:layout_width="130dp"
+				        android:layout_height="45dp"
+				        android:layout_marginLeft="35dp"
+	      	        />
+				    </LinearLayout>
+
 				      <TextView 
-				        android:text=" Data da Consulta de Pre Natal ?????"
+				        android:id="@+teladoenca/TxtGPreNatal"
+				        android:text=" Data da Consulta de Pre Natal:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
 				        android:textColor="#000"
-				        android:layout_marginBottom="3dp"
 				        android:visibility="invisible"
-			
 				        />
+				     
+				      <DatePicker 
+				          android:id="@+teladoenca/DtGPreNatal"
+				          android:layout_width="fill_parent"
+				          android:layout_height="wrap_content"
+				          android:layout_marginBottom="5dp"
+				          android:visibility="invisible"
+				          />
 				      
 				       <TextView 
-				        android:text=" Fatores de Risco"
+				        android:id="@+teladoenca/TxtGFr"
+				        android:text=" Fatores de Risco:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -789,7 +875,7 @@
         				>
      	    
         				<CheckBox 
-           					android:id="@+teladoenca/ChGestacoes"
+           					android:id="@+teladoenca/ChGGestacoes"
             				android:text="6 ou mais gestações"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
@@ -798,7 +884,7 @@
       
             			/>
         				<CheckBox 
-          				  	android:id="@+teladoenca/ChAborto"
+          				  	android:id="@+teladoenca/ChGAborto"
             			 	android:text="Natimorto/Aborto"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
@@ -816,8 +902,8 @@
         				>
      	    
         				<CheckBox 
-           					android:id="@+teladoenca/ChIdade36"
-            				android:text="36 anos ou mais"
+           					android:id="@+teladoenca/ChGIdade36"
+            				android:text="36 anos ou +"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
             				android:layout_weight="1"
@@ -825,8 +911,8 @@
             	
             			/>
         				<CheckBox 
-          				  	android:id="@+teladoenca/ChIdade20"
-            			 	android:text="Menos de 20 anos"
+          				  	android:id="@+teladoenca/ChGIdade20"
+            			 	android:text="- de 20 anos"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
            					android:layout_weight="1"
@@ -843,7 +929,7 @@
         				>
      	    
         				<CheckBox 
-           					android:id="@+teladoenca/ChSangue"
+           					android:id="@+teladoenca/ChGSangue"
             				android:text="Sangramento"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
@@ -852,7 +938,7 @@
             	
             			/>
         				<CheckBox 
-          				  	android:id="@+teladoenca/ChEdema"
+          				  	android:id="@+teladoenca/ChGEdema"
             			 	android:text="Edema"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
@@ -870,7 +956,7 @@
         				>
      	    
         				<CheckBox 
-           					android:id="@+teladoenca/ChDiabetes"
+           					android:id="@+teladoenca/ChGDiabetes"
             				android:text="Diabetes"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
@@ -879,7 +965,7 @@
     
             			/>
         				<CheckBox 
-          				  	android:id="@+teladoenca/ChPressao"
+          				  	android:id="@+teladoenca/ChGPressao"
             			 	android:text="Pressão Alta"
             				android:layout_width="fill_parent"
             				android:layout_height="wrap_content"
@@ -890,8 +976,9 @@
         
     			     </LinearLayout>
 				      
-				 <TextView 
-				        android:text=" Resultado da Gestacão Atual ?????"
+				 <TextView
+				     	android:id="@+teladoenca/TxtGRga" 
+				        android:text=" Resultado da Gestacão Atual:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -901,8 +988,9 @@
 			
 				        /> 
 				       
-				 <TextView 
-				        android:text=" Data da Consulta de Puerbio?????"
+				 <TextView
+				     	android:id="@+teladoenca/TxtGDtPuerbio" 
+				        android:text=" Data da Consulta de Puerbio:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:textSize="15dp"
@@ -911,6 +999,13 @@
 				        android:visibility="invisible"
 		
 				        /> 
+				        
+				 <DatePicker 
+				     android:id="@+teladoenca/DtGDtPuerbio"
+				     android:layout_width="fill_parent"
+				     android:layout_height="wrap_content"
+	                 android:visibility="invisible"	
+				     />
 
                 </LinearLayout>
              
