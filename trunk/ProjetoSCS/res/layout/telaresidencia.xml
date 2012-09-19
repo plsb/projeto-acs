@@ -56,7 +56,24 @@
 			        android:layout_height="45dp"
 			        android:layout_marginBottom="5dp"
 			        />
-		        
+			    
+			    <TextView 
+			        android:text=" Outro-Especificar:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        />
+			    
+			    <EditText 
+			        android:id="@+imovel/EdtTipoCasa"
+			        android:enabled="false"
+			        android:layout_width="fill_parent"
+			        android:layout_height="45dp"
+			        android:layout_marginBottom="5dp"
+			        />
+			    
 			    <TextView 
 			        android:text=" Destino do Lixo:"
 			        android:layout_width="wrap_content"
@@ -172,23 +189,60 @@
 			        	android:layout_height="wrap_content" 
 			     	/>
 	                
-	                <TextView 
-				        android:text=" CEP:"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:textSize="15dp"
-				        android:textColor="#000"
-				        android:layout_marginBottom="3dp"
-				        />
+	                <LinearLayout 
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+				    >
 	                
-	                <EditText 
-			         	android:id="@+imovel/edtCEP"  
-			         	android:hint="Digite aqui"
-			         	android:inputType="number" 
-			         	android:layout_marginBottom="5dp"
-			         	android:layout_width="fill_parent"
-			        	android:layout_height="wrap_content" 
-			     	/>
+		                <TextView 
+					        android:text=" CEP:"
+					        android:layout_width="209dp"
+					        android:layout_height="wrap_content"
+					        android:textSize="15dp"
+					        android:textColor="#000"
+					        android:layout_marginBottom="3dp"
+					        />
+		                
+		                <TextView 
+						    android:text=" Número:"
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:textSize="15dp"
+						    android:textColor="#000"
+						    android:layout_marginBottom="3dp"
+						    android:layout_marginLeft="9dp"
+						/>
+	                
+	                </LinearLayout>
+	                
+	                <LinearLayout 
+					    android:orientation="horizontal"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+				    >
+	                
+		                <EditText 
+				         	android:id="@+imovel/edtCEP"  
+				         	android:hint="Digite aqui"
+				         	android:inputType="number" 
+				         	android:enabled="false"
+				         	android:layout_marginBottom="5dp"
+				         	android:layout_width="209dp"
+				        	android:layout_height="wrap_content" 
+				     	/>
+		                
+		                <EditText 
+					     	android:id="@+imovel/edtNumero"  
+					      	android:hint="123"
+					       	android:inputType="number" 
+					       	android:layout_marginBottom="5dp"
+					       	android:layout_marginLeft="9dp"
+					       	android:layout_width="100dp"
+					      	android:layout_height="wrap_content" 
+					    />
+	                
+	                </LinearLayout>
 	               
 	                <TextView 
 				        android:text=" Município:"
@@ -204,61 +258,7 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_marginBottom="5dp"
-				    />
-	                
-	                <LinearLayout 
-					    android:orientation="horizontal"
-					    android:layout_width="fill_parent"
-					    android:layout_height="wrap_content"
-				    >
-	                
-		               <TextView 
-						    android:text=" Número:"
-						    android:layout_width="wrap_content"
-						    android:layout_height="wrap_content"
-						    android:textSize="15dp"
-						    android:textColor="#000"
-						    android:layout_marginBottom="3dp"
-						/>
-		               
-		               <TextView 
-						    android:text=" UF:"
-						    android:layout_width="wrap_content"
-						    android:layout_height="wrap_content"
-						    android:layout_marginLeft="45dp"
-						    android:textSize="15dp"
-						    android:textColor="#000"
-						    android:layout_marginBottom="3dp"
-						/>
-		               
-		            </LinearLayout>	
-		             
-	                <LinearLayout 
-					    android:orientation="horizontal"
-					    android:layout_width="fill_parent"
-					    android:layout_height="wrap_content"
-				    >
-			                
-			            <EditText 
-					     	android:id="@+imovel/edtNumero"  
-					      	android:hint="123"
-					       	android:inputType="number" 
-					       	android:layout_marginBottom="5dp"
-					       	android:layout_width="100dp"
-					      	android:layout_height="wrap_content" 
-					    />	    	                
-			                
-			            <Spinner 
-					        android:id="@+imovel/SpUF"
-					        android:layout_width="100dp"
-					        android:layout_marginLeft="9dp"
-					        android:layout_height="49dp"
-					        android:layout_marginBottom="5dp"
-					    />		            
-				    
-		            </LinearLayout>	   
-		            
-	                
+				    />	               	            
 	                
 	                <LinearLayout 
 					    android:orientation="horizontal"
@@ -307,6 +307,7 @@
 					     	android:id="@+imovel/edtSegTerritorial"  
 					      	android:hint="Nº"
 					       	android:inputType="number" 
+					       	android:enabled="false"
 					       	android:layout_marginBottom="5dp"
 					       	android:layout_width="100dp"
 					      	android:layout_height="wrap_content" 
@@ -316,6 +317,7 @@
 					     	android:id="@+imovel/edtArea"  
 					      	android:hint="Nº"
 					       	android:inputType="number" 
+					       	android:enabled="false"
 					       	android:layout_marginBottom="5dp"
 					       	android:layout_marginLeft="9dp"
 					       	android:layout_width="100dp"
@@ -326,16 +328,14 @@
 					     	android:id="@+imovel/edtMicroArea"  
 					      	android:hint="Nº"
 					       	android:inputType="number" 
+					       	android:enabled="false"					       	
 					       	android:layout_marginBottom="5dp"
 					       	android:layout_marginLeft="9dp"
 					       	android:layout_width="100dp"
 					      	android:layout_height="wrap_content" 
 					    />	
 				    
-		            </LinearLayout>	 
-	                
-	                
-	                		                 
+		            </LinearLayout>	      
 	                
 	            </LinearLayout>
 	                
@@ -366,6 +366,23 @@
 				        android:id="@+imovel/SpCasoDoente"
 				        android:layout_width="fill_parent"
 				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Outro-Especificar:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <EditText 
+				        android:id="@+imovel/EdtCasoDoente"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
 				        android:layout_marginBottom="5dp"
 				        />
 				    

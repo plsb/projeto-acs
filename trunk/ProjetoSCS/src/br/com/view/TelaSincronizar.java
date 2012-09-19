@@ -18,6 +18,7 @@ import org.jdom2.output.XMLOutputter;
 import br.com.control.Banco;
 import br.com.control.CarregarXML;
 import br.com.control.ExportarXML;
+import br.com.control.ImportarXML;
 import br.com.control.Mensagem;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
@@ -52,7 +53,10 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		
 		if (v==btnImportarXmls){	
 			
-			String msg = "";
+			Intent i = new Intent(this, ImportarXML.class);
+			startActivity(i);
+			
+			/*String msg = "";
 			
 			xml = new CarregarXML();	
 			
@@ -140,7 +144,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 				e.printStackTrace();
 			}
 			
-			Mensagem.exibeMessagem(this, "Importados:", msg);	
+			Mensagem.exibeMessagem(this, "Importados:", msg);	*/
 			
 		}//Fim do Onclick do Botão Importar Usuário
 				
@@ -155,22 +159,21 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		}
 		
 		if (v == btnExportarVisitas){
-			ExportarXML e = new ExportarXML();
-			if (e.ExportarResidencias(this)==true){
-				Mensagem.exibeMessagem(this, "Exportação", "Exportação Realizada!");
-			}
-		}
+			Intent i = new Intent(this, ExportarXML.class);
+			ExportarXML.Residencias = true;
+			startActivity(i);			
+		}			
 		
 	}//Fim do Método onClick
 	
 	public void CarregarObjetos(){
-		btnImportarXmls = (Button) findViewById(R.telaSincrozinar.btnImportarXmls);
-		btnImportarXmls.setOnClickListener(this);
+		btnImportarXmls      = (Button) findViewById(R.telaSincrozinar.btnImportarXmls);
 		btnVisulizarUsuarios = (Button) findViewById(R.telaSincrozinar.btnVisualizarUsuarios);
-		btnVisulizarUsuarios.setOnClickListener(this);
-		btnVoltar          = (Button) findViewById(R.telaSincrozinar.btnVoltar);
-		btnVoltar.setOnClickListener(this);
-		btnExportarVisitas = (Button) findViewById(R.telaSincrozinar.btnExportarXML);
+		btnVoltar            = (Button) findViewById(R.telaSincrozinar.btnVoltar);
+		btnExportarVisitas   = (Button) findViewById(R.telaSincrozinar.btnExportarXML);
+		btnImportarXmls.setOnClickListener(this);		
+		btnVisulizarUsuarios.setOnClickListener(this);		
+		btnVoltar.setOnClickListener(this);		
 		btnExportarVisitas.setOnClickListener(this);
 	}
 

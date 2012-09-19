@@ -11,11 +11,38 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
 
+import br.com.scs.R;
+
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.os.Bundle;
+import android.os.Handler;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
-public class ExportarXML {
+public class ExportarXML extends Activity {
+	
+	public static boolean Residencias = false;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.geraxml);
+		
+		if (Residencias==true){
+			if (ExportarResidencias(this)==true){
+				Mensagem.exibeMessagem(this,"SCS","Exportação Realizada!",2000);
+				
+					new Handler().postDelayed(new Runnable() {
+					
+						public void run() {
+							finish();
+						}
+					}, 2000);
+			}
+		}
+	}	
 	
 	public boolean ExportarResidencias(Context c){
 		
@@ -32,7 +59,7 @@ public class ExportarXML {
 				do{	        	 
 					Element DADOS       	 = new Element("DADOS");				
 					Element ID           	 = new Element("ID");
-					Element UF           	 = new Element("UF");
+					//Element UF           	 = new Element("UF");
 					Element ENDERECO     	 = new Element("ENDERECO");
 					Element NUMERO       	 = new Element("NUMERO");
 					Element BAIRRO       	 = new Element("BAIRRO");
@@ -54,7 +81,7 @@ public class ExportarXML {
 					Element MEIO_TRANSPORTE  = new Element("MEIOTRANSPORTE");
 					
 					DADOS.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));
-					DADOS.addContent(UF.setText(csr.getString(csr.getColumnIndex("UF")).toString()));
+					//DADOS.addContent(UF.setText(csr.getString(csr.getColumnIndex("UF")).toString()));
 					DADOS.addContent(ENDERECO.setText(csr.getString(csr.getColumnIndex("ENDERECO")).toString()));
 					DADOS.addContent(NUMERO.setText(csr.getString(csr.getColumnIndex("NUMERO")).toString()));
 					DADOS.addContent(BAIRRO.setText(csr.getString(csr.getColumnIndex("BAIRRO")).toString()));
@@ -81,9 +108,13 @@ public class ExportarXML {
 				Document doc = new Document();
 				doc.setRootElement(RESIDENCIA);	
 				
+				TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+				
+				
+				//numSerial = numSerial.trim();
 				try {  
 		            Writer out = new BufferedWriter(new OutputStreamWriter(  
-		                new FileOutputStream("/sdcard/residencias.xml"), "UTF8"));  
+		                new FileOutputStream("/sdcard/residencias_"+telephonyManager.getDeviceId()+".xml"), "UTF8"));  
 		              
 		            XMLOutputter xout = new XMLOutputter();  
 		            xout.output(doc,out);  

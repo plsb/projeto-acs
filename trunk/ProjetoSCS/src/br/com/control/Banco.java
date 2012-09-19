@@ -24,18 +24,41 @@ public class Banco{
 		private final Context ctx;
 		
 		public static final String[] _sqlTabelaUsuario =  new String[] {"CREATE TABLE if not exists usuarios (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-																		"USU_MATRICULA text NOT NULL, "+
-																		"USU_NOME text NOT NULL,      "+
-																		"USU_LOGIN text NOT NULL,     "+
-																		"USU_SENHA text NOT NULL,     "+
-																		"USU_ATIVO text NOT NULL,     "+
-																		"USU_FL_ADMIN integer NOT NULL);"};
+																		"USU_MATRICULA text NOT NULL,      "+
+																		"USU_NOME text NOT NULL,           "+
+																		"USU_LOGIN text NOT NULL,          "+
+																		"USU_SENHA text NOT NULL,      	   "+
+																		"USU_COORDENADOR integer NOT NULL, "+
+																		"USU_ATIVO text NOT NULL,          "+
+																		"USU_FL_ADMIN integer NOT NULL);   "};
+		
+		public static final String[] _sqlTabelaBairros =  new String[] {"CREATE TABLE if not exists bairros (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	    "COD_RET integer NOT NULL, 		"+
+																	    "CEP text, 						"+
+																	    "DESCRICAO text NOT NULL    );	"};
+		
+		public static final String[] _sqlTabelaSegmentos =  new String[] {"CREATE TABLE if not exists segmentos (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	      "COD_RET integer NOT NULL, 		"+
+																	      "COD_BAIRRO integer NOT NULL, 	"+	
+																	      "DESCRICAO text NOT NULL    );	"};
+		
+		public static final String[] _sqlTabelaAreas =  new String[] {"CREATE TABLE if not exists area (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	  "COD_RET integer NOT NULL, 		"+
+																      "COD_AREA integer NOT NULL, 		"+
+																      "COD_SEGMENTO integer NOT NULL, 	"+
+																      "COD_AGENTE integer NOT NULL );	"};
+		
+		public static final String[] _sqlTabelaMicroAreas =  new String[] {"CREATE TABLE if not exists microarea (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	 	   "COD_RET integer NOT NULL, 		"+
+																	 	   "DESCRICAO text NOT NULL, 		"+
+																	 	   "COD_RUA integer NOT NULL, 		"+
+																	 	   "COD_AGENTE integer NOT NULL, 	"+
+																	 	   "COD_AREA integer NOT NULL );	"};
 		
 		public static final String[] _sqlTabelaRuas =  new String[] {"CREATE TABLE if not exists ruas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-																	 "COD_RET integer NOT NULL, 	"+
-																	 "DESCRICAO text NOT NULL,      "+
-																	 "BAIRRO text NOT NULL,         "+
-																	 "USU_VINCULADO text NOT NULL );"};
+																	 "COD_RET integer NOT NULL, 		"+
+																	 "DESCRICAO text NOT NULL,      	"+																																	
+																	 "USU_VINCULADO text NOT NULL );	"};
 		
 		public static final String[] _sqlTabelaSessao =  new String[] {"CREATE TABLE if not exists sessao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	   "USU_MATRICULA text,  	   "+
@@ -67,8 +90,7 @@ public class Banco{
 																		   "FL_EPILETICO TEXT,   "+
 																		   "DATA_ATUALIZACAO TEXT);"};
 		
-		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+
-																		   "UF TEXT NOT NULL, 		     "+
+		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
 																		   "ENDERECO TEXT NOT NULL, 	 "+
 																		   "NUMERO TEXT NOT NULL, 		 "+
 																		   "BAIRRO TEXT NOT NULL, 		 "+
@@ -80,11 +102,13 @@ public class Banco{
 																		   "COD_FAMILIA TEXT,   		 "+
 																		   "DATA_CADASTRO TEXT NOT NULL, "+
 																		   "TIPO_CASA TEXT, 			 "+
+																		   "TIPO_CASA_OUTROS TEXT, 		 "+
 																		   "DEST_LIXO TEXT, 			 "+
 																		   "TRAT_AGUA TEXT,				 "+
 																		   "ABAST_AGUA TEXT,			 "+
 																		   "DEST_FEZES TEXT,			 "+
 																		   "CASO_DOENCA TEXT,			 "+
+																		   "CASO_DOENCA_OUTROS TEXT,	 "+
 																		   "MEIO_COMUNICACAO TEXT,		 "+
 																		   "PART_GRUPOS TEXT,		   	 "+
 																		   "MEIO_TRANSPORTE TEXT);	     "};

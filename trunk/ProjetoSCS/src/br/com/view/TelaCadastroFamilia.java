@@ -155,7 +155,7 @@ private void setOpcoesEnderecos(String pEnd){
 			csr.moveToFirst();
 			if (csr.getCount()>0){
 				for (int i = 0;i < csr.getCount(); i++){
-					Ruas.add(csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+					Ruas.add(csr.getString(csr.getColumnIndex("_ID")).toString()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
 					csr.moveToNext();
 				}
 			}			
