@@ -2,7 +2,7 @@ package br.com.control;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
+import br.com.scs.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 
@@ -28,10 +28,12 @@ public class Mensagem {
 		mensagem.show();
 	}	
 	
-	public static void exibeMessagem(Activity act,String Texto,int tempo)
+	public static void exibeMessagem(Activity act,String Titulo,String Texto,int tempo)
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(act);
+		builder.setTitle(Titulo);
 		builder.setMessage(Texto);
+		builder.setIcon(R.drawable.scs_icone);
 		builder.setCancelable(true);
 		
 		final AlertDialog dlg = builder.create();		

@@ -3,6 +3,7 @@ package br.com.view;
 import java.util.ArrayList;
 
 import br.com.control.Banco;
+import br.com.control.Mensagem;
 import br.com.control.ResidenciaAux;
 import br.com.control.Sessao;
 import br.com.scs.R;
@@ -24,40 +25,37 @@ import android.widget.TabHost.TabSpec;
 public class TelaResidencia extends Activity {
 	
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
+	EditText EdtTipoCasa; //TAB2
+    EditText EdtCasoDoenca; //TAB3
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
-    Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3
+    Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3    
     
     public static int ID = 0;
     
     Banco bd = null;
     Cursor c = null;
-    
+    private static String codUser;    
 	
 	ArrayList<String> TipoCasa			  = new ArrayList<String>();
 	ArrayList<String> DestinoLixo		  = new ArrayList<String>();
 	ArrayList<String> TratamentoAgua	  = new ArrayList<String>();
 	ArrayList<String> DestFezesUrina	  = new ArrayList<String>();
 	ArrayList<String> AbastAgua			  = new ArrayList<String>();
-	ArrayList<String> UF				  = new ArrayList<String>();
+	//ArrayList<String> UF				  = new ArrayList<String>();
 	ArrayList<String> Municipio			  = new ArrayList<String>();
 	ArrayList<String> CasoDoente		  = new ArrayList<String>();
 	ArrayList<String> MeiosComunicacao	  = new ArrayList<String>();
 	ArrayList<String> GruposComunitarios  = new ArrayList<String>();
 	ArrayList<String> TransporteUtilizado = new ArrayList<String>();
 	ArrayList<String> Enderecos           = new ArrayList<String>();
-	ArrayList<String> Bairros             = new ArrayList<String>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState); 
-		setContentView(R.layout.telaresidencia);
+		setContentView(R.layout.telaresidencia);	
 		
-		//Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
-		//int largura = display.getWidth();  
-        //int altura  = display.getHeight(); 
-		
-		SpUF                  = (Spinner)  findViewById(R.imovel.SpUF);
+		//SpUF                  = (Spinner)  findViewById(R.imovel.SpUF);
 		SpMunicipio           = (Spinner)  findViewById(R.imovel.SpMunicipio);
 		SpEndereco            = (Spinner)  findViewById(R.imovel.SpEndereco);
 		Edtbairro 		      = (EditText) findViewById(R.imovel.edtBairro);
@@ -66,6 +64,8 @@ public class TelaResidencia extends Activity {
 		EdtSegTerritorial     = (EditText) findViewById(R.imovel.edtSegTerritorial);
 		EdtArea			      = (EditText) findViewById(R.imovel.edtArea);
 		EdtMicArea			  = (EditText) findViewById(R.imovel.edtMicroArea);
+		EdtTipoCasa           = (EditText) findViewById(R.imovel.EdtTipoCasa);
+		EdtCasoDoenca		  = (EditText) findViewById(R.imovel.EdtCasoDoente);	
 		SpTipoCasa   	      = (Spinner)  findViewById(R.imovel.SpTipoCasa);
 		SpDestinoLixo    	  = (Spinner)  findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	  = (Spinner)  findViewById(R.imovel.SpTratamentoAgua);
@@ -74,7 +74,7 @@ public class TelaResidencia extends Activity {
 		SpCasoDoente 		  = (Spinner)  findViewById(R.imovel.SpCasoDoente);
 	    SpMeiosComunicacao 	  = (Spinner)  findViewById(R.imovel.SpMeioComunicacao);
 	    SpGruposComunitarios  = (Spinner)  findViewById(R.imovel.SpGrupoComunitario);
-	    SpTransporteUtilizado = (Spinner)  findViewById(R.imovel.SpMeioTransporte);	
+	    SpTransporteUtilizado = (Spinner)  findViewById(R.imovel.SpMeioTransporte);		   
 		
 		TabHost th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
@@ -84,7 +84,7 @@ public class TelaResidencia extends Activity {
         ts = th.newTabSpec("tag1");
         ts.setContent(R.imovel.tabCadastroResidencia);
         ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
-        setOpcoesSpinnersTab1("","","","");
+        setOpcoesSpinnersTab1("","","");
         PreencheCampos(String.valueOf(ID), 1);
         th.addTab(ts);
         
@@ -110,14 +110,13 @@ public class TelaResidencia extends Activity {
 	public void PreencheCampos(String pID,int pTab){
 		try{
 			try{
-				bd = new Banco(this);
+				bd = new Banco(this); 
 				bd.open();
 				c = bd.consulta("residencia", new String[]{"*"},"_ID = "+pID, null, null, null, null, null);
 				c.moveToFirst();
 				if (c.getCount() > 0){
 					if (pTab == 1){
-						setOpcoesSpinnersTab1(c.getString(c.getColumnIndex("UF")).toString(),
-											  c.getString(c.getColumnIndex("MUNICIPIO")).toString(), 
+						setOpcoesSpinnersTab1(c.getString(c.getColumnIndex("MUNICIPIO")).toString(), 
 											  c.getString(c.getColumnIndex("ENDERECO")).toString(), 
 											  c.getString(c.getColumnIndex("BAIRRO")).toString());
 						EdtCep.setText(c.getString(c.getColumnIndex("CEP")).toString());
@@ -203,8 +202,8 @@ public class TelaResidencia extends Activity {
 		return retorno;
 	}
 	
-	private void setOpcoesSpinnersTab1(String pUF,String pCidade, String pEndereco,String pBairro){
-		setOpcoesUF(pUF);
+	private void setOpcoesSpinnersTab1(String pCidade, String pEndereco,String pBairro){
+		//setOpcoesUF(pUF);
 		setOpcoesMunicipios(pCidade);
 		setOpcoesEnderecos(pEndereco, pBairro);
 	}
@@ -224,25 +223,23 @@ public class TelaResidencia extends Activity {
 		setOpcoesTransporteUtilizado(pTransporteUtilizado);
 	}
 	
-	private void setOpcoesUF(String pUF){
+	/**private void setOpcoesUF(String pUF){
 		UF.clear();
 		if (pUF.length()>0){
 			UF.add(pUF);
 		}
 		UF.add("CE");		
 		PreencheSpinner(SpUF, UF);
-	}
+	}**/
 	
 	private void setOpcoesEnderecos(String pEnd,String pBairro){
 		Enderecos.clear();
-		Bairros.clear();
 		if ((pEnd.length()>0)&&(pBairro.length()>0)){
 			Enderecos.add(pEnd);
-			Bairros.add(pBairro);
 		}
 		Banco bd = null;
 		Cursor csr = null;
-		String codUser = Sessao.SESSAO.getMatriculaUsuario(this);
+		codUser = Sessao.SESSAO.getMatriculaUsuario(this);
 		try{
 			try{
 				bd = new Banco(this);
@@ -250,8 +247,8 @@ public class TelaResidencia extends Activity {
 				csr = bd.consulta("ruas", new String[]{"*"}, "USU_VINCULADO = ? ", new String[] {codUser}, null, null, null, null);
 				csr.moveToFirst();
 				for (int i = 0;i < csr.getCount(); i++){
-					Enderecos.add(csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
-					Bairros.add(csr.getString(csr.getColumnIndex("BAIRRO")).toString());
+					Enderecos.add(csr.getString(csr.getColumnIndex("COD_RET")).toString()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+					//Bairros.add(csr.getString(csr.getColumnIndex("BAIRRO")).toString());
 					csr.moveToNext();
 				}
 				
@@ -313,6 +310,7 @@ public class TelaResidencia extends Activity {
 		}
 		TransporteUtilizado.add("Selecione");
 		TransporteUtilizado.add("Carro Proprio");
+		TransporteUtilizado.add("Carroca");
 		TransporteUtilizado.add("Taxi");
 		TransporteUtilizado.add("Onibus");
 		TransporteUtilizado.add("Metro");
@@ -400,26 +398,26 @@ public class TelaResidencia extends Activity {
 	
 	public void PreparaInsercao(){
 		ResidenciaAux r = new ResidenciaAux();
-		r.UF			   = SpUF.getItemAtPosition(SpUF.getSelectedItemPosition()).toString();
-		r.ENDERECO		   = SpEndereco.getItemAtPosition(SpEndereco.getSelectedItemPosition()).toString();
-		r.NUMERO		   = EdtNumero.getText().toString();
-		r.BAIRRO		   = Edtbairro.getText().toString();
-		r.CEP			   = EdtCep.getText().toString();
-		r.MUNICIPIO		   = SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString();
-		r.SEG_TERRIT	   = EdtSegTerritorial.getText().toString();
-		r.AREA			   = EdtArea.getText().toString();
-		r.MICROAREA		   = EdtMicArea.getText().toString();
-		r.COD_FAMILIA	   = "";
-		r.DATA_CADASTRO	   = "";
-		r.TIPO_CASA		   = SpTipoCasa.getItemAtPosition(SpTipoCasa.getSelectedItemPosition()).toString();
-		r.DEST_LIXO		   = SpDestinoLixo.getItemAtPosition(SpDestinoLixo.getSelectedItemPosition()).toString();
-		r.TRAT_AGUA 	   = SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString();
-		r.ABAST_AGUA 	   = SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString();
-		r.DEST_FEZES	   = SpDestFezesUrina.getItemAtPosition(SpDestFezesUrina.getSelectedItemPosition()).toString();
-		r.CASO_DOENCA	   = SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString();
-		r.MEIO_COMUNICACAO = SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString();
-		r.PART_GRUPOS	   = SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString();
-		r.MEIO_TRANSPORTE  = SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString();
+		r.ENDERECO		  	 = SpEndereco.getItemAtPosition(SpEndereco.getSelectedItemPosition()).toString();
+		r.NUMERO		  	 = EdtNumero.getText().toString();
+		r.BAIRRO		  	 = Edtbairro.getText().toString();
+		r.CEP			  	 = EdtCep.getText().toString();
+		r.MUNICIPIO		  	 = SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString();
+		r.SEG_TERRIT	  	 = EdtSegTerritorial.getText().toString();
+		r.AREA			  	 = EdtArea.getText().toString();
+		r.MICROAREA		  	 = EdtMicArea.getText().toString();
+		r.COD_FAMILIA	  	 = "";
+		r.TIPO_CASA		  	 = SpTipoCasa.getItemAtPosition(SpTipoCasa.getSelectedItemPosition()).toString();
+		r.DEST_LIXO		  	 = SpDestinoLixo.getItemAtPosition(SpDestinoLixo.getSelectedItemPosition()).toString();
+		r.TRAT_AGUA 	  	 = SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString();
+		r.ABAST_AGUA 	 	 = SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString();
+		r.DEST_FEZES	  	 = SpDestFezesUrina.getItemAtPosition(SpDestFezesUrina.getSelectedItemPosition()).toString();
+		r.CASO_DOENCA	   	 = SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString();
+		r.MEIO_COMUNICACAO   = SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString();
+		r.PART_GRUPOS	     = SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString();
+		r.MEIO_TRANSPORTE    = SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString();
+		r.TIPO_CASA_OUTROS   = EdtTipoCasa.getText().toString();
+		r.CASO_DOENCA_OUTROS = EdtCasoDoenca.getText().toString();
 		
 		if (this.ID == 0){		
 			if (r.Inserir(TelaResidencia.this)==true){
@@ -429,7 +427,7 @@ public class TelaResidencia extends Activity {
 				Toast.makeText(this, "Erro ao Gravar!", Toast.LENGTH_LONG).show();
 			}
 		}else{
-			if (r.Atualizar(TelaResidencia.this, this.ID)==true){
+			if (r.Atualizar(TelaResidencia.this, this.ID) == true){
 				Toast.makeText(this, "Sucesso ao Atulizar!", Toast.LENGTH_LONG).show();
 				ClearID();
 				finish();
@@ -461,13 +459,29 @@ public class TelaResidencia extends Activity {
 		s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
-				//pega nome pela posição
-				//String nome = parent.getItemAtPosition(posicao).toString();
-				//imprime um Toast na tela com o nome que foi selecionado
-				//Toast.makeText(this, "Nome Selecionado: " + nome, Toast.LENGTH_LONG).show();
 				
 				if (s == SpEndereco){
-					Edtbairro.setText(Bairros.get(posicao));
+					if (SpEndereco.getItemAtPosition(posicao).toString().trim().length()>0){
+						String codRua = SpEndereco.getItemAtPosition(posicao).toString().substring(0,
+										SpEndereco.getItemAtPosition(posicao).toString().indexOf("-"));
+						PreencheMicroarea(codUser.trim(), codRua.trim());
+					}
+				}
+				
+				if (s == SpTipoCasa){
+					if (SpTipoCasa.getItemAtPosition(posicao).toString().equals("Outro")){						
+						EdtTipoCasa.setEnabled(true); 				
+					}else{
+						EdtTipoCasa.setEnabled(false); 
+					}
+				}
+				
+				if (s == SpCasoDoente){
+					if (SpCasoDoente.getItemAtPosition(posicao).toString().equals("Outro")){						
+						EdtCasoDoenca.setEnabled(true); 				
+					}else{
+						EdtCasoDoenca.setEnabled(false); 
+					}
 				}
 				
 			}
@@ -477,6 +491,38 @@ public class TelaResidencia extends Activity {
 			}
 			
 		});
+	}
+	
+	public void PreencheMicroarea(String _codUser, String _codRua){
+		Banco bd = null;
+		Cursor csr = null;
+		bd = new Banco(this);		
+		
+		//P R E E N C H E   C A M P O S
+		try{
+			try{				
+				bd.open();
+				csr = bd.consulta("SEGMENTOS S, BAIRROS B,MICROAREA M, AREA A", new String[]{"B.DESCRICAO,B.CEP,M.COD_RET AS COD_MICROAREA,A.COD_RET AS COD_AREA,A.COD_SEGMENTO"}, 
+								  "M.COD_AREA = A.COD_RET AND A.COD_SEGMENTO = S.COD_RET AND S.COD_BAIRRO = B.COD_RET AND M.COD_RUA = ? AND M.COD_AGENTE = ?", 
+								  new String[] {_codRua,_codUser}, null, null, null, null);
+				csr.moveToFirst();
+				Edtbairro.setText(csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+				EdtCep.setText(csr.getString(csr.getColumnIndex("CEP")).toString());
+				EdtArea.setText(csr.getString(csr.getColumnIndex("COD_AREA")).toString());	
+				EdtSegTerritorial.setText(csr.getString(csr.getColumnIndex("COD_SEGMENTO")).toString());
+				EdtMicArea.setText(csr.getString(csr.getColumnIndex("COD_MICROAREA")).toString());
+			}catch(Exception e){
+				Log.i("MétodoPreencheMicroArea", e.getMessage());
+			}
+		}finally{
+			if (csr != null){
+				csr.close();
+			}
+			if (bd != null){
+				bd.fechaBanco();
+			}
+		}
+		
 	}
 	
 	

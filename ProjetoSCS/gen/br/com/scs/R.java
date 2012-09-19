@@ -120,45 +120,47 @@ public final class R {
         public static final int textView1=0x7f080000;
     }
     public static final class imovel {
-        public static final int SpAbastecimentoAgua=0x7f0f0004;
+        public static final int EdtCasoDoente=0x7f0f0013;
+        public static final int EdtTipoCasa=0x7f0f0003;
+        public static final int SpAbastecimentoAgua=0x7f0f0005;
         public static final int SpCasoDoente=0x7f0f0012;
-        public static final int SpDestFezesUrina=0x7f0f0006;
-        public static final int SpDestinoLixo=0x7f0f0003;
-        public static final int SpEndereco=0x7f0f0008;
-        public static final int SpGrupoComunitario=0x7f0f0014;
-        public static final int SpMeioComunicacao=0x7f0f0013;
-        public static final int SpMeioTransporte=0x7f0f0015;
-        public static final int SpMunicipio=0x7f0f000b;
+        public static final int SpDestFezesUrina=0x7f0f0007;
+        public static final int SpDestinoLixo=0x7f0f0004;
+        public static final int SpEndereco=0x7f0f0009;
+        public static final int SpGrupoComunitario=0x7f0f0015;
+        public static final int SpMeioComunicacao=0x7f0f0014;
+        public static final int SpMeioTransporte=0x7f0f0016;
+        public static final int SpMunicipio=0x7f0f000d;
         public static final int SpTipoCasa=0x7f0f0002;
-        public static final int SpTratamentoAgua=0x7f0f0005;
-        public static final int SpUF=0x7f0f000d;
+        public static final int SpTratamentoAgua=0x7f0f0006;
         public static final int edtArea=0x7f0f000f;
-        public static final int edtBairro=0x7f0f0009;
-        public static final int edtCEP=0x7f0f000a;
+        public static final int edtBairro=0x7f0f000a;
+        public static final int edtCEP=0x7f0f000b;
         public static final int edtMicroArea=0x7f0f0010;
         public static final int edtNumero=0x7f0f000c;
         public static final int edtSegTerritorial=0x7f0f000e;
-        public static final int tabCadastroResidencia=0x7f0f0007;
+        public static final int tabCadastroResidencia=0x7f0f0008;
         public static final int tabMoradiaSaneamento=0x7f0f0001;
         public static final int tabOutras=0x7f0f0011;
         public static final int tabhost=0x7f0f0000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int lista_residencias=0x7f030001;
-        public static final int listaresidente=0x7f030002;
-        public static final int listax=0x7f030003;
-        public static final int telaacompanhamento=0x7f030004;
-        public static final int telaagendamento=0x7f030005;
-        public static final int telacadastrofamilia=0x7f030006;
-        public static final int teladoenca=0x7f030007;
-        public static final int telafamilia=0x7f030008;
-        public static final int telainfo=0x7f030009;
-        public static final int telaprinc=0x7f03000a;
-        public static final int telaresidencia=0x7f03000b;
-        public static final int telasincronizar=0x7f03000c;
-        public static final int telasobre=0x7f03000d;
-        public static final int telausuario=0x7f03000e;
+        public static final int geraxml=0x7f030001;
+        public static final int lista_residencias=0x7f030002;
+        public static final int listaresidente=0x7f030003;
+        public static final int listax=0x7f030004;
+        public static final int telaacompanhamento=0x7f030005;
+        public static final int telaagendamento=0x7f030006;
+        public static final int telacadastrofamilia=0x7f030007;
+        public static final int teladoenca=0x7f030008;
+        public static final int telafamilia=0x7f030009;
+        public static final int telainfo=0x7f03000a;
+        public static final int telaprinc=0x7f03000b;
+        public static final int telaresidencia=0x7f03000c;
+        public static final int telasincronizar=0x7f03000d;
+        public static final int telasobre=0x7f03000e;
+        public static final int telausuario=0x7f03000f;
     }
     public static final class listaResidente {
         public static final int btnFiltrar=0x7f0a0003;
@@ -184,6 +186,7 @@ public final class R {
     }
     public static final class style {
         public static final int AppTheme=0x7f060000;
+        public static final int Theme_Transparent=0x7f060001;
     }
     public static final class telaFamilia {
         public static final int btnEditar=0x7f0d0001;

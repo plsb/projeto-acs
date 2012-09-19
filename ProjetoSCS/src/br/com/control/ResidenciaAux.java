@@ -33,6 +33,8 @@ public class ResidenciaAux {
 	public String MEIO_COMUNICACAO;
 	public String PART_GRUPOS;
 	public String MEIO_TRANSPORTE;
+	public String TIPO_CASA_OUTROS;
+	public String CASO_DOENCA_OUTROS;
 	
 	
 	public boolean Inserir(Context contexto){
@@ -40,7 +42,7 @@ public class ResidenciaAux {
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
 			
-			c.put("UF", UF);
+			//c.put("UF", UF);
 			c.put("ENDERECO", ENDERECO);
 			c.put("NUMERO", NUMERO);
 			c.put("BAIRRO", BAIRRO);
@@ -59,6 +61,8 @@ public class ResidenciaAux {
 			c.put("MEIO_COMUNICACAO", MEIO_COMUNICACAO);
 			c.put("PART_GRUPOS", PART_GRUPOS);
 			c.put("MEIO_TRANSPORTE", MEIO_TRANSPORTE);
+			c.put("TIPO_CASA_OUTROS", TIPO_CASA_OUTROS);
+			c.put("CASO_DOENCA_OUTROS", CASO_DOENCA_OUTROS);
 			c.put("DATA_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.inserirRegistro("residencia", c);
@@ -75,7 +79,7 @@ public class ResidenciaAux {
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
 			
-			c.put("UF", UF);
+			//c.put("UF", UF);
 			c.put("ENDERECO", ENDERECO);
 			c.put("NUMERO", NUMERO);
 			c.put("BAIRRO", BAIRRO);
@@ -106,8 +110,7 @@ public class ResidenciaAux {
 		}
 	}
 	
-	public void Limpar(){
-		UF = "";
+	public void Limpar(){	
 		ENDERECO = "";
 		NUMERO = "";
 		BAIRRO = "";
