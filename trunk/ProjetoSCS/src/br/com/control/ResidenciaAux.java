@@ -35,6 +35,8 @@ public class ResidenciaAux {
 	public String MEIO_TRANSPORTE;
 	public String TIPO_CASA_OUTROS;
 	public String CASO_DOENCA_OUTROS;
+	//public String COD_BAIRRO;
+	//public String COD_ENDERECO;
 	
 	
 	public boolean Inserir(Context contexto){
@@ -43,9 +45,9 @@ public class ResidenciaAux {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
 			
 			//c.put("UF", UF);
-			c.put("ENDERECO", ENDERECO);
-			c.put("NUMERO", NUMERO);
-			c.put("BAIRRO", BAIRRO);
+			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
+			c.put("NUMERO", NUMERO.trim());
+			c.put("BAIRRO", BAIRRO.substring(BAIRRO.indexOf("-")+1));
 			c.put("CEP", CEP);
 			c.put("MUNICIPIO", MUNICIPIO);
 			c.put("SEG_TERRIT", SEG_TERRIT);
@@ -63,6 +65,8 @@ public class ResidenciaAux {
 			c.put("MEIO_TRANSPORTE", MEIO_TRANSPORTE);
 			c.put("TIPO_CASA_OUTROS", TIPO_CASA_OUTROS);
 			c.put("CASO_DOENCA_OUTROS", CASO_DOENCA_OUTROS);
+			c.put("COD_BAIRRO", BAIRRO.substring(0,BAIRRO.indexOf("-")));
+			c.put("COD_ENDERECO", ENDERECO.substring(0,ENDERECO.indexOf("-")));
 			c.put("DATA_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.inserirRegistro("residencia", c);
@@ -80,9 +84,9 @@ public class ResidenciaAux {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
 			
 			//c.put("UF", UF);
-			c.put("ENDERECO", ENDERECO);
-			c.put("NUMERO", NUMERO);
-			c.put("BAIRRO", BAIRRO);
+			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
+			c.put("NUMERO", NUMERO.trim());
+			c.put("BAIRRO", BAIRRO.substring(BAIRRO.indexOf("-")+1));
 			c.put("CEP", CEP);
 			c.put("MUNICIPIO", MUNICIPIO);
 			c.put("SEG_TERRIT", SEG_TERRIT);
@@ -99,6 +103,10 @@ public class ResidenciaAux {
 			c.put("MEIO_COMUNICACAO", MEIO_COMUNICACAO);
 			c.put("PART_GRUPOS", PART_GRUPOS);
 			c.put("MEIO_TRANSPORTE", MEIO_TRANSPORTE);
+			c.put("TIPO_CASA_OUTROS", TIPO_CASA_OUTROS);
+			c.put("CASO_DOENCA_OUTROS", CASO_DOENCA_OUTROS);
+			c.put("COD_BAIRRO", BAIRRO.substring(0,BAIRRO.indexOf("-")));
+			c.put("COD_ENDERECO", ENDERECO.substring(0,ENDERECO.indexOf("-")));
 			c.put("DATA_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.atualizarDadosTabela("residencia",indice, c);
@@ -111,25 +119,27 @@ public class ResidenciaAux {
 	}
 	
 	public void Limpar(){	
-		ENDERECO = "";
-		NUMERO = "";
-		BAIRRO = "";
-		CEP = "";
-		MUNICIPIO = "";
-		SEG_TERRIT = "";
-		AREA = "";
-		MICROAREA = "";
-		COD_FAMILIA = "";
-		DATA_CADASTRO = "";
-		TIPO_CASA = "";
-		DEST_LIXO = "";
-		TRAT_AGUA = "";
-		ABAST_AGUA = "";
-		DEST_FEZES = "";
-		CASO_DOENCA = "";
-		MEIO_COMUNICACAO = "";
-		PART_GRUPOS = "";
-		MEIO_TRANSPORTE = "";
+		ENDERECO		   = "";
+		NUMERO			   = "";
+		BAIRRO			   = "";
+		CEP				   = "";
+		MUNICIPIO		   = "";
+		SEG_TERRIT		   = "";
+		AREA	           = "";
+		MICROAREA		   = "";
+		COD_FAMILIA		   = "";
+		DATA_CADASTRO	   = "";
+		TIPO_CASA		   = "";
+		DEST_LIXO		   = "";
+		TRAT_AGUA		   = "";
+		ABAST_AGUA 		   = "";
+		DEST_FEZES 		   = "";
+		CASO_DOENCA        = "";
+		MEIO_COMUNICACAO   = "";
+		PART_GRUPOS		   = "";
+		MEIO_TRANSPORTE    = "";
+		TIPO_CASA_OUTROS   = "";
+		CASO_DOENCA_OUTROS = "";
 		
 	}
 }

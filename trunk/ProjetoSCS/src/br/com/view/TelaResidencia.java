@@ -3,7 +3,6 @@ package br.com.view;
 import java.util.ArrayList;
 
 import br.com.control.Banco;
-import br.com.control.Mensagem;
 import br.com.control.ResidenciaAux;
 import br.com.control.Sessao;
 import br.com.scs.R;
@@ -14,15 +13,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
-public class TelaResidencia extends Activity {
+public class TelaResidencia extends Activity implements OnClickListener {
 	
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
 	EditText EdtTipoCasa; //TAB2
@@ -30,6 +31,8 @@ public class TelaResidencia extends Activity {
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3    
+    
+    Button btnVoltar, btnSalvar;
     
     public static int ID = 0;
     
@@ -74,7 +77,11 @@ public class TelaResidencia extends Activity {
 		SpCasoDoente 		  = (Spinner)  findViewById(R.imovel.SpCasoDoente);
 	    SpMeiosComunicacao 	  = (Spinner)  findViewById(R.imovel.SpMeioComunicacao);
 	    SpGruposComunitarios  = (Spinner)  findViewById(R.imovel.SpGrupoComunitario);
-	    SpTransporteUtilizado = (Spinner)  findViewById(R.imovel.SpMeioTransporte);		   
+	    SpTransporteUtilizado = (Spinner)  findViewById(R.imovel.SpMeioTransporte);	
+	    btnVoltar             = (Button)   findViewById(R.imovel.btnVoltarFamiliar);
+	    btnSalvar             = (Button)   findViewById(R.imovel.btnSalvarFamiliar);
+	    btnVoltar.setOnClickListener(this);
+	    btnSalvar.setOnClickListener(this);
 		
 		TabHost th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
@@ -117,6 +124,7 @@ public class TelaResidencia extends Activity {
 				if (c.getCount() > 0){
 					if (pTab == 1){
 						setOpcoesSpinnersTab1(c.getString(c.getColumnIndex("MUNICIPIO")).toString(), 
+											  c.getString(c.getColumnIndex("COD_ENDERECO")).toString()+"-"+												
 											  c.getString(c.getColumnIndex("ENDERECO")).toString(), 
 											  c.getString(c.getColumnIndex("BAIRRO")).toString());
 						EdtCep.setText(c.getString(c.getColumnIndex("CEP")).toString());
@@ -502,11 +510,11 @@ public class TelaResidencia extends Activity {
 		try{
 			try{				
 				bd.open();
-				csr = bd.consulta("SEGMENTOS S, BAIRROS B,MICROAREA M, AREA A", new String[]{"B.DESCRICAO,B.CEP,M.COD_RET AS COD_MICROAREA,A.COD_RET AS COD_AREA,A.COD_SEGMENTO"}, 
+				csr = bd.consulta("SEGMENTOS S, BAIRROS B,MICROAREA M, AREA A", new String[]{"B.COD_RET AS COD_BAIRRO,B.DESCRICAO,B.CEP,M.COD_RET AS COD_MICROAREA,A.COD_RET AS COD_AREA,A.COD_SEGMENTO"}, 
 								  "M.COD_AREA = A.COD_RET AND A.COD_SEGMENTO = S.COD_RET AND S.COD_BAIRRO = B.COD_RET AND M.COD_RUA = ? AND M.COD_AGENTE = ?", 
 								  new String[] {_codRua,_codUser}, null, null, null, null);
 				csr.moveToFirst();
-				Edtbairro.setText(csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+				Edtbairro.setText(csr.getString(csr.getColumnIndex("COD_BAIRRO")).toString().trim()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
 				EdtCep.setText(csr.getString(csr.getColumnIndex("CEP")).toString());
 				EdtArea.setText(csr.getString(csr.getColumnIndex("COD_AREA")).toString());	
 				EdtSegTerritorial.setText(csr.getString(csr.getColumnIndex("COD_SEGMENTO")).toString());
@@ -521,6 +529,18 @@ public class TelaResidencia extends Activity {
 			if (bd != null){
 				bd.fechaBanco();
 			}
+		}
+		
+	}
+
+	public void onClick(View v) {
+		if (v == btnSalvar){
+			if (validaCampos()==true){
+				PreparaInsercao();
+			}
+		}
+		if (v == btnVoltar){
+			finish();
 		}
 		
 	}

@@ -17,7 +17,7 @@ public class Banco{
 		
 		private static String _nomeBanco = "SCS";
 		
-		private static int    _versaoBanco = 1;
+		private static int _versaoBanco = 1; 
 		
 		private BancoDados bdados;
 		
@@ -72,33 +72,38 @@ public class Banco{
 		public static final String[] _sqlTabelaResidentes =  new String[] {"CREATE TABLE if not exists residente (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		   "NOME TEXT NOT NULL,      	  "+
 																		   "ENDERECO TEXT NOT NULL,       "+
+																		   "COD_ENDERECO INTEGER,   	  "+
 																		   "NUMERO TEXT NOT NULL,	      "+
-																		   "DTNASCIMENTO TEXT,   "+
-																		   "SEXO TEXT,			  "+
-																		   "FREQ_ESCOLA TEXT,	  "+
-																		   "ALFABETIZADO TEXT,	  "+
-																		   "OCUPACAO TEXT,		  "+
-																		   "FL_HANSENIASE TEXT,  "+
-																		   "FL_HIPERTENSAO TEXT, "+
-																		   "FL_GESTANTE TEXT,	  "+
-																		   "FL_TURBECULOSE TEXT, "+
-																		   "FL_ALCOLISMO TEXT,   "+
-																		   "FL_CHAGAS TEXT,      "+
-																		   "FL_DEFICIENTE TEXT,  "+
-																		   "FL_MALARIA TEXT,     "+
-																		   "FL_DIABETE TEXT,     "+
-																		   "FL_EPILETICO TEXT,   "+
-																		   "DATA_ATUALIZACAO TEXT);"};
+																		   "DTNASCIMENTO TEXT,  		  "+
+																		   "SEXO TEXT,			  		  "+
+																		   "FREQ_ESCOLA TEXT,	  		  "+
+																		   "ALFABETIZADO TEXT,	  		  "+
+																		   "OCUPACAO TEXT,		  		  "+
+																		   "FL_HANSENIASE TEXT,  		  "+
+																		   "FL_HIPERTENSAO TEXT, 		  "+
+																		   "FL_GESTANTE TEXT,	  		  "+
+																		   "FL_TUBERCULOSE TEXT, 		  "+
+																		   "FL_ALCOLISMO TEXT,   		  "+
+																		   "FL_CHAGAS TEXT,      		  "+
+																		   "FL_DEFICIENTE TEXT,  		  "+
+																		   "FL_MALARIA TEXT,     		  "+
+																		   "FL_DIABETE TEXT,     		  "+
+																		   "FL_EPILETICO TEXT,   		  "+
+																		   "FL_ATIVO TEXT,		   		  "+
+																		   "FL_VIVO TEXT,		   		  "+																		   
+																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
 																		   "ENDERECO TEXT NOT NULL, 	 "+
 																		   "NUMERO TEXT NOT NULL, 		 "+
 																		   "BAIRRO TEXT NOT NULL, 		 "+
+																		   "COD_BAIRRO TEXT,    		 "+
+																		   "COD_ENDERECO TEXT,   		 "+
 																		   "CEP TEXT, 					 "+
 																		   "MUNICIPIO TEXT NOT NULL, 	 "+
 																		   "SEG_TERRIT TEXT, 			 "+
 																		   "AREA TEXT, 					 "+
-																		   "MICROAREA TEXT, 			 "+ 
+																		   "MICROAREA TEXT, 			 "+																		   
 																		   "COD_FAMILIA TEXT,   		 "+
 																		   "DATA_CADASTRO TEXT NOT NULL, "+
 																		   "TIPO_CASA TEXT, 			 "+

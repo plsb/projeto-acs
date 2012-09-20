@@ -12,14 +12,20 @@ import br.com.scs.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.FeatureInfo;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -29,9 +35,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-public class TelaCadastroFamilia extends Activity{
+public class TelaCadastroFamilia extends Activity implements OnClickListener{	
+	
 	public static int hanseniase, hipertensao, diabetes, tuberculose, gestante;
-	 
+	
+	public static int ID = 0;	
+	Banco bd = null;
+    Cursor c = null;
+    
 
 	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero;
 	DatePicker  DtNascimento;
@@ -39,11 +50,13 @@ public class TelaCadastroFamilia extends Activity{
 	EditText    EdtNome, EdtOcupacao; 
 	RadioGroup  RdSexo;
 	RadioButton RdbMasculino, RdbFeminino;
+	Button      btnVoltar,btnSalvar;
 	
-	ArrayList<String> Opcao = new ArrayList<String>();
-	ArrayList<String> Idade = new ArrayList<String>();
-	ArrayList<String> Ruas  = new ArrayList<String>();
-	ArrayList<String> Num   = new ArrayList<String>();
+	ArrayList<String> Alfabetizado = new ArrayList<String>();
+	ArrayList<String> FrqEscola    = new ArrayList<String>();
+	ArrayList<String> Idade  = new ArrayList<String>();
+	ArrayList<String> Ruas   = new ArrayList<String>();
+	ArrayList<String> Num    = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +84,105 @@ public class TelaCadastroFamilia extends Activity{
 		RdSexo         = (RadioGroup) findViewById(R.cadastrofamilia.RgSexo);
 		RdbMasculino   = (RadioButton)findViewById(R.cadastrofamilia.RbMasculino);
 		RdbFeminino    = (RadioButton)findViewById(R.cadastrofamilia.RbFeminino);
+		btnVoltar      = (Button)     findViewById(R.cadastrofamilia.btnVoltarFamiliar);
+		btnSalvar      = (Button)     findViewById(R.cadastrofamilia.btnSalvarFamiliar);
+		btnVoltar.setOnClickListener(this);
+		btnSalvar.setOnClickListener(this);
 		
-		OpcaoSpinner();
-		
+		OpcaoAlfabetizado("");
+		OpcaoFreqEscola("");		
 		setOpcoesEnderecos("");		
+		
+		PreencheCampos(String.valueOf(ID));
 
 }	
+	
+	public void PreencheCampos(String pID){
+		try{
+			try{
+				bd = new Banco(this); 
+				bd.open();
+				c = bd.consulta("residente", new String[]{"*"},"_ID = "+pID, null, null, null, null, null);
+				c.moveToFirst();
+				if (c.getCount() > 0){
+					EdtNome.setText(c.getString(c.getColumnIndex("NOME")).toString());
+					setOpcoesEnderecos(c.getString(c.getColumnIndex("ENDERECO")).toString());
+					setOpcoesNumeros(c.getString(c.getColumnIndex("NUMERO")).toString());
+					DtNascimento.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)), 
+							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/"))), 
+							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))));
+					if (c.getString(c.getColumnIndex("SEXO")).toString().equals("M")){
+						RdbMasculino.setChecked(true);
+						RdbFeminino.setChecked(false);
+					}else{
+						RdbMasculino.setChecked(false);
+						RdbFeminino.setChecked(true);
+					}
+					OpcaoAlfabetizado(c.getString(c.getColumnIndex("ALFABETIZADO")).toString());
+					OpcaoFreqEscola(c.getString(c.getColumnIndex("FREQ_ESCOLA")).toString());
+					EdtOcupacao.setText(c.getString(c.getColumnIndex("OCUPACAO")).toString());
+					
+					if (c.getString(c.getColumnIndex("FL_HANSENIASE")).toString().equals("S")){
+						Hanseniase.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_HIPERTENSAO")).toString().equals("S")){
+						Hipertensao.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_GESTANTE")).toString().equals("S")){
+						Gestante.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_TURBECULOSE")).toString().equals("S")){
+						Tuberculose.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_ALCOLISMO")).toString().equals("S")){
+						Alcolismo.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_CHAGAS")).toString().equals("S")){
+						Chagas.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_DEFICIENTE")).toString().equals("S")){
+						Deficiencia.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_MALARIA")).toString().equals("S")){
+						Malaria.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_DIABETE")).toString().equals("S")){
+						Diabetes.setChecked(true);
+					}
+					if (c.getString(c.getColumnIndex("FL_EPILETICO")).toString().equals("S")){
+						Epilepsia.setChecked(true);
+					}
+					
+				}//Fim if
+			}catch(Exception e){
+				Log.i("Erro no método PreencheCampos", e.getMessage());
+			}
+		}finally{
+			if (c != null){
+				c.close();
+			}
+			if (bd != null){
+				bd.fechaBanco();
+			}
+		}
+	}
 
-@Override
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
+		
         getMenuInflater().inflate(R.menu.cadastrofamilia, menu);        
         return true;
     }
+	
+	/*@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		MenuInflater mi = getMenuInflater();
+		mi.inflate(R.menu.cadastrofamilia, menu);
+		super.onCreateContextMenu(menu, v, menuInfo);
+	}*/
+	
+	
 	
 	@SuppressLint({ "ParserError", "ParserError" })
 	@Override
@@ -90,7 +190,7 @@ public class TelaCadastroFamilia extends Activity{
 
 		switch (item.getItemId()) {
 
-		case R.MenuTelaFamilia.menu_continuar: 
+		/**case R.MenuTelaFamilia.menu_continuar: 
 			
 			if(Hanseniase.isChecked()){
 				hanseniase = 1;
@@ -120,7 +220,7 @@ public class TelaCadastroFamilia extends Activity{
 			Intent teladoenca = new Intent(this, TelaDoenca.class);
 			startActivity(teladoenca);
 			
-			break;
+			break;**/
 			
 		case R.MenuTelaFamilia.menu_gravar :{
 			
@@ -131,13 +231,25 @@ public class TelaCadastroFamilia extends Activity{
 		return true;
 	}
 	
-public void OpcaoSpinner(){
-		Opcao.clear();
-		Opcao.add("Sim");
-		Opcao.add("Nao");
-		PreencheSpinner(SpAlfabetizado, Opcao);
-		PreencheSpinner(SpFreqEscola, Opcao);	
+public void OpcaoAlfabetizado(String opcao){
+		Alfabetizado.clear();
+		if (opcao.length()>0){
+			Alfabetizado.add(opcao);
+		}
+		Alfabetizado.add("Sim");
+		Alfabetizado.add("Nao");
+		PreencheSpinner(SpAlfabetizado, Alfabetizado);			
 	}
+
+public void OpcaoFreqEscola(String opcao){
+	FrqEscola.clear();
+	if (opcao.length()>0){
+		FrqEscola.add(opcao);
+	}
+	FrqEscola.add("Sim");
+	FrqEscola.add("Nao");
+	PreencheSpinner(SpFreqEscola, FrqEscola);
+}
 
 private void setOpcoesEnderecos(String pEnd){
 	Ruas.clear();
@@ -155,7 +267,7 @@ private void setOpcoesEnderecos(String pEnd){
 			csr.moveToFirst();
 			if (csr.getCount()>0){
 				for (int i = 0;i < csr.getCount(); i++){
-					Ruas.add(csr.getString(csr.getColumnIndex("_ID")).toString()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+					Ruas.add(csr.getString(csr.getColumnIndex("COD_RET")).toString()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
 					csr.moveToNext();
 				}
 			}			
@@ -185,7 +297,9 @@ private void setOpcoesNumeros(String pNumero){
 			try{
 				bd = new Banco(this);
 				bd.open();
-				csr = bd.consulta("residencia", new String[]{"*"}, "ENDERECO = '"+SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString()+"' ", null, null, null, null, null);
+				csr = bd.consulta("residencia", new String[]{"*"}, "ENDERECO = '"+SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().substring(
+																				  SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().indexOf("-")+1)+"' ", 
+								  null, null, null, null, null);
 				csr.moveToFirst();
 				if (csr.getCount() > 0){
 					for (int i = 0;i < csr.getCount(); i++){
@@ -261,49 +375,49 @@ public void InsereBD(){
 		r.ENDERECO     = SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString();
 		r.NUMERO       = SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString();
 		r.DTNASCIMENTO = String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth()+1)+"/"+String.valueOf(DtNascimento.getYear());
-		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString();
-		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString();
+		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString().substring(0, 1);
+		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString().substring(0, 1);
 		r.OCUPACAO     = EdtOcupacao.getText().toString();
 		if (Hanseniase.isChecked())
-			r.FL_HANSENIASE = "Sim";
+			r.FL_HANSENIASE = "S";
 		else
-			r.FL_HANSENIASE = "Nao";
+			r.FL_HANSENIASE = "N";
 		if (Hipertensao.isChecked())
-			r.FL_HIPERTENSAO = "Sim";
+			r.FL_HIPERTENSAO = "S";
 		else
-			r.FL_HIPERTENSAO = "Nao";
+			r.FL_HIPERTENSAO = "N";
 		if (Gestante.isChecked())
-			r.FL_GESTANTE = "Sim";
+			r.FL_GESTANTE = "S";
 		else
-			r.FL_GESTANTE = "Nao";
+			r.FL_GESTANTE = "N";
 		if (Tuberculose.isChecked())
-			r.FL_TURBECULOSE = "Sim";
+			r.FL_TURBECULOSE = "S";
 		else
-			r.FL_TURBECULOSE = "Nao";
+			r.FL_TURBECULOSE = "N";
 		if (Alcolismo.isChecked())
-			r.FL_ALCOLISMO = "Sim";
+			r.FL_ALCOLISMO = "S";
 		else
-			r.FL_ALCOLISMO = "Nao";
+			r.FL_ALCOLISMO = "N";
 		if (Chagas.isChecked())
-			r.FL_CHAGAS = "Sim";
+			r.FL_CHAGAS = "S";
 		else	
-			r.FL_CHAGAS = "Nao";
+			r.FL_CHAGAS = "N";
 		if (Deficiencia.isChecked())
-			r.FL_DEFICIENTE = "Sim";
+			r.FL_DEFICIENTE = "S";
 		else	
-			r.FL_DEFICIENTE = "Nao";
+			r.FL_DEFICIENTE = "N";
 		if (Malaria.isChecked())
-			r.FL_MALARIA = "Sim";
+			r.FL_MALARIA = "S";
 		else	
-			r.FL_MALARIA = "Nao";
+			r.FL_MALARIA = "N";
 		if (Diabetes.isChecked())
-			r.FL_DIABETE = "Sim";
+			r.FL_DIABETE = "S";
 		else
-			r.FL_DIABETE = "Nao";
+			r.FL_DIABETE = "N";
 		if (Epilepsia.isChecked())
-			r.FL_EPILETICO = "Sim";
+			r.FL_EPILETICO = "S";
 		else
-			r.FL_EPILETICO = "Nao";				
+			r.FL_EPILETICO = "N";				
 		if (RdbMasculino.isChecked())
 			r.SEXO = "M";
 		else if (RdbFeminino.isChecked())
@@ -320,7 +434,27 @@ public void InsereBD(){
 	}
 }
 
-	
+	public void ClearID(){
+		this.ID = 0;
+	}     
+
+	@Override
+	protected void onDestroy() {
+		if (this.ID > 0){
+			ClearID();
+		}
+		super.onDestroy();
+	}
+
+	public void onClick(View v) {
+		if (v == btnVoltar){
+			finish();
+		}
+		if (v == btnSalvar){
+			InsereBD();
+		}
+		
+	}
 
 
 }

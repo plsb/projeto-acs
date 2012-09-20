@@ -5,6 +5,7 @@
     android:background="@drawable/bg"
     
 >
+    
  <TabHost
     android:id="@+imovel/tabhost"
     android:layout_width="match_parent"
@@ -16,6 +17,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
+
+        <LinearLayout
+	      android:layout_width="fill_parent"
+	      android:layout_height="50dp"
+	      android:gravity="left"
+	      android:orientation="horizontal"
+	      android:paddingTop="3dp"
+	      android:background="@drawable/bgtop" >
+
+            <Button
+                android:id="@+imovel/btnVoltarFamiliar"
+                android:layout_width="62dp"
+          		android:layout_height="48dp"
+          		android:drawableTop="@drawable/voltarpequeno" />
+
+      <TableLayout
+          android:layout_width="wrap_content"  
+          android:layout_height="match_parent" >
+
+          <TableRow
+              android:id="@+imovel/tableRow1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" >
+
+              <TextView
+                  android:layout_width="195dp"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:text="Residência"
+                  android:textColor="#FFFFFF"
+                  android:paddingTop="5dp"                  
+                  android:textSize="25dp" />
+
+          </TableRow>
+          
+      </TableLayout>
+      
+      <Button
+          android:id="@+imovel/btnSalvarFamiliar"
+          android:layout_width="62dp"
+          android:layout_height="48dp"
+          android:drawableTop="@drawable/savesmall" />
+      
+  </LinearLayout>
 
         <TabWidget
             android:id="@android:id/tabs"

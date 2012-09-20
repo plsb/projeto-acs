@@ -67,7 +67,7 @@
         
         	<Button 
             	android:id="@+telaFamilia/btnEditarFamiliar"
-            	android:drawableTop="@drawable/editar"
+            	android:drawableTop="@drawable/listarfamiliar"
             	android:background="@null"
             	android:text="Editar Familiar"
             	android:layout_width="150dp"

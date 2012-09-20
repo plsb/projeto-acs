@@ -36,7 +36,7 @@ public class ResidenteAux {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
 			
 			c.put("NOME", NOME);
-			c.put("ENDERECO", ENDERECO);
+			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
 			c.put("NUMERO", NUMERO);
 			c.put("DTNASCIMENTO", DTNASCIMENTO);
 			c.put("FREQ_ESCOLA", FREQ_ESCOLA);
@@ -53,6 +53,7 @@ public class ResidenteAux {
 			c.put("FL_MALARIA", FL_MALARIA);
 			c.put("FL_DIABETE", FL_DIABETE);
 			c.put("FL_EPILETICO", FL_EPILETICO);
+			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			
 			_bd.open();
@@ -101,24 +102,24 @@ public class ResidenteAux {
 	}
 	
 	public void Limpar(){
-		NOME = "";
-		ENDERECO = "";
-		NUMERO = "";
-		DTNASCIMENTO = "";
-		SEXO = "";
-		FREQ_ESCOLA = "";
-		ALFABETIZADO = "";
-		OCUPACAO = "";
-		FL_HANSENIASE = "";
+		NOME 		   = "";
+		ENDERECO 	   = "";
+		NUMERO 	       = "";
+		DTNASCIMENTO   = "";
+		SEXO 		   = "";
+		FREQ_ESCOLA    = "";
+		ALFABETIZADO   = "";
+		OCUPACAO 	   = "";
+		FL_HANSENIASE  = "";
 		FL_HIPERTENSAO = "";
-		FL_GESTANTE = "";
+		FL_GESTANTE    = "";
 		FL_TURBECULOSE = "";
-		FL_ALCOLISMO = "";
-		FL_CHAGAS = "";
-		FL_DEFICIENTE = "";
-		FL_MALARIA = "";
-		FL_DIABETE = "";
-		FL_EPILETICO = "";
+		FL_ALCOLISMO   = "";
+		FL_CHAGAS      = "";
+		FL_DEFICIENTE  = "";
+		FL_MALARIA     = "";
+		FL_DIABETE     = "";
+		FL_EPILETICO   = "";
 	}
 	
 }
