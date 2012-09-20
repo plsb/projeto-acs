@@ -58,21 +58,23 @@ Banco _bd = new Banco(this);
     	
     	super.onListItemClick(l, v, position, id);
     	
-    	/**Object o = this.getListAdapter().getItem(position);
+    	//Object o = this.getListAdapter().getItem(position).toString();
     	
-    	Log.i("Retorno", o.toString());
+    	//Log.i("Retorno", o.toString());
     	    	
-    	String _ID = o.toString();
+    	String _ID = this.getListAdapter().getItem(position).toString();
     	
-    	_ID = _ID.substring(_ID.indexOf("{line1=")+7, _ID.indexOf("-"));
+    	_ID = _ID.substring(_ID.indexOf("=")+1,_ID.indexOf("-"));
     	
-    	String numero = o.toString();
+    	System.out.println(_ID);
     	
-    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
+    	//String numero = o.toString();
     	
-    	Intent i = new Intent(this, TelaResidencia.class); 
-    	TelaResidencia.ID = Integer.valueOf(_ID.trim());    	
-    	startActivity(i);**/
+    	//numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
+    	
+    	Intent i = new Intent(this, TelaCadastroFamilia.class); 
+    	TelaCadastroFamilia.ID = Integer.valueOf(_ID.trim());    	
+    	startActivity(i);
     	
     }
     
@@ -83,7 +85,7 @@ Banco _bd = new Banco(this);
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"'",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },null,null,null,null,"_ID",null);  
         	}else{
         		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
         	}

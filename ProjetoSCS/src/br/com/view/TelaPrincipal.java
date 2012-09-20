@@ -44,7 +44,7 @@ public class TelaPrincipal extends Activity implements OnClickListener{
         btnAgendamento.setOnClickListener(this);
         btnFamilias = (Button) findViewById(R.id.BtnFamilias);
         btnFamilias.setOnClickListener(this);
-        btnAcompanhamento = (Button) findViewById(R.id.BtnAcompanhamento);
+        btnAcompanhamento = (Button) findViewById(R.id.BtnAcompanhamento); 
         btnAcompanhamento.setOnClickListener(this);
         btnUsuarios = (Button) findViewById(R.id.BtnUsuarios);
         btnUsuarios.setOnClickListener(this);

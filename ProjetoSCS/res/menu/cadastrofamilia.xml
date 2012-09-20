@@ -3,8 +3,4 @@
         android:title="Salvar"
         android:icon="@drawable/save"
         android:orderInCategory="100" />
-    <item android:id="@+MenuTelaFamilia/menu_continuar" 
-        android:title="Continuar"
-        android:icon="@drawable/prosseguir"
-        android:orderInCategory="100" />
 </menu>

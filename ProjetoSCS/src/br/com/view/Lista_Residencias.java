@@ -68,6 +68,8 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
     	
     	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
     	
+    	System.out.println("ID DA TABELA RESIDENCIA:"+_ID.trim());
+    	
     	Intent i = new Intent(this, TelaResidencia.class); 
     	TelaResidencia.ID = Integer.valueOf(_ID.trim());    	
     	startActivity(i);
