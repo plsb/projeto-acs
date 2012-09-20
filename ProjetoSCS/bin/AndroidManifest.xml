@@ -27,8 +27,8 @@
         <activity android:name="br.com.view.TelaUsuario" android:label="Usuários"></activity>
         <activity android:name="br.com.view.TelaSincronizar" android:label="Sincronizar"></activity>
         <activity android:name="br.com.view.TelaSobre" android:label="Sobre"></activity>
-        <activity android:label="Residencia" android:name="br.com.view.TelaResidencia"></activity>
-        <activity android:name="br.com.view.TelaCadastroFamilia" android:label="Cadastro Familiar"></activity>
+        <activity android:name="br.com.view.TelaResidencia" android:label="Sistema Controle de Saúde"></activity>
+        <activity android:name="br.com.view.TelaCadastroFamilia" android:label="Sistema Controle de Saúde"></activity>
         <activity android:label="Autenticação" android:name="br.com.scs.MainActivity"><intent-filter android:icon="@drawable/btnfamilia" android:label="Sistema SCS">
                 <action android:name="android.intent.action.MAIN" />
 

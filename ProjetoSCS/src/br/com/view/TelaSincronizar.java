@@ -34,7 +34,7 @@ import android.widget.Toast;
 
 public class TelaSincronizar extends Activity implements OnClickListener{
 	
-	  private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar,btnExportarVisitas;
+	  private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar,btnExportarVisitas,btnConfigWS;
 	  private Banco   bd;
 	  private CarregarXML xml;
 	
@@ -162,7 +162,10 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 			Intent i = new Intent(this, ExportarXML.class);
 			ExportarXML.Residencias = true;
 			startActivity(i);			
-		}			
+		}	
+		if (v == btnConfigWS){
+			Mensagem.exibeMessagem(this, "Web Service", "Em Desenvolvimento");
+		}
 		
 	}//Fim do Método onClick
 	
@@ -171,10 +174,12 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		btnVisulizarUsuarios = (Button) findViewById(R.telaSincrozinar.btnVisualizarUsuarios);
 		btnVoltar            = (Button) findViewById(R.telaSincrozinar.btnVoltar);
 		btnExportarVisitas   = (Button) findViewById(R.telaSincrozinar.btnExportarXML);
+		btnConfigWS			 = (Button) findViewById(R.telaSincrozinar.btnConfigWS);
 		btnImportarXmls.setOnClickListener(this);		
 		btnVisulizarUsuarios.setOnClickListener(this);		
 		btnVoltar.setOnClickListener(this);		
 		btnExportarVisitas.setOnClickListener(this);
+		btnConfigWS.setOnClickListener(this);
 	}
 
 }
