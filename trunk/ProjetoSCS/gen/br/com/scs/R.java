@@ -105,6 +105,7 @@ public final class R {
         public static final int users=0x7f020033;
         public static final int voltar=0x7f020034;
         public static final int voltarpequeno=0x7f020035;
+        public static final int webservice=0x7f020036;
     }
     public static final class id {
         public static final int BtnAcompanhamento=0x7f08000a;
@@ -204,10 +205,11 @@ public final class R {
         public static final int btnVoltar=0x7f0d0004;
     }
     public static final class telaSincrozinar {
+        public static final int btnConfigWS=0x7f100003;
         public static final int btnExportarXML=0x7f100002;
         public static final int btnImportarXmls=0x7f100000;
         public static final int btnVisualizarUsuarios=0x7f100001;
-        public static final int btnVoltar=0x7f100003;
+        public static final int btnVoltar=0x7f100004;
     }
     public static final class teladoenca {
         public static final int ChG2=0x7f0c0041;
