@@ -45,13 +45,15 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	ArrayList<String> TratamentoAgua	  = new ArrayList<String>();
 	ArrayList<String> DestFezesUrina	  = new ArrayList<String>();
 	ArrayList<String> AbastAgua			  = new ArrayList<String>();
-	//ArrayList<String> UF				  = new ArrayList<String>();
 	ArrayList<String> Municipio			  = new ArrayList<String>();
 	ArrayList<String> CasoDoente		  = new ArrayList<String>();
 	ArrayList<String> MeiosComunicacao	  = new ArrayList<String>();
 	ArrayList<String> GruposComunitarios  = new ArrayList<String>();
 	ArrayList<String> TransporteUtilizado = new ArrayList<String>();
 	ArrayList<String> Enderecos           = new ArrayList<String>();
+	ArrayList<String> Segmento            = new ArrayList<String>();
+	ArrayList<String> Area                = new ArrayList<String>();
+	ArrayList<String> MicroArea           = new ArrayList<String>();	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -242,6 +244,9 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	
 	private void setOpcoesEnderecos(String pEnd,String pBairro){
 		Enderecos.clear();
+		Segmento.clear();
+		Area.clear();
+		MicroArea.clear();		
 		if ((pEnd.length()>0)&&(pBairro.length()>0)){
 			Enderecos.add(pEnd);
 		}
@@ -256,6 +261,9 @@ public class TelaResidencia extends Activity implements OnClickListener {
 				csr.moveToFirst();
 				for (int i = 0;i < csr.getCount(); i++){
 					Enderecos.add(csr.getString(csr.getColumnIndex("COD_RET")).toString()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+					Segmento.add(csr.getString(csr.getColumnIndex("COD_SEGMENTO")).toString());
+					Area.add(csr.getString(csr.getColumnIndex("COD_AREA")).toString());
+					MicroArea.add(csr.getString(csr.getColumnIndex("COD_MICROAREA")).toString());
 					//Bairros.add(csr.getString(csr.getColumnIndex("BAIRRO")).toString());
 					csr.moveToNext();
 				}
@@ -472,7 +480,11 @@ public class TelaResidencia extends Activity implements OnClickListener {
 					if (SpEndereco.getItemAtPosition(posicao).toString().trim().length()>0){
 						String codRua = SpEndereco.getItemAtPosition(posicao).toString().substring(0,
 										SpEndereco.getItemAtPosition(posicao).toString().indexOf("-"));
+						
 						PreencheMicroarea(codUser.trim(), codRua.trim());
+						EdtSegTerritorial.setText(Segmento.get(posicao));
+						EdtArea.setText(Area.get(posicao));
+						EdtMicArea.setText(MicroArea.get(posicao));
 					}
 				}
 				
@@ -502,7 +514,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	}
 	
 	public void PreencheMicroarea(String _codUser, String _codRua){
-		Banco bd = null;
+		/*Banco bd = null;
 		Cursor csr = null;
 		bd = new Banco(this);		
 		
@@ -510,7 +522,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		try{
 			try{				
 				bd.open();
-				csr = bd.consulta("SEGMENTOS S, BAIRROS B,MICROAREA M, AREA A", new String[]{"B.COD_RET AS COD_BAIRRO,B.DESCRICAO,B.CEP,M.COD_RET AS COD_MICROAREA,A.COD_RET AS COD_AREA,A.COD_SEGMENTO"}, 
+				csr = bd.consulta("BAIRROS", new String[]{"*"}, 
 								  "M.COD_AREA = A.COD_RET AND A.COD_SEGMENTO = S.COD_RET AND S.COD_BAIRRO = B.COD_RET AND M.COD_RUA = ? AND M.COD_AGENTE = ?", 
 								  new String[] {_codRua,_codUser}, null, null, null, null);
 				csr.moveToFirst();
@@ -529,7 +541,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			if (bd != null){
 				bd.fechaBanco();
 			}
-		}
+		}*/
 		
 	}
 

@@ -28,7 +28,7 @@ public class Banco{
 																		"USU_NOME text NOT NULL,           "+
 																		"USU_LOGIN text NOT NULL,          "+
 																		"USU_SENHA text NOT NULL,      	   "+
-																		"USU_COORDENADOR integer NOT NULL, "+
+																		"USU_COORDENADOR text,			   "+
 																		"USU_ATIVO text NOT NULL,          "+
 																		"USU_FL_ADMIN integer NOT NULL);   "};
 		
@@ -37,7 +37,7 @@ public class Banco{
 																	    "CEP text, 						"+
 																	    "DESCRICAO text NOT NULL    );	"};
 		
-		public static final String[] _sqlTabelaSegmentos =  new String[] {"CREATE TABLE if not exists segmentos (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+		/*public static final String[] _sqlTabelaSegmentos =  new String[] {"CREATE TABLE if not exists segmentos (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	      "COD_RET integer NOT NULL, 		"+
 																	      "COD_BAIRRO integer NOT NULL, 	"+	
 																	      "DESCRICAO text NOT NULL    );	"};
@@ -53,11 +53,15 @@ public class Banco{
 																	 	   "DESCRICAO text NOT NULL, 		"+
 																	 	   "COD_RUA integer NOT NULL, 		"+
 																	 	   "COD_AGENTE integer NOT NULL, 	"+
-																	 	   "COD_AREA integer NOT NULL );	"};
+																	 	   "COD_AREA integer NOT NULL );	"};*/
 		
 		public static final String[] _sqlTabelaRuas =  new String[] {"CREATE TABLE if not exists ruas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	 "COD_RET integer NOT NULL, 		"+
-																	 "DESCRICAO text NOT NULL,      	"+																																	
+																	 "DESCRICAO text NOT NULL,      	"+
+																	 "COD_MICROAREA INTEGER NOT NULL,   "+
+																	 "COD_AREA INTEGER NOT NULL,	    "+
+																	 "COD_SEGMENTO INTEGER NOT NULL,    "+
+																	 "COD_BAIRRO integer,  		        "+
 																	 "USU_VINCULADO text NOT NULL );	"};
 		
 		public static final String[] _sqlTabelaSessao =  new String[] {"CREATE TABLE if not exists sessao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
