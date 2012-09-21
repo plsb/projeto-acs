@@ -24,6 +24,7 @@ public class Mensagem {
 		AlertDialog.Builder mensagem = new AlertDialog.Builder(act);
 		mensagem.setTitle(Titulo);
 		mensagem.setMessage(Texto);
+		mensagem.setIcon(R.drawable.scs_icone);
 		mensagem.setNeutralButton("OK",null);
 		mensagem.show();
 	}	

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import br.com.control.Banco;
+import br.com.control.Mensagem;
 import br.com.control.ResidenteAux;
 import br.com.control.Sessao;
 import br.com.scs.R;
@@ -106,10 +107,11 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 				c.moveToFirst();
 				if (c.getCount() > 0){
 					EdtNome.setText(c.getString(c.getColumnIndex("NOME")).toString());
-					setOpcoesEnderecos(c.getString(c.getColumnIndex("ENDERECO")).toString());
+					setOpcoesEnderecos(c.getString(c.getColumnIndex("COD_ENDERECO")).toString()+"-"+
+									   c.getString(c.getColumnIndex("ENDERECO")).toString());
 					setOpcoesNumeros(c.getString(c.getColumnIndex("NUMERO")).toString());
 					DtNascimento.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)), 
-							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/"))), 
+							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
 							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))));
 					if (c.getString(c.getColumnIndex("SEXO")).toString().equals("M")){
 						RdbMasculino.setChecked(true);
@@ -118,8 +120,16 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 						RdbMasculino.setChecked(false);
 						RdbFeminino.setChecked(true);
 					}
-					OpcaoAlfabetizado(c.getString(c.getColumnIndex("ALFABETIZADO")).toString());
-					OpcaoFreqEscola(c.getString(c.getColumnIndex("FREQ_ESCOLA")).toString());
+					if (c.getString(c.getColumnIndex("ALFABETIZADO")).toString().equals("S")){
+						OpcaoAlfabetizado("Sim");
+					}else{
+						OpcaoAlfabetizado("Nao");
+					}
+					if (c.getString(c.getColumnIndex("FREQ_ESCOLA")).toString().equals("S")){
+						OpcaoFreqEscola("Sim");
+					}else{
+						OpcaoFreqEscola("Nao");
+					}
 					EdtOcupacao.setText(c.getString(c.getColumnIndex("OCUPACAO")).toString());
 					
 					if (c.getString(c.getColumnIndex("FL_HANSENIASE")).toString().equals("S")){
@@ -131,7 +141,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 					if (c.getString(c.getColumnIndex("FL_GESTANTE")).toString().equals("S")){
 						Gestante.setChecked(true);
 					}
-					if (c.getString(c.getColumnIndex("FL_TURBECULOSE")).toString().equals("S")){
+					if (c.getString(c.getColumnIndex("FL_TUBERCULOSE")).toString().equals("S")){
 						Tuberculose.setChecked(true);
 					}
 					if (c.getString(c.getColumnIndex("FL_ALCOLISMO")).toString().equals("S")){
@@ -222,10 +232,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 			
 			break;**/
 			
-		case R.MenuTelaFamilia.menu_gravar :{
-			
+		case R.MenuTelaFamilia.menu_gravar :{			
 			InsereBD();
-				//Toast.makeText(this, "Ação Salvar", Toast.LENGTH_LONG).show();
 			}
 		}
 		return true;
@@ -350,10 +358,6 @@ public void PreencheSpinner(final Spinner s,ArrayList<String> a){
 	s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 		
 		public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
-			//pega nome pela posição
-			//String nome = parent.getItemAtPosition(posicao).toString();
-			//imprime um Toast na tela com o nome que foi selecionado
-			//Toast.makeText(this, "Nome Selecionado: " + nome, Toast.LENGTH_LONG).show();
 			if (s == SpRua){
 				setOpcoesNumeros("");
 			}
@@ -391,9 +395,9 @@ public void InsereBD(){
 		else
 			r.FL_GESTANTE = "N";
 		if (Tuberculose.isChecked())
-			r.FL_TURBECULOSE = "S";
+			r.FL_TUBERCULOSE = "S";
 		else
-			r.FL_TURBECULOSE = "N";
+			r.FL_TUBERCULOSE = "N";
 		if (Alcolismo.isChecked())
 			r.FL_ALCOLISMO = "S";
 		else
@@ -423,9 +427,21 @@ public void InsereBD(){
 		else if (RdbFeminino.isChecked())
 			r.SEXO = "F";	
 		
-		if (r.Inserir(TelaCadastroFamilia.this)==true){
-			Toast.makeText(this, "Sucesso ao Gravar!", Toast.LENGTH_LONG).show();
-			finish();
+		if (this.ID == 0){
+			if (r.Inserir(TelaCadastroFamilia.this)==true){
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!");
+				finish();
+			}else{
+				Mensagem.exibeMessagem(this, "SCS", "Erro ao Gravar!");
+			}
+		}else{
+			if (r.Atualizar(TelaCadastroFamilia.this, this.ID) == true){
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!");
+				ClearID();
+				finish();
+			}else{
+				Mensagem.exibeMessagem(this, "SCS", "Erro ao Gravar!");
+			}
 		}
 	
 	}catch(Exception e){

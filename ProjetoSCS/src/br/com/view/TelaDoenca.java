@@ -1,7 +1,10 @@
 package br.com.view;
 
+import br.com.control.Banco;
+import br.com.control.Mensagem;
 import br.com.scs.R;
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -13,6 +16,8 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 public class TelaDoenca extends Activity{
+	
+	public static int COD_FAMILAR = 0;
 	
 	TextView datavisita, medicacaodiaria, ultimadose, cuidados, comunicantes, bcg; //Hanseniase
 	DatePicker dataprofissional, ultimadata; //hanseniase
@@ -136,50 +141,76 @@ public class TelaDoenca extends Activity{
 		ChGPressao = (CheckBox) findViewById(R.teladoenca.ChGPressao);
 		ChGUm = (CheckBox) findViewById(R.teladoenca.ChGUm); 
 		ChG2 = (CheckBox) findViewById(R.teladoenca.ChG2);
-		ChGR = (CheckBox) findViewById(R.teladoenca.ChGR);
+		ChGR = (CheckBox) findViewById(R.teladoenca.ChGR);	
+		
+		InicializaTelas();
+		
+	}
 	
-		
-		
-		
-		TabHost th = (TabHost) findViewById(R.teladoenca.tabhost);
-        th.setup();
-        TabSpec ts;
-        
-        if (TelaCadastroFamilia.hanseniase != 0){
-        	ts = th.newTabSpec("tag1");
-        	ComponentesHanseniase();
-            ts.setContent(R.teladoenca.tabHanseniase);
-            ts.setIndicator("Hanseniase",getResources().getDrawable(R.drawable.hanseniase));
-            th.addTab(ts);
-        }
-        if (TelaCadastroFamilia.diabetes != 0){
-        	ts = th.newTabSpec("tag2");
-        	ComponentesDiabetes();
-            ts.setContent(R.teladoenca.tabDiabetes);
-            ts.setIndicator("Diabetes",getResources().getDrawable(R.drawable.diabetes));
-            th.addTab(ts);
-        }
-       if (TelaCadastroFamilia.hipertensao != 0){
-        	ts = th.newTabSpec("tag3");
-        	ComponentesHiperTensao();
-            ts.setContent(R.teladoenca.tabHipertensao);
-            ts.setIndicator("Hipertensao",getResources().getDrawable(R.drawable.hipertensao));
-            th.addTab(ts);
-        }
-        if (TelaCadastroFamilia.gestante != 0){
-        	ts = th.newTabSpec("tag4");
-        	ComponentesGestante();
-            ts.setContent(R.teladoenca.tabGestante);
-            ts.setIndicator("Gestante",getResources().getDrawable(R.drawable.gestante));
-            th.addTab(ts);
-       }
-        if (TelaCadastroFamilia.tuberculose != 0){
-        	ts = th.newTabSpec("tag5");
-        	ComponentesTuberculose();
-            ts.setContent(R.teladoenca.tabTuberculose);
-            ts.setIndicator("Tuberculose",getResources().getDrawable(R.drawable.tuberculose));
-            th.addTab(ts);
-       }
+	public void InicializaTelas(){
+		Banco bd = null;
+		Cursor c = null;
+			try{
+				bd = new Banco(this);
+				bd.open();
+				c = bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(COD_FAMILAR), null, null, null, null, null);
+				
+				c.moveToFirst();
+				if (c.getCount()>0){
+					
+					TabHost th = (TabHost) findViewById(R.teladoenca.tabhost);
+			        th.setup();
+			        TabSpec ts;
+			        
+			        if (c.getString(c.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S")){//(TelaCadastroFamilia.hanseniase != 0){
+			        	ts = th.newTabSpec("tag1");
+			        	ComponentesHanseniase();
+			            ts.setContent(R.teladoenca.tabHanseniase);
+			            ts.setIndicator("Hanseniase",getResources().getDrawable(R.drawable.hanseniase));
+			            th.addTab(ts);
+			        }
+			        if (c.getString(c.getColumnIndex("FL_DIABETE")).toString().trim().equals("S")){//(TelaCadastroFamilia.diabetes != 0){
+			        	ts = th.newTabSpec("tag2");
+			        	ComponentesDiabetes();
+			            ts.setContent(R.teladoenca.tabDiabetes);
+			            ts.setIndicator("Diabetes",getResources().getDrawable(R.drawable.diabetes));
+			            th.addTab(ts);
+			        }
+			       if (c.getString(c.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S")){//(TelaCadastroFamilia.hipertensao != 0){
+			        	ts = th.newTabSpec("tag3");
+			        	ComponentesHiperTensao();
+			            ts.setContent(R.teladoenca.tabHipertensao);
+			            ts.setIndicator("Hipertensao",getResources().getDrawable(R.drawable.hipertensao));
+			            th.addTab(ts);
+			        }
+			        if (c.getString(c.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){//(TelaCadastroFamilia.gestante != 0){
+			        	ts = th.newTabSpec("tag4");
+			        	ComponentesGestante();
+			            ts.setContent(R.teladoenca.tabGestante);
+			            ts.setIndicator("Gestante",getResources().getDrawable(R.drawable.gestante));
+			            th.addTab(ts);
+			       }
+			        if (c.getString(c.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S")){//(TelaCadastroFamilia.tuberculose != 0){
+			        	ts = th.newTabSpec("tag5");
+			        	ComponentesTuberculose();
+			            ts.setContent(R.teladoenca.tabTuberculose);
+			            ts.setIndicator("Tuberculose",getResources().getDrawable(R.drawable.tuberculose));
+			            th.addTab(ts);
+			       }
+				}else{
+					Mensagem.exibeMessagem(this, "SCS", "Nenhum familiar cadastrado com esse código!");
+				}
+				
+			}catch(Exception e){
+				Mensagem.exibeMessagem(this, "SCS-ERRO", e.getMessage());
+			}finally{
+				if (c != null){
+					c.close();
+				}
+				if (bd != null){
+					bd.fechaBanco();
+				}
+			}
 	}
 	
 	public void ComponentesHanseniase(){

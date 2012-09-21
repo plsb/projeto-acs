@@ -112,7 +112,6 @@ public class ImportarXML extends Activity {
 					c.clear();				
 					c.put("COD_RET", element.getChildText("codigo"));
 					c.put("DESCRICAO", element.getChildText("descricao"));
-					c.put("BAIRRO", element.getChildText("bairro"));
 					c.put("USU_VINCULADO", element.getChildText("usuvinculado"));					
 					cAux = bd.consulta("ruas", new String[] { "*" }, "COD_RET = ? ",  new String[] { element.getChildText("codigo") }, null, null, null, null);
 					cAux.moveToFirst();
@@ -146,6 +145,7 @@ public class ImportarXML extends Activity {
 		//I M P O R T A R   R E S I D E N C I A S
 		try {
 			if (!(xml.carregar("residencias.xml") == null)){
+				Iterator it = xml.carregar("residencias.xml");
 				msg = msg + "Residências - SIM\n";
 				retorno = true;
 			}else{

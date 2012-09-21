@@ -20,7 +20,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast; 
 
 @SuppressLint("ParserError")
-public class Lista_Residentes extends ListActivity implements OnClickListener {
+public class Lista_Familiar_Acompanhamento extends ListActivity implements OnClickListener {
 Banco _bd = new Banco(this);
 	
 	private Button   btnFiltrar,btnVoltar;
@@ -63,8 +63,8 @@ Banco _bd = new Banco(this);
     	
     	System.out.println(_ID);
     	
-	    Intent i = new Intent(this, TelaCadastroFamilia.class); 
-	    TelaCadastroFamilia.ID = Integer.valueOf(_ID.trim());    	
+	    Intent i = new Intent(this, TelaDoenca.class); 
+	    TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    	
 	    startActivity(i);
     	
     }

@@ -32,7 +32,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		if (v==btnImportarXmls){				
 			Intent i = new Intent(this, ImportarXML.class);
 			startActivity(i);			
-		}//Fim do Onclick do Botão Importar
+		}
 				
 		
 		if (v==btnVisulizarUsuarios){

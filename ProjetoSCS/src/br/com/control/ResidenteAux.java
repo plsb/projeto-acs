@@ -22,7 +22,7 @@ public class ResidenteAux {
 	public String FL_HANSENIASE;
 	public String FL_HIPERTENSAO;
 	public String FL_GESTANTE;
-	public String FL_TURBECULOSE;
+	public String FL_TUBERCULOSE;
 	public String FL_ALCOLISMO;
 	public String FL_CHAGAS;
 	public String FL_DEFICIENTE;
@@ -46,7 +46,7 @@ public class ResidenteAux {
 			c.put("FL_HANSENIASE", FL_HANSENIASE);
 			c.put("FL_HIPERTENSAO", FL_HIPERTENSAO);
 			c.put("FL_GESTANTE", FL_GESTANTE);
-			c.put("FL_TURBECULOSE", FL_TURBECULOSE);
+			c.put("FL_TUBERCULOSE", FL_TUBERCULOSE);
 			c.put("FL_ALCOLISMO", FL_ALCOLISMO);
 			c.put("FL_CHAGAS", FL_CHAGAS);
 			c.put("FL_DEFICIENTE", FL_DEFICIENTE);
@@ -73,9 +73,9 @@ public class ResidenteAux {
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
 			
 			c.put("NOME", NOME);
-			c.put("ENDERECO", ENDERECO);
+			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
 			c.put("NUMERO", NUMERO);
-			c.put("DTNASCIMENTO", formatador.format(DTNASCIMENTO));
+			c.put("DTNASCIMENTO", DTNASCIMENTO);
 			c.put("FREQ_ESCOLA", FREQ_ESCOLA);
 			c.put("SEXO", SEXO);
 			c.put("ALFABETIZADO", ALFABETIZADO);
@@ -83,13 +83,14 @@ public class ResidenteAux {
 			c.put("FL_HANSENIASE", FL_HANSENIASE);
 			c.put("FL_HIPERTENSAO", FL_HIPERTENSAO);
 			c.put("FL_GESTANTE", FL_GESTANTE);
-			c.put("FL_TURBECULOSE", FL_TURBECULOSE);
+			c.put("FL_TUBERCULOSE", FL_TUBERCULOSE);
 			c.put("FL_ALCOLISMO", FL_ALCOLISMO);
 			c.put("FL_CHAGAS", FL_CHAGAS);
 			c.put("FL_DEFICIENTE", FL_DEFICIENTE);
 			c.put("FL_MALARIA", FL_MALARIA);
 			c.put("FL_DIABETE", FL_DIABETE);
 			c.put("FL_EPILETICO", FL_EPILETICO);
+			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.atualizarDadosTabela("residente",indice, c);
@@ -113,7 +114,7 @@ public class ResidenteAux {
 		FL_HANSENIASE  = "";
 		FL_HIPERTENSAO = "";
 		FL_GESTANTE    = "";
-		FL_TURBECULOSE = "";
+		FL_TUBERCULOSE = "";
 		FL_ALCOLISMO   = "";
 		FL_CHAGAS      = "";
 		FL_DEFICIENTE  = "";
