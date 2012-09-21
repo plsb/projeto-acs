@@ -2,7 +2,10 @@ package br.com.control;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.util.Iterator;
+import java.util.List;
 
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -46,43 +49,40 @@ public class ImportarXML extends Activity {
 		
 		boolean retorno = false;
 		
-		xml = new CarregarXML();    	
-		
+		xml = new CarregarXML(); 
+		bd = new Banco(this);
+		Cursor cAux = null;
 		try {
-			if (!(xml.carregar("usuarios.xml") == null)){		
+			if (!(xml.carregar("scs.xml","usuario") == null)){		
 				//I M P O R T A Ç Ã O   D E   U S U Á R I O S
 				@SuppressWarnings("rawtypes")
-				Iterator it = xml.carregar("usuarios.xml");
-				Cursor cAux = null;
-				bd = new Banco(this);
+				List<Element> usuarios = xml.carregar("scs.xml","usuario");
 				bd.open();				
-				ContentValues c = new ContentValues();									
+				ContentValues c = new ContentValues();	
 				
-				while (it.hasNext()){
-					Element element = (Element) it.next();						
+				for(Element usuario : usuarios){
 					c.clear();				
-					c.put("USU_MATRICULA", element.getChildText("codigo"));
-					c.put("USU_NOME", element.getChildText("nome"));
-					c.put("USU_LOGIN", element.getChildText("login"));
-					c.put("USU_SENHA", element.getChildText("senha"));
-					c.put("USU_COORDENADOR", element.getChildText("codigo"));
-					c.put("USU_ATIVO", element.getChildText("ativo").trim());
-					c.put("USU_FL_ADMIN", 1);						
-					cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { element.getChildText("codigo") }, null, null, null, null);
+					c.put("USU_MATRICULA", usuario.getChildText("codigoUsuario"));
+					c.put("USU_NOME", usuario.getChildText("nomeUsuario"));
+					c.put("USU_LOGIN", usuario.getChildText("loginUsuario"));
+					c.put("USU_SENHA", usuario.getChildText("senhaUsuario"));
+					c.put("USU_COORDENADOR", usuario.getChildText("codigoUsuario"));
+					c.put("USU_ATIVO", usuario.getChildText("ativoUsuario").trim());
+					c.put("USU_FL_ADMIN", 1);
+					cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { usuario.getChildText("codigoUsuario") }, null, null, null, null);
 					cAux.moveToFirst();						
 					if (cAux.getCount() > 0){
 						bd.atualizarDadosTabela("usuarios",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);													
 					}else{								
 						bd.inserirRegistro("usuarios", c);							
 					}//Fim else
-				}//Fim while
+				}	
 				msg = msg + "Usuários - SIM\n";
-				cAux.close();
+				cAux = null;
 				bd.fechaBanco();
 				retorno = true;
 			} else {
 				msg = msg + "Usuários - NÃO\n";
-				Toast.makeText(this, "Arquivo XML de usuários não encontrado ou vazio!", Toast.LENGTH_LONG).show();
 				retorno = true;
 			}//Fim else
 		} catch (FileNotFoundException e) {
@@ -96,27 +96,67 @@ public class ImportarXML extends Activity {
 			retorno = false;
 		}
 		
-		//I M P O R T A Ç Ã O   D O S   L O G R A D O U R O S			
-		xml = new CarregarXML();	
-		
+		//I M P O R T A Ç Ã O   D O S   B A I R R O S					
 		try {
-			if (!(xml.carregar("logradouros.xml") == null)){
+			if (!(xml.carregar("scs.xml","bairro") == null)){
 				@SuppressWarnings("rawtypes")
-				Iterator it = xml.carregar("logradouros.xml");
-				Cursor cAux = null;
-				bd = new Banco(this);
+				List<Element> bairros = xml.carregar("scs.xml","bairro");
+				cAux = null;		
 				bd.open();
 				ContentValues c = new ContentValues();					
-				while (it.hasNext()){
-					Element element = (Element) it.next();						
+				for(Element bairro : bairros){
 					c.clear();				
-					c.put("COD_RET", element.getChildText("codigo"));
-					c.put("DESCRICAO", element.getChildText("descricao"));
-					c.put("USU_VINCULADO", element.getChildText("usuvinculado"));					
-					cAux = bd.consulta("ruas", new String[] { "*" }, "COD_RET = ? ",  new String[] { element.getChildText("codigo") }, null, null, null, null);
+					c.put("COD_RET", bairro.getChildText("codigoBairro"));
+					c.put("DESCRICAO", bairro.getChildText("descricaoBairro"));
+					c.put("CEP", bairro.getChildText("cepBairro"));
+					cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { bairro.getChildText("codigoBairro") }, null, null, null, null);
+					cAux.moveToFirst();						
+					if (cAux.getCount() > 0){
+						bd.atualizarDadosTabela("bairros",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("bairros", c);							
+					}//Fim else
+				}//Fim for
+					msg = msg + "Bairros - SIM\n";
+					cAux.close();
+					bd.fechaBanco();
+					retorno = true;
+				} else {
+					msg = msg + "Bairros - NÃO\n";
+					retorno = true;
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				retorno = false;
+			} catch (IOException e) {
+				e.printStackTrace();
+				retorno = false;
+			} catch (JDOMException e) {
+				e.printStackTrace();
+				retorno = false;
+			}
+		
+		//I M P O R T A Ç Ã O   D O S   L O G R A D O U R O S				
+		try {
+			if (!(xml.carregar("scs.xml","rua") == null)){
+				@SuppressWarnings("rawtypes")
+				List<Element> ruas = xml.carregar("scs.xml","rua");
+				cAux = null;		
+				bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element rua : ruas){				
+					c.clear();					
+					c.put("COD_RET", rua.getChildText("codigoRua"));					
+					c.put("DESCRICAO", rua.getChildText("descricaoRua"));
+					c.put("COD_MICROAREA", rua.getChildText("codigoMicroareaRua"));
+					c.put("COD_AREA", rua.getChildText("codigoAreaRua"));
+					c.put("COD_SEGMENTO", rua.getChildText("codigoSegmentoRua"));					
+					c.put("USU_VINCULADO", rua.getChildText("codigoAgenteRua"));
+					c.put("COD_BAIRRO", rua.getChildText("codigoBairroRua"));
+					cAux = bd.consulta("ruas", new String[] { "*" }, "COD_RET = ? ",  new String[] { rua.getChildText("codigoRua") }, null, null, null, null);
 					cAux.moveToFirst();
 					
-					if (cAux.getCount() > 0){
+					if (cAux.getCount() > 0){  
 						bd.atualizarDadosTabela("ruas",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);																			   						
 					}else{						
 						bd.inserirRegistro("ruas", c);						
@@ -128,31 +168,9 @@ public class ImportarXML extends Activity {
 				retorno = true;
 			} else {
 				msg = msg + "Logradouros - NÃO\n";
-				Toast.makeText(this, "Arquivo XML de logradouros não encontrado ou vazio!", Toast.LENGTH_LONG).show();
 				retorno = true;
 			}//Fim else
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			retorno = false;
-		} catch (IOException e) {
-			e.printStackTrace();
-			retorno = false;
-		} catch (JDOMException e) {
-			e.printStackTrace();
-			retorno = false;
-		}
-		
-		//I M P O R T A R   R E S I D E N C I A S
-		try {
-			if (!(xml.carregar("residencias.xml") == null)){
-				Iterator it = xml.carregar("residencias.xml");
-				msg = msg + "Residências - SIM\n";
-				retorno = true;
-			}else{
-				msg = msg + "Residências - NÃO\n";
-				retorno = true;
-			}
-		} catch (FileNotFoundException e) {		
 			e.printStackTrace();
 			retorno = false;
 		} catch (IOException e) {

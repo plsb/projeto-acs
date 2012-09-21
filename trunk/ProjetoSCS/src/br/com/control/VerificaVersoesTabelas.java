@@ -38,9 +38,9 @@ public class VerificaVersoesTabelas {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaSessao, VerificaVersoesTabelas._nomeTabelaSessao);
 		BancoDados.getDAO(contexto, Banco._sqlTabelaResidentes, VerificaVersoesTabelas._nomeTabelaResidente);
 		BancoDados.getDAO(contexto, Banco._sqlTabelaBairros, VerificaVersoesTabelas._nomeTabelaBairros);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaSegmentos, VerificaVersoesTabelas._nomeTabelaSegmentos);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaAreas, VerificaVersoesTabelas._nomeTabelaAreas);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaMicroAreas, VerificaVersoesTabelas._nomeTabelaMicroareas);
+		//BancoDados.getDAO(contexto, Banco._sqlTabelaSegmentos, VerificaVersoesTabelas._nomeTabelaSegmentos);
+		//BancoDados.getDAO(contexto, Banco._sqlTabelaAreas, VerificaVersoesTabelas._nomeTabelaAreas);
+		//BancoDados.getDAO(contexto, Banco._sqlTabelaMicroAreas, VerificaVersoesTabelas._nomeTabelaMicroareas);
 	}
 
 }
