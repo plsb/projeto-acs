@@ -46,7 +46,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	}
 	
+	public void VerificaVersaoTabela(){
+		if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
+			VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(MainActivity.this);
+			VerificaVersoesTabelas.jaVerificouAtualizacao = true;
+		}
+	}
+	
 	public void LembrarMe(String usuario){
+		VerificaVersaoTabela();
 		Cursor cAux = null;
 		ContentValues c = new ContentValues(); 
 		try{			
@@ -74,10 +82,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		try{				 
 			try{
 				_bd.open();
-				if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
-					VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(MainActivity.this);
-					VerificaVersoesTabelas.jaVerificouAtualizacao = true;
-				}
+				VerificaVersaoTabela();
 				cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
 				cAux.moveToFirst();
 				if (cAux.getCount() > 0){

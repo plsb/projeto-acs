@@ -10,6 +10,7 @@ import java.util.List;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
+import br.com.scs.MainActivity;
 import br.com.scs.R;
 import android.app.Activity;
 import android.content.ContentValues;
@@ -47,11 +48,21 @@ public class ImportarXML extends Activity {
 	
 	public boolean ImportarXmls(){
 		
+		try{
+		
 		boolean retorno = false;
 		
 		xml = new CarregarXML(); 
 		bd = new Banco(this);
-		Cursor cAux = null;
+		Cursor cUsu = null;
+		Cursor cBairro = null;
+		Cursor cRuas = null;
+		
+		if(VerificaVersoesTabelas.jaVerificouAtualizacao == false){
+			VerificaVersoesTabelas pg = VerificaVersoesTabelas.verificaVersoesTabelas(ImportarXML.this);
+			VerificaVersoesTabelas.jaVerificouAtualizacao = true;
+		}
+		
 		try {
 			if (!(xml.carregar("scs.xml","usuario") == null)){		
 				//I M P O R T A Ç Ã O   D E   U S U Á R I O S
@@ -69,17 +80,18 @@ public class ImportarXML extends Activity {
 					c.put("USU_COORDENADOR", usuario.getChildText("codigoUsuario"));
 					c.put("USU_ATIVO", usuario.getChildText("ativoUsuario").trim());
 					c.put("USU_FL_ADMIN", 1);
-					cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { usuario.getChildText("codigoUsuario") }, null, null, null, null);
-					cAux.moveToFirst();						
-					if (cAux.getCount() > 0){
-						bd.atualizarDadosTabela("usuarios",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);													
+					cUsu = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { usuario.getChildText("codigoUsuario") }, null, null, null, null);
+					cUsu.moveToFirst();						
+					if (cUsu.getCount() > 0){
+						bd.atualizarDadosTabela("usuarios",Integer.valueOf(cUsu.getString(cUsu.getColumnIndex("_ID")).toString()),c);													
 					}else{								
 						bd.inserirRegistro("usuarios", c);							
 					}//Fim else
 				}	
 				msg = msg + "Usuários - SIM\n";
-				cAux = null;
-				bd.fechaBanco();
+				if(cUsu != null){
+					cUsu = null;
+				}
 				retorno = true;
 			} else {
 				msg = msg + "Usuários - NÃO\n";
@@ -101,7 +113,6 @@ public class ImportarXML extends Activity {
 			if (!(xml.carregar("scs.xml","bairro") == null)){
 				@SuppressWarnings("rawtypes")
 				List<Element> bairros = xml.carregar("scs.xml","bairro");
-				cAux = null;		
 				bd.open();
 				ContentValues c = new ContentValues();					
 				for(Element bairro : bairros){
@@ -109,17 +120,18 @@ public class ImportarXML extends Activity {
 					c.put("COD_RET", bairro.getChildText("codigoBairro"));
 					c.put("DESCRICAO", bairro.getChildText("descricaoBairro"));
 					c.put("CEP", bairro.getChildText("cepBairro"));
-					cAux = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { bairro.getChildText("codigoBairro") }, null, null, null, null);
-					cAux.moveToFirst();						
-					if (cAux.getCount() > 0){
-						bd.atualizarDadosTabela("bairros",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);													
+					cBairro = bd.consulta("usuarios", new String[] { "*" }, "USU_MATRICULA = ? ",  new String[] { bairro.getChildText("codigoBairro") }, null, null, null, null);
+					cBairro.moveToFirst();						
+					if (cBairro.getCount() > 0){
+						bd.atualizarDadosTabela("bairros",Integer.valueOf(cBairro.getString(cBairro.getColumnIndex("_ID")).toString()),c);													
 					}else{								
 						bd.inserirRegistro("bairros", c);							
 					}//Fim else
 				}//Fim for
 					msg = msg + "Bairros - SIM\n";
-					cAux.close();
-					bd.fechaBanco();
+					if (cBairro != null){
+						cBairro = null;
+					}
 					retorno = true;
 				} else {
 					msg = msg + "Bairros - NÃO\n";
@@ -140,8 +152,7 @@ public class ImportarXML extends Activity {
 		try {
 			if (!(xml.carregar("scs.xml","rua") == null)){
 				@SuppressWarnings("rawtypes")
-				List<Element> ruas = xml.carregar("scs.xml","rua");
-				cAux = null;		
+				List<Element> ruas = xml.carregar("scs.xml","rua");	
 				bd.open();
 				ContentValues c = new ContentValues();					
 				for(Element rua : ruas){				
@@ -153,18 +164,19 @@ public class ImportarXML extends Activity {
 					c.put("COD_SEGMENTO", rua.getChildText("codigoSegmentoRua"));					
 					c.put("USU_VINCULADO", rua.getChildText("codigoAgenteRua"));
 					c.put("COD_BAIRRO", rua.getChildText("codigoBairroRua"));
-					cAux = bd.consulta("ruas", new String[] { "*" }, "COD_RET = ? ",  new String[] { rua.getChildText("codigoRua") }, null, null, null, null);
-					cAux.moveToFirst();
+					cRuas = bd.consulta("ruas", new String[] { "*" }, "COD_RET = ? ",  new String[] { rua.getChildText("codigoRua") }, null, null, null, null);
+					cRuas.moveToFirst();
 					
-					if (cAux.getCount() > 0){  
-						bd.atualizarDadosTabela("ruas",Integer.valueOf(cAux.getString(cAux.getColumnIndex("_ID")).toString()),c);																			   						
+					if (cRuas.getCount() > 0){  
+						bd.atualizarDadosTabela("ruas",Integer.valueOf(cRuas.getString(cRuas.getColumnIndex("_ID")).toString()),c);																			   						
 					}else{						
 						bd.inserirRegistro("ruas", c);						
 					}//Fim else
 				}//Fim while
 				msg = msg + "Logradouros - SIM\n";
-				cAux.close();
-				bd.fechaBanco();
+				if (cRuas != null){
+					cRuas = null;
+				}
 				retorno = true;
 			} else {
 				msg = msg + "Logradouros - NÃO\n";
@@ -181,7 +193,15 @@ public class ImportarXML extends Activity {
 			retorno = false;
 		}
 		
+		bd.fechaBanco();
+		
 		return retorno;
+		
+		}catch(Exception e){
+			Mensagem.exibeMessagem(this, "Erro", e.getMessage());
+			System.out.println("Erro - "+e.getMessage());
+			return false;
+		}
 		
 	}//Fim do Método ImportarXml
 			
