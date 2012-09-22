@@ -53,7 +53,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	ArrayList<String> Enderecos           = new ArrayList<String>();
 	ArrayList<String> Segmento            = new ArrayList<String>();
 	ArrayList<String> Area                = new ArrayList<String>();
-	ArrayList<String> MicroArea           = new ArrayList<String>();	
+	ArrayList<String> MicroArea           = new ArrayList<String>();
+	ArrayList<String> CodBairro           = new ArrayList<String>();	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -233,15 +234,6 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		setOpcoesTransporteUtilizado(pTransporteUtilizado);
 	}
 	
-	/**private void setOpcoesUF(String pUF){
-		UF.clear();
-		if (pUF.length()>0){
-			UF.add(pUF);
-		}
-		UF.add("CE");		
-		PreencheSpinner(SpUF, UF);
-	}**/
-	
 	private void setOpcoesEnderecos(String pEnd,String pBairro){
 		Enderecos.clear();
 		Segmento.clear();
@@ -264,7 +256,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 					Segmento.add(csr.getString(csr.getColumnIndex("COD_SEGMENTO")).toString());
 					Area.add(csr.getString(csr.getColumnIndex("COD_AREA")).toString());
 					MicroArea.add(csr.getString(csr.getColumnIndex("COD_MICROAREA")).toString());
-					//Bairros.add(csr.getString(csr.getColumnIndex("BAIRRO")).toString());
+					CodBairro.add(csr.getString(csr.getColumnIndex("COD_BAIRRO")).toString());
 					csr.moveToNext();
 				}
 				
@@ -481,7 +473,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 						String codRua = SpEndereco.getItemAtPosition(posicao).toString().substring(0,
 										SpEndereco.getItemAtPosition(posicao).toString().indexOf("-"));
 						
-						PreencheMicroarea(codUser.trim(), codRua.trim());
+						PreencheBairro(CodBairro.get(posicao));
 						EdtSegTerritorial.setText(Segmento.get(posicao));
 						EdtArea.setText(Area.get(posicao));
 						EdtMicArea.setText(MicroArea.get(posicao));
@@ -513,26 +505,22 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		});
 	}
 	
-	public void PreencheMicroarea(String _codUser, String _codRua){
-		/*Banco bd = null;
+	public void PreencheBairro(String _codBairro){
+		Banco bd = null;
 		Cursor csr = null;
 		bd = new Banco(this);		
 		
-		//P R E E N C H E   C A M P O S
+		//P R E E N C H E   B A I R R O
 		try{
 			try{				
 				bd.open();
 				csr = bd.consulta("BAIRROS", new String[]{"*"}, 
-								  "M.COD_AREA = A.COD_RET AND A.COD_SEGMENTO = S.COD_RET AND S.COD_BAIRRO = B.COD_RET AND M.COD_RUA = ? AND M.COD_AGENTE = ?", 
-								  new String[] {_codRua,_codUser}, null, null, null, null);
+								  "COD_RET = "+_codBairro.trim(),null, null, null, null, null);
 				csr.moveToFirst();
-				Edtbairro.setText(csr.getString(csr.getColumnIndex("COD_BAIRRO")).toString().trim()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
+				Edtbairro.setText(csr.getString(csr.getColumnIndex("COD_RET")).toString().trim()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
 				EdtCep.setText(csr.getString(csr.getColumnIndex("CEP")).toString());
-				EdtArea.setText(csr.getString(csr.getColumnIndex("COD_AREA")).toString());	
-				EdtSegTerritorial.setText(csr.getString(csr.getColumnIndex("COD_SEGMENTO")).toString());
-				EdtMicArea.setText(csr.getString(csr.getColumnIndex("COD_MICROAREA")).toString());
 			}catch(Exception e){
-				Log.i("MétodoPreencheMicroArea", e.getMessage());
+				Log.i("Método PreencheBairro", e.getMessage());
 			}
 		}finally{
 			if (csr != null){
@@ -541,7 +529,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			if (bd != null){
 				bd.fechaBanco();
 			}
-		}*/
+		}
 		
 	}
 
