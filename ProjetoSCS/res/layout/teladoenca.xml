@@ -828,14 +828,18 @@
 				        android:layout_width="130dp"
 				        android:layout_height="wrap_content"
 				        android:hint="N ou D"
+				        android:visibility="invisible"
 				     />
 				    
-				    <Spinner 
-				        android:id="@+teladoenca/SpGEnMes"
+				    <EditText 
+				        android:id="@+teladoenca/EdtMesGestacao"
 				        android:layout_width="130dp"
-				        android:layout_height="45dp"
-				        android:layout_marginLeft="35dp"
-	      	        />
+				        android:layout_height="wrap_content"
+				        android:hint="Nº Mês"
+				        android:layout_marginLeft="25dp"
+				        android:visibility="invisible"
+				        android:inputType="number" 
+				     />
 				    </LinearLayout>
 
 				      <TextView 

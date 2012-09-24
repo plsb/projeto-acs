@@ -37,23 +37,19 @@ public class Banco{
 																	    "CEP text, 						"+
 																	    "DESCRICAO text NOT NULL    );	"};
 		
-		/*public static final String[] _sqlTabelaSegmentos =  new String[] {"CREATE TABLE if not exists segmentos (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-																	      "COD_RET integer NOT NULL, 		"+
-																	      "COD_BAIRRO integer NOT NULL, 	"+	
-																	      "DESCRICAO text NOT NULL    );	"};
-		
-		public static final String[] _sqlTabelaAreas =  new String[] {"CREATE TABLE if not exists area (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-																	  "COD_RET integer NOT NULL, 		"+
-																      "COD_AREA integer NOT NULL, 		"+
-																      "COD_SEGMENTO integer NOT NULL, 	"+
-																      "COD_AGENTE integer NOT NULL );	"};
-		
-		public static final String[] _sqlTabelaMicroAreas =  new String[] {"CREATE TABLE if not exists microarea (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-																	 	   "COD_RET integer NOT NULL, 		"+
-																	 	   "DESCRICAO text NOT NULL, 		"+
-																	 	   "COD_RUA integer NOT NULL, 		"+
-																	 	   "COD_AGENTE integer NOT NULL, 	"+
-																	 	   "COD_AREA integer NOT NULL );	"};*/
+		public static final String[] _sqlTabelaGestacao =  new String[] {"CREATE TABLE if not exists gestacao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	     "HASH text not null, 		"+
+																	     "DT_ULTIMA_REGRA text,		"+
+																	     "DT_PROVAVEL_PARTO text,	"+
+																	     "DT_CONSULTA_PUERBIO text,	"+
+																	     "TIPO_VACINA text,		    "+
+																	     "DT_VACINA text,			"+
+																	     "EST_NUTRICIONAL text,		"+
+																	     "MES_GESTACAO integer,		"+
+																	     "DT_PRE_NATAL text,		"+
+																	     "FATORES_RISCO text,		"+
+																	     "RESULTADO_GESTACAO text,	"+
+																	     "OBSERVACAO blob);			"};
 		
 		public static final String[] _sqlTabelaRuas =  new String[] {"CREATE TABLE if not exists ruas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	 "COD_RET integer NOT NULL, 		"+
@@ -94,7 +90,8 @@ public class Banco{
 																		   "FL_DIABETE TEXT,     		  "+
 																		   "FL_EPILETICO TEXT,   		  "+
 																		   "FL_ATIVO TEXT,		   		  "+
-																		   "FL_VIVO TEXT,		   		  "+																		   
+																		   "FL_VIVO TEXT,		   		  "+
+																		   "HASH TEXT,			   		  "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
@@ -238,7 +235,9 @@ public class Banco{
 	
 	
 	public void fechaBanco(){
-		bdados.close();
+		if (bd.isOpen()){
+			bdados.close();
+		}
 	}
 	
 	public long inserirRegistro(String tabela, ContentValues valores) {

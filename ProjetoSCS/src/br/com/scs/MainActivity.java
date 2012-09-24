@@ -35,6 +35,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		setContentView(R.layout.activity_main);
 		_bd = new Banco(MainActivity.this);
+		
+		VerificaVersaoTabela();
 
 		chkLembrarMe = (CheckBox) findViewById(R.telalogin.LembraLoginnBox);
 		edtUsuario   = (EditText) findViewById(R.telalogin.Usuario);
@@ -54,7 +56,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 	
 	public void LembrarMe(String usuario){
-		VerificaVersaoTabela();
+		//VerificaVersaoTabela();
 		Cursor cAux = null;
 		ContentValues c = new ContentValues(); 
 		try{			
@@ -82,7 +84,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		try{				 
 			try{
 				_bd.open();
-				VerificaVersaoTabela();
+				//VerificaVersaoTabela();
 				cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
 				cAux.moveToFirst();
 				if (cAux.getCount() > 0){

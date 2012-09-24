@@ -1,24 +1,16 @@
 package br.com.view;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.PublicKey;
-import java.util.Iterator;
 
-import org.jdom2.JDOMException;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.xmlpull.v1.XmlPullParserException;
 
-import br.com.control.Sessao;
 import br.com.control.WSCliente;
-import br.com.control.CarregarXML;
 import br.com.scs.R;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
-import org.jdom2.Element;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +18,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TelaPrincipal extends Activity implements OnClickListener{
 
@@ -133,7 +124,6 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 			Intent i = new Intent(this, TelaSobre.class);			 
 			startActivity(i);
 		}
-		
 		
 	}
 

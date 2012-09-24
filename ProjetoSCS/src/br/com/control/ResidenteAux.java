@@ -29,11 +29,13 @@ public class ResidenteAux {
 	public String FL_MALARIA;
 	public String FL_DIABETE;
 	public String FL_EPILETICO;
+	public String HASH;
 	
 	public boolean Inserir(Context contexto){
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+			
 			
 			c.put("NOME", NOME);
 			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
@@ -54,6 +56,7 @@ public class ResidenteAux {
 			c.put("FL_DIABETE", FL_DIABETE);
 			c.put("FL_EPILETICO", FL_EPILETICO);
 			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
+			c.put("HASH", HASH);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			
 			_bd.open();
@@ -89,8 +92,9 @@ public class ResidenteAux {
 			c.put("FL_DEFICIENTE", FL_DEFICIENTE);
 			c.put("FL_MALARIA", FL_MALARIA);
 			c.put("FL_DIABETE", FL_DIABETE);
-			c.put("FL_EPILETICO", FL_EPILETICO);
+			c.put("FL_EPILETICO", FL_EPILETICO);			
 			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
+			c.put("HASH", HASH);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.atualizarDadosTabela("residente",indice, c);
@@ -121,6 +125,7 @@ public class ResidenteAux {
 		FL_MALARIA     = "";
 		FL_DIABETE     = "";
 		FL_EPILETICO   = "";
+		HASH           = "";
 	}
 	
 }
