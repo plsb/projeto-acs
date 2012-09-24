@@ -12,10 +12,13 @@ import br.com.control.Sessao;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.FeatureInfo;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -41,6 +44,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	public static int hanseniase, hipertensao, diabetes, tuberculose, gestante;
 	
 	public static int ID = 0;	
+	private String HASH_FAMILIAR = "";
 	Banco bd = null;
     Cursor c = null;
     
@@ -106,6 +110,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 				c = bd.consulta("residente", new String[]{"*"},"_ID = "+pID, null, null, null, null, null);
 				c.moveToFirst();
 				if (c.getCount() > 0){
+					HASH_FAMILIAR = c.getString(c.getColumnIndex("HASH")).toString();
 					EdtNome.setText(c.getString(c.getColumnIndex("NOME")).toString());
 					setOpcoesEnderecos(c.getString(c.getColumnIndex("COD_ENDERECO")).toString()+"-"+
 									   c.getString(c.getColumnIndex("ENDERECO")).toString());
@@ -428,17 +433,28 @@ public void InsereBD(){
 			r.SEXO = "F";	
 		
 		if (this.ID == 0){
+			TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+			r.HASH = Mensagem.md5(telephonyManager.getDeviceId()+r.NOME);
 			if (r.Inserir(TelaCadastroFamilia.this)==true){
-				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!");
-				finish();
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!",2000);
+				new Handler().postDelayed(new Runnable() {		
+					public void run() {
+						finish();
+					}
+				}, 2000);
 			}else{
 				Mensagem.exibeMessagem(this, "SCS", "Erro ao Gravar!");
 			}
 		}else{
+			r.HASH = HASH_FAMILIAR;
 			if (r.Atualizar(TelaCadastroFamilia.this, this.ID) == true){
-				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!");
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Atualizar!",2000);
 				ClearID();
-				finish();
+				new Handler().postDelayed(new Runnable() {		
+					public void run() {
+						finish();
+					}
+				}, 2000);
 			}else{
 				Mensagem.exibeMessagem(this, "SCS", "Erro ao Gravar!");
 			}
@@ -452,6 +468,7 @@ public void InsereBD(){
 
 	public void ClearID(){
 		this.ID = 0;
+		this.HASH_FAMILIAR = "";
 	}     
 
 	@Override

@@ -3,12 +3,14 @@ package br.com.view;
 import java.util.ArrayList;
 
 import br.com.control.Banco;
+import br.com.control.Mensagem;
 import br.com.control.ResidenciaAux;
 import br.com.control.Sessao;
 import br.com.scs.R;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -429,18 +431,26 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		
 		if (this.ID == 0){		
 			if (r.Inserir(TelaResidencia.this)==true){
-				Toast.makeText(this, "Sucesso ao Gravar!", Toast.LENGTH_LONG).show();
-				finish();
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!",2000);
+				new Handler().postDelayed(new Runnable() {		
+					public void run() {
+						finish();
+					}
+				}, 2000);
 			}else{
-				Toast.makeText(this, "Erro ao Gravar!", Toast.LENGTH_LONG).show();
+				Mensagem.exibeMessagem(this, "SCS", "Erro ao Gravar!");
 			}
 		}else{
 			if (r.Atualizar(TelaResidencia.this, this.ID) == true){
-				Toast.makeText(this, "Sucesso ao Atulizar!", Toast.LENGTH_LONG).show();
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!",2000);
 				ClearID();
-				finish();
+				new Handler().postDelayed(new Runnable() {		
+					public void run() {
+						finish();
+					}
+				}, 2000);
 			}else{
-				Toast.makeText(this, "Erro ao Atulizar!", Toast.LENGTH_LONG).show();
+				Mensagem.exibeMessagem(this, "SCS", "Erro ao Atualizar!");
 			}
 		}
 	}
@@ -545,6 +555,4 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		
 	}
 	
-	
-	
-}
+}//Fim da Classe

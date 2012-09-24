@@ -239,6 +239,7 @@ public final class R {
         public static final int EdtHCe=0x7f0c000f;
         public static final int EdtHMenor5Bcg=0x7f0c0011;
         public static final int EdtHtPressaoArterial=0x7f0c0066;
+        public static final int EdtMesGestacao=0x7f0c0047;
         public static final int EdtTCe=0x7f0c0037;
         public static final int EdtTMenor5Bcg=0x7f0c0039;
         public static final int RbANao=0x7f0c000d;
@@ -277,7 +278,6 @@ public final class R {
         public static final int RgTExameEscarro=0x7f0c0033;
         public static final int RgTMedicacaoDiaria=0x7f0c002b;
         public static final int RgTReacoesIndesejadas=0x7f0c002f;
-        public static final int SpGEnMes=0x7f0c0047;
         public static final int TxtDDataVisita=0x7f0c0013;
         public static final int TxtDFazDieta=0x7f0c0015;
         public static final int TxtDFazExercicio=0x7f0c0019;

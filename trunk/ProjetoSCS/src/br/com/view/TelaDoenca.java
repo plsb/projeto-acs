@@ -1,11 +1,14 @@
 package br.com.view;
 
 import br.com.control.Banco;
+import br.com.control.Gestante;
 import br.com.control.Mensagem;
 import br.com.scs.R;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -18,6 +21,12 @@ import android.widget.TextView;
 public class TelaDoenca extends Activity{
 	
 	public static int COD_FAMILAR = 0;
+	
+	public static boolean _Hanseniase  = false;
+	public static boolean _Diabetes    = false;
+	public static boolean _Hipertensao = false;
+	public static boolean _Gestante	  = false;
+	public static boolean _Tuberculose = false;
 	
 	TextView datavisita, medicacaodiaria, ultimadose, cuidados, comunicantes, bcg; //Hanseniase
 	DatePicker dataprofissional, ultimadata; //hanseniase
@@ -43,8 +52,7 @@ public class TelaDoenca extends Activity{
 	TextView TxtGDtUltimaRegra, TxtGDtParto, TxtGDtVacina, TxtGEn, TxtGDtPN, TxtGFr, TxtGRG, TxtGDtPuerbio, TxtGEnMes;
 	DatePicker GDtUltimaRegra, GDtParto, GDtVacina, GDtPuerbio, DtGPreNatal;
 	CheckBox ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao, ChGUm, ChG2, ChGR;
-	EditText EdtGEn;
-	Spinner SpGEn;
+	EditText EdtGEn,EdtMesGestacao;
 	
 
 	@Override
@@ -124,13 +132,13 @@ public class TelaDoenca extends Activity{
 		GDtParto = (DatePicker) findViewById(R.teladoenca.DtGParto);
 		GDtVacina = (DatePicker) findViewById(R.teladoenca.DtGVacina);
 		GDtPuerbio = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
-		SpGEn = (Spinner) findViewById(R.teladoenca.SpGEnMes);
 		GDtUltimaRegra = (DatePicker) findViewById(R.teladoenca.DtGDataRegra); 
 		GDtParto = (DatePicker) findViewById(R.teladoenca.DtGParto);  
 		GDtVacina = (DatePicker) findViewById(R.teladoenca.DtGVacina);  
 		GDtPuerbio = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
 		DtGPreNatal = (DatePicker) findViewById(R.teladoenca.DtGPreNatal);
 		EdtGEn = (EditText) findViewById(R.teladoenca.EdtGEn);
+		EdtMesGestacao = (EditText) findViewById(R.teladoenca.EdtMesGestacao);
 		ChGGestacoes = (CheckBox) findViewById(R.teladoenca.ChGGestacoes); 
 		ChGAborto = (CheckBox) findViewById(R.teladoenca.ChGAborto);  
 		ChGIdade36 = (CheckBox) findViewById(R.teladoenca.ChGIdade36);  
@@ -145,6 +153,26 @@ public class TelaDoenca extends Activity{
 		
 		InicializaTelas();
 		
+	}
+	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.telaresidencia, menu);        
+        return true;
+    }
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+
+		case R.id.menu_gravar:
+			//if (validaCampos()==true){
+			//	PreparaInsercao();
+			//}
+			break;
+		}
+		return true;
 	}
 	
 	public void InicializaTelas(){
@@ -162,35 +190,40 @@ public class TelaDoenca extends Activity{
 			        th.setup();
 			        TabSpec ts;
 			        
-			        if (c.getString(c.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S")){//(TelaCadastroFamilia.hanseniase != 0){
+			        if (c.getString(c.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S")){
+			        	_Hanseniase = true;
 			        	ts = th.newTabSpec("tag1");
 			        	ComponentesHanseniase();
 			            ts.setContent(R.teladoenca.tabHanseniase);
 			            ts.setIndicator("Hanseniase",getResources().getDrawable(R.drawable.hanseniase));
 			            th.addTab(ts);
 			        }
-			        if (c.getString(c.getColumnIndex("FL_DIABETE")).toString().trim().equals("S")){//(TelaCadastroFamilia.diabetes != 0){
+			        if (c.getString(c.getColumnIndex("FL_DIABETE")).toString().trim().equals("S")){
+			        	_Diabetes = true;
 			        	ts = th.newTabSpec("tag2");
 			        	ComponentesDiabetes();
 			            ts.setContent(R.teladoenca.tabDiabetes);
 			            ts.setIndicator("Diabetes",getResources().getDrawable(R.drawable.diabetes));
 			            th.addTab(ts);
 			        }
-			       if (c.getString(c.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S")){//(TelaCadastroFamilia.hipertensao != 0){
+			       if (c.getString(c.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S")){
+			    	   _Hipertensao = true;
 			        	ts = th.newTabSpec("tag3");
 			        	ComponentesHiperTensao();
 			            ts.setContent(R.teladoenca.tabHipertensao);
 			            ts.setIndicator("Hipertensao",getResources().getDrawable(R.drawable.hipertensao));
 			            th.addTab(ts);
 			        }
-			        if (c.getString(c.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){//(TelaCadastroFamilia.gestante != 0){
+			        if (c.getString(c.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
+			        	_Gestante = true;
 			        	ts = th.newTabSpec("tag4");
 			        	ComponentesGestante();
 			            ts.setContent(R.teladoenca.tabGestante);
 			            ts.setIndicator("Gestante",getResources().getDrawable(R.drawable.gestante));
 			            th.addTab(ts);
 			       }
-			        if (c.getString(c.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S")){//(TelaCadastroFamilia.tuberculose != 0){
+			        if (c.getString(c.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S")){
+			        	_Tuberculose = true;
 			        	ts = th.newTabSpec("tag5");
 			        	ComponentesTuberculose();
 			            ts.setContent(R.teladoenca.tabTuberculose);
@@ -275,6 +308,7 @@ public class TelaDoenca extends Activity{
 		GDtPuerbio.setVisibility(0);
 		DtGPreNatal.setVisibility(0);
 		EdtGEn.setVisibility(0);
+		EdtMesGestacao.setVisibility(0);
 		ChGGestacoes.setVisibility(0); 
 		ChGAborto.setVisibility(0); 
 		ChGIdade36.setVisibility(0); 
@@ -301,5 +335,67 @@ public class TelaDoenca extends Activity{
 		RgHtTm.setVisibility(0); 
 		RgHtFe.setVisibility(0);
 		EdtHtPe.setVisibility(0);
+	}
+	
+	public void Inserir(){
+		
+		if (_Gestante==true){
+			
+			String fatores_risco = "";
+			Gestante g = new Gestante();
+			g.DT_ULTIMA_REGRA     = String.valueOf(GDtUltimaRegra.getDayOfMonth())+"/"+String.valueOf(GDtUltimaRegra.getMonth()+1)+"/"+String.valueOf(GDtUltimaRegra.getYear());
+			g.DT_PROVAVEL_PARTO   = String.valueOf(GDtParto.getDayOfMonth())+"/"+String.valueOf(GDtParto.getMonth()+1)+"/"+String.valueOf(GDtParto.getYear());
+			g.DT_VACINA           = String.valueOf(GDtVacina.getDayOfMonth())+"/"+String.valueOf(GDtVacina.getMonth()+1)+"/"+String.valueOf(GDtVacina.getYear());
+			g.DT_PRE_NATAL        = String.valueOf(DtGPreNatal.getDayOfMonth())+"/"+String.valueOf(DtGPreNatal.getMonth()+1)+"/"+String.valueOf(DtGPreNatal.getYear());
+			g.DT_CONSULTA_PUERBIO = String.valueOf(GDtPuerbio.getDayOfMonth())+"/"+String.valueOf(GDtPuerbio.getMonth()+1)+"/"+String.valueOf(GDtPuerbio.getYear());
+			g.EST_NUTRICIONAL     = EdtGEn.getText().toString();
+			g.MES_GESTACAO        = EdtMesGestacao.getText().toString();
+			
+			
+			//Tipo de Vacina
+			if (ChGUm.isChecked())
+			  g.TIPO_VACINA = "1";
+			else if (ChG2.isChecked())
+				g.TIPO_VACINA = "2";
+			else if (ChGR.isChecked())
+				g.TIPO_VACINA = "R";
+			
+			//Fatores de Risco
+			if (ChGGestacoes.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGIdade36.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGSangue.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGDiabetes.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGAborto.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGIdade20.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGEdema.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			if (ChGPressao.isChecked())
+				fatores_risco += "S";
+			else
+				fatores_risco += "N";
+			
+			g.FATORES_RISCO = fatores_risco;
+				
+		}
 	}
 }
