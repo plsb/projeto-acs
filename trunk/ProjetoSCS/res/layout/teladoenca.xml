@@ -118,7 +118,7 @@
 			        />
 			    
 			    <DatePicker 
-			        android:id="@+teladoenca/DtHUltimaData"
+			        android:id="@+teladoenca/DtHUltimaDose"
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_marginBottom="5dp"
@@ -213,7 +213,46 @@
 				   android:inputType="number"
 				   android:visibility="invisible"
 				        />
-			    
+		      <TextView 
+		          android:id="@+teladoenca/TxtHNComunicantes" 
+			       android:text="Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			       android:visibility="invisible"
+		          />
+		      
+		      <EditText
+		           android:id="@+teladoenca/EdtHNComunicantes"
+				   android:layout_width="fill_parent"
+				   android:layout_height="wrap_content"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="number"
+				   android:visibility="invisible"
+		          />
+		      
+		       <TextView 
+		          android:id="@+teladoenca/TxtHDtUltimaConsulta" 
+			       android:text="Data Ultima Consulta:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			       android:visibility="invisible"
+		          />
+		       
+		        <DatePicker 
+			        android:id="@+teladoenca/DtHDtUltimaConsulta"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
+			        android:visibility="invisible"
+			        />
+		          
 		    </LinearLayout>
     
 
@@ -453,6 +492,27 @@
 			        	android:visibility="invisible"
 		
 			     	/>
+	                 
+	           <TextView 
+		          android:id="@+teladoenca/TxtDObs" 
+			       android:text="Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			       android:visibility="invisible"
+		          />
+		      
+		      <EditText
+		           android:id="@+teladoenca/EdtDObs"
+				   android:layout_width="fill_parent"
+				   android:layout_height="200dp"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="textMultiLine"
+				   android:visibility="invisible"
+		          />
 	                
 	            </LinearLayout>
 	                
@@ -683,6 +743,27 @@
 				        android:inputType="number"
 				        android:visibility="invisible"
 				        />
+				     
+				  <TextView 
+		          android:id="@+teladoenca/TxtTObs" 
+			       android:text="Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			       android:visibility="invisible"
+		          />
+		      
+		      <EditText
+		           android:id="@+teladoenca/EdtTObs"
+				   android:layout_width="fill_parent"
+				   android:layout_height="200dp"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="textMultiLine"
+				   android:visibility="invisible"
+		          />
 			    
 				</LinearLayout> 
 				</LinearLayout><!--  TUBERCULOSE -->
@@ -1010,6 +1091,27 @@
 				     android:layout_height="wrap_content"
 	                 android:visibility="invisible"	
 				     />
+				 
+				  <TextView 
+		          android:id="@+teladoenca/TxtGObs" 
+			       android:text="Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			       android:visibility="invisible"
+		          />
+		      
+		      <EditText
+		           android:id="@+teladoenca/EdtGObs"
+				   android:layout_width="fill_parent"
+				   android:layout_height="200dp"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="textMultiLine"
+				   android:visibility="invisible"
+		          />
 
                 </LinearLayout>
              
@@ -1225,6 +1327,27 @@
 				        android:visibility="invisible"
 		
                        />
+                   
+                <TextView 
+		          android:id="@+teladoenca/TxtHtObs" 
+			       android:text="Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			       android:visibility="invisible"
+		          />
+		      
+		        <EditText
+		           android:id="@+teladoenca/EdtHtObs"
+				   android:layout_width="fill_parent"
+				   android:layout_height="200dp"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="textMultiLine"
+				   android:visibility="invisible"
+		          />
 			   </LinearLayout>
 			   
 			   </LinearLayout><!--  HIPERTENSAO -->
