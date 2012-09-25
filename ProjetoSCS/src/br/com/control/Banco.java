@@ -51,6 +51,18 @@ public class Banco{
 																	     "RESULTADO_GESTACAO text,	"+
 																	     "OBSERVACAO blob);			"};
 		
+		 public static final String[] _sqlTabelaHanseniase =  new String[] {"CREATE TABLE if not exists hanseniase (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+			     															"HASH text not null, 		       "+
+			     															"DT_VISITA text,		           "+
+			     															"DT_ULTIMA_CONSULTA text,	       "+
+			     															"DT_ULTIMA_DOSE text,	           "+
+			     															"TOMA_MEDICACAO text,		       "+
+			     															"AUTO_CUIDADOS text,			   "+
+			     															"COMUNICANTES_EXAMINADOS integer,  "+
+			     															"COMUNICANTES_BCG integer,		   "+
+			     															"NUMERO_COMUNICANTES integer,	   "};
+			     															
+		
 		public static final String[] _sqlTabelaRuas =  new String[] {"CREATE TABLE if not exists ruas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	 "COD_RET integer NOT NULL, 		"+
 																	 "DESCRICAO text NOT NULL,      	"+
