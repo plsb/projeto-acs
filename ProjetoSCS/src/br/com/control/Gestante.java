@@ -1,8 +1,5 @@
 package br.com.control;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 import android.content.ContentValues;
 import android.content.Context;
 

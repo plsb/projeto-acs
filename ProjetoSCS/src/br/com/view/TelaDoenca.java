@@ -1,15 +1,17 @@
 package br.com.view;
 
-import java.io.IOException;
-
 import br.com.control.Banco;
+import br.com.control.Diabete;
 import br.com.control.Gestante;
 import br.com.control.Hanseniase;
+import br.com.control.Hipertensao;
 import br.com.control.Mensagem;
+import br.com.control.Tuberculose;
 import br.com.scs.R;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -17,7 +19,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -32,18 +33,21 @@ public class TelaDoenca extends Activity{
 	public static boolean _Gestante	  = false;
 	public static boolean _Tuberculose = false;
 	
+	public static String _HASH = "";
+	
 	 /*HANSENIASE*/
 	TextView datavisita, medicacaodiaria, ultimadose, cuidados, comunicantes, bcg, TxtHNComunicantes, TxtHDtUltimaConsulta; //Hanseniase
 	DatePicker DtHVisita, DtHUltimadose, DtHDtUltimaConsulta; //hanseniase
 	RadioGroup rgmedicacaodiaria, autocuidados; //hanseniase
 	RadioButton RbHMdSim, RbHMdNao, RbHAcSim, RbHAcNao;
-	EditText EdtHCe, EdtHM5Bcg, EdtHNComunicantes;
+	EditText EdtHCe, EdtHM5Bcg, EdtHNObservacao;
 	 /*HANSENIASE*/
 
 	 /*DIABETES*/
 	TextView dDataVisita, dFazDieta, dFazExercicio, dUsaInsulina, dTomaHipo, dUltimaVisita, TxtDObs; //Diabetes
 	DatePicker dDtDataVisita, dDtUltimaConsulta; //Diabetes
 	RadioGroup dRgFazExercicio, dRgFazDieta, dRgInsulina, dRgHipoglicemiante;//Diabetes
+	RadioButton dFazDieta_S,dFazDieta_N,dFazExerc_S,dFazExerc_N,dUsaInsulina_S,dUsaInsulina_N,dHipog_S,dHipog_N;//Diabetes
 	EditText EdtDObs;
 	 /*DIABETES*/
 	
@@ -51,6 +55,7 @@ public class TelaDoenca extends Activity{
 	TextView TxtTDataVisita, TxtTMd, TxtTRi, TxtTEe, TxtTCe, TxtTM5Bcg, TxtTObs;
 	DatePicker DtTDataVisita;
 	RadioGroup RgTMd, RgTRi, RgTEe;
+	RadioButton RbTMedicDiaria_S,RbTMedicDiaria_N,RbTReacoesIndesejaveis_S,RbTReacoesIndesejaveis_N,RbTExameEscarro_S,RbTExameEscarro_N;
 	EditText EdtTCe, EdtTM5Bcg, EdtTObs;
 	/*TUBERCULOSE*/
 	
@@ -58,6 +63,7 @@ public class TelaDoenca extends Activity{
 	TextView TxtHtDataVisita, TxtHtFd, TxtHtTm, TxtHtFe, TxtHtPa, TxtHtDtUV, TxtHtObs;
 	DatePicker DtHtDataVisita, DtHtUltimaVisita;
 	RadioGroup RgHtFd, RgHtTm, RgHtFe;
+	RadioButton RbHiFazDieta_S, RbHiFazDieta_N, RbHiTomaMedic_S, RbHiTomaMedic_N, RbHiExcercFisico_S, RbHiExcercFisico_N; 
 	EditText EdtHtPe, EdtHtObs;
 	/*HIPERTENSAO*/
 	
@@ -90,7 +96,7 @@ public class TelaDoenca extends Activity{
 		autocuidados = (RadioGroup) findViewById(R.teladoenca.RgHAutoCuidados);
 		EdtHCe = (EditText) findViewById(R.teladoenca.EdtHCe);
 		EdtHM5Bcg = (EditText) findViewById(R.teladoenca.EdtHMenor5Bcg);
-		EdtHNComunicantes = (EditText) findViewById(R.teladoenca.EdtHNComunicantes);
+		EdtHNObservacao = (EditText) findViewById(R.teladoenca.EdtHNObservacao);
 		RbHMdSim = (RadioButton) findViewById(R.teladoenca.RbMSim);
 		RbHMdNao = (RadioButton) findViewById(R.teladoenca.RbMNao);
 		RbHAcSim = (RadioButton) findViewById(R.teladoenca.RbASim);
@@ -112,7 +118,14 @@ public class TelaDoenca extends Activity{
 		dRgInsulina = (RadioGroup) findViewById(R.teladoenca.RgDInsulina);
 		dRgHipoglicemiante = (RadioGroup) findViewById(R.teladoenca.RgDHipoglicemiante);
 		EdtDObs = (EditText) findViewById(R.teladoenca.EdtDObs);
-		
+		dFazDieta_S = (RadioButton) findViewById(R.teladoenca.RbDietaSim);
+		dFazDieta_N = (RadioButton) findViewById(R.teladoenca.RbDietaNao);
+		dFazExerc_S = (RadioButton) findViewById(R.teladoenca.RbFazExercicioSim);
+		dFazExerc_N = (RadioButton) findViewById(R.teladoenca.RbFazExercicioNao);
+		dUsaInsulina_S = (RadioButton) findViewById(R.teladoenca.RbInsulinaSim);
+		dUsaInsulina_N = (RadioButton) findViewById(R.teladoenca.RbInsulinaNao);
+		dHipog_S = (RadioButton) findViewById(R.teladoenca.RbHipoglicemianteSim);
+		dHipog_N = (RadioButton) findViewById(R.teladoenca.RbHipoglicemianteNao);
 		
 		//Componentes tuberculose
 		TxtTDataVisita = (TextView) findViewById(R.teladoenca.TxtTDataVisita);
@@ -126,6 +139,12 @@ public class TelaDoenca extends Activity{
 		RgTMd = (RadioGroup) findViewById(R.teladoenca.RgTMedicacaoDiaria);
 		RgTEe = (RadioGroup) findViewById(R.teladoenca.RgTExameEscarro);
 		RgTRi = (RadioGroup) findViewById(R.teladoenca.RgTReacoesIndesejadas);
+		RbTMedicDiaria_S = (RadioButton) findViewById(R.teladoenca.RbMedicacaoDiariaSim);
+		RbTMedicDiaria_N = (RadioButton) findViewById(R.teladoenca.RbMedicacaoDiariaNao);
+		RbTReacoesIndesejaveis_S = (RadioButton) findViewById(R.teladoenca.RbTReacoesIndesejadasSim);
+		RbTReacoesIndesejaveis_N = (RadioButton) findViewById(R.teladoenca.RbTReacoesIndesejadasNao);
+		RbTExameEscarro_S = (RadioButton) findViewById(R.teladoenca.RbTExameEscarroSim);
+		RbTExameEscarro_N = (RadioButton) findViewById(R.teladoenca.RbTExameEscarroNao);
 		EdtTCe = (EditText) findViewById(R.teladoenca.EdtTCe);
 		EdtTM5Bcg = (EditText) findViewById(R.teladoenca.EdtTMenor5Bcg);
 		EdtTObs = (EditText) findViewById(R.teladoenca.EdtTObs);
@@ -143,6 +162,12 @@ public class TelaDoenca extends Activity{
 		RgHtFd = (RadioGroup) findViewById(R.teladoenca.RgHtDieta); 
 		RgHtTm = (RadioGroup) findViewById(R.teladoenca.RgHtMedicacao); 
 		RgHtFe = (RadioGroup) findViewById(R.teladoenca.RgHtFazExercicio);
+		RbHiFazDieta_S = (RadioButton) findViewById(R.teladoenca.RbHtDietaSim);
+		RbHiFazDieta_N = (RadioButton) findViewById(R.teladoenca.RbHtDietaNao);
+		RbHiTomaMedic_S = (RadioButton) findViewById(R.teladoenca.RbHtMedicacaoSim);
+		RbHiTomaMedic_N = (RadioButton) findViewById(R.teladoenca.RbHtMedicacaoNao);
+		RbHiExcercFisico_S = (RadioButton) findViewById(R.teladoenca.RbHtFazExercicioSim);
+		RbHiExcercFisico_N = (RadioButton) findViewById(R.teladoenca.RbHtFazExercicioNao);
 		EdtHtPe = (EditText) findViewById(R.teladoenca.EdtHtPressaoArterial);
 		EdtHtObs = (EditText) findViewById(R.teladoenca.EdtHtObs);
 		
@@ -197,9 +222,7 @@ public class TelaDoenca extends Activity{
 		switch (item.getItemId()) {
 
 		case R.id.menu_gravar:
-			//if (validaCampos()==true){
-			//	PreparaInsercao();
-			//}
+			Inserir();
 			break;
 		}
 		return true;
@@ -215,6 +238,8 @@ public class TelaDoenca extends Activity{
 				
 				c.moveToFirst();
 				if (c.getCount()>0){
+					
+					_HASH = c.getString(c.getColumnIndex("HASH")).toString().trim();
 					
 					TabHost th = (TabHost) findViewById(R.teladoenca.tabhost);
 			        th.setup();
@@ -290,7 +315,7 @@ public class TelaDoenca extends Activity{
 		EdtHCe.setVisibility(0);
 		EdtHM5Bcg.setVisibility(0);
 		TxtHNComunicantes.setVisibility(0);
-		EdtHNComunicantes.setVisibility(0);
+		EdtHNObservacao.setVisibility(0);
 		TxtHDtUltimaConsulta.setVisibility(0);
 		DtHDtUltimaConsulta.setVisibility(0);
 	}
@@ -381,94 +406,264 @@ public class TelaDoenca extends Activity{
 	
 	public void Inserir(){
 		
+		String msgInsercao = "";
+		
 		/*GESTANTE*/
 		if (_Gestante==true){
 			
-			String fatores_risco = "";
-			Gestante g = new Gestante();
-			g.DT_ULTIMA_REGRA     = String.valueOf(GDtUltimaRegra.getDayOfMonth())+"/"+String.valueOf(GDtUltimaRegra.getMonth()+1)+"/"+String.valueOf(GDtUltimaRegra.getYear());
-			g.DT_PROVAVEL_PARTO   = String.valueOf(GDtParto.getDayOfMonth())+"/"+String.valueOf(GDtParto.getMonth()+1)+"/"+String.valueOf(GDtParto.getYear());
-			g.DT_VACINA           = String.valueOf(GDtVacina.getDayOfMonth())+"/"+String.valueOf(GDtVacina.getMonth()+1)+"/"+String.valueOf(GDtVacina.getYear());
-			g.DT_PRE_NATAL        = String.valueOf(DtGPreNatal.getDayOfMonth())+"/"+String.valueOf(DtGPreNatal.getMonth()+1)+"/"+String.valueOf(DtGPreNatal.getYear());
-			g.DT_CONSULTA_PUERBIO = String.valueOf(GDtPuerbio.getDayOfMonth())+"/"+String.valueOf(GDtPuerbio.getMonth()+1)+"/"+String.valueOf(GDtPuerbio.getYear());
-			g.EST_NUTRICIONAL     = EdtGEn.getText().toString();
-			g.MES_GESTACAO        = EdtMesGestacao.getText().toString();
-			g.OBSERVACAO          = EdtGObs.getText().toString();
+			Gestante g = null;
 			
-			
-			//Tipo de Vacina
-			if (ChGUm.isChecked())
-			  g.TIPO_VACINA = "1";
-			else if (ChG2.isChecked())
-				g.TIPO_VACINA = "2";
-			else if (ChGR.isChecked())
-				g.TIPO_VACINA = "R";
-			
-			//Fatores de Risco
-			if (ChGGestacoes.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGIdade36.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGSangue.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGDiabetes.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGAborto.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGIdade20.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGEdema.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			if (ChGPressao.isChecked())
-				fatores_risco += "S";
-			else
-				fatores_risco += "N";
-			
-			g.FATORES_RISCO = fatores_risco;
+			try{
+				String fatores_risco = "";
+				g = new Gestante();
+				g.DT_ULTIMA_REGRA     = String.valueOf(GDtUltimaRegra.getDayOfMonth())+"/"+String.valueOf(GDtUltimaRegra.getMonth()+1)+"/"+String.valueOf(GDtUltimaRegra.getYear());
+				g.DT_PROVAVEL_PARTO   = String.valueOf(GDtParto.getDayOfMonth())+"/"+String.valueOf(GDtParto.getMonth()+1)+"/"+String.valueOf(GDtParto.getYear());
+				g.DT_VACINA           = String.valueOf(GDtVacina.getDayOfMonth())+"/"+String.valueOf(GDtVacina.getMonth()+1)+"/"+String.valueOf(GDtVacina.getYear());
+				g.DT_PRE_NATAL        = String.valueOf(DtGPreNatal.getDayOfMonth())+"/"+String.valueOf(DtGPreNatal.getMonth()+1)+"/"+String.valueOf(DtGPreNatal.getYear());
+				g.DT_CONSULTA_PUERBIO = String.valueOf(GDtPuerbio.getDayOfMonth())+"/"+String.valueOf(GDtPuerbio.getMonth()+1)+"/"+String.valueOf(GDtPuerbio.getYear());
+				g.EST_NUTRICIONAL     = EdtGEn.getText().toString();
+				g.MES_GESTACAO        = EdtMesGestacao.getText().toString();
+				g.OBSERVACAO          = EdtGObs.getText().toString();
+				g.HASH                = _HASH;
 				
-		}
+				
+				//Tipo de Vacina
+				if (ChGUm.isChecked())
+				  g.TIPO_VACINA = "1";
+				else if (ChG2.isChecked())
+					g.TIPO_VACINA = "2";
+				else if (ChGR.isChecked())
+					g.TIPO_VACINA = "R";
+				
+				//Fatores de Risco
+				if (ChGGestacoes.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGIdade36.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGSangue.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGDiabetes.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGAborto.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGIdade20.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGEdema.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (ChGPressao.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				
+				g.FATORES_RISCO = fatores_risco;
+				
+				if (g.Inserir(this) == true){
+					msgInsercao += "Gestante - Gravado\n";
+				}else{
+					msgInsercao += "Gestante - Erro\n";
+				}
+			}finally{
+				g = null;			
+			}
+				
+		}/*FIM GESTANTE*/
 		
 		/*HANSENIASE*/
 		if (_Hanseniase == true){
 			
-			Hanseniase h = new Hanseniase();
-			h.DT_VISITA = String.valueOf(DtHVisita.getDayOfMonth())+"/"+String.valueOf(DtHVisita.getMonth())+"/"+String.valueOf(DtHVisita.getYear());
-			h.DT_ULTIMA_CONSULTA = String.valueOf(DtHDtUltimaConsulta.getDayOfMonth())+"/"+String.valueOf(DtHDtUltimaConsulta.getMonth())+"/"+String.valueOf(DtHDtUltimaConsulta.getYear());
-			h.DT_ULTIMA_DOSE = String.valueOf(DtHUltimadose.getDayOfMonth())+"/"+String.valueOf(DtHUltimadose.getMonth())+"/"+String.valueOf(DtHUltimadose.getYear());
-			h.COMUNICANTES_EXAMINADOS = Integer.valueOf(EdtHCe.getText().toString());
-			h.COMUNICANTES_BCG = Integer.valueOf(EdtHM5Bcg.getText().toString());
-			h.NUMERO_COMUNICANTES = Integer.valueOf(EdtHNComunicantes.getText().toString());
+			Hanseniase h = null;
 			
-			//Toma Medicacao
-			if (RbHMdSim.isChecked()){
-				h.TOMA_MEDICACAO = "S";
-			}
-			if (RbHMdNao.isChecked()){
-				h.TOMA_MEDICACAO = "N";
-			}
-			//Auto Cuidados
-			if (RbHAcSim.isChecked()){
-				h.AUTO_CUIDADOS = "S";
-			}
-			if (RbHAcNao.isChecked()){
-				h.AUTO_CUIDADOS = "N";
-			}
-				 
+			try{
 				
-		}
+				h = new Hanseniase();
+				h.DT_VISITA				  = String.valueOf(DtHVisita.getDayOfMonth())+"/"+String.valueOf(DtHVisita.getMonth()+1)+"/"+String.valueOf(DtHVisita.getYear());
+				h.DT_ULTIMA_CONSULTA	  = String.valueOf(DtHDtUltimaConsulta.getDayOfMonth())+"/"+String.valueOf(DtHDtUltimaConsulta.getMonth()+1)+"/"+String.valueOf(DtHDtUltimaConsulta.getYear());
+				h.DT_ULTIMA_DOSE		  = String.valueOf(DtHUltimadose.getDayOfMonth())+"/"+String.valueOf(DtHUltimadose.getMonth()+1)+"/"+String.valueOf(DtHUltimadose.getYear());
+				h.COMUNICANTES_EXAMINADOS = Integer.valueOf(EdtHCe.getText().toString());
+				h.COMUNICANTES_BCG		  = Integer.valueOf(EdtHM5Bcg.getText().toString());
+				h.OBS 				      = EdtHNObservacao.getText().toString();
+				h.HASH                    = _HASH;
+				
+				//Toma Medicacao
+				if (RbHMdSim.isChecked()){
+					h.TOMA_MEDICACAO = "S";
+				}
+				if (RbHMdNao.isChecked()){
+					h.TOMA_MEDICACAO = "N";
+				}
+				//Auto Cuidados
+				if (RbHAcSim.isChecked()){
+					h.AUTO_CUIDADOS = "S";
+				}
+				if (RbHAcNao.isChecked()){
+					h.AUTO_CUIDADOS = "N";
+				}
+				
+				if (h.Inserir(this) == true){
+					msgInsercao += "Hanseníase - Gravado\n";
+				}else{
+					msgInsercao += "Hanseníase - Erro\n";
+				}
+			
+			}finally{
+				h = null;
+			}
+				
+		}/*FIM HANSENIASE*/
+		
+		/*DIABETE*/
+		if (_Diabetes == true){
+			
+			Diabete d = null;
+			
+			try{
+				d = new Diabete();
+				d.HASH	     = _HASH;
+				d.DT_VISITA  = String.valueOf(dDtDataVisita.getDayOfMonth())+"/"+String.valueOf(dDtDataVisita.getMonth()+1)+"/"+String.valueOf(dDtDataVisita.getYear());
+				d.OBSERVACAO = EdtDObs.getText().toString();
+				d.DT_ULTIMA_VISITA = String.valueOf(dDtUltimaConsulta.getDayOfMonth())+"/"+String.valueOf(dDtUltimaConsulta.getMonth()+1)+"/"+String.valueOf(dDtUltimaConsulta.getYear());
+				
+				//Faz Dieta
+				if (dFazDieta_S.isChecked())
+					d.FL_FAZ_DIETA = "S";
+				else if (dFazDieta_N.isChecked())
+					d.FL_FAZ_DIETA = "N";
+				
+				//Faz Exercícios Físicos
+				if (dFazExerc_S.isChecked())
+					d.FL_FAZ_EXCERCICIOS = "S";
+				else if (dFazExerc_N.isChecked())
+					d.FL_FAZ_EXCERCICIOS = "N";
+				
+				//Usa Insulina
+				if (dUsaInsulina_S.isChecked())
+					d.FL_USA_INSULINA = "S";
+				else if (dUsaInsulina_N.isChecked())
+					d.FL_USA_INSULINA = "N";
+				
+				//Usa Hipoglicemiante Oral
+				if (dHipog_S.isChecked())
+					d.FL_USA_HIPOGLICEMIANTE = "S";
+				else if (dHipog_N.isChecked())
+					d.FL_USA_HIPOGLICEMIANTE = "N";
+				
+				if (d.Inserir(this) == true){
+					msgInsercao += "Diabete - Gravado\n";
+				}else{
+					msgInsercao += "Diabete - Erro\n";
+				}
+				
+			}finally{
+				d = null;
+			}
+			
+		}/*FIM DIABETE*/
+		
+		/*TUBERCULOSE*/
+		if (_Tuberculose == true){
+			
+			Tuberculose t = null;
+			
+			try{
+				t = new Tuberculose();
+				t.HASH               = _HASH; 
+				t.DT_VISITA 		 = String.valueOf(DtTDataVisita.getDayOfMonth())+"/"+String.valueOf(DtTDataVisita.getMonth()+1)+"/"+String.valueOf(DtTDataVisita.getYear());
+				t.COMUNIC_EXAMINADOS = EdtTCe.getText().toString();
+				t.MENOR_BCG 		 = EdtTM5Bcg.getText().toString();
+				t.OBSERVACAO 	     = EdtTObs.getText().toString();
+				
+				//Toma Medicação Diária
+				if (RbTMedicDiaria_S.isChecked())
+					t.FL_MEDIC_DIARIA = "S";
+				else if (RbTMedicDiaria_N.isChecked())
+					t.FL_MEDIC_DIARIA = "N";
+				
+				//Reações Indesejáveis
+				if (RbTReacoesIndesejaveis_S.isChecked())
+					t.FL_REACOES_IND = "S";
+				else if (RbTReacoesIndesejaveis_N.isChecked())
+					t.FL_REACOES_IND = "N";
+				
+				//Exame de Escarro
+				if (RbTExameEscarro_S.isChecked())
+					t.FL_EXAME_ESCARRO = "S";
+				else if (RbTExameEscarro_N.isChecked())
+					t.FL_EXAME_ESCARRO = "N";
+				
+				if (t.Inserir(this) == true){
+					msgInsercao += "Tuberculose - Gravado\n";
+				}else{
+					msgInsercao += "Tuberculose - Erro\n";
+				}
+				
+			}finally{
+				t = null;
+			}
+			
+		}/*FIM TUBERCULOSE*/
+		
+		/*HIPERTENSÃO*/
+		if (_Hipertensao == true){
+			
+			Hipertensao hi = null;
+			
+			try{
+				hi = new Hipertensao();
+				hi.HASH = _HASH;
+				hi.DT_VISITA = String.valueOf(DtHtDataVisita.getDayOfMonth())+"/"+String.valueOf(DtHtDataVisita.getMonth()+1)+"/"+String.valueOf(DtHtDataVisita.getYear());
+				hi.DT_ULTIMA_VISITA = String.valueOf(DtHtUltimaVisita.getDayOfMonth())+"/"+String.valueOf(DtHtUltimaVisita.getMonth()+1)+"/"+String.valueOf(DtHtUltimaVisita.getYear());
+				hi.PRESSAO_ARTERIAL = EdtHtPe.getText().toString();
+				hi.OBSERVACAO = EdtHtObs.getText().toString();
+				
+				//Faz Dieta
+				if (RbHiFazDieta_S.isChecked())
+					hi.FL_FAZ_DIETA = "S";
+				else if (RbHiFazDieta_N.isChecked())	
+					hi.FL_FAZ_DIETA = "N";
+				
+				//Toma Medicação
+				if (RbHiTomaMedic_S.isChecked())
+					hi.FL_TOMA_MEDICACAO = "S";
+				else if (RbHiTomaMedic_N.isChecked())	
+					hi.FL_TOMA_MEDICACAO = "N";
+				
+				//Faz Exercícios Físicos
+				if (RbHiExcercFisico_S.isChecked())
+					hi.FL_FAZ_EXERCICIOS = "S";
+				else if (RbHiExcercFisico_N.isChecked())	
+					hi.FL_FAZ_EXERCICIOS = "N";
+				
+				if (hi.Inserir(this) == true){
+					msgInsercao += "Hipertensão - Gravado\n";
+				}else{
+					msgInsercao += "Hipertensão - Erro\n";
+				}
+				
+			}finally{
+				hi = null;
+			}
+			
+		}/*FIM HIPERTENSÃO*/
+		
+		Mensagem.exibeMessagem(TelaDoenca.this, "SCS - Acompanhamento", msgInsercao,3000);
+		new Handler().postDelayed(new Runnable() {		
+			public void run() {
+				finish();
+			}
+		}, 3000);
 	}
 }

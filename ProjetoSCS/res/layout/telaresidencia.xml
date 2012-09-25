@@ -108,6 +108,7 @@
 			        android:layout_height="wrap_content"
 			        android:textSize="15dp"
 			        android:textColor="#000"
+			        android:inputType="textCapCharacters"
 			        android:layout_marginBottom="3dp"
 			        />
 			    
@@ -433,6 +434,7 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="45dp"
 				        android:enabled="false"
+				        android:inputType="textCapCharacters"
 				        android:layout_marginBottom="5dp"
 				        />
 				    
