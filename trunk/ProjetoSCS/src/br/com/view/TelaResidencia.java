@@ -350,7 +350,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		TipoCasa.add("Selecione");
 		TipoCasa.add("Tijolo/Adobe");
 		TipoCasa.add("Taipa Revestida");
-		TipoCasa.add("Taipa Não Revestida");
+		TipoCasa.add("Taipa Nao Revestida");
 		TipoCasa.add("Madeira");
 		TipoCasa.add("Material Aproveitado");
 		TipoCasa.add("Outro");		

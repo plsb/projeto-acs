@@ -434,7 +434,8 @@ public void InsereBD(){
 		
 		if (this.ID == 0){
 			TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-			r.HASH = Mensagem.md5(telephonyManager.getDeviceId()+r.NOME);
+			SimpleDateFormat formatador = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss"); 
+			r.HASH = Mensagem.md5(telephonyManager.getDeviceId()+r.NOME+formatador.format(new Date(System.currentTimeMillis())));
 			if (r.Inserir(TelaCadastroFamilia.this)==true){
 				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar!",2000);
 				new Handler().postDelayed(new Runnable() {		

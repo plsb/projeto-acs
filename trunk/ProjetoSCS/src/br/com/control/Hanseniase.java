@@ -1,8 +1,5 @@
 package br.com.control;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 import android.content.ContentValues;
 import android.content.Context;
 
@@ -18,7 +15,8 @@ public class Hanseniase {
 	public String AUTO_CUIDADOS = "";
 	public int COMUNICANTES_EXAMINADOS = 0;		   
 	public String DT_VISITA  = "";			
-	public int COMUNICANTES_BCG = 0;		        		
+	public int COMUNICANTES_BCG = 0;	
+	public String OBS = "";
 	public int NUMERO_COMUNICANTES = 0;		
 
 
@@ -35,7 +33,8 @@ public class Hanseniase {
 			c.put("COMUNICANTES_EXAMINADOS",COMUNICANTES_EXAMINADOS);	   
 			c.put("DT_VISITA",DT_VISITA);			
 			c.put("COMUNICANTES_BCG",COMUNICANTES_BCG);		        		
-			c.put("NUMERO_COMUNICANTES",NUMERO_COMUNICANTES);		
+			c.put("NUMERO_COMUNICANTES",NUMERO_COMUNICANTES);
+			c.put("OBSERVACAO",OBS);
 			
 			_bd.open();
 			_bd.inserirRegistro("hanseniase", c);
@@ -53,7 +52,8 @@ public class Hanseniase {
     	DT_ULTIMA_DOSE           = "";	
     	DT_ULTIMA_DOSE           = "";
     	TOMA_MEDICACAO 		     = "";
-    	AUTO_CUIDADOS 		     = "";		   
+    	AUTO_CUIDADOS 		     = "";	
+    	OBS						 = "";
     	COMUNICANTES_EXAMINADOS  = 0;			
     	DT_VISITA 	             = "";		        		
     	COMUNICANTES_BCG 		 = 0;		

@@ -49,7 +49,7 @@ public class Banco{
 																	     "DT_PRE_NATAL text,		"+
 																	     "FATORES_RISCO text,		"+
 																	     "RESULTADO_GESTACAO text,	"+
-																	     "OBSERVACAO blob);			"};
+																	     "OBSERVACAO text);			"};
 		
 		 public static final String[] _sqlTabelaHanseniase =  new String[] {"CREATE TABLE if not exists hanseniase (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 			     															"HASH text not null, 		       "+
@@ -60,7 +60,38 @@ public class Banco{
 			     															"AUTO_CUIDADOS text,			   "+
 			     															"COMUNICANTES_EXAMINADOS integer,  "+
 			     															"COMUNICANTES_BCG integer,		   "+
-			     															"NUMERO_COMUNICANTES integer,	   "};
+			     															"OBSERVACAO text,				   "+
+			     															"NUMERO_COMUNICANTES integer);	   "};
+		 
+		public static final String[] _sqlTabelaDiabate =  new String[] {"CREATE TABLE if not exists diabete (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																		"HASH text not null, 		       "+
+																		"DT_VISITA text,		           "+
+																		"FL_FAZ_DIETA text,			   "+
+																		"FL_FAZ_EXCERCICIOS text,	       "+
+																		"FL_USA_INSULINA text,		       "+
+																	 	"FL_USA_HIPOGLICEMIANTE text,	   "+
+																		"DT_ULTIMA_VISITA text,		   "+																		 
+																		"OBSERVACAO text);				   "};
+		
+		public static final String[] _sqlTabelaHipertensao =  new String[] {"CREATE TABLE if not exists hipertensao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																			"HASH text not null, 		       "+
+																			"DT_VISITA text,		           "+
+																			"FL_FAZ_DIETA text,			  	   "+
+																			"FL_TOMA_MEDICACAO text,	       "+
+																			"FL_FAZ_EXERCICIOS text,		   "+
+																		 	"PRESSAO_ARTERIAL text,	           "+
+																			"DT_ULTIMA_VISITA text,		  	   "+																		 
+																			"OBSERVACAO text);				   "};
+		 
+		public static final String[] _sqlTabelaTuberlose =  new String[] {"CREATE TABLE if not exists tuberculose (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+		  															      "HASH text not null, 		       "+
+		  															      "DT_VISITA text,		           "+
+																		  "FL_MEDIC_DIARIA text,		   "+
+																		  "FL_REACOES_IND text,			   "+
+																		  "FL_EXAME_ESCARRO text,	       "+
+																		  "COMUNIC_EXAMINADOS text,		   "+
+																	 	  "MENOR_BCG text,	   			   "+																	 
+																		  "OBSERVACAO text);			   "};
 			     															
 		
 		public static final String[] _sqlTabelaRuas =  new String[] {"CREATE TABLE if not exists ruas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
