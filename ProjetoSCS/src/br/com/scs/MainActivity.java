@@ -1,5 +1,6 @@
 package br.com.scs;
 
+import br.com.control.Mensagem;
 import br.com.control.Sessao;
 import br.com.control.VerificaVersoesTabelas;
 import br.com.control.Banco;
@@ -22,11 +23,11 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private Button   btnLogin;
 	private EditText edtUsuario, edtSenha;
-	private CheckBox chkLembrarMe;
+	private CheckBox chkLembrarMe; 
 
 	private static Banco _bd;
 	private int valor;
-	private Cursor _cursor;
+	private Cursor _cursor = null;
 	private Sessao sessao;
 
 	@Override
@@ -80,25 +81,22 @@ public class MainActivity extends Activity implements OnClickListener {
 	}//Fim Método LembrarMe
 	
 	public void setUsuarioLembrado(){		
-		Cursor cAux = null;
-		try{				 
-			try{
-				_bd.open();
-				//VerificaVersaoTabela();
-				cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
+		Cursor cAux = null;				 
+		try{
+			_bd.open();
+			//VerificaVersaoTabela();
+			cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
+			cAux.moveToFirst();
+			if (cAux.getCount() > 0){
 				cAux.moveToFirst();
-				if (cAux.getCount() > 0){
-					cAux.moveToFirst();
-					edtUsuario.setText(cAux.getString(1));
-					chkLembrarMe.setChecked(true);
-				}//Fim else
-			}catch(Exception E){
-				Toast.makeText(this, "Erro no método UsuarioLembrado "+E.getMessage(), Toast.LENGTH_LONG).show();
-			}//Fim Catch
-		}finally{
+				edtUsuario.setText(cAux.getString(1));
+				chkLembrarMe.setChecked(true);
+			}//Fim else
 			cAux.close();
 			_bd.fechaBanco();
-		}//Fim Finally
+		}catch(Exception E){
+			Toast.makeText(this, "Erro no método UsuarioLembrado "+E.getMessage(), Toast.LENGTH_LONG).show();
+		}//Fim Catch
 	}
 
 	private int autenticar(String usuario, String senha) {
@@ -109,7 +107,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			valor = 0;
 		} else {
 			_bd.open();
-			try {
+			try {				
 				_cursor = _bd.consulta("usuarios", new String[] { "*" },
 									   "USU_LOGIN = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 0 AND USU_ATIVO = 'S' ",
 									   new String[] { usuario, senha }, null, null, null, null);
@@ -119,9 +117,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					sessao = Sessao.getSessao();
 					sessao.setUsuario(this,_cursor.getString(_cursor.getColumnIndex("USU_MATRICULA")).toString(),_cursor.getString(_cursor.getColumnIndex("USU_NOME")).toString());
 					valor = 1;
-					
 				} else {
-					_cursor = null;
 					_cursor = _bd.consulta("usuarios", new String[] { "*" },
 										   "USU_LOGIN = ? AND USU_SENHA = ? AND USU_FL_ADMIN = 1 AND USU_ATIVO = 'S' ",
 										   new String[] { usuario, senha }, null, null, null, null);
@@ -134,16 +130,15 @@ public class MainActivity extends Activity implements OnClickListener {
 					} else {
 						valor = 2;
 					}// Fim else
-				}// Fim else
-				_cursor.close();
+				}// Fim else				
 			} catch (Exception e) {
-				Toast.makeText(this, "ERRO " + e.getMessage(), Toast.LENGTH_SHORT).show();
+				Mensagem.exibeMessagem(this, "SCS - Erro", "ERRO " + e.getMessage());
 			} finally {
-				_cursor.close();
-				_bd.fechaBanco();
+				
 			}// Fim Finally
-
-		}// Fim else
+			_cursor.close();
+			_bd.fechaBanco();
+		}// Fim else		
 		return valor;
 	}//Fim do Método Autenticar
 

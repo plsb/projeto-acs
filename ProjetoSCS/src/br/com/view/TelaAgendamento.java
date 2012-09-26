@@ -41,7 +41,7 @@ public class TelaAgendamento extends ListActivity implements OnClickListener{
         btnVoltar  = (Button) findViewById(R.id.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
          
-        ListarResidencias(false);
+        ListarResidencias(true);
         
     }//Fim do método Main
     

@@ -81,7 +81,7 @@ public class TelaDoenca extends Activity{
 		setContentView(R.layout.teladoenca);
 		
 		//Componentes Hanseniase
-		datavisita           = (TextView)    findViewById(R.teladoenca.TxtHDataVisita);
+		//datavisita           = (TextView)    findViewById(R.teladoenca.TxtHDataVisita);
 		medicacaodiaria      = (TextView)    findViewById(R.teladoenca.TxtHMedicacaoDiaria);
 		ultimadose           = (TextView)    findViewById(R.teladoenca.TxtHDataUltimaDose);
 		cuidados             = (TextView)    findViewById(R.teladoenca.TxtHFazCuidados);
@@ -90,7 +90,7 @@ public class TelaDoenca extends Activity{
 		TxtHNComunicantes    = (TextView)    findViewById(R.teladoenca.TxtHNComunicantes);
 		TxtHDtUltimaConsulta = (TextView)    findViewById(R.teladoenca.TxtHDtUltimaConsulta);
 		DtHDtUltimaConsulta  = (DatePicker)  findViewById(R.teladoenca.DtHDtUltimaConsulta); 
-		DtHVisita            = (DatePicker)  findViewById(R.teladoenca.DtHDataProfissional);
+		//DtHVisita            = (DatePicker)  findViewById(R.teladoenca.DtHDataProfissional);
 		DtHUltimadose        = (DatePicker)  findViewById(R.teladoenca.DtHUltimaDose);
 		rgmedicacaodiaria    = (RadioGroup)  findViewById(R.teladoenca.RgHMedicacaoDiaria);
 		autocuidados         = (RadioGroup)  findViewById(R.teladoenca.RgHAutoCuidados);
@@ -105,13 +105,13 @@ public class TelaDoenca extends Activity{
 		
 		//Componentes Diabetes
 		dUltimaVisita      = (TextView)    findViewById(R.teladoenca.TxtDUltimaVisita);
-		dDataVisita        = (TextView)    findViewById(R.teladoenca.TxtDDataVisita);
+		//dDataVisita        = (TextView)    findViewById(R.teladoenca.TxtDDataVisita);
 		dFazDieta          = (TextView)    findViewById(R.teladoenca.TxtDFazDieta);
 		dFazExercicio      = (TextView)    findViewById(R.teladoenca.TxtDFazExercicio);
 		dUsaInsulina       = (TextView)    findViewById(R.teladoenca.TxtDInsulina);
 		dTomaHipo          = (TextView)    findViewById(R.teladoenca.TxtDHipoglicemiante);
 		TxtDObs            = (TextView)    findViewById(R.teladoenca.TxtDObs);
-		dDtDataVisita      = (DatePicker)  findViewById(R.teladoenca.DtDDataProfissional);
+		//dDtDataVisita      = (DatePicker)  findViewById(R.teladoenca.DtDDataProfissional);
 		dDtUltimaConsulta  = (DatePicker)  findViewById(R.teladoenca.DtDUltimaConsulta);
 		dRgFazExercicio    = (RadioGroup)  findViewById(R.teladoenca.RgDFazExercicio);
 		dRgFazDieta        = (RadioGroup)  findViewById(R.teladoenca.RgDDieta);
@@ -128,14 +128,14 @@ public class TelaDoenca extends Activity{
 		dHipog_N           = (RadioButton) findViewById(R.teladoenca.RbHipoglicemianteNao);
 		
 		//Componentes tuberculose
-		TxtTDataVisita  		 = (TextView) 	 findViewById(R.teladoenca.TxtTDataVisita);
+		//TxtTDataVisita  		 = (TextView) 	 findViewById(R.teladoenca.TxtTDataVisita);
 		TxtTMd          		 = (TextView) 	 findViewById(R.teladoenca.TxtTMedicacaoDiaria);
 		TxtTRi          		 = (TextView) 	 findViewById(R.teladoenca.TxtTReacoesIndesejadas);
 		TxtTEe          		 = (TextView) 	 findViewById(R.teladoenca.TxtTExameEscarro);
 		TxtTCe          		 = (TextView) 	 findViewById(R.teladoenca.TxtTComunicantesExaminados);
 		TxtTM5Bcg       		 = (TextView) 	 findViewById(R.teladoenca.TxtTMenor5Bcg);
 		TxtTObs         		 = (TextView) 	 findViewById(R.teladoenca.TxtTObs);
-		DtTDataVisita   		 = (DatePicker)  findViewById(R.teladoenca.DtTDataVisita);
+		//DtTDataVisita   		 = (DatePicker)  findViewById(R.teladoenca.DtTDataVisita);
 		RgTMd           		 = (RadioGroup)  findViewById(R.teladoenca.RgTMedicacaoDiaria);
 		RgTEe           		 = (RadioGroup)  findViewById(R.teladoenca.RgTExameEscarro);
 		RgTRi           		 = (RadioGroup)  findViewById(R.teladoenca.RgTReacoesIndesejadas);
@@ -150,14 +150,14 @@ public class TelaDoenca extends Activity{
 		EdtTObs					 = (EditText) 	 findViewById(R.teladoenca.EdtTObs);
 		
 		//Componentes Hipertensao
-		TxtHtDataVisita 		 = (TextView) 	 findViewById(R.teladoenca.TxtHtDataVisita);
+		//TxtHtDataVisita 		 = (TextView) 	 findViewById(R.teladoenca.TxtHtDataVisita);
 		TxtHtFd 				 = (TextView) 	 findViewById(R.teladoenca.TxtHtFazDieta); 
 		TxtHtTm					 = (TextView) 	 findViewById(R.teladoenca.TxtHtTomaMedicacao);
 		TxtHtFe					 = (TextView) 	 findViewById(R.teladoenca.TxtHtFazExercicio); 
 		TxtHtPa					 = (TextView) 	 findViewById(R.teladoenca.TxtHtPressaoArterial); 
 		TxtHtDtUV				 = (TextView) 	 findViewById(R.teladoenca.TxtHtDtUltimaVisita);
 		TxtHtObs				 = (TextView) 	 findViewById(R.teladoenca.TxtHtObs);
-		DtHtDataVisita			 = (DatePicker)  findViewById(R.teladoenca.DtHtDataVisita);
+		//DtHtDataVisita			 = (DatePicker)  findViewById(R.teladoenca.DtHtDataVisita);
 		DtHtUltimaVisita		 = (DatePicker)  findViewById(R.teladoenca.DtHtUltimaVisita);
 		RgHtFd					 = (RadioGroup)  findViewById(R.teladoenca.RgHtDieta); 
 		RgHtTm					 = (RadioGroup)  findViewById(R.teladoenca.RgHtMedicacao); 
@@ -302,13 +302,13 @@ public class TelaDoenca extends Activity{
 	}
 	
 	public void ComponentesHanseniase(){
-      	datavisita.setVisibility(0);
+      	//datavisita.setVisibility(0);
     	medicacaodiaria.setVisibility(0);
     	ultimadose.setVisibility(0);
     	cuidados.setVisibility(0);
     	comunicantes.setVisibility(0);
     	bcg.setVisibility(0);
-    	DtHVisita.setVisibility(0);
+    	//DtHVisita.setVisibility(0);
     	DtHUltimadose.setVisibility(0);
     	rgmedicacaodiaria.setVisibility(0);
     	autocuidados.setVisibility(0);
@@ -322,12 +322,12 @@ public class TelaDoenca extends Activity{
 	
 	public void ComponentesDiabetes(){
 		dUltimaVisita.setVisibility(0);
-		dDataVisita.setVisibility(0); 
+		//dDataVisita.setVisibility(0); 
 		dFazDieta.setVisibility(0);
 		dFazExercicio.setVisibility(0); 
 		dUsaInsulina.setVisibility(0);
 		dTomaHipo.setVisibility(0);  
-		dDtDataVisita.setVisibility(0); 
+		//dDtDataVisita.setVisibility(0); 
 		dDtUltimaConsulta.setVisibility(0); 
 		dRgFazExercicio.setVisibility(0);
 		dRgFazDieta.setVisibility(0);
@@ -339,12 +339,12 @@ public class TelaDoenca extends Activity{
 	
 	public void ComponentesTuberculose(){
 		TxtTCe.setVisibility(0);
-		TxtTDataVisita.setVisibility(0);
+		//TxtTDataVisita.setVisibility(0);
 		TxtTEe.setVisibility(0);
 		TxtTM5Bcg.setVisibility(0);
 		TxtTMd.setVisibility(0);
 		TxtTRi.setVisibility(0);
-		DtTDataVisita.setVisibility(0);
+		//DtTDataVisita.setVisibility(0);
 		RgTEe.setVisibility(0);
 		RgTMd.setVisibility(0);
 		RgTRi.setVisibility(0);
@@ -388,13 +388,13 @@ public class TelaDoenca extends Activity{
 	}
 	
 	public void ComponentesHiperTensao(){
-		TxtHtDataVisita.setVisibility(0);
+		//TxtHtDataVisita.setVisibility(0);
 		TxtHtFd.setVisibility(0); 
 		TxtHtTm.setVisibility(0); 
 		TxtHtFe.setVisibility(0); 
 		TxtHtPa.setVisibility(0); 
 		TxtHtDtUV.setVisibility(0);
-		DtHtDataVisita.setVisibility(0);
+		//DtHtDataVisita.setVisibility(0);
 		DtHtUltimaVisita.setVisibility(0);
 		RgHtFd.setVisibility(0); 
 		RgHtTm.setVisibility(0); 
@@ -490,7 +490,7 @@ public class TelaDoenca extends Activity{
 			try{
 				
 				h = new Hanseniase();
-				h.DT_VISITA				  = String.valueOf(DtHVisita.getDayOfMonth())+"/"+String.valueOf(DtHVisita.getMonth()+1)+"/"+String.valueOf(DtHVisita.getYear());
+				//h.DT_VISITA				  = String.valueOf(DtHVisita.getDayOfMonth())+"/"+String.valueOf(DtHVisita.getMonth()+1)+"/"+String.valueOf(DtHVisita.getYear());
 				h.DT_ULTIMA_CONSULTA	  = String.valueOf(DtHDtUltimaConsulta.getDayOfMonth())+"/"+String.valueOf(DtHDtUltimaConsulta.getMonth()+1)+"/"+String.valueOf(DtHDtUltimaConsulta.getYear());
 				h.DT_ULTIMA_DOSE		  = String.valueOf(DtHUltimadose.getDayOfMonth())+"/"+String.valueOf(DtHUltimadose.getMonth()+1)+"/"+String.valueOf(DtHUltimadose.getYear());
 				h.COMUNICANTES_EXAMINADOS = Integer.valueOf(EdtHCe.getText().toString());
@@ -533,7 +533,7 @@ public class TelaDoenca extends Activity{
 			try{
 				d = new Diabete();
 				d.HASH	     = _HASH;
-				d.DT_VISITA  = String.valueOf(dDtDataVisita.getDayOfMonth())+"/"+String.valueOf(dDtDataVisita.getMonth()+1)+"/"+String.valueOf(dDtDataVisita.getYear());
+				//d.DT_VISITA  = String.valueOf(dDtDataVisita.getDayOfMonth())+"/"+String.valueOf(dDtDataVisita.getMonth()+1)+"/"+String.valueOf(dDtDataVisita.getYear());
 				d.OBSERVACAO = EdtDObs.getText().toString();
 				d.DT_ULTIMA_VISITA = String.valueOf(dDtUltimaConsulta.getDayOfMonth())+"/"+String.valueOf(dDtUltimaConsulta.getMonth()+1)+"/"+String.valueOf(dDtUltimaConsulta.getYear());
 				
@@ -581,7 +581,7 @@ public class TelaDoenca extends Activity{
 			try{
 				t = new Tuberculose();
 				t.HASH               = _HASH; 
-				t.DT_VISITA 		 = String.valueOf(DtTDataVisita.getDayOfMonth())+"/"+String.valueOf(DtTDataVisita.getMonth()+1)+"/"+String.valueOf(DtTDataVisita.getYear());
+				//t.DT_VISITA 		 = String.valueOf(DtTDataVisita.getDayOfMonth())+"/"+String.valueOf(DtTDataVisita.getMonth()+1)+"/"+String.valueOf(DtTDataVisita.getYear());
 				t.COMUNIC_EXAMINADOS = EdtTCe.getText().toString();
 				t.MENOR_BCG 		 = EdtTM5Bcg.getText().toString();
 				t.OBSERVACAO 	     = EdtTObs.getText().toString();
@@ -624,7 +624,7 @@ public class TelaDoenca extends Activity{
 			try{
 				hi = new Hipertensao();
 				hi.HASH = _HASH;
-				hi.DT_VISITA = String.valueOf(DtHtDataVisita.getDayOfMonth())+"/"+String.valueOf(DtHtDataVisita.getMonth()+1)+"/"+String.valueOf(DtHtDataVisita.getYear());
+				//hi.DT_VISITA = String.valueOf(DtHtDataVisita.getDayOfMonth())+"/"+String.valueOf(DtHtDataVisita.getMonth()+1)+"/"+String.valueOf(DtHtDataVisita.getYear());
 				hi.DT_ULTIMA_VISITA = String.valueOf(DtHtUltimaVisita.getDayOfMonth())+"/"+String.valueOf(DtHtUltimaVisita.getMonth()+1)+"/"+String.valueOf(DtHtUltimaVisita.getYear());
 				hi.PRESSAO_ARTERIAL = EdtHtPe.getText().toString();
 				hi.OBSERVACAO = EdtHtObs.getText().toString();
@@ -659,11 +659,11 @@ public class TelaDoenca extends Activity{
 			
 		}/*FIM HIPERTENSÃO*/
 		
-		Mensagem.exibeMessagem(TelaDoenca.this, "SCS - Acompanhamento", msgInsercao,3000);
+		Mensagem.exibeMessagem(TelaDoenca.this, "SCS - Acompanhamento", msgInsercao,2000);
 		new Handler().postDelayed(new Runnable() {		
 			public void run() {
 				finish();
 			}
-		}, 3000);
+		}, 2000);
 	}
 }

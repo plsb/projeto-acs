@@ -67,7 +67,9 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.telacadastrofamilia);		
+		setContentView(R.layout.telacadastrofamilia);	
+		
+		bd = new Banco(this);
 	
 		SpAlfabetizado = (Spinner)    findViewById(R.cadastrofamilia.SpAlfabetizado);
 		SpFreqEscola   = (Spinner)    findViewById(R.cadastrofamilia.SpFrequenEsc);
@@ -104,8 +106,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	
 	public void PreencheCampos(String pID){
 		try{
-			try{
-				bd = new Banco(this); 
+			try{ 
 				bd.open();
 				c = bd.consulta("residente", new String[]{"*"},"_ID = "+pID, null, null, null, null, null);
 				c.moveToFirst();
@@ -172,13 +173,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 			}catch(Exception e){
 				Log.i("Erro no método PreencheCampos", e.getMessage());
 			}
-		}finally{
-			if (c != null){
-				c.close();
-			}
-			if (bd != null){
-				bd.fechaBanco();
-			}
+		}finally{			
+			bd.fechaBanco();			
 		}
 	}
 
@@ -187,55 +183,13 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		
         getMenuInflater().inflate(R.menu.cadastrofamilia, menu);        
         return true;
-    }
-	
-	/*@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
-		MenuInflater mi = getMenuInflater();
-		mi.inflate(R.menu.cadastrofamilia, menu);
-		super.onCreateContextMenu(menu, v, menuInfo);
-	}*/
-	
-	
+    }	
 	
 	@SuppressLint({ "ParserError", "ParserError" })
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		switch (item.getItemId()) {
-
-		/**case R.MenuTelaFamilia.menu_continuar: 
-			
-			if(Hanseniase.isChecked()){
-				hanseniase = 1;
-			}else{
-				hanseniase = 0;
-			}	
-			if (Hipertensao.isChecked()){
-				hipertensao = 1;
-			}else{
-				hipertensao = 0;
-			}
-			if (Tuberculose.isChecked()){
-				tuberculose = 1;
-			}else
-				tuberculose = 0;
-			if (Gestante.isChecked()){
-				gestante = 1;
-			}else{
-				gestante = 0;
-			}
-			if (Diabetes.isChecked()){
-				diabetes = 1;
-			}else{
-				diabetes = 0;
-			}
-			
-			Intent teladoenca = new Intent(this, TelaDoenca.class);
-			startActivity(teladoenca);
-			
-			break;**/
 			
 		case R.MenuTelaFamilia.menu_gravar :{			
 			InsereBD();
@@ -269,14 +223,17 @@ private void setOpcoesEnderecos(String pEnd){
 	if (pEnd.length()>0){
 		Ruas.add(pEnd);
 	}
-	Banco bd = null;
+	//Banco bd = null;
 	Cursor csr = null;
 	String codUser = Sessao.SESSAO.getMatriculaUsuario(this);
 	try{
 		try{
-			bd = new Banco(this);
+			//bd = new Banco(this);
 			bd.open();
-			csr = bd.consulta("ruas", new String[]{"*"}, "USU_VINCULADO = ? ", new String[] {codUser}, null, null, null, null);
+			if (codUser.equals("0000"))
+				csr = bd.consulta("ruas", new String[]{"*"}, null, null, null, null, null, null);
+			else
+				csr = bd.consulta("ruas", new String[]{"*"}, "USU_VINCULADO = ? ", new String[] {codUser}, null, null, null, null);
 			csr.moveToFirst();
 			if (csr.getCount()>0){
 				for (int i = 0;i < csr.getCount(); i++){
@@ -285,16 +242,12 @@ private void setOpcoesEnderecos(String pEnd){
 				}
 			}			
 			PreencheSpinner(SpRua, Ruas);
+			csr.close();
 		}catch(Exception e){
 			Log.i("Método SetOpcoesEndereco", e.getMessage());
 		}
-	}finally{
-		if (csr != null){
-			csr.close();
-		}
-		if (bd != null){
-			bd.fechaBanco();
-		}
+	}finally{		
+		bd.fechaBanco();		
 	}
 }
 
@@ -303,12 +256,10 @@ private void setOpcoesNumeros(String pNumero){
 	if (pNumero.length()>0){
 		Num.add(pNumero);
 	}
-	Banco bd = null;
 	Cursor csr = null;	
 	if (SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().trim().length() > 0){
 		try{
 			try{
-				bd = new Banco(this);
 				bd.open();
 				csr = bd.consulta("residencia", new String[]{"*"}, "ENDERECO = '"+SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().substring(
 																				  SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().indexOf("-")+1)+"' ", 
@@ -320,17 +271,13 @@ private void setOpcoesNumeros(String pNumero){
 						csr.moveToNext();
 					}
 				}
+				csr.close();
 				PreencheSpinner(SpNumero, Num);
 			}catch(Exception e){
 				Log.i("Método SetOpcoesNumeros", e.getMessage());
 			}
 		}finally{
-			if (csr != null){
-				csr.close();
-			}
-			if (bd != null){
-				bd.fechaBanco();
-			}
+			bd.fechaBanco();
 		}
 	}
 }
@@ -470,6 +417,7 @@ public void InsereBD(){
 	public void ClearID(){
 		this.ID = 0;
 		this.HASH_FAMILIAR = "";
+		bd.fechaBanco();
 	}     
 
 	@Override
