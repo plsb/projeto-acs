@@ -108,22 +108,25 @@ public final class R {
         public static final int webservice=0x7f020036;
     }
     public static final class id {
-        public static final int BtnAcompanhamento=0x7f08000a;
-        public static final int BtnAgendamento=0x7f080008;
-        public static final int BtnFamilias=0x7f080009;
-        public static final int BtnSincronizar=0x7f08000c;
-        public static final int BtnSobre=0x7f08000d;
-        public static final int BtnUsuarios=0x7f08000b;
-        public static final int btnFiltrar=0x7f080006;
-        public static final int btnVoltarLista=0x7f080003;
-        public static final int edtFiltro=0x7f080005;
-        public static final int line_a=0x7f080001;
-        public static final int line_b=0x7f080002;
-        public static final int linearLayout1=0x7f080007;
-        public static final int menu_gravar=0x7f08000f;
-        public static final int menu_settings=0x7f08000e;
-        public static final int tableRow1=0x7f080004;
-        public static final int textView1=0x7f080000;
+        public static final int BtnAcompanhamento=0x7f08000d;
+        public static final int BtnAgendamento=0x7f08000b;
+        public static final int BtnFamilias=0x7f08000c;
+        public static final int BtnSincronizar=0x7f08000f;
+        public static final int BtnSobre=0x7f080010;
+        public static final int BtnUsuarios=0x7f08000e;
+        public static final int btnFiltrar=0x7f080009;
+        public static final int btnFiltrarAcompRealizados=0x7f080003;
+        public static final int btnVoltarAcompRealizados=0x7f080000;
+        public static final int btnVoltarLista=0x7f080007;
+        public static final int edtFiltro=0x7f080008;
+        public static final int edtFiltroAcompRealizados=0x7f080002;
+        public static final int line_a=0x7f080005;
+        public static final int line_b=0x7f080006;
+        public static final int linearLayout1=0x7f08000a;
+        public static final int menu_gravar=0x7f080012;
+        public static final int menu_settings=0x7f080011;
+        public static final int tableRow1=0x7f080001;
+        public static final int textView1=0x7f080004;
     }
     public static final class imovel {
         public static final int EdtCasoDoente=0x7f0f0016;
@@ -154,22 +157,23 @@ public final class R {
         public static final int tableRow1=0x7f0f0002;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int geraxml=0x7f030001;
-        public static final int lista_residencias=0x7f030002;
-        public static final int listaresidente=0x7f030003;
-        public static final int listax=0x7f030004;
-        public static final int telaacompanhamento=0x7f030005;
-        public static final int telaagendamento=0x7f030006;
-        public static final int telacadastrofamilia=0x7f030007;
-        public static final int teladoenca=0x7f030008;
-        public static final int telafamilia=0x7f030009;
-        public static final int telainfo=0x7f03000a;
-        public static final int telaprinc=0x7f03000b;
-        public static final int telaresidencia=0x7f03000c;
-        public static final int telasincronizar=0x7f03000d;
-        public static final int telasobre=0x7f03000e;
-        public static final int telausuario=0x7f03000f;
+        public static final int acompanhamentosrealizados=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int geraxml=0x7f030002;
+        public static final int lista_residencias=0x7f030003;
+        public static final int listaresidente=0x7f030004;
+        public static final int listax=0x7f030005;
+        public static final int telaacompanhamento=0x7f030006;
+        public static final int telaagendamento=0x7f030007;
+        public static final int telacadastrofamilia=0x7f030008;
+        public static final int teladoenca=0x7f030009;
+        public static final int telafamilia=0x7f03000a;
+        public static final int telainfo=0x7f03000b;
+        public static final int telaprinc=0x7f03000c;
+        public static final int telaresidencia=0x7f03000d;
+        public static final int telasincronizar=0x7f03000e;
+        public static final int telasobre=0x7f03000f;
+        public static final int telausuario=0x7f030010;
     }
     public static final class listaResidente {
         public static final int btnFiltrar=0x7f0a0003;

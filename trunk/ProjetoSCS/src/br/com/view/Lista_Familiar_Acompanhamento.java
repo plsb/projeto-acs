@@ -5,7 +5,9 @@ import java.util.HashMap;
 import br.com.control.Banco;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ Banco _bd = new Banco(this);
 	private EditText edtFiltro;
 	
 	public static String END,NUM = "";	
+	
+	String _ID;
 	
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
@@ -57,16 +61,43 @@ Banco _bd = new Banco(this);
     	
     	super.onListItemClick(l, v, position, id);
     	    	
-    	String _ID = this.getListAdapter().getItem(position).toString();
+    	_ID = this.getListAdapter().getItem(position).toString();
     	
     	_ID = _ID.substring(_ID.indexOf("=")+1,_ID.indexOf("-"));
     	
     	System.out.println(_ID);
     	
-	    Intent i = new Intent(this, TelaDoenca.class); 
+    	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+    	dialog.setMessage("Escolha uma Opção:");
+    	dialog.setIcon(R.drawable.scs_icone);
+    	dialog.setPositiveButton("Iniciar", new
+				DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						IniciaAcompanhamento();
+					}
+    	});
+    	
+    	dialog.setNeutralButton("Visualizar", new
+				DialogInterface.OnClickListener() {
+				 
+				public void onClick(DialogInterface di, int arg) {
+					VisualizarAcompanhamentos();
+				}
+		});
+		dialog.setTitle("Acompanhamento");
+		dialog.show();
+    	
+    }
+    
+    public void IniciaAcompanhamento(){
+    	Intent i = new Intent(this, TelaDoenca.class); 
 	    TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    	
 	    startActivity(i);
-    	
+    }
+    
+    public void VisualizarAcompanhamentos(){
+    	Intent i = new Intent(this, AcompanhamentosRealizados.class);
+    	startActivity(i);
     }
     
     public void ListarResidentes(boolean usaFiltro){

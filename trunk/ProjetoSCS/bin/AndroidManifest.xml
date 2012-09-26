@@ -36,6 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
         <activity android:name="br.com.view.TelaDoenca" android:label="Doenças"></activity>
+        <activity android:name="br.com.view.AcompanhamentosRealizados" android:label="Acompanhamentos Realizados"></activity>
     </application>
 
 </manifest>
