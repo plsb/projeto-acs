@@ -58,13 +58,10 @@ public class ExportarXML extends Activity {
 				Element RESIDENCIA = new Element("RESIDENCIAS");				
 				do{	        	 
 					Element DADOS       	 = new Element("DADOS");				
-					Element ID           	 = new Element("ID");
-					//Element UF           	 = new Element("UF");
+					Element ID           	 = new Element("ID");				
 					Element ENDERECO     	 = new Element("ENDERECO");
 					Element NUMERO       	 = new Element("NUMERO");
 					Element CODBAIRRO      	 = new Element("CODBAIRRO");
-					//Element CEP          	 = new Element("CEP");
-					//Element MUNICIPIO    	 = new Element("MUNICIPIO");
 					Element SEG_TERRIT   	 = new Element("SEGTERRITORIAL");
 					Element AREA 		 	 = new Element("AREA");
 					Element MICROAREA    	 = new Element("MICROAREA");

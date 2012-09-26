@@ -42,7 +42,7 @@ Banco _bd = new Banco(this);
         btnVoltar  = (Button) findViewById(R.listaResidente.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
         
-        ListarResidentes(false);
+        ListarResidentes(true);
         
     }//Fim do método Main
     

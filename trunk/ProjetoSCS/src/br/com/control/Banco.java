@@ -39,6 +39,8 @@ public class Banco{
 		
 		public static final String[] _sqlTabelaGestacao =  new String[] {"CREATE TABLE if not exists gestacao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	     "HASH text not null, 		"+
+																	     "DT_VISITA text,			"+
+																	     "DT_ATUALIZACAO text,		"+
 																	     "DT_ULTIMA_REGRA text,		"+
 																	     "DT_PROVAVEL_PARTO text,	"+
 																	     "DT_CONSULTA_PUERBIO text,	"+
@@ -54,6 +56,7 @@ public class Banco{
 		 public static final String[] _sqlTabelaHanseniase =  new String[] {"CREATE TABLE if not exists hanseniase (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 			     															"HASH text not null, 		       "+
 			     															"DT_VISITA text,		           "+
+			     															"DT_ATUALIZACAO text,			   "+
 			     															"DT_ULTIMA_CONSULTA text,	       "+
 			     															"DT_ULTIMA_DOSE text,	           "+
 			     															"TOMA_MEDICACAO text,		       "+
@@ -66,7 +69,8 @@ public class Banco{
 		public static final String[] _sqlTabelaDiabate =  new String[] {"CREATE TABLE if not exists diabete (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		"HASH text not null, 		       "+
 																		"DT_VISITA text,		           "+
-																		"FL_FAZ_DIETA text,			   "+
+																		"DT_ATUALIZACAO text,			   "+
+																		"FL_FAZ_DIETA text,			   	   "+
 																		"FL_FAZ_EXCERCICIOS text,	       "+
 																		"FL_USA_INSULINA text,		       "+
 																	 	"FL_USA_HIPOGLICEMIANTE text,	   "+
@@ -76,6 +80,7 @@ public class Banco{
 		public static final String[] _sqlTabelaHipertensao =  new String[] {"CREATE TABLE if not exists hipertensao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																			"HASH text not null, 		       "+
 																			"DT_VISITA text,		           "+
+																			"DT_ATUALIZACAO text,			   "+
 																			"FL_FAZ_DIETA text,			  	   "+
 																			"FL_TOMA_MEDICACAO text,	       "+
 																			"FL_FAZ_EXERCICIOS text,		   "+
@@ -86,6 +91,7 @@ public class Banco{
 		public static final String[] _sqlTabelaTuberlose =  new String[] {"CREATE TABLE if not exists tuberculose (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 		  															      "HASH text not null, 		       "+
 		  															      "DT_VISITA text,		           "+
+		  															      "DT_ATUALIZACAO text,		       "+
 																		  "FL_MEDIC_DIARIA text,		   "+
 																		  "FL_REACOES_IND text,			   "+
 																		  "FL_EXAME_ESCARRO text,	       "+
@@ -100,7 +106,7 @@ public class Banco{
 																	 "COD_MICROAREA INTEGER NOT NULL,   "+
 																	 "COD_AREA INTEGER NOT NULL,	    "+
 																	 "COD_SEGMENTO INTEGER NOT NULL,    "+
-																	 "COD_BAIRRO integer,  		        "+
+																	 "COD_BAIRRO INTEGER NOT NULL,      "+
 																	 "USU_VINCULADO text NOT NULL );	"};
 		
 		public static final String[] _sqlTabelaSessao =  new String[] {"CREATE TABLE if not exists sessao (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
@@ -192,7 +198,7 @@ public class Banco{
 					try {
 						bd = _instDAO.getWritableDatabase();
 					} catch (SQLiteException e) {
-						// lembrar de mensagem
+						//lembrar de mensagem
 					}
 		
 				}
@@ -225,6 +231,7 @@ public class Banco{
 					String sql = scriptSql[0];
 					bd.execSQL(sql);
 				}
+				_cursor.close();
 				return _instDAO;
 			}
 			

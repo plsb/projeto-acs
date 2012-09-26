@@ -4,7 +4,6 @@ import br.com.control.ExportarXML;
 import br.com.control.ImportarXML;
 import br.com.control.Mensagem;
 import br.com.scs.R;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,13 +19,11 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 	  public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 
-	        setContentView(R.layout.telasincronizar);
+	        setContentView(R.layout.telasincronizar);        	        
 	        
-	        CarregarObjetos();	
-	  }  
-	
+	        InicializaObjetos();	
+	  }
 
-	@SuppressLint("ParserError")
 	public void onClick(View v) {
 		
 		if (v==btnImportarXmls){				
@@ -51,22 +48,22 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		}
 		
 		if (v == btnConfigWS){
-			Mensagem.exibeMessagem(this, "Web Service", Mensagem.md5("Em Desenvolvimento"));
+			Mensagem.exibeMessagem(this, "Web Service", "Função em desenvolvimento");
 		}
-		
-	}//Fim do Método onClick
+	}//Fim do Onclick  
 	
-	public void CarregarObjetos(){
+	public void InicializaObjetos(){
 		btnImportarXmls      = (Button) findViewById(R.telaSincrozinar.btnImportarXmls);
 		btnVisulizarUsuarios = (Button) findViewById(R.telaSincrozinar.btnVisualizarUsuarios);
 		btnVoltar            = (Button) findViewById(R.telaSincrozinar.btnVoltar);
 		btnExportarVisitas   = (Button) findViewById(R.telaSincrozinar.btnExportarXML);
 		btnConfigWS			 = (Button) findViewById(R.telaSincrozinar.btnConfigWS);
-		btnImportarXmls.setOnClickListener(this);		
+		btnImportarXmls.setOnClickListener(this);	
 		btnVisulizarUsuarios.setOnClickListener(this);		
 		btnVoltar.setOnClickListener(this);		
 		btnExportarVisitas.setOnClickListener(this);
 		btnConfigWS.setOnClickListener(this);
 	}
+
 
 }

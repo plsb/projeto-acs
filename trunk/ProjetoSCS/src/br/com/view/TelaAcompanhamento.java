@@ -69,8 +69,6 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
     	
     	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
     	
-    	//Toast.makeText(this, "END: "+endereco+",NUM: "+numero, Toast.LENGTH_LONG).show();
-    	
     	Intent i = new Intent(this, Lista_Familiar_Acompanhamento.class);    
     	Lista_Familiar_Acompanhamento.END = endereco;
     	Lista_Familiar_Acompanhamento.NUM = numero;    	

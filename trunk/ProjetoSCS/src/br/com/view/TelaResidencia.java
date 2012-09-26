@@ -251,7 +251,10 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			try{
 				bd = new Banco(this);
 				bd.open();
-				csr = bd.consulta("ruas", new String[]{"*"}, "USU_VINCULADO = ? ", new String[] {codUser}, null, null, null, null);
+				if (codUser.equals("0000"))
+					csr = bd.consulta("ruas", new String[]{"*"}, null, null, null, null, null, null);
+				else	
+					csr = bd.consulta("ruas", new String[]{"*"}, "USU_VINCULADO = ? ", new String[] {codUser}, null, null, null, null);
 				csr.moveToFirst();
 				for (int i = 0;i < csr.getCount(); i++){
 					Enderecos.add(csr.getString(csr.getColumnIndex("COD_RET")).toString()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
