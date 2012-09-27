@@ -30,7 +30,7 @@ public class TelaDoenca extends Activity{
 	public static boolean _Hanseniase  = false;
 	public static boolean _Diabetes    = false;
 	public static boolean _Hipertensao = false;
-	public static boolean _Gestante	  = false;
+	public static boolean _Gestante	   = false;
 	public static boolean _Tuberculose = false;
 	
 	public static String _HASH = "";
