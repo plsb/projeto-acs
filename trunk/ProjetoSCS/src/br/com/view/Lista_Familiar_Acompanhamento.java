@@ -23,7 +23,8 @@ import android.widget.Toast;
 
 @SuppressLint("ParserError")
 public class Lista_Familiar_Acompanhamento extends ListActivity implements OnClickListener {
-Banco _bd = new Banco(this);
+	
+	Banco _bd = new Banco(this);
 	
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
@@ -35,6 +36,7 @@ Banco _bd = new Banco(this);
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
 	private SimpleAdapter sa;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +99,7 @@ Banco _bd = new Banco(this);
     
     public void VisualizarAcompanhamentos(){
     	Intent i = new Intent(this, AcompanhamentosRealizados.class);
+    	AcompanhamentosRealizados._ID = Integer.valueOf(_ID.trim());
     	startActivity(i);
     }
     

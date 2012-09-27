@@ -123,9 +123,19 @@ public final class R {
         public static final int line_a=0x7f080005;
         public static final int line_b=0x7f080006;
         public static final int linearLayout1=0x7f08000a;
-        public static final int menu_gravar=0x7f080012;
-        public static final int menu_settings=0x7f080011;
+        public static final int menu_gravar=0x7f08001c;
+        public static final int menu_settings=0x7f08001b;
+        public static final int panel1=0x7f080012;
+        public static final int panel2=0x7f080014;
+        public static final int panel3=0x7f080016;
+        public static final int panel4=0x7f080018;
+        public static final int panel5=0x7f08001a;
         public static final int tableRow1=0x7f080001;
+        public static final int text1=0x7f080011;
+        public static final int text2=0x7f080013;
+        public static final int text3=0x7f080015;
+        public static final int text4=0x7f080017;
+        public static final int text5=0x7f080019;
         public static final int textView1=0x7f080004;
     }
     public static final class imovel {
@@ -161,19 +171,22 @@ public final class R {
         public static final int activity_main=0x7f030001;
         public static final int geraxml=0x7f030002;
         public static final int lista_residencias=0x7f030003;
-        public static final int listaresidente=0x7f030004;
-        public static final int listax=0x7f030005;
-        public static final int telaacompanhamento=0x7f030006;
-        public static final int telaagendamento=0x7f030007;
-        public static final int telacadastrofamilia=0x7f030008;
-        public static final int teladoenca=0x7f030009;
-        public static final int telafamilia=0x7f03000a;
-        public static final int telainfo=0x7f03000b;
-        public static final int telaprinc=0x7f03000c;
-        public static final int telaresidencia=0x7f03000d;
-        public static final int telasincronizar=0x7f03000e;
-        public static final int telasobre=0x7f03000f;
-        public static final int telausuario=0x7f030010;
+        public static final int listafilho=0x7f030004;
+        public static final int listapai=0x7f030005;
+        public static final int listaresidente=0x7f030006;
+        public static final int listax=0x7f030007;
+        public static final int telaacompanhamento=0x7f030008;
+        public static final int telaagendamento=0x7f030009;
+        public static final int telacadastrofamilia=0x7f03000a;
+        public static final int teladoenca=0x7f03000b;
+        public static final int telafamilia=0x7f03000c;
+        public static final int telainfo=0x7f03000d;
+        public static final int telaprinc=0x7f03000e;
+        public static final int telaresidencia=0x7f03000f;
+        public static final int telasincronizar=0x7f030010;
+        public static final int telasobre=0x7f030011;
+        public static final int telausuario=0x7f030012;
+        public static final int teste=0x7f030013;
     }
     public static final class listaResidente {
         public static final int btnFiltrar=0x7f0a0003;
