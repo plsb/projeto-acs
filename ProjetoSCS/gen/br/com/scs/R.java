@@ -103,17 +103,20 @@ public final class R {
         public static final int sync=0x7f020031;
         public static final int tuberculose=0x7f020032;
         public static final int users=0x7f020033;
-        public static final int voltar=0x7f020034;
-        public static final int voltarpequeno=0x7f020035;
-        public static final int webservice=0x7f020036;
+        public static final int vacina=0x7f020034;
+        public static final int voltar=0x7f020035;
+        public static final int voltarpequeno=0x7f020036;
+        public static final int webservice=0x7f020037;
     }
     public static final class id {
         public static final int BtnAcompanhamento=0x7f08000d;
         public static final int BtnAgendamento=0x7f08000b;
         public static final int BtnFamilias=0x7f08000c;
+        public static final int BtnSair=0x7f080012;
         public static final int BtnSincronizar=0x7f08000f;
-        public static final int BtnSobre=0x7f080010;
+        public static final int BtnSobre=0x7f080011;
         public static final int BtnUsuarios=0x7f08000e;
+        public static final int BtnVacinas=0x7f080010;
         public static final int btnFiltrar=0x7f080009;
         public static final int btnFiltrarAcompRealizados=0x7f080003;
         public static final int btnVoltarAcompRealizados=0x7f080000;
@@ -123,19 +126,19 @@ public final class R {
         public static final int line_a=0x7f080005;
         public static final int line_b=0x7f080006;
         public static final int linearLayout1=0x7f08000a;
-        public static final int menu_gravar=0x7f08001c;
-        public static final int menu_settings=0x7f08001b;
-        public static final int panel1=0x7f080012;
-        public static final int panel2=0x7f080014;
-        public static final int panel3=0x7f080016;
-        public static final int panel4=0x7f080018;
-        public static final int panel5=0x7f08001a;
+        public static final int menu_gravar=0x7f08001e;
+        public static final int menu_settings=0x7f08001d;
+        public static final int panel1=0x7f080014;
+        public static final int panel2=0x7f080016;
+        public static final int panel3=0x7f080018;
+        public static final int panel4=0x7f08001a;
+        public static final int panel5=0x7f08001c;
         public static final int tableRow1=0x7f080001;
-        public static final int text1=0x7f080011;
-        public static final int text2=0x7f080013;
-        public static final int text3=0x7f080015;
-        public static final int text4=0x7f080017;
-        public static final int text5=0x7f080019;
+        public static final int text1=0x7f080013;
+        public static final int text2=0x7f080015;
+        public static final int text3=0x7f080017;
+        public static final int text4=0x7f080019;
+        public static final int text5=0x7f08001b;
         public static final int textView1=0x7f080004;
     }
     public static final class imovel {

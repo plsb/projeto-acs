@@ -15,6 +15,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >        
         <activity android:name="br.com.view.TelaPrincipal" android:label="@string/title_activity_main" ></activity>
+        <activity android:name="br.com.view.TelaVacinas" android:label="SCS - Vacinas" ></activity>
         <activity android:name="br.com.view.Lista_Familiar_Acompanhamento" android:label="Familiares Cadastrados" ></activity>
         <activity android:name="br.com.view.Lista_Usuarios" android:label="Usuários Cadastrados" ></activity>
         <activity android:name="br.com.control.ExportarXML" android:label="Exportando XML" android:theme="@style/Theme.Transparent" ></activity>

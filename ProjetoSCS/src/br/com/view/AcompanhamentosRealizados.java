@@ -19,7 +19,6 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
-import android.widget.Toast;
 
 public class AcompanhamentosRealizados extends ExpandableListActivity implements OnChildClickListener {
     
@@ -61,9 +60,9 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         	
         	
         	_cursor = _bd.consulta("residente", new String[] { "*" },"_ID = "+String.valueOf(_ID),null,null,null,"_ID",null);          	        	
-        	_cursor.moveToFirst(); 
+        	_cursor.moveToFirst();         	        	
         	
-        	if (_cursor.getCount() > 0){
+        	if ((_cursor.getCount() > 0)){
         		//Pega o Hash da sessoa que está sendo entrevistada pelo agente de saúde 
         		Hash = _cursor.getString(_cursor.getColumnIndex("HASH")).toString().trim();
         		
@@ -75,7 +74,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
-                    ///////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
                     _cHan = _bd.consulta("hanseniase", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _cHan.moveToFirst();
                     do{
@@ -86,7 +85,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     }while(_cHan.moveToNext());
                     childData.add(children);
                     _cHan.close();                    
-                    //////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
                     
         		}
         		
@@ -98,7 +97,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
-                    ///////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
                     _cHip = _bd.consulta("hipertensao", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _cHip.moveToFirst();
                     do{
@@ -109,7 +108,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     }while(_cHip.moveToNext());
                     childData.add(children);
                     _cHip.close();                    
-                    //////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
         		}
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
@@ -120,7 +119,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
-                    ///////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
                     _Ges = _bd.consulta("gestacao", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Ges.moveToFirst();
                     do{
@@ -131,7 +130,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     }while(_Ges.moveToNext());
                     childData.add(children);
                     _Ges.close();                    
-                    //////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
         		}
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S")){
@@ -142,7 +141,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
-                    ///////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
                     _Tb = _bd.consulta("tuberculose", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Tb.moveToFirst();
                     do{
@@ -153,7 +152,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     }while(_Tb.moveToNext());
                     childData.add(children);
                     _Tb.close();                    
-                    //////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
         		}
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_DIABETE")).toString().trim().equals("S")){
@@ -164,7 +163,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
-                    ///////////////////////////////////////////////////////////////////////////////
+                    /*******************************************************************************/
                     _Dia = _bd.consulta("diabete", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Dia.moveToFirst();
                     do{
@@ -175,7 +174,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     }while(_Dia.moveToNext());
                     childData.add(children);
                     _Dia.close();                    
-                    ////////////////////////////////////////////////////////////////////////////// 		          
+                    /*******************************************************************************/		          
         		}
         		
         		
@@ -206,7 +205,12 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         	_cursor.close();
         	_bd.fechaBanco();
         }catch(Exception e){
-        	Toast.makeText(this, "Exceção:" +e.getMessage(), Toast.LENGTH_LONG).show();
+        	Mensagem.exibeMessagem(this, "SCS", "Nenhum Acompanhamento Encotrado!",2000);
+        	new Handler().postDelayed(new Runnable() {		
+				public void run() {
+					finish();
+				}
+			}, 2000);
         	System.out.println(e.getMessage());
         }       
     }//Fim do Método ListarDoencas
@@ -222,9 +226,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
     	 
     	 Data = mAdapter.getChild(groupPosition, childPosition).toString();    	     	 
     	 Data = Data.substring(Data.lastIndexOf(":")+2);    	 
-    	 Data = Data.substring(0, Data.length()-1);
-    	 
-    	 //System.out.println(Data+" "+TipoDoenca);
+    	 Data = Data.substring(0, Data.length()-1);    	 
     	 
     	 Intent td = new Intent(this, TelaDoenca.class);
     	 TelaDoenca._editando = true;
