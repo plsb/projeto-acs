@@ -10,27 +10,38 @@ import br.com.control.Mensagem;
 import br.com.scs.R;
 
 import android.app.ExpandableListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
 
-public class AcompanhamentosRealizados extends ExpandableListActivity {
-    private static final String NAME = "NAME";
-    private static final String IS_EVEN = "IS_EVEN";
+public class AcompanhamentosRealizados extends ExpandableListActivity implements OnChildClickListener {
+    
+	/*/ D E C L A R A Ç Õ E S /*/
+	
+	private static final String TITULO = "NAME";
+    private static final String SUBTITULO = "IS_EVEN";
 
     private ExpandableListAdapter mAdapter;
     
+    List<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
+    List<List<Map<String, String>>> childData = new ArrayList<List<Map<String, String>>>();
+    
+    String Hash = "";
+    
     Banco _bd;	
+    
 	ArrayList<HashMap<String,String>> list;	
 	
-	List<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
-    List<List<Map<String, String>>> childData = new ArrayList<List<Map<String, String>>>();
-	
 	public static int _ID = 0;
+	
+	/*/ F I M  D E C L A R A Ç Õ E S /*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +58,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
         
         try{        	
         	Cursor _cursor,_cHan,_cHip,_Ges,_Tb,_Dia = null;
-        	String Hash = "";
+        	
         	
         	_cursor = _bd.consulta("residente", new String[] { "*" },"_ID = "+String.valueOf(_ID),null,null,null,"_ID",null);          	        	
         	_cursor.moveToFirst(); 
@@ -59,8 +70,8 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
         		if (_cursor.getString(_cursor.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(NAME, "HANSENÍASE");
-                    curGroupMap.put(IS_EVEN, "HAN-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
+                    curGroupMap.put(TITULO, "HANSENÍASE");
+                    curGroupMap.put(SUBTITULO, "HAN-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
@@ -70,12 +81,11 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
                     do{
                     	Map<String, String> curChildMap = new HashMap<String, String>();
                         children.add(curChildMap);
-                        curChildMap.put(NAME,"Data: "+ _cHan.getString(_cHan.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(IS_EVEN, "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString());
+                        curChildMap.put(TITULO,"Data: "+ _cHan.getString(_cHan.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString());
                     }while(_cHan.moveToNext());
                     childData.add(children);
-                    _cHan.close();
-                    
+                    _cHan.close();                    
                     //////////////////////////////////////////////////////////////////////////////
                     
         		}
@@ -83,8 +93,8 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
         		if (_cursor.getString(_cursor.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(NAME, "HIPERTENSÃO");
-                    curGroupMap.put(IS_EVEN, "HA-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
+                    curGroupMap.put(TITULO, "HIPERTENSÃO");
+                    curGroupMap.put(SUBTITULO, "HA-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
@@ -94,20 +104,19 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
                     do{
                     	Map<String, String> curChildMap = new HashMap<String, String>();
                         children.add(curChildMap);
-                        curChildMap.put(NAME,"Data: "+ _cHip.getString(_cHip.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(IS_EVEN, "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString());
+                        curChildMap.put(TITULO,"Data: "+ _cHip.getString(_cHip.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString());
                     }while(_cHip.moveToNext());
                     childData.add(children);
-                    _cHip.close();
-                    
+                    _cHip.close();                    
                     //////////////////////////////////////////////////////////////////////////////
         		}
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(NAME, "GESTAÇÃO");
-                    curGroupMap.put(IS_EVEN, "GES-Acompanhamento");
+                    curGroupMap.put(TITULO, "GESTAÇÃO");
+                    curGroupMap.put(SUBTITULO, "GES-Acompanhamento");
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
@@ -117,20 +126,19 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
                     do{
                     	Map<String, String> curChildMap = new HashMap<String, String>();
                         children.add(curChildMap);
-                        curChildMap.put(NAME,"Data: "+ _Ges.getString(_Ges.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(IS_EVEN, "Obs: "+_Ges.getString(_Ges.getColumnIndex("OBSERVACAO")).toString());
+                        curChildMap.put(TITULO,"Data: "+ _Ges.getString(_Ges.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, "Obs: "+_Ges.getString(_Ges.getColumnIndex("OBSERVACAO")).toString());
                     }while(_Ges.moveToNext());
                     childData.add(children);
-                    _Ges.close();
-                    
+                    _Ges.close();                    
                     //////////////////////////////////////////////////////////////////////////////
         		}
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S")){
       			    
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(NAME, "TUBERCULOSE");
-                    curGroupMap.put(IS_EVEN, "TB-Acompanhamento");
+                    curGroupMap.put(TITULO, "TUBERCULOSE");
+                    curGroupMap.put(SUBTITULO, "TB-Acompanhamento");
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
@@ -140,20 +148,19 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
                     do{
                     	Map<String, String> curChildMap = new HashMap<String, String>();
                         children.add(curChildMap);
-                        curChildMap.put(NAME,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(IS_EVEN, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
+                        curChildMap.put(TITULO,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
                     }while(_Tb.moveToNext());
                     childData.add(children);
-                    _Tb.close();
-                    
+                    _Tb.close();                    
                     //////////////////////////////////////////////////////////////////////////////
         		}
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_DIABETE")).toString().trim().equals("S")){
       			    
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(NAME, "DIABETE");
-                    curGroupMap.put(IS_EVEN, "DIA-Acompanhamento");
+                    curGroupMap.put(TITULO, "DIABETE");
+                    curGroupMap.put(SUBTITULO, "DIA-Acompanhamento");
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
                     
@@ -163,12 +170,11 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
                     do{
                     	Map<String, String> curChildMap = new HashMap<String, String>();
                         children.add(curChildMap);
-                        curChildMap.put(NAME,"Data: "+ _Dia.getString(_Dia.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(IS_EVEN, "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString());
+                        curChildMap.put(TITULO,"Data: "+ _Dia.getString(_Dia.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString());
                     }while(_Dia.moveToNext());
                     childData.add(children);
-                    _Dia.close();
-                    
+                    _Dia.close();                    
                     ////////////////////////////////////////////////////////////////////////////// 		          
         		}
         		
@@ -178,12 +184,12 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
 	                    
 	                    groupData,
 	                    R.layout.listapai,
-	                    new String[] { NAME, IS_EVEN },
+	                    new String[] { TITULO, SUBTITULO },
 	                    new int[] {R.id.line_a, R.id.line_b},
 	                    
 	                    childData,
 	                    R.layout.listafilho,
-	                    new String[] { NAME, IS_EVEN },
+	                    new String[] { TITULO, SUBTITULO },
 	                    new int[] {R.id.line_a, R.id.line_b}
 	                    );	            
 	        
@@ -204,5 +210,48 @@ public class AcompanhamentosRealizados extends ExpandableListActivity {
         	System.out.println(e.getMessage());
         }       
     }//Fim do Método ListarDoencas
+    
+    
+    public boolean onChildClick(ExpandableListView parent,View v,int groupPosition,int childPosition,long id){
+         
+    	 String Data = "";    	 
+    	 String TipoDoenca = "";
+    	 
+    	 TipoDoenca = mAdapter.getGroup(groupPosition).toString();       	 
+    	 TipoDoenca = TipoDoenca.substring(TipoDoenca.indexOf("=")+1,TipoDoenca.indexOf("-"));
+    	 
+    	 Data = mAdapter.getChild(groupPosition, childPosition).toString();    	     	 
+    	 Data = Data.substring(Data.lastIndexOf(":")+2);    	 
+    	 Data = Data.substring(0, Data.length()-1);
+    	 
+    	 //System.out.println(Data+" "+TipoDoenca);
+    	 
+    	 Intent td = new Intent(this, TelaDoenca.class);
+    	 TelaDoenca._editando = true;
+    	 TelaDoenca._HASH = Hash;
+    	 TelaDoenca._dataVisita = Data;
+    	 
+    	 if (TipoDoenca.trim().equals("HAN")){
+    		TelaDoenca._tabelaDoenca = "hanseniase"; 
+    		TelaDoenca._Hanseniase = true;
+    	 }else if (TipoDoenca.trim().equals("HA")){
+    		TelaDoenca._tabelaDoenca = "hipertensao";
+    		TelaDoenca._Hipertensao = true;
+    	 }else if (TipoDoenca.trim().equals("GES")){
+    		TelaDoenca._tabelaDoenca = "gestacao";
+    		TelaDoenca._Gestante = true;
+    	 }else if (TipoDoenca.trim().equals("TB")){
+    		TelaDoenca._tabelaDoenca = "tuberculose";
+    		TelaDoenca._Tuberculose = true;
+    	 }else if (TipoDoenca.trim().equals("DIA")){
+    		TelaDoenca._tabelaDoenca = "diabete";
+    		TelaDoenca._Diabetes = true;
+    	 }
+    	 
+    	 startActivity(td);
+
+         return true;
+    }
+    
 
 }

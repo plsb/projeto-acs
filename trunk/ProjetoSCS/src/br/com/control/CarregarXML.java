@@ -3,7 +3,6 @@ package br.com.control;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import org.jdom2.Document;
@@ -14,6 +13,7 @@ import org.jdom2.input.SAXBuilder;
 public class CarregarXML {
 	
 	
+@SuppressWarnings("rawtypes")
 public List carregar(String nome_arquivo,String ElementoRoot) throws FileNotFoundException, IOException, JDOMException {  
         
 	   //Aqui você informa o nome do arquivo XML. 	

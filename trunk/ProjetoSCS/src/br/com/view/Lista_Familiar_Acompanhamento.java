@@ -93,7 +93,8 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
     
     public void IniciaAcompanhamento(){
     	Intent i = new Intent(this, TelaDoenca.class); 
-	    TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    	
+	    TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    
+	    TelaDoenca._editando = false;
 	    startActivity(i);
     }
     
