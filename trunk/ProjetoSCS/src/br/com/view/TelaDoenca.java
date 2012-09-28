@@ -313,7 +313,32 @@ public class TelaDoenca extends Activity{
 		            ts.setContent(R.teladoenca.tabDiabetes);
 		            ts.setIndicator("Diabetes",getResources().getDrawable(R.drawable.diabetes));
 		            th.addTab(ts);		           		          
+		    				            
+		            dDtUltimaConsulta.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().lastIndexOf("/")+1)), 
+		 					   				     Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().lastIndexOf("/")))-1, 
+		 					   				     Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().substring(0, c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().indexOf("/"))));
+		            
+		    		EdtDObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
 		    		
+		    		if (c.getString(c.getColumnIndex("FL_FAZ_DIETA")).toString().trim().equals("S"))
+		    			dFazDieta_S.setChecked(true);
+		    		else
+		    			dFazDieta_N.setChecked(true);
+		    		
+		    		if (c.getString(c.getColumnIndex("FL_FAZ_EXCERCICIOS")).toString().trim().equals("S"))
+		    			dFazExerc_S.setChecked(true);
+		    		else
+		    			dFazExerc_N.setChecked(true);
+		    		
+		    		if (c.getString(c.getColumnIndex("FL_USA_INSULINA")).toString().trim().equals("S"))
+		    			dUsaInsulina_S.setChecked(true);
+		    		else
+		    			dUsaInsulina_N.setChecked(true);
+		    		
+		    		if (c.getString(c.getColumnIndex("FL_USA_HIPOGLICEMIANTE")).toString().trim().equals("S"))
+		    			dHipog_S.setChecked(true);
+		    		else
+		    			dHipog_N.setChecked(true);
 		        }
 		       if (_Hipertensao == true){			    	   
 		        	ts = th.newTabSpec("tag3");
@@ -321,6 +346,32 @@ public class TelaDoenca extends Activity{
 		            ts.setContent(R.teladoenca.tabHipertensao);
 		            ts.setIndicator("Hipertensao",getResources().getDrawable(R.drawable.hipertensao));
 		            th.addTab(ts);
+		            //Data Ultima Visita
+		            DtHtUltimaVisita.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().lastIndexOf("/")+1)), 
+		 					   				    Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().lastIndexOf("/")))-1, 
+		 					   				    Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().substring(0, c.getString(c.getColumnIndex("DT_ULTIMA_VISITA")).toString().indexOf("/"))));
+		    		
+		            if (c.getString(c.getColumnIndex("FL_FAZ_DIETA")).toString().trim().equals("S")){
+		            	RbHiFazDieta_S.setChecked(true);
+		    		}else{
+		    			RbHiFazDieta_N.setChecked(true);
+		    		}
+		            	
+		            if (c.getString(c.getColumnIndex("FL_TOMA_MEDICACAO")).toString().trim().equals("S")){
+		            	RbHiTomaMedic_S.setChecked(true);
+		    		}else{
+		    			RbHiTomaMedic_N.setChecked(true);
+		    		}
+		    		
+		            if (c.getString(c.getColumnIndex("FL_FAZ_EXERCICIOS")).toString().trim().equals("S")){
+		            	RbHiExcercFisico_S.setChecked(true);
+		    		}else{
+		    			RbHiExcercFisico_N.setChecked(true);
+		    		}
+
+		            
+		    		EdtHtPe.setText(c.getString(c.getColumnIndex("PRESSAO_ARTERIAL")).toString());
+		    		EdtHtObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
 		        }
 		        if (_Gestante == true){			        	
 		        	ts = th.newTabSpec("tag4");
@@ -408,6 +459,25 @@ public class TelaDoenca extends Activity{
 		            ts.setContent(R.teladoenca.tabTuberculose);
 		            ts.setIndicator("Tuberculose",getResources().getDrawable(R.drawable.tuberculose));
 		            th.addTab(ts);
+		           
+		            if (c.getString(c.getColumnIndex("FL_MEDIC_DIARIA")).toString().trim().equals("S"))
+		            	RbTMedicDiaria_S.setChecked(true);
+		            else
+		            	RbTMedicDiaria_N.setChecked(true);		            
+		            	
+		    		if (c.getString(c.getColumnIndex("FL_REACOES_IND")).toString().trim().equals("S"))
+		    			RbTReacoesIndesejaveis_S.setChecked(true);
+		    		else
+		    			RbTReacoesIndesejaveis_N.setChecked(true);
+		    		
+		    		if (c.getString(c.getColumnIndex("FL_EXAME_ESCARRO")).toString().trim().equals("S"))
+		    			RbTExameEscarro_S.setChecked(true);
+		    		else
+		    			RbTExameEscarro_N.setChecked(true);
+		    					    
+		    		EdtTCe.setText(c.getString(c.getColumnIndex("COMUNIC_EXAMINADOS")).toString());
+		    		EdtTM5Bcg.setText(c.getString(c.getColumnIndex("MENOR_BCG")).toString());				 
+		    		EdtTObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
 		       }
 			}else{
 				Mensagem.exibeMessagem(this, "SCS", "Nenhum Acompanhamento Encontrado!");
@@ -775,10 +845,18 @@ public class TelaDoenca extends Activity{
 				else if (dHipog_N.isChecked())
 					d.FL_USA_HIPOGLICEMIANTE = "N";
 				
-				if (d.Inserir(this) == true){
-					msgInsercao += "Diabete - Gravado\n";
+				if (_IdTransacao == 0){
+					if (d.Inserir(this) == true){
+						msgInsercao += "Diabete - Gravado\n";
+					}else{
+						msgInsercao += "Diabete - Erro\n";
+					}
 				}else{
-					msgInsercao += "Diabete - Erro\n";
+					if (d.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Diabete - Atualizado\n";
+					}else{
+						msgInsercao += "Diabete - Erro\n";
+					}
 				}
 				
 			}finally{
@@ -818,10 +896,18 @@ public class TelaDoenca extends Activity{
 				else if (RbTExameEscarro_N.isChecked())
 					t.FL_EXAME_ESCARRO = "N";
 				
-				if (t.Inserir(this) == true){
-					msgInsercao += "Tuberculose - Gravado\n";
+				if (_IdTransacao == 0){
+					if (t.Inserir(this) == true){
+						msgInsercao += "Tuberculose - Gravado\n";
+					}else{
+						msgInsercao += "Tuberculose - Erro\n";
+					}
 				}else{
-					msgInsercao += "Tuberculose - Erro\n";
+					if (t.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Tuberculose - Atualizado\n";
+					}else{
+						msgInsercao += "Tuberculose - Erro\n";
+					}
 				}
 				
 			}finally{
@@ -861,10 +947,18 @@ public class TelaDoenca extends Activity{
 				else if (RbHiExcercFisico_N.isChecked())	
 					hi.FL_FAZ_EXERCICIOS = "N";
 				
-				if (hi.Inserir(this) == true){
-					msgInsercao += "Hipertensão - Gravado\n";
+				if (_IdTransacao == 0){
+					if (hi.Inserir(this) == true){
+						msgInsercao += "Hipertensão - Gravado\n";
+					}else{
+						msgInsercao += "Hipertensão - Erro\n";
+					}
 				}else{
-					msgInsercao += "Hipertensão - Erro\n";
+					if (hi.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Hipertensão - Atualizado\n";
+					}else{
+						msgInsercao += "Hipertensão - Erro\n";
+					}
 				}
 				
 			}finally{
