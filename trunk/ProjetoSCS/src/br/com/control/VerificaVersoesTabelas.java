@@ -6,6 +6,7 @@ import br.com.control.Banco.BancoDados;
 
 public class VerificaVersoesTabelas {
 	
+	/**
 	private static final String _nomeTabelaUsuario 	   = "usuarios";
 	private static final String _nomeTabelaUsuarioAux  = "usuariosAux";
 	private static final String _nomeTabelaResidencia  = "residencia";
@@ -18,6 +19,7 @@ public class VerificaVersoesTabelas {
 	private static final String _nomeTabelaDiabete     = "diabete";
 	private static final String _nomeTabelaTuberculose = "tuberculose";
 	private static final String _nomeTabelaHipertensao = "hipertensao";
+	private static final String _nomeTabelaVacinas     = "vacinas";**/
 	
 	public static Boolean jaVerificouAtualizacao = false;
 	
@@ -33,18 +35,19 @@ public class VerificaVersoesTabelas {
 	}
 
 	private static void verificaDAO(Context contexto) {
-		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuario, VerificaVersoesTabelas._nomeTabelaUsuario);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuarioAux, VerificaVersoesTabelas._nomeTabelaUsuarioAux);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaResidencia, VerificaVersoesTabelas._nomeTabelaResidencia);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaRuas, VerificaVersoesTabelas._nomeTabelaRuas);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaSessao, VerificaVersoesTabelas._nomeTabelaSessao);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaResidentes, VerificaVersoesTabelas._nomeTabelaResidente);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaBairros, VerificaVersoesTabelas._nomeTabelaBairros);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaGestacao, VerificaVersoesTabelas._nomeTabelaGestacao);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaHanseniase, VerificaVersoesTabelas._nomeTabelaHanseniase);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaDiabate, VerificaVersoesTabelas._nomeTabelaDiabete);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaTuberlose, VerificaVersoesTabelas._nomeTabelaTuberculose);
-		BancoDados.getDAO(contexto, Banco._sqlTabelaHipertensao, VerificaVersoesTabelas._nomeTabelaHipertensao);
+		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuario, "usuarios");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuarioAux, "usuariosAux");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaResidencia, "residencia");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaRuas, "ruas");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaSessao, "sessao");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaResidentes, "residente");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaBairros, "bairros");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaGestacao, "gestacao");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaHanseniase, "hanseniase");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaDiabate, "diabete");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaTuberlose, "tuberculose");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaHipertensao, "hipertensao");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaVacina, "vacinas");
 	}
 
 }

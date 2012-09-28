@@ -65,6 +65,17 @@
             android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"
+            />        
+        
+        <Button 
+            android:id="@+id/BtnVacinas"
+            android:text="Vacinas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/vacina"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
             />
                                       
         <Button 
@@ -73,6 +84,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/sobre"
+            android:drawablePadding="10dp"
+            android:background="@null"
+            android:textStyle="bold"
+            />
+                                      
+        <Button 
+            android:id="@+id/BtnSair"
+            android:text="Sair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/exit"
             android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"

@@ -32,6 +32,14 @@ public class Banco{
 																		"USU_ATIVO text NOT NULL,          "+
 																		"USU_FL_ADMIN integer NOT NULL);   "};
 		
+		public static final String[] _sqlTabelaVacina =  new String[] {"CREATE TABLE if not exists vacinas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																	   "HASH text not null,          "+
+																	   "TIPO_VACINA text not null,   "+
+																	   "DOSE_APLICADA text not null, "+
+																	   "DT_APLICACAO text not null,  "+
+																	   "DT_CADASTRO text not null,   "+
+																	   "TIPO text not null);	  	 "};
+		
 		public static final String[] _sqlTabelaBairros =  new String[] {"CREATE TABLE if not exists bairros (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	    "COD_RET integer NOT NULL, 		"+
 																	    "CEP text, 						"+
