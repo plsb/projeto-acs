@@ -25,7 +25,11 @@ import android.widget.TextView;
 
 public class TelaDoenca extends Activity{
 	
-	public static int COD_FAMILAR = 0;
+	public static int COD_FAMILAR = 0;	
+	
+	public static boolean _editando = false;
+	public static String _dataVisita,_tabelaDoenca = "";
+	private int _IdTransacao = 0;
 	
 	public static boolean _Hanseniase  = false;
 	public static boolean _Diabetes    = false;
@@ -206,7 +210,10 @@ public class TelaDoenca extends Activity{
 		ChG2              = (CheckBox)   findViewById(R.teladoenca.ChG2);
 		ChGR              = (CheckBox)   findViewById(R.teladoenca.ChGR);	
 		
-		InicializaTelas();
+		if (_editando == true)
+			EditaDados();
+		else
+			InicializaTelas();
 		
 	}
 	
@@ -228,15 +235,206 @@ public class TelaDoenca extends Activity{
 		return true;
 	}
 	
+	public void LimparVariaveis(){		
+		_tabelaDoenca = "";
+		_dataVisita   = "";
+		_HASH 		  = "";
+		_IdTransacao  = 0;
+		_Diabetes     = false;
+		_Gestante     = false;
+		_Hanseniase   = false;
+		_Hipertensao  = false;
+		_Tuberculose  = false;		
+		_editando     = false;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		LimparVariaveis();
+		super.onDestroy();
+	}
+	
+	public void EditaDados(){
+		Banco bd = null;
+		Cursor c = null;
+			
+		try{
+			bd = new Banco(this);
+			bd.open();	
+			System.out.println("Tabela: "+_tabelaDoenca);
+			System.out.println("Dt_Visita: "+_dataVisita);
+			System.out.println("HASH: "+_HASH);
+			c = bd.consulta(_tabelaDoenca, new String[]{"*"}, "DT_VISITA = '"+_dataVisita+"' and HASH = '"+_HASH+"'", null, null, null, null, null);					
+			
+			c.moveToFirst();
+			
+			if (c.getCount()>0){
+				
+				_IdTransacao = Integer.valueOf(c.getString(c.getColumnIndex("_ID")).toString().trim());
+				
+				System.out.println("idTransacao:"+c.getString(c.getColumnIndex("_ID")).toString().trim());
+				
+				TabHost th = (TabHost) findViewById(R.teladoenca.tabhost);
+		        th.setup();
+		        TabSpec ts;
+		        
+		        if (_Hanseniase == true){			        	
+		        	ts = th.newTabSpec("tag1");
+		        	ComponentesHanseniase();
+		            ts.setContent(R.teladoenca.tabHanseniase);
+		            ts.setIndicator("Hanseniase",getResources().getDrawable(R.drawable.hanseniase));
+		            th.addTab(ts);
+		            
+		            //Toma Medicação
+		            if (c.getString(c.getColumnIndex("TOMA_MEDICACAO")).toString().trim().equals("S"))
+		            	RbHMdSim.setChecked(true);		        
+		            else
+		            	RbHMdNao.setChecked(true);		            
+		            //Auto Cuidado
+		            if (c.getString(c.getColumnIndex("AUTO_CUIDADOS")).toString().trim().equals("S"))
+		            	RbHAcSim.setChecked(true);		        
+		            else
+		            	RbHAcNao.setChecked(true);		            		            
+		            //Data da Ultima Dose
+		            DtHUltimadose.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().lastIndexOf("/")+1)), 
+											 Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().lastIndexOf("/")))-1, 
+											 Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().substring(0, c.getString(c.getColumnIndex("DT_ULTIMA_DOSE")).toString().indexOf("/"))));		            
+		            //Data Ultima Consulta
+		    		DtHDtUltimaConsulta.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().lastIndexOf("/")+1)), 
+							 					   Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().lastIndexOf("/")))-1, 
+							 					   Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().substring(0, c.getString(c.getColumnIndex("DT_ULTIMA_CONSULTA")).toString().indexOf("/"))));		    				    				    		
+		    		EdtHCe.setText(c.getString(c.getColumnIndex("COMUNICANTES_EXAMINADOS")).toString());
+		    		EdtHM5Bcg.setText(c.getString(c.getColumnIndex("COMUNICANTES_BCG")).toString());           
+		    		EdtHNObservacao.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString()); 
+		        }
+		        if (_Diabetes == true){			        	
+		        	ts = th.newTabSpec("tag2");
+		        	ComponentesDiabetes();
+		            ts.setContent(R.teladoenca.tabDiabetes);
+		            ts.setIndicator("Diabetes",getResources().getDrawable(R.drawable.diabetes));
+		            th.addTab(ts);		           		          
+		    		
+		        }
+		       if (_Hipertensao == true){			    	   
+		        	ts = th.newTabSpec("tag3");
+		        	ComponentesHiperTensao();
+		            ts.setContent(R.teladoenca.tabHipertensao);
+		            ts.setIndicator("Hipertensao",getResources().getDrawable(R.drawable.hipertensao));
+		            th.addTab(ts);
+		        }
+		        if (_Gestante == true){			        	
+		        	ts = th.newTabSpec("tag4");
+		        	ComponentesGestante();
+		            ts.setContent(R.teladoenca.tabGestante);
+		            ts.setIndicator("Gestante",getResources().getDrawable(R.drawable.gestante));
+		            th.addTab(ts);
+		            
+		            //Data Última Regra		            
+		    		GDtUltimaRegra.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().lastIndexOf("/")+1)), 
+											  Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().substring(c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().lastIndexOf("/")))-1, 
+											  Integer.valueOf(c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().substring(0, c.getString(c.getColumnIndex("DT_ULTIMA_REGRA")).toString().indexOf("/"))));
+		    		//Data Provável do Parto
+		    		GDtParto.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().lastIndexOf("/")+1)), 
+		    							Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().lastIndexOf("/")))-1, 
+		    							Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(0, c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().indexOf("/"))));
+		    		//Data de Vacina
+		    		GDtVacina.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")+1)), 
+										 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")))-1, 
+										 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(0, c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/"))));
+		    		//Data de Consulta Puerbio
+		    		GDtPuerbio.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().lastIndexOf("/")+1)), 
+										  Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().lastIndexOf("/")))-1, 
+										  Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(0, c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().indexOf("/"))));
+		    		//Data Pré-Natal		    		
+		    		DtGPreNatal.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().substring(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().lastIndexOf("/")+1)), 
+							        	   Integer.valueOf(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().substring(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().lastIndexOf("/")))-1, 
+							        	   Integer.valueOf(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().substring(0, c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().indexOf("/"))));
+		    		
+		    		EdtGEn.setText(c.getString(c.getColumnIndex("EST_NUTRICIONAL")).toString());
+		    		EdtGObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
+		    		EdtMesGestacao.setText(c.getString(c.getColumnIndex("MES_GESTACAO")).toString());
+		    		
+		    		if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("1"))
+		    			ChGUm.setChecked(true);
+		    		else if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("2"))
+		    			ChG2.setChecked(true);
+		    		else if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("R"))
+		    			ChGR.setChecked(true);
+		    		
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(0, 1).toString().trim().equals("S"))
+		    			ChGGestacoes.setChecked(true);
+		    		else
+		    			ChGGestacoes.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(1, 2).toString().trim().equals("S"))		    		
+		    			ChGIdade36.setChecked(true);
+		    		else
+		    			ChGIdade36.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(2, 3).toString().trim().equals("S"))
+		    			ChGSangue.setChecked(true);
+		    		else
+		    			ChGSangue.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(3, 4).toString().trim().equals("S"))
+		    			ChGDiabetes.setChecked(true);
+		    		else
+		    			ChGDiabetes.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(4, 5).toString().trim().equals("S"))
+		    			ChGAborto.setChecked(true);
+		    		else
+		    			ChGAborto.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(5, 6).toString().trim().equals("S"))
+		    			ChGIdade20.setChecked(true);
+		    		else
+		    			ChGIdade20.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(6, 7).toString().trim().equals("S"))
+		    			ChGEdema.setChecked(true); 		    		 
+		    		else
+		    			ChGEdema.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(7, 8).toString().trim().equals("S"))
+		    			ChGPressao.setChecked(true);
+		    		else
+		    			ChGPressao.setChecked(false);
+		       }
+		        if (_Tuberculose == true){			
+		        	ts = th.newTabSpec("tag5");
+		        	ComponentesTuberculose();
+		            ts.setContent(R.teladoenca.tabTuberculose);
+		            ts.setIndicator("Tuberculose",getResources().getDrawable(R.drawable.tuberculose));
+		            th.addTab(ts);
+		       }
+			}else{
+				Mensagem.exibeMessagem(this, "SCS", "Nenhum Acompanhamento Encontrado!");
+			}
+			
+		}catch(Exception e){
+			Mensagem.exibeMessagem(this, "SCS-ERRO", e.getMessage());
+		}finally{
+			if (c != null){
+				c.close();
+			}
+			if (bd != null){
+				bd.fechaBanco();
+			}
+		}//Fim do Finally
+	}
+	
 	public void InicializaTelas(){
 		Banco bd = null;
 		Cursor c = null;
 			try{
 				bd = new Banco(this);
-				bd.open();
-				c = bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(COD_FAMILAR), null, null, null, null, null);
+				bd.open();				
+				c = bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(COD_FAMILAR), null, null, null, null, null);					
 				
 				c.moveToFirst();
+				
 				if (c.getCount()>0){
 					
 					_HASH = c.getString(c.getColumnIndex("HASH")).toString().trim();
@@ -471,10 +669,18 @@ public class TelaDoenca extends Activity{
 				
 				g.FATORES_RISCO = fatores_risco;
 				
-				if (g.Inserir(this) == true){
-					msgInsercao += "Gestante - Gravado\n";
+				if (_IdTransacao == 0){
+					if (g.Inserir(this) == true){
+						msgInsercao += "Gestante - Gravado\n";
+					}else{
+						msgInsercao += "Gestante - Erro\n";
+					}
 				}else{
-					msgInsercao += "Gestante - Erro\n";
+					if (g.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Gestante - Atualizado\n";
+					}else{
+						msgInsercao += "Gestante - Erro\n";
+					}
 				}
 			}finally{
 				g = null;			
@@ -513,10 +719,18 @@ public class TelaDoenca extends Activity{
 					h.AUTO_CUIDADOS = "N";
 				}
 				
-				if (h.Inserir(this) == true){
-					msgInsercao += "Hanseníase - Gravado\n";
+				if (_IdTransacao == 0){
+					if (h.Inserir(this) == true){
+						msgInsercao += "Hanseníase - Gravado\n";
+					}else{
+						msgInsercao += "Hanseníase - Erro\n";
+					}
 				}else{
-					msgInsercao += "Hanseníase - Erro\n";
+					if (h.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Hanseníase - Atualizado\n";
+					}else{
+						msgInsercao += "Hanseníase - Erro\n";
+					}
 				}
 			
 			}finally{
