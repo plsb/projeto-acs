@@ -47,8 +47,8 @@ public class ExportarXML extends Activity {
 	public boolean ExportarResidencias(Context c){
 		
 		try{
-			Banco bd    = new Banco(c);
-			Cursor csr  = null;
+			Banco bd = new Banco(c);
+			Cursor csr = null;
 			bd.open();
 			csr = bd.consulta("residencia", new String[] {"*"}, null, null, null, null, "_ID", "");
 			csr.moveToFirst();
@@ -86,7 +86,7 @@ public class ExportarXML extends Activity {
 					DADOS.addContent(SEG_TERRIT.setText(csr.getString(csr.getColumnIndex("SEG_TERRIT")).toString()));
 					DADOS.addContent(AREA.setText(csr.getString(csr.getColumnIndex("AREA")).toString()));
 					DADOS.addContent(MICROAREA.setText(csr.getString(csr.getColumnIndex("MICROAREA")).toString()));
-					DADOS.addContent(COD_FAMILIA.setText(csr.getString(csr.getColumnIndex("COD_FAMILIA")).toString()));
+					DADOS.addContent(COD_FAMILIA.setText(""));
 					DADOS.addContent(DATA_CADASTRO.setText(csr.getString(csr.getColumnIndex("DATA_CADASTRO")).toString()));
 					DADOS.addContent(TIPO_CASA.setText(csr.getString(csr.getColumnIndex("TIPO_CASA")).toString()));
 					DADOS.addContent(TIPO_CASA_OUTRO.setText(csr.getString(csr.getColumnIndex("TIPO_CASA_OUTROS")).toString()));
@@ -97,7 +97,7 @@ public class ExportarXML extends Activity {
 					DADOS.addContent(CASO_DOENCA.setText(csr.getString(csr.getColumnIndex("CASO_DOENCA")).toString()));
 					DADOS.addContent(CASO_DOENCAOUTRO.setText(csr.getString(csr.getColumnIndex("CASO_DOENCA_OUTROS")).toString()));
 					DADOS.addContent(MEIO_COMUNICACAO.setText(csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO")).toString()));
-					DADOS.addContent(PART_GRUPOS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString()));
+					DADOS.addContent(PART_GRUPOS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString())); 
 					DADOS.addContent(MEIO_TRANSPORTE.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString()));
 					
 					RESIDENCIA.addContent(DADOS);					
