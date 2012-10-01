@@ -389,9 +389,9 @@ public class TelaDoenca extends Activity{
 		    							Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().lastIndexOf("/")))-1, 
 		    							Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(0, c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().indexOf("/"))));
 		    		//Data de Vacina
-		    		GDtVacina.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")+1)), 
-										 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")))-1, 
-										 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(0, c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/"))));
+		    		//GDtVacina.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")+1)), 
+					//					 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")))-1, 
+					//					 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(0, c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/"))));
 		    		//Data de Consulta Puerbio
 		    		GDtPuerbio.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().lastIndexOf("/")+1)), 
 										  Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().lastIndexOf("/")))-1, 
@@ -405,12 +405,12 @@ public class TelaDoenca extends Activity{
 		    		EdtGObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
 		    		EdtMesGestacao.setText(c.getString(c.getColumnIndex("MES_GESTACAO")).toString());
 		    		
-		    		if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("1"))
+		    		/*if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("1"))
 		    			ChGUm.setChecked(true);
 		    		else if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("2"))
 		    			ChG2.setChecked(true);
 		    		else if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("R"))
-		    			ChGR.setChecked(true);
+		    			ChGR.setChecked(true);*/
 		    		
 		    		
 		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(0, 1).toString().trim().equals("S"))
