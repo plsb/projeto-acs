@@ -19,7 +19,7 @@
         <activity android:name="br.com.view.Lista_Familiar_Acompanhamento" android:label="Familiares Cadastrados" ></activity>
         <activity android:name="br.com.view.Lista_Usuarios" android:label="Usuários Cadastrados" ></activity>
         <activity android:name="br.com.control.ExportarXML" android:label="Exportando XML" android:theme="@style/Theme.Transparent" ></activity>
-        <activity android:name="br.com.control.ImportarXML" android:label="Exportando XML" android:theme="@style/Theme.Transparent" ></activity>
+        <activity android:name="br.com.control.ImportarXML" android:label="Exportando XML" ></activity>
         <activity android:name="br.com.view.Lista_Residencias" android:label="Residencias Cadastradas"></activity>
         <activity android:name="br.com.view.Lista_Residentes" android:label="Familiares Cadastrados"></activity>
         <activity android:name="br.com.view.TelaInfo" android:label="Informações do Aparelho"></activity>
