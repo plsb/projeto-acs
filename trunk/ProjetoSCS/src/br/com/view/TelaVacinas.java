@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import br.com.control.Banco;
 import br.com.scs.R;
-import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast; 
 
-@SuppressLint("ParserError")
 public class TelaVacinas extends ListActivity implements OnClickListener {
 	Banco _bd = new Banco(this);
 	
