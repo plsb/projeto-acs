@@ -11,15 +11,20 @@ import org.jdom2.JDOMException;
 
 import br.com.scs.R;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
 public class ImportarXML extends Activity {
 	
 	private CarregarXML xml;
 	private Banco bd;
+	private ProgressDialog mprogressDialog;
+	private Handler mhandler;
 	
 	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,cHan,cHa,cDia,cTb,cGes = null;
 	
@@ -32,9 +37,70 @@ public class ImportarXML extends Activity {
 		setContentView(R.layout.geraxml);
 				
 		xml = new CarregarXML(); 
-		bd = new Banco(this);		
+		bd = new Banco(this);	
 		
-		try{
+		mhandler = new Handler();
+		mprogressDialog = new ProgressDialog(this);
+        mprogressDialog.setCancelable(true);
+        mprogressDialog.setMessage("Importando Dados...");
+ 
+        //define o estilo como horizontal que nesse caso signifca que terá 
+        //barra de progressão/contagem
+        mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+			
+        mprogressDialog.setProgress(0);
+        mprogressDialog.setMax(10);
+        
+        mprogressDialog.show();
+        
+        new Thread() {
+            public void run() {
+                
+                try{
+                    //while (mprogressDialog.getProgress() < mprogressDialog.getMax()) {
+                        //esse é apenas um método de teste que pode ser demorado
+                	ImportaRuas();
+                	mprogressDialog.incrementProgressBy(1);               
+        			ImportaBairros();
+        			mprogressDialog.incrementProgressBy(1);        			
+        			ImportaUsuarios();
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaResidencias(); 
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaFamiliar();
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaHan();
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaHa();
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaDia();
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaTb();
+        			mprogressDialog.incrementProgressBy(1);
+        			ImportaGes(); 
+                    mprogressDialog.incrementProgressBy(1);
+                    //}
+                } catch (Exception e) {
+                    Log.e("tag", e.getMessage());
+                }
+                 
+                //Exibe mensagem apenas informando o fim da execução da thread
+                mhandler.post(new Runnable() {
+                    public void run() {
+                    	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                    }
+                });            
+                 
+                //encerra progress dialog
+                mprogressDialog.dismiss();  
+                finish();
+            }
+        }.start();
+        
+        
+        
+		/*try{
 			ImportaRuas();
 			ImportaBairros();
 			ImportaUsuarios();
@@ -55,7 +121,7 @@ public class ImportarXML extends Activity {
 			public void run() {
 				finish();
 			}
-		}, 4000);
+		}, 4000);*/
 		
 	}//Fim do OnCreate	
 	
@@ -520,7 +586,7 @@ public class ImportarXML extends Activity {
 	
 			
 	@Override
-	protected void onDestroy() {
+	protected void onDestroy() {		
 		xml      	= null;
 		cUsuario 	= null;
 		cBairro  	= null;
@@ -532,7 +598,7 @@ public class ImportarXML extends Activity {
 		cGes		= null;
 		cDia		= null;
 		cTb			= null;
-		super.onDestroy();
+		super.onDestroy();		
 	}
 
 }
