@@ -21,7 +21,7 @@ public class ImportarXML extends Activity {
 	private CarregarXML xml;
 	private Banco bd;
 	
-	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar = null;
+	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,cHan,cHa,cDia,cTb,cGes = null;
 	
 	String msg = "";
 	
@@ -40,17 +40,22 @@ public class ImportarXML extends Activity {
 			ImportaUsuarios();
 			ImportaResidencias(); 
 			ImportaFamiliar();
+			ImportaHan();
+			ImportaHa();
+			ImportaDia();
+			ImportaTb();
+			ImportaGes();
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 		
-		Mensagem.exibeMessagem(this, "Importados:", msg,2000);	
+		Mensagem.exibeMessagem(this, "Importados:", msg,4000);	
 					
 		new Handler().postDelayed(new Runnable() {		
 			public void run() {
 				finish();
 			}
-		}, 2000);
+		}, 4000);
 		
 	}//Fim do OnCreate	
 	
@@ -268,7 +273,7 @@ public class ImportarXML extends Activity {
 					c.put("FL_DIABETE", familiar.getChildText("diabetesFamiliar"));
 					c.put("FL_EPILETICO", familiar.getChildText("epilepsiaFamiliar"));			
 					c.put("COD_ENDERECO", familiar.getChildText("codigoRuaFamiliar"));
-					c.put("HASH", familiar.getChildText("idMD5Familiar"));
+					c.put("HASH", familiar.getChildText("idMD5Familiar").trim());
 					c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 										
 					cFamiliar = bd.consulta("residente", new String[] { "_ID" }, "HASH = ? ",  new String[] { familiar.getChildText("idMD5Familiar").trim() }, null, null, null, null);
@@ -294,6 +299,225 @@ public class ImportarXML extends Activity {
 		}
 		
 	}//Fim do Método Familiar
+	
+	
+	public void ImportaHan(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
+		try {
+			if (!(xml.carregar("scs.xml","hanseniase") == null)){
+				List<Element> Lista_Han = xml.carregar("scs.xml","hanseniase"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Han : Lista_Han){
+					c.clear();				
+					c.put("HASH", Han.getChildText("idmd5familiar").trim());					
+					c.put("DT_VISITA", Han.getChildText("dtvisita"));
+					c.put("DT_ATUALIZACAO", Han.getChildText("dtvisita"));
+					c.put("DT_ULTIMA_CONSULTA", Han.getChildText("dtultconsulta"));
+					c.put("DT_ULTIMA_DOSE", Han.getChildText("dtutdosesupervisionada"));					
+					c.put("TOMA_MEDICACAO", Han.getChildText("tmmedicacaodiaria"));
+					c.put("AUTO_CUIDADOS", Han.getChildText("fzautoscuidados"));
+					c.put("COMUNICANTES_EXAMINADOS", Han.getChildText("comexaminados"));
+					c.put("COMUNICANTES_BCG", Han.getChildText("cmrecebbcg"));
+					c.put("OBSERVACAO", Han.getChildText("observacoes"));
+					c.put("NUMERO_COMUNICANTES", 0);
+					cHan = bd.consulta("hanseniase", new String[] { "_ID,HASH,DT_VISITA" }, "HASH = '"+Han.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Han.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										
+					cHan.moveToFirst();						
+					if (cHan.getCount() > 0){
+						bd.atualizarDadosTabela("hanseniase",Integer.valueOf(cHan.getString(cHan.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("hanseniase", c);							
+					}//Fim else
+					cHan.close();
+				}//Fim for
+					msg = msg + "Hanseníase - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Hanseníase - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Hanseniase: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Hanseniase: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Hanseniase: "+e.getMessage());				
+			}
+	}//Fim do Método Importahan
+	
+	
+	public void ImportaHa(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S Ã O		
+		try {
+			if (!(xml.carregar("scs.xml","hipertensao") == null)){
+				List<Element> Lista_Ha = xml.carregar("scs.xml","hipertensao"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Ha : Lista_Ha){
+					c.clear();				
+					c.put("HASH", Ha.getChildText("idmd5familiar").trim());					
+					c.put("DT_VISITA", Ha.getChildText("dtvisita"));
+					c.put("DT_ATUALIZACAO", Ha.getChildText("dtvisita"));
+					c.put("FL_FAZ_DIETA", Ha.getChildText("fzdieta").trim());
+					c.put("FL_TOMA_MEDICACAO", Ha.getChildText("tmmedicacao").trim());					
+					c.put("FL_FAZ_EXERCICIOS", Ha.getChildText("fzexfisicos").trim());
+					c.put("PRESSAO_ARTERIAL", Ha.getChildText("pressaoarterial"));
+					c.put("DT_ULTIMA_VISITA", Ha.getChildText("dtultvisita"));
+					c.put("OBSERVACAO", Ha.getChildText("obs"));
+					cHa = bd.consulta("hipertensao", new String[] { "_ID,HASH,DT_VISITA" }, "HASH = '"+Ha.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Ha.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										
+					cHa.moveToFirst();						
+					if (cHa.getCount() > 0){
+						bd.atualizarDadosTabela("hipertensao",Integer.valueOf(cHa.getString(cHa.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("hipertensao", c);							
+					}//Fim else
+					cHa.close();
+				}//Fim for
+					msg = msg + "Hipertensão - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Hipertensão - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Hipertensão: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Hipertensão: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Hipertensão: "+e.getMessage());				
+			}
+	}//Fim do Método ImportaHa
+	
+	
+	public void ImportaDia(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S Ã O		
+		try {
+			if (!(xml.carregar("scs.xml","diabetes") == null)){
+				List<Element> Lista_Ha = xml.carregar("scs.xml","diabetes"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Ha : Lista_Ha){
+					c.clear();				
+					c.put("HASH", Ha.getChildText("idmd5familiar").trim());					
+					c.put("DT_VISITA", Ha.getChildText("dtvisita"));
+					c.put("DT_ATUALIZACAO", Ha.getChildText("dtvisita"));
+					c.put("FL_FAZ_DIETA", Ha.getChildText("fzdieta").trim());
+					c.put("FL_FAZ_EXCERCICIOS", Ha.getChildText("fzexfisicos"));					
+					c.put("FL_USA_INSULINA", Ha.getChildText("usinsulina").trim());
+					c.put("FL_USA_HIPOGLICEMIANTE", Ha.getChildText("tmhipoglicoral"));
+					c.put("DT_ULTIMA_VISITA", Ha.getChildText("dtultvisita"));
+					c.put("OBSERVACAO", Ha.getChildText("obs"));
+					cHa = bd.consulta("diabete", new String[] { "_ID,HASH,DT_VISITA" }, "HASH = '"+Ha.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Ha.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										
+					cHa.moveToFirst();						
+					if (cHa.getCount() > 0){
+						bd.atualizarDadosTabela("diabete",Integer.valueOf(cHa.getString(cHa.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("diabete", c);							
+					}//Fim else
+					cHa.close();
+				}//Fim for
+					msg = msg + "Diabete - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Diabete - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Diabete: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Diabete: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Diabete: "+e.getMessage());				
+			}
+	}//Fim do Método ImportaHa
+	
+	
+	public void ImportaGes(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  G E S T A N T E S	
+		try {
+			if (!(xml.carregar("scs.xml","gestante") == null)){
+				List<Element> Lista_Ges = xml.carregar("scs.xml","gestante"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Ges : Lista_Ges){
+					c.clear();				
+					c.put("HASH", Ges.getChildText("idmd5familiar").trim());					
+					c.put("DT_VISITA", Ges.getChildText("dtvisita"));
+					c.put("DT_ATUALIZACAO", Ges.getChildText("dtvisita"));
+					c.put("DT_ULTIMA_REGRA", Ges.getChildText("dtultregra"));
+					c.put("DT_PROVAVEL_PARTO", Ges.getChildText("dtprovavelparto"));					
+					c.put("DT_CONSULTA_PUERBIO", Ges.getChildText("dtconspuerbio"));
+					c.put("TIPO_VACINA","");
+					c.put("DT_VACINA","");
+					c.put("EST_NUTRICIONAL", Ges.getChildText("estnutricional"));
+					c.put("MES_GESTACAO", Ges.getChildText("mesgestacao"));
+					c.put("DT_PRE_NATAL", Ges.getChildText("dtconsulprenatal"));
+					c.put("FATORES_RISCO", Ges.getChildText("fr6mgestacao")+Ges.getChildText("fr36oumais")+Ges.getChildText("frsangramento")+Ges.getChildText("frdiabetes")+
+										   Ges.getChildText("frnatrimaborto")+Ges.getChildText("frmeno20anos")+Ges.getChildText("fredema")+Ges.getChildText("frpressaoalta"));
+					c.put("RESULTADO_GESTACAO","");
+					c.put("OBSERVACAO", Ges.getChildText("obs"));
+					cGes = bd.consulta("gestacao", new String[] { "_ID,HASH,DT_VISITA" }, "HASH = '"+Ges.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Ges.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										
+					cGes.moveToFirst();						
+					if (cGes.getCount() > 0){
+						bd.atualizarDadosTabela("gestacao",Integer.valueOf(cGes.getString(cGes.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("gestacao", c);							
+					}//Fim else
+					cGes.close();
+				}//Fim for
+					msg = msg + "Gestação - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Gestação - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Gestação: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Gestação: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Gestação: "+e.getMessage());				
+			}
+	}//Fim do Método ImportaGes
+
+	
+	public void ImportaTb(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  T U B E R C U L O S E		
+		try {
+			if (!(xml.carregar("scs.xml","tuberculose") == null)){
+				List<Element> Lista_Tb = xml.carregar("scs.xml","tuberculose"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Tb : Lista_Tb){
+					c.clear();				
+					c.put("HASH", Tb.getChildText("idmd5familiar").trim());					
+					c.put("DT_VISITA", Tb.getChildText("dtvisita"));
+					c.put("DT_ATUALIZACAO", Tb.getChildText("dtvisita"));
+					c.put("FL_MEDIC_DIARIA", Tb.getChildText("tmmeddiaria"));
+					c.put("FL_REACOES_IND", Tb.getChildText("recindesej"));					
+					c.put("FL_EXAME_ESCARRO", Tb.getChildText("exescar"));
+					c.put("COMUNIC_EXAMINADOS", Tb.getChildText("comexami"));
+					c.put("MENOR_BCG", Tb.getChildText("mn5anoscombcg"));
+					c.put("OBSERVACAO", Tb.getChildText("obs"));
+					cTb = bd.consulta("tuberculose", new String[] { "_ID, HASH, DT_VISITA" }, "HASH = '"+Tb.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Tb.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										
+					cTb.moveToFirst();						
+					if (cTb.getCount() > 0){
+						bd.atualizarDadosTabela("tuberculose",Integer.valueOf(cTb.getString(cTb.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("tuberculose", c);							
+					}//Fim else
+					cTb.close();
+				}//Fim for
+					msg = msg + "Tuberculose - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Tuberculose - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());				
+			}
+	}//Fim do Método ImportaTb
+	
 			
 	@Override
 	protected void onDestroy() {
@@ -303,6 +527,11 @@ public class ImportarXML extends Activity {
 		cRuas 	    = null;
 		cResidencia = null;
 		cFamiliar   = null;
+		cHan		= null;
+		cHa			= null;
+		cGes		= null;
+		cDia		= null;
+		cTb			= null;
 		super.onDestroy();
 	}
 

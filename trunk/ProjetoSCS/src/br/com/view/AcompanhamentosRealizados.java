@@ -59,8 +59,10 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         	Cursor _cursor,_cHan,_cHip,_Ges,_Tb,_Dia = null;
         	
         	
-        	_cursor = _bd.consulta("residente", new String[] { "*" },"_ID = "+String.valueOf(_ID),null,null,null,"_ID",null);          	        	
-        	_cursor.moveToFirst();         	        	
+        	_cursor = _bd.consulta("residente", new String[] { "*" },"_ID = "+String.valueOf(_ID).trim(),null,null,null,"_ID",null);          	        	
+        	_cursor.moveToFirst();        
+        	
+        	//System.out.println("ID DO FAMILIAR SELECIONADO: "+String.valueOf(_ID).trim());
         	
         	if ((_cursor.getCount() > 0)){
         		//Pega o Hash da sessoa que está sendo entrevistada pelo agente de saúde 
@@ -77,13 +79,15 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _cHan = _bd.consulta("hanseniase", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _cHan.moveToFirst();
-                    do{
-                    	Map<String, String> curChildMap = new HashMap<String, String>();
-                        children.add(curChildMap);
-                        curChildMap.put(TITULO,"Data: "+ _cHan.getString(_cHan.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(SUBTITULO, "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString());
-                    }while(_cHan.moveToNext());
-                    childData.add(children);
+                    if (_cHan.getCount()>0){
+	                    do{
+	                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                        children.add(curChildMap);
+	                        curChildMap.put(TITULO,"Data: "+ _cHan.getString(_cHan.getColumnIndex("DT_VISITA")).toString());
+	                        curChildMap.put(SUBTITULO, "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString());
+	                    }while(_cHan.moveToNext());
+	                    childData.add(children);
+                    }
                     _cHan.close();                    
                     /*******************************************************************************/
                     
@@ -100,13 +104,15 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _cHip = _bd.consulta("hipertensao", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _cHip.moveToFirst();
-                    do{
-                    	Map<String, String> curChildMap = new HashMap<String, String>();
-                        children.add(curChildMap);
-                        curChildMap.put(TITULO,"Data: "+ _cHip.getString(_cHip.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(SUBTITULO, "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString());
-                    }while(_cHip.moveToNext());
-                    childData.add(children);
+                    if (_cHip.getCount() > 0){
+	                    do{
+	                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                        children.add(curChildMap);
+	                        curChildMap.put(TITULO,"Data: "+ _cHip.getString(_cHip.getColumnIndex("DT_VISITA")).toString());
+	                        curChildMap.put(SUBTITULO, "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString());
+	                    }while(_cHip.moveToNext());
+	                    childData.add(children);
+                    }
                     _cHip.close();                    
                     /*******************************************************************************/
         		}
@@ -122,13 +128,15 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _Ges = _bd.consulta("gestacao", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Ges.moveToFirst();
-                    do{
-                    	Map<String, String> curChildMap = new HashMap<String, String>();
-                        children.add(curChildMap);
-                        curChildMap.put(TITULO,"Data: "+ _Ges.getString(_Ges.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(SUBTITULO, "Obs: "+_Ges.getString(_Ges.getColumnIndex("OBSERVACAO")).toString());
-                    }while(_Ges.moveToNext());
-                    childData.add(children);
+                    if (_Ges.getCount() > 0){
+	                    do{
+	                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                        children.add(curChildMap);
+	                        curChildMap.put(TITULO,"Data: "+ _Ges.getString(_Ges.getColumnIndex("DT_VISITA")).toString());
+	                        curChildMap.put(SUBTITULO, "Obs: "+_Ges.getString(_Ges.getColumnIndex("OBSERVACAO")).toString());
+	                    }while(_Ges.moveToNext());
+	                    childData.add(children);
+                    }
                     _Ges.close();                    
                     /*******************************************************************************/
         		}
@@ -144,13 +152,15 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _Tb = _bd.consulta("tuberculose", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Tb.moveToFirst();
-                    do{
-                    	Map<String, String> curChildMap = new HashMap<String, String>();
-                        children.add(curChildMap);
-                        curChildMap.put(TITULO,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(SUBTITULO, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
-                    }while(_Tb.moveToNext());
-                    childData.add(children);
+                    if (_Tb.getCount() > 0){
+	                    do{
+	                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                        children.add(curChildMap);
+	                        curChildMap.put(TITULO,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
+	                        curChildMap.put(SUBTITULO, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
+	                    }while(_Tb.moveToNext());
+	                    childData.add(children);
+                    }
                     _Tb.close();                    
                     /*******************************************************************************/
         		}
@@ -166,13 +176,15 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _Dia = _bd.consulta("diabete", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Dia.moveToFirst();
-                    do{
-                    	Map<String, String> curChildMap = new HashMap<String, String>();
-                        children.add(curChildMap);
-                        curChildMap.put(TITULO,"Data: "+ _Dia.getString(_Dia.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(SUBTITULO, "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString());
-                    }while(_Dia.moveToNext());
-                    childData.add(children);
+                    if (_Dia.getCount() > 0){
+	                    do{
+	                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                        children.add(curChildMap);
+	                        curChildMap.put(TITULO,"Data: "+ _Dia.getString(_Dia.getColumnIndex("DT_VISITA")).toString());
+	                        curChildMap.put(SUBTITULO, "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString());
+	                    }while(_Dia.moveToNext());
+	                    childData.add(children);
+                    }
                     _Dia.close();                    
                     /*******************************************************************************/		          
         		}
