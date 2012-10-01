@@ -9,7 +9,7 @@ package br.com.scs;
 
 public final class R {
     public static final class MenuTelaFamilia {
-        public static final int menu_gravar=0x7f110000;
+        public static final int menu_gravar=0x7f120000;
     }
     public static final class TelaInfo {
         public static final int btnVoltarInfo=0x7f0e0004;
@@ -189,7 +189,8 @@ public final class R {
         public static final int telasincronizar=0x7f030010;
         public static final int telasobre=0x7f030011;
         public static final int telausuario=0x7f030012;
-        public static final int teste=0x7f030013;
+        public static final int telavacina=0x7f030013;
+        public static final int teste=0x7f030014;
     }
     public static final class listaResidente {
         public static final int btnFiltrar=0x7f0a0003;
@@ -198,7 +199,7 @@ public final class R {
         public static final int tableRow1=0x7f0a0001;
     }
     public static final class listaresidencia {
-        public static final int menu_filtrar=0x7f120000;
+        public static final int menu_filtrar=0x7f130000;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
@@ -348,5 +349,15 @@ public final class R {
         public static final int Senha=0x7f090002;
         public static final int Usuario=0x7f090000;
         public static final int btnLogin=0x7f090001;
+    }
+    public static final class telavacina {
+        public static final int DtDataAplicacao=0x7f110007;
+        public static final int EdtPessoa=0x7f110001;
+        public static final int SpDose=0x7f110005;
+        public static final int SpTipoVacina=0x7f110003;
+        public static final int TxtDataAplicacao=0x7f110006;
+        public static final int TxtDose=0x7f110004;
+        public static final int TxtPessoa=0x7f110000;
+        public static final int TxtTipoVacina=0x7f110002;
     }
 }
