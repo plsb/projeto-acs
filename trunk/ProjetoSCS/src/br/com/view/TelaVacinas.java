@@ -5,6 +5,7 @@ import java.util.HashMap;
 import br.com.control.Banco;
 import br.com.scs.R;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,19 +58,21 @@ public class TelaVacinas extends ListActivity implements OnClickListener {
     	
     	Log.i("Retorno", o.toString());
     	    	
-    	/*String _ID = o.toString();
+    	String endereco = o.toString();
     	
-    	_ID = _ID.substring(_ID.indexOf("{line1=")+7, _ID.indexOf("-"));
+    	endereco = endereco.substring(endereco.indexOf("{line1=")+7, endereco.indexOf(", Nº"));
     	
     	String numero = o.toString();
     	
     	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
     	
-    	System.out.println("ID DA TABELA RESIDENCIA:"+_ID.trim());
+    	System.out.println(endereco);
+    	System.out.println(numero);
     	
-    	Intent i = new Intent(this, TelaResidencia.class); 
-    	TelaResidencia.ID = Integer.valueOf(_ID.trim());    	
-    	startActivity(i);*/
+    	//Intent i = new Intent(this, Lista_Familiar_Vacinas.class);    
+    	//Lista_Familiar_Vacinas.END = endereco;
+    	//Lista_Familiar_Vacinas.NUM = numero;    	
+    	//startActivity(i);
     	
     }
     
