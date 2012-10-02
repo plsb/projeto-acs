@@ -61,6 +61,22 @@
         android:layout_marginBottom="5dp"
         />
     
+     <TextView 
+        android:id="@+telavacina/TxtLoteVacina"
+        android:text="Lote Vacina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        />
+     
+      <EditText 
+        android:id="@+telavacina/EdtLoteVacina"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:focusable="false"
+        />
+    
     <TextView 
         android:id="@+telavacina/TxtDataAplicacao"
         android:text="Data de Aplicação"
@@ -71,7 +87,7 @@
     
     <DatePicker 
         android:id="@+telavacina/DtDataAplicacao"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         />

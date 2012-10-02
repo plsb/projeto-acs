@@ -351,12 +351,14 @@ public final class R {
         public static final int btnLogin=0x7f090001;
     }
     public static final class telavacina {
-        public static final int DtDataAplicacao=0x7f110007;
+        public static final int DtDataAplicacao=0x7f110009;
+        public static final int EdtLoteVacina=0x7f110007;
         public static final int EdtPessoa=0x7f110001;
         public static final int SpDose=0x7f110005;
         public static final int SpTipoVacina=0x7f110003;
-        public static final int TxtDataAplicacao=0x7f110006;
+        public static final int TxtDataAplicacao=0x7f110008;
         public static final int TxtDose=0x7f110004;
+        public static final int TxtLoteVacina=0x7f110006;
         public static final int TxtPessoa=0x7f110000;
         public static final int TxtTipoVacina=0x7f110002;
     }
