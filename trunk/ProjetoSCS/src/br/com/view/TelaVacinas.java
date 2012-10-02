@@ -66,13 +66,13 @@ public class TelaVacinas extends ListActivity implements OnClickListener {
     	
     	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
     	
-    	System.out.println(endereco);
-    	System.out.println(numero);
+    	//System.out.println(endereco);
+    	//System.out.println(numero.trim());
     	
-    	//Intent i = new Intent(this, Lista_Familiar_Vacinas.class);    
-    	//Lista_Familiar_Vacinas.END = endereco;
-    	//Lista_Familiar_Vacinas.NUM = numero;    	
-    	//startActivity(i);
+    	Intent i = new Intent(this, Lista_Familiar_Vacinas.class);    
+    	Lista_Familiar_Vacinas.END = endereco;
+    	Lista_Familiar_Vacinas.NUM = numero.trim();    	
+    	startActivity(i);
     	
     }
     
@@ -92,8 +92,7 @@ public class TelaVacinas extends ListActivity implements OnClickListener {
         	if (_cursor.getCount() > 0){
 	        	do{	
 	        	  item = new HashMap<String,String>();
-	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("_ID")).toString()+"-"+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
+	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
 						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
 	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
 	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());

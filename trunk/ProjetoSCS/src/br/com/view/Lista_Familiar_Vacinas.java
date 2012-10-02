@@ -69,13 +69,13 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     	
     	System.out.println(_ID);
     	
-    	/*AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+    	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     	dialog.setMessage("Escolha uma Opção:");
     	dialog.setIcon(R.drawable.scs_icone);
-    	dialog.setPositiveButton("Iniciar", new
+    	dialog.setPositiveButton("Atualizar", new
 				DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						IniciaAcompanhamento();
+						AtualizaVacina();
 					}
     	});
     	
@@ -86,15 +86,14 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 					VisualizarAcompanhamentos();
 				}
 		});
-		dialog.setTitle("Acompanhamento");
-		dialog.show();*/
+		dialog.setTitle("Vacinação");
+		dialog.show();
     	
     }
     
-    public void IniciaAcompanhamento(){
-    	Intent i = new Intent(this, TelaDoenca.class); 
-	    TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    
-	    TelaDoenca._editando = false;
+    public void AtualizaVacina(){
+    	Intent i = new Intent(this, Acompanhamento_Vacinas.class); 
+	    Acompanhamento_Vacinas._ID = Integer.valueOf(_ID.trim());    
 	    startActivity(i);
     }
     

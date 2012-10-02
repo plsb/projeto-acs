@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+//import org.primefaces.mobile.component.footer.*;
+
 public class TelaSincronizar extends Activity implements OnClickListener{
 	
 	  private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar,btnExportarVisitas,btnConfigWS;

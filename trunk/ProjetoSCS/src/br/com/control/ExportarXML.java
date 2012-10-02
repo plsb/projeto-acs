@@ -28,7 +28,7 @@ public class ExportarXML extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.geraxml);
+		setContentView(R.layout.geraxml);	
 		
 		if (Residencias==true){
 			if (ExportarResidencias(this)==true){
