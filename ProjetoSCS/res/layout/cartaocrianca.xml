@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+>	
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+	>
+		
+	    <!-- B C G -->	
+		<TextView 
+		    android:id="@+VacinaAplicada/txtBCG"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="BCG"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseUnicaBCG"
+		        android:text="Dose Única" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>    
+		
+		<!-- H E P A T I T E   B -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtHepatiteB"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Hepatite B"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1HPTB"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2HPTB"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose3HPTB"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRHPTB"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- T E T R A V A L E N T E -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtTetravalente"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Tetravalente"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1TVLT"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2TVLT"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose3TVLT"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRTVLT"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>
+		
+		<!-- VIRAL ORAL POLIOMELITE VOP -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtPoliomeliteVOP"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Viral Oral Poliomelite VOP"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1VOPV"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2VOPV"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose3VOPV"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRVOPV"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- VIRAL ORAL DE ROTAVIRUS -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtRotavirus"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Viral Oral de Rotavirus Humano G1P1 VORH"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1VORHGV"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2VORHGV"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />		   		  
+		    
+		</LinearLayout>
+		
+		
+		<!-- P N E U M O C Ó C I C A -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtPneumococica"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Pneumocócica"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1PNMCA"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2PNMCA"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose3PNMCA"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRPNMCA"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- M E N I N G O C Ó C I C A -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtMeningococica"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Meningocócica"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1MNGCA"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2MNGCA"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRMNGCA"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- F E B R E   A M A R E L A -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtFbAmarela"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Febre Amarela"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1FBA"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRFBA"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- T R Í P L I C E   V I R A L -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtTpViral"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Tríplice Viral"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1TV"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2TV"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- T R Í P L I C E   B A C T E R I A N A -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtTpBacteriana"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Tríplice Bacteriana"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1TB"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDoseRTB"
+		        android:text="D. R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		</LinearLayout>
+	
+	
+	</LinearLayout>
+      
+  
+</ScrollView>

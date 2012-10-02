@@ -16,6 +16,8 @@ public class VacinaAux {
 	public String DS_VACINA    = "";
 	public String DT_APLICACAO = "";
 	public String TIPO         = "";
+	public String LOTE         = "";
+	public String FL_APLICADA  = "";
 	
 	public void Limpar(){
 		HASH         = "";
@@ -23,6 +25,8 @@ public class VacinaAux {
 		DS_VACINA    = "";
 		DT_APLICACAO = "";
 		TIPO 		 = "";
+		LOTE         = "";
+		FL_APLICADA  = "";
 	}
 	
 	public boolean Inserir(Context contexto){
@@ -35,6 +39,8 @@ public class VacinaAux {
 			c.put("DOSE_APLICADA", DS_VACINA);
 			c.put("DT_APLICACAO", DT_APLICACAO);
 			c.put("TIPO", TIPO);
+			c.put("LOTE", LOTE);
+			c.put("FL_APLICADA", FL_APLICADA);
 			c.put("DT_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
 			
 			_bd.open();
@@ -55,7 +61,9 @@ public class VacinaAux {
 			c.put("TIPO_VACINA", TP_VACINA);
 			c.put("DOSE_APLICADA", DS_VACINA);
 			c.put("DT_APLICACAO", DT_APLICACAO);
+			c.put("LOTE", LOTE);
 			c.put("TIPO", TIPO);
+			c.put("FL_APLICADA", FL_APLICADA);
 			_bd.open();
 			_bd.atualizarDadosTabela("vacinas",indice, c);
 			_bd.fechaBanco();

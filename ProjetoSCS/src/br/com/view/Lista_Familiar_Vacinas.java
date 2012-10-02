@@ -1,5 +1,7 @@
 package br.com.view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import br.com.control.Banco;
@@ -72,7 +74,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     	dialog.setMessage("Escolha uma Opção:");
     	dialog.setIcon(R.drawable.scs_icone);
-    	dialog.setPositiveButton("Atualizar", new
+    	dialog.setPositiveButton("Agendar", new
 				DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						AtualizaVacina();
@@ -83,7 +85,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 				DialogInterface.OnClickListener() {
 				 
 				public void onClick(DialogInterface di, int arg) {
-					VisualizarAcompanhamentos();
+					VisualizarCartaoVacina();
 				}
 		});
 		dialog.setTitle("Vacinação");
@@ -97,10 +99,30 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 	    startActivity(i);
     }
     
-    public void VisualizarAcompanhamentos(){
-    	Intent i = new Intent(this, AcompanhamentosRealizados.class);
-    	AcompanhamentosRealizados._ID = Integer.valueOf(_ID.trim());
-    	startActivity(i);
+    public void VisualizarCartaoVacina(){
+    	String Hash = "";
+     	int idade = 0;
+    	try{
+    		_bd.open();
+    		Cursor c = _bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(_ID), null, null, null, null, null);
+    		c.moveToFirst();
+    		
+    		if (c.getCount() > 0){
+    			Hash = c.getString(c.getColumnIndex("HASH")).toString().trim();
+    			idade = CalculaIdade(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))), 
+						 Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
+						 Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));
+    		}    		    		
+    	}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+    	
+    	if (idade <=10){
+    		Intent i = new Intent(this, CartaoCrianca.class);
+    		CartaoCrianca.Hash = Hash;
+        	startActivity(i);
+    	}
+    	
     }
     
     public void ListarResidentes(boolean usaFiltro){
@@ -161,5 +183,23 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 			finish();
 		}		
 	}
+	
+    @SuppressLint("ParserError")
+    public int CalculaIdade(int _dia, int _mes, int _ano){
+    	SimpleDateFormat f;	
+    	f = new SimpleDateFormat("dd");
+    	int dia = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));
+    	f = new SimpleDateFormat("MM");
+    	int mes = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));
+    	f = new SimpleDateFormat("yyyy");
+    	int ano = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));	
+    	if ((mes >= _mes)){
+    		return (ano - _ano);
+    	}else if ((mes == _mes)&&(dia >= dia)){	
+    		return (ano - _ano);
+    	}else{
+    		return ((ano - _ano) -1);
+    	}
+    }
 }
 

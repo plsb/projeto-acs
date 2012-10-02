@@ -192,7 +192,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		switch (item.getItemId()) {
 			
 		case R.MenuTelaFamilia.menu_gravar :{			
-			InsereBD();
+				InsereBD();
 			}
 		}
 		return true;

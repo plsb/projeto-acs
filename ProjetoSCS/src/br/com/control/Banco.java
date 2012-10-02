@@ -38,6 +38,8 @@ public class Banco{
 																	   "DOSE_APLICADA text not null, "+
 																	   "DT_APLICACAO text not null,  "+
 																	   "DT_CADASTRO text not null,   "+
+																	   "LOTE text,		 			 "+
+																	   "FL_APLICADA text,		 	 "+
 																	   "TIPO text not null);	  	 "}; 
 		
 		public static final String[] _sqlTabelaBairros =  new String[] {"CREATE TABLE if not exists bairros (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
