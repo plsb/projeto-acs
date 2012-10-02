@@ -6,11 +6,15 @@ import java.util.ArrayList;
 
 import br.com.control.Banco;
 import br.com.control.Mensagem;
+import br.com.control.VacinaAux;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -27,6 +31,7 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 	private DatePicker DtDataAPlicacao;
 	private int 	IdadeFamiliar = 0;
 	private boolean FalimiarGestante = false;
+	private String Hash = "";
 	
 	public static int _ID = 0;
 	
@@ -56,7 +61,7 @@ public void InformacoesFamiliar(){
 		cAux.moveToFirst();
 		if (cAux.getCount() > 0){
 			EdtFamiliar.setText(cAux.getString(cAux.getColumnIndex("NOME")).toString());
-			
+			Hash = cAux.getString(cAux.getColumnIndex("HASH")).toString();
 			if (cAux.getString(cAux.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
 				FalimiarGestante = true;
 			}
@@ -83,7 +88,7 @@ public void InformacoesFamiliar(){
 		EdtLote         = (EditText)   findViewById(R.telavacina.EdtLoteVacina);
 		SpTipoVacina    = (Spinner)    findViewById(R.telavacina.SpTipoVacina);		
 		SpDoseAplicada  = (Spinner)    findViewById(R.telavacina.SpDose);
-		DtDataAPlicacao = (DatePicker) findViewById(R.telavacina.DtDataAplicacao);		
+		DtDataAPlicacao = (DatePicker) findViewById(R.telavacina.DtDataAplicacao);			
 		
 	}//Fim InicializaObjetos
 	
@@ -181,21 +186,21 @@ public void InformacoesFamiliar(){
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 		/************************** A D U L T O  /  I D O S O ****************************/	
-		}else if ((IdadeFamiliar >20)&&(_TipoVacina.equals("HEPATITE B"))){
+		}else if ((IdadeFamiliar >=20)&&(_TipoVacina.equals("HEPATITE B"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 			DoseAplicada.add("3");
-		}else if ((IdadeFamiliar >20)&&(_TipoVacina.equals("DUPLA ADULTO")||(_TipoVacina.equals("FEBRE AMARELA")))){
+		}else if ((IdadeFamiliar >=20)&&(_TipoVacina.equals("DUPLA ADULTO")||(_TipoVacina.equals("FEBRE AMARELA")))){
 			DoseAplicada.clear();
 			DoseAplicada.add("Z-DEZ ANOS");
-		}else if ((IdadeFamiliar >20)&&(_TipoVacina.equals("TRIPLICE VIRAL")||(_TipoVacina.equals("PNEUMOCOCICA 23")))){
+		}else if ((IdadeFamiliar >=20)&&(_TipoVacina.equals("TRIPLICE VIRAL")||(_TipoVacina.equals("PNEUMOCOCICA 23")))){
 			DoseAplicada.clear();
 			DoseAplicada.add("U-DOSE UNICA");
-		}else if ((IdadeFamiliar >20)&&(_TipoVacina.equals("INFLUENZA SAZONAL"))){
+		}else if ((IdadeFamiliar >=20)&&(_TipoVacina.equals("INFLUENZA SAZONAL"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("A-DOSE ANUAL");
-		}else if ((IdadeFamiliar >20)&&(_TipoVacina.equals("MENINGOCOCICA"))){
+		}else if ((IdadeFamiliar >=20)&&(_TipoVacina.equals("MENINGOCOCICA"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
@@ -205,11 +210,51 @@ public void InformacoesFamiliar(){
 		PreencheSpinner(SpDoseAplicada, DoseAplicada);
 	}
 
-	public void onClick(View arg0) {
-		
-		
+	public void onClick(View arg0) {			
 		
 	}//Fim onClick
+	
+	public boolean CamposValidos(){
+		
+		if (EdtLote.getText().toString().trim().length() <= 0){
+			EdtLote.setError("O campo lote deve ser preenchido.");
+			return false;
+		}else{
+			return true;
+		}		
+	}
+	
+	public void Inserir(){
+		if (CamposValidos() == true){
+			VacinaAux va = new VacinaAux();
+			va.DS_VACINA 	= SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().substring(0,1);
+			va.TP_VACINA   	= SpTipoVacina.getItemAtPosition(SpTipoVacina.getSelectedItemPosition()).toString();
+			va.DT_APLICACAO = String.valueOf(DtDataAPlicacao.getDayOfMonth())+"/"+String.valueOf(DtDataAPlicacao.getMonth()+1)+"/"+String.valueOf(DtDataAPlicacao.getYear());
+			va.HASH         = Hash;
+			va.LOTE         = EdtLote.getText().toString();
+			va.FL_APLICADA  = "N";
+			
+			if (FalimiarGestante == true){
+				va.TIPO = "G";
+			}else if (IdadeFamiliar <=10){
+				va.TIPO = "C";
+			}else if ((IdadeFamiliar >= 11)&&(IdadeFamiliar <= 19)){
+				va.TIPO = "A";
+			}else if (IdadeFamiliar >= 20){
+				va.TIPO = "D";
+			}
+			
+			if (va.Inserir(this) == true){
+				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar.", 2000);
+				new Handler().postDelayed(new Runnable() {		
+					public void run() {
+						finish();
+					}
+				}, 2000);
+			}
+			
+		}
+	}
 	
     public void PreencheSpinner(final Spinner s,ArrayList<String> a){
 		
@@ -243,18 +288,60 @@ public void InformacoesFamiliar(){
     	int mes = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));
     	f = new SimpleDateFormat("yyyy");
     	int ano = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));	
-    	if ((_dia <= dia)&&(_mes <= mes)){
+    	if ((mes >= _mes)){
+    		return (ano - _ano);
+    	}else if ((mes == _mes)&&(dia >= dia)){	
     		return (ano - _ano);
     	}else{
     		return ((ano - _ano) -1);
     	}
     }
     
+    
+    /*public int retornaidade(){
+    Calendar dataNascimento = Calendar.getInstance();  
+    dataNascimento.setTime(dtNasc);  
+    Calendar dataAtual = Calendar.getInstance();  
+  
+    Integer diferencaMes = dataAtual.get(Calendar.MONTH) - dataNascimento.get(Calendar.MONTH);  
+    Integer diferencaDia = dataAtual.get(Calendar.DAY_OF_MONTH) - dataNascimento.get(Calendar.DAY_OF_MONTH);  
+    Integer idade = (dataAtual.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR));  
+  
+    if(diferencaMes < 0  || (diferencaMes == 0 && diferencaDia < 0)) {  
+        idade--;  
+    }    
+    return idade;
+    }*/
+    
+    
+    
+    
     @Override
     protected void onDestroy() {
     	FalimiarGestante = false;
     	IdadeFamiliar = 0;
+    	Hash = "";
     	super.onDestroy();
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+		
+        getMenuInflater().inflate(R.menu.cadastrofamilia, menu);        
+        return true;
+    }	
+	
+	@SuppressLint({ "ParserError", "ParserError" })
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+			
+		case R.MenuTelaFamilia.menu_gravar :{			
+				Inserir();
+			}
+		}
+		return true;
+	}
 
 }
