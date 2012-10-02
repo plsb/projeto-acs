@@ -10,7 +10,6 @@ import android.database.sqlite.*;
 import android.database.Cursor;
 import android.database.SQLException;
 
-
 public class Banco{
 	
 		private static SQLiteDatabase bd = null;
@@ -22,6 +21,7 @@ public class Banco{
 		private BancoDados bdados;
 		
 		private final Context ctx;
+		
 		
 		public static final String[] _sqlTabelaUsuario =  new String[] {"CREATE TABLE if not exists usuarios (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		"USU_MATRICULA text NOT NULL,      "+
@@ -38,7 +38,7 @@ public class Banco{
 																	   "DOSE_APLICADA text not null, "+
 																	   "DT_APLICACAO text not null,  "+
 																	   "DT_CADASTRO text not null,   "+
-																	   "TIPO text not null);	  	 "};
+																	   "TIPO text not null);	  	 "}; 
 		
 		public static final String[] _sqlTabelaBairros =  new String[] {"CREATE TABLE if not exists bairros (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	    "COD_RET integer NOT NULL, 		"+
