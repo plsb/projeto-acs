@@ -47,8 +47,6 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 		
 		InformacoesFamiliar();
 		
-		Mensagem.exibeMessagem(this, "Idade do Individuo", String.valueOf(IdadeFamiliar));
-		
 		PreencheTipoVacina(IdadeFamiliar, FalimiarGestante);
 		
 	}//Fim onCreate
@@ -68,10 +66,8 @@ public void InformacoesFamiliar(){
 			
 			IdadeFamiliar = CalculaIdade(Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(0, cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))), 
 										 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
-										 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));
-			
-			
-		}
+										 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));	
+		}//Fim if
 		
 		cAux.close();
 		bd.fechaBanco();
@@ -295,26 +291,7 @@ public void InformacoesFamiliar(){
     	}else{
     		return ((ano - _ano) -1);
     	}
-    }
-    
-    
-    /*public int retornaidade(){
-    Calendar dataNascimento = Calendar.getInstance();  
-    dataNascimento.setTime(dtNasc);  
-    Calendar dataAtual = Calendar.getInstance();  
-  
-    Integer diferencaMes = dataAtual.get(Calendar.MONTH) - dataNascimento.get(Calendar.MONTH);  
-    Integer diferencaDia = dataAtual.get(Calendar.DAY_OF_MONTH) - dataNascimento.get(Calendar.DAY_OF_MONTH);  
-    Integer idade = (dataAtual.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR));  
-  
-    if(diferencaMes < 0  || (diferencaMes == 0 && diferencaDia < 0)) {  
-        idade--;  
     }    
-    return idade;
-    }*/
-    
-    
-    
     
     @Override
     protected void onDestroy() {
