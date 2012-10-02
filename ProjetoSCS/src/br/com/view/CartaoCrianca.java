@@ -125,38 +125,38 @@ public class CartaoCrianca extends Activity {
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDoseRTVLT.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VIRAL ORAL POLIOMELITE VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose1VOPV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VIRAL ORAL POLIOMELITE VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose2VOPV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VIRAL ORAL POLIOMELITE VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("3"))){
 				 chkDose3VOPV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VIRAL ORAL POLIOMELITE VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDoseRVOPV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VIRAL ORAL DE ROTAVIRUS HUMANO G1P1 VORH"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VORH"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose1VORHGV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VIRAL ORAL DE ROTAVIRUS HUMANO G1P1 VORH"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VORH"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
+					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose2VORHGV.setChecked(true);
 				}

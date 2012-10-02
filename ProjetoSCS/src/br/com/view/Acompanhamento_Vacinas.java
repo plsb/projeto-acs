@@ -99,8 +99,8 @@ public void InformacoesFamiliar(){
 			TipoVacina.add("BCG");
 			TipoVacina.add("HEPATITE B");
 			TipoVacina.add("TETRAVALENTE");
-			TipoVacina.add("VIRAL ORAL POLIOMELITE VOP");
-			TipoVacina.add("VIRAL ORAL DE ROTAVIRUS HUMANO G1P1 VORH");
+			TipoVacina.add("VOP");
+			TipoVacina.add("VORH");
 			TipoVacina.add("PNEUMOCOCICA 10");
 			TipoVacina.add("MENINGOCOCICA");
 			TipoVacina.add("FEBRE AMARELA");
@@ -144,13 +144,13 @@ public void InformacoesFamiliar(){
 			DoseAplicada.clear();
 			DoseAplicada.add("U-DOSE UNICA");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("HEPATITE B")||(_TipoVacina.equals("TETRAVALENTE")
-				   ||(_TipoVacina.equals("VIRAL ORAL POLIOMELITE VOP")||(_TipoVacina.equals("PNEUMOCOCICA 10")))))){
+				   ||(_TipoVacina.equals("VOP")||(_TipoVacina.equals("PNEUMOCOCICA 10")))))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 			DoseAplicada.add("3");
 			DoseAplicada.add("R-REFORÇO");
-		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VIRAL ORAL DE ROTAVIRUS HUMANO G1P1 VORH")
+		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VORH")
 				   ||(_TipoVacina.equals("TRIPLICE VIRAL")))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
@@ -166,7 +166,8 @@ public void InformacoesFamiliar(){
 			DoseAplicada.add("R-REFORÇO");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("TRIPLICE BACTERIANA"))){
 			DoseAplicada.clear();
-			DoseAplicada.add("R-REFORÇO");
+			DoseAplicada.add("R1-REFORÇO");
+			DoseAplicada.add("R2-REFORÇO");
 		/**************************** A D O L E S C E N T E ******************************/	
 		}else if ((IdadeFamiliar >= 11)&&(IdadeFamiliar <= 19)&&(_TipoVacina.equals("HEPATITE B"))){
 			DoseAplicada.clear();
@@ -223,7 +224,7 @@ public void InformacoesFamiliar(){
 	public void Inserir(){
 		if (CamposValidos() == true){
 			VacinaAux va = new VacinaAux();
-			va.DS_VACINA 	= SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().substring(0,1);
+			va.DS_VACINA 	= SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().substring(0,SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().indexOf("-"));
 			va.TP_VACINA   	= SpTipoVacina.getItemAtPosition(SpTipoVacina.getSelectedItemPosition()).toString();
 			va.DT_APLICACAO = String.valueOf(DtDataAPlicacao.getDayOfMonth())+"/"+String.valueOf(DtDataAPlicacao.getMonth()+1)+"/"+String.valueOf(DtDataAPlicacao.getYear());
 			va.HASH         = Hash;
