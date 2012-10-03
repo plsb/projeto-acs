@@ -21,7 +21,7 @@ public class CartaoAdulto extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cartaoadulto);
 		
-		InicializaComponentes();
+		InicializaComponentes();  
 		ConsultaVacinas();
 	}
 	

@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -29,9 +30,10 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 	private EditText   EdtFamiliar,EdtLote;
 	private Spinner    SpTipoVacina, SpDoseAplicada;
 	private DatePicker DtDataAPlicacao;
-	private int 	IdadeFamiliar = 0;
-	private boolean FalimiarGestante = false;
-	private String Hash = "";
+	private CheckBox   ChkAplicado;
+	private int 	   IdadeFamiliar = 0;
+	private boolean    FalimiarGestante = false;
+	private String 	   Hash = "";
 	
 	public static int _ID = 0;
 	
@@ -84,7 +86,8 @@ public void InformacoesFamiliar(){
 		EdtLote         = (EditText)   findViewById(R.telavacina.EdtLoteVacina);
 		SpTipoVacina    = (Spinner)    findViewById(R.telavacina.SpTipoVacina);		
 		SpDoseAplicada  = (Spinner)    findViewById(R.telavacina.SpDose);
-		DtDataAPlicacao = (DatePicker) findViewById(R.telavacina.DtDataAplicacao);			
+		DtDataAPlicacao = (DatePicker) findViewById(R.telavacina.DtDataAplicacao);
+		ChkAplicado     = (CheckBox)   findViewById(R.telavacina.ChkFLAplicada);
 		
 	}//Fim InicializaObjetos
 	
@@ -224,12 +227,16 @@ public void InformacoesFamiliar(){
 	public void Inserir(){
 		if (CamposValidos() == true){
 			VacinaAux va = new VacinaAux();
-			va.DS_VACINA 	= SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().substring(0,SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().indexOf("-"));
+			if (SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().trim().length() > 1){
+				va.DS_VACINA = SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().substring(0,SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString().indexOf("-"));
+			}else{
+				va.DS_VACINA = SpDoseAplicada.getItemAtPosition(SpDoseAplicada.getSelectedItemPosition()).toString();
+			}
+				
 			va.TP_VACINA   	= SpTipoVacina.getItemAtPosition(SpTipoVacina.getSelectedItemPosition()).toString();
 			va.DT_APLICACAO = String.valueOf(DtDataAPlicacao.getDayOfMonth())+"/"+String.valueOf(DtDataAPlicacao.getMonth()+1)+"/"+String.valueOf(DtDataAPlicacao.getYear());
 			va.HASH         = Hash;
 			va.LOTE         = EdtLote.getText().toString();
-			va.FL_APLICADA  = "N";
 			
 			if (FalimiarGestante == true){
 				va.TIPO = "G";
@@ -240,6 +247,11 @@ public void InformacoesFamiliar(){
 			}else if (IdadeFamiliar >= 20){
 				va.TIPO = "D";
 			}
+			
+			if (ChkAplicado.isChecked())
+				va.FL_APLICADA = "S";
+			else
+				va.FL_APLICADA = "N";
 			
 			if (va.Inserir(this) == true){
 				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar.", 2000);
