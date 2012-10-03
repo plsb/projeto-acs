@@ -3,6 +3,12 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="C:/eclipse2/Projetos/ProjetoSCS/libs/jdom-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse2/Projetos/ProjetoSCS/libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse2/Projetos/ProjetoSCS/libs/jdom-2.0.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse2/Projetos/ProjetoSCS/libs/jdom-2.0.3-junit.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse2/Projetos/ProjetoSCS/libs/ksoap2-android-assembly-2.4-jar-with-dependencies (1).jar"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="C:/Android/tools/support/annotations.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -135,7 +135,7 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 		}
 		
 		else if (v == btnSair){
-			finish();
+			finish();			
 		}
 		
 	}
