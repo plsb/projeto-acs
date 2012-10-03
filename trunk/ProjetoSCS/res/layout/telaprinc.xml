@@ -9,18 +9,17 @@
 
     <com.google.android.apps.iosched.ui.widget.DashboardLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content" 
         android:layout_weight="1" >
         
-        <Button 
+        <Button  
             android:id="@+id/BtnAgendamento"
             android:text="Agendamento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/calendar"
-            android:drawablePadding="10dp"
             android:background="@null"
-            android:textStyle="bold"
+            android:textStyle="bold" 
             />
         
         <Button 
@@ -29,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/familia"
-            android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"
             />
@@ -40,21 +38,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 			android:drawableTop="@drawable/acompanhamento"
-            android:drawablePadding="10dp"
             android:background="@null"
-            android:textStyle="bold"
+            android:textStyle="bold"  
             />
             
-        <Button 
-            android:id="@+id/BtnUsuarios"
-            android:text="Aparelho"
+          <Button 
+            android:id="@+id/BtnAparelho"
+            android:text="Inf. Aparelho"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/android"
-            android:drawablePadding="15dp"
             android:background="@null"
             android:textStyle="bold"
-            />
+            />   
                              
         <Button 
             android:id="@+id/BtnSincronizar"
@@ -62,9 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/sync"
-            android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"
+            
             />        
         
         <Button 
@@ -73,7 +69,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/vacina"
-            android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"
             />
@@ -84,7 +79,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/sobre"
-            android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"
             />
@@ -95,7 +89,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/exit"
-            android:drawablePadding="10dp"
             android:background="@null"
             android:textStyle="bold"
             />
