@@ -121,6 +121,12 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     		Intent i = new Intent(this, CartaoCrianca.class);
     		CartaoCrianca.Hash = Hash;
         	startActivity(i);
+        	
+    	}
+    	else if ((idade >=11)&&(idade <20)){
+    		Intent cartaoAdulto = new Intent(this, CartaoAdulto.class);
+    		CartaoAdulto.Hash = Hash;
+    		startActivity(cartaoAdulto);
     	}
     	
     }
