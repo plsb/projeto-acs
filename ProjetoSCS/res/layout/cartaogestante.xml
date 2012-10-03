@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+>	
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+	>		
+		
+		<!-- H E P A T I T E   B -->
+		<TextView 
+		    android:id="@+CartaoGestante/txtHepatiteB"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Hepatite B"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDose1HPTB"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDose2HPTB"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDose3HPTB"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- D U P L A   A D U L T O  -->
+		<TextView 
+		    android:id="@+CartaoGestante/txtDuplaAdulto"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Dupla Adulto"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDose1DPADULTO"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDose2DPADULTO"
+		        android:text="D. 2" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDose3DPADULTO"
+		        android:text="D. 3" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDoseRDPADULTO"
+		        android:text="D. R" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    		  
+		</LinearLayout>
+		
+		<!-- I N F L U E N Z A -->
+		<TextView 
+		    android:id="@+CartaoGestante/txtInfluenza"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Influenza"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoGestante/chkDoseAInf"
+		        android:text="DOSE ANUAL" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>		
+	
+	</LinearLayout>
+        
+</ScrollView>
