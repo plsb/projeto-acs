@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+>	
+	<LinearLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+	>		
+		
+		<!-- H E P A T I T E   B -->
+		<TextView 
+		    android:id="@+CartaoAdolescente/txtHepatiteB"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Hepatite B"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDose1HPTB"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:enabled="false"		        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDose2HPTB"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDose3HPTB"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- D U P L A   A D U L T O  -->
+		<TextView 
+		    android:id="@+CartaoAdolescente/txtDuplaAdulto"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Dupla Adulto"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDoseZDPADULTO"
+		        android:text="DOSE A CADA DEZ ANOS" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    		  
+		</LinearLayout>
+		
+		<!-- F E B R E   A M A R E L A -->
+		<TextView 
+		    android:id="@+CartaoAdolescente/txtFebreAmarela"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Febre Amarela"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDoseZFBA"
+		        android:text="DOSE A CADA DEZ ANOS" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		</LinearLayout>
+		
+		
+		<!-- T R I P L I C E   V I R A L -->
+		<TextView 
+		    android:id="@+CartaoAdolescente/txtTriplixeViral"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Tríplice Viral"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDose1TPV"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+CartaoAdolescente/chkDose2TPV"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />		   		  
+		    
+		</LinearLayout>						
+	
+	
+	</LinearLayout>
+      
+  
+</ScrollView>

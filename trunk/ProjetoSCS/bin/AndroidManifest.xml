@@ -15,7 +15,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >        
         <activity android:name="br.com.view.Acompanhamento_Vacinas" android:label="SCS - Vacinação" ></activity>
+        <activity android:name="br.com.view.CartoesVacinacao" android:label="Cartões de Vacinação" ></activity>
         <activity android:name="br.com.view.CartaoCrianca" android:label="Cartão Criança" ></activity>
+        <activity android:name="br.com.view.CartaoAdolescente" android:label="Cartão Adolescente" ></activity>
+        <activity android:name="br.com.view.CartaoGestante" android:label="Cartão Gestante" ></activity>
         <activity android:name="br.com.view.CartaoAdulto" android:label="Cartão Adulto/Idoso" ></activity>
         <activity android:name="br.com.view.TelaPrincipal" android:label="@string/title_activity_main" ></activity>
         <activity android:name="br.com.view.TelaVacinas" android:label="SCS - Vacinação" ></activity>

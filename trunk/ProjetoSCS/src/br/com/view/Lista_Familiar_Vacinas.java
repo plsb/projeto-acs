@@ -21,7 +21,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TabHost;
 import android.widget.Toast; 
+import android.widget.TabHost.TabSpec;
 
 @SuppressLint("ParserError")
 public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListener {
@@ -100,35 +102,21 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     }
     
     public void VisualizarCartaoVacina(){
-    	String Hash = "";
-     	int idade = 0;
+    	String Hash = ""; 
     	try{
     		_bd.open();
     		Cursor c = _bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(_ID), null, null, null, null, null);
-    		c.moveToFirst();
-    		
+    		c.moveToFirst();    		
     		if (c.getCount() > 0){
     			Hash = c.getString(c.getColumnIndex("HASH")).toString().trim();
-    			idade = CalculaIdade(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))), 
-						 Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
-						 Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));
-    		}    		    		
+    		}    		    
+    		
     	}catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
-    	
-    	if (idade <=10){
-    		Intent i = new Intent(this, CartaoCrianca.class);
-    		CartaoCrianca.Hash = Hash;
-        	startActivity(i);
-        	
-    	}
-    	else if ((idade >=11)&&(idade <20)){
-    		Intent cartaoAdulto = new Intent(this, CartaoAdulto.class);
-    		CartaoAdulto.Hash = Hash;
-    		startActivity(cartaoAdulto);
-    	}
-    	
+		}    	
+    	Intent i = new Intent(this,CartoesVacinacao.class);
+    	CartoesVacinacao._Hash = Hash;
+    	startActivity(i);    	
     }
     
     public void ListarResidentes(boolean usaFiltro){
