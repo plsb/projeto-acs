@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical"
+        >
+        
+        <!-- H E P A T I T E  B --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/txtHepatiteB"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Hepatite B"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    /> 
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDose1HPTB"
+		        android:text="D. 1" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDose2HPTB"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDose3HPTB"
+		        android:text="D. 3" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    </LinearLayout> 
+		    
+		<!-- D U P L A  A D U L T O --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/TxtDA"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Dupla Adulto"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    /> 
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDoseZDA"
+		        android:text="Dose 10 Anos" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    </LinearLayout>
+		    
+		<!-- T R I P L I C E   V I R A L --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/TxtTRV"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Triplice Viral"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />
+		
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDoseUnicaTRV"
+		        android:text="Dose Única" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    </LinearLayout>
+		    
+		<!-- F E B R E   A M A R E L A --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/TxtFBA"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Febre Amarela"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />
+		
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDoseZFBA"
+		        android:text="Dose 10 anos" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    </LinearLayout>
+		    
+		<!-- I N F L U E N Z A   S A Z O N A L --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/TxtINSA"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Influenza Sazonal"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />
+		
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDoseAINSA"
+		        android:text="Dose Anual" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    </LinearLayout>
+		    
+		<!-- M E N I N G O C O C I C A --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/TxtMNCA"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Meningocócica"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />
+		
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDose1MNCA"
+		        android:text="Dose 1" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDose2MNCA"
+		        android:text="Dose 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDoseRMNCA"
+		        android:text="Dose R" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		    </LinearLayout>
+		    
+		<!-- P N E U M O C O C I C A   23  --> 	
+		<TextView 
+		    android:id="@+cartaoAdulto/TxtPNCA23"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Pneumocócica 23"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />
+		
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+cartaoAdulto/chkDoseUnicaPNCA23"
+		        android:text="Dose Única" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:enabled="false"	        
+		    />
+		    
+		 </LinearLayout>
+        
+    </LinearLayout>
+    
+
+</ScrollView>
