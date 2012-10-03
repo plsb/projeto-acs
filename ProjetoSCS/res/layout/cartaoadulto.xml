@@ -12,7 +12,7 @@
         
         <!-- H E P A T I T E  B --> 	
 		<TextView 
-		    android:id="@+cartaoAdulto/txtHepatiteB"
+		    android:id="@+cartaoAdulto/txtHepatiteB" 
 		    android:textSize="14dp"	    
 		    android:textColor="#FFFFFF"    
 		    android:textStyle="bold"
