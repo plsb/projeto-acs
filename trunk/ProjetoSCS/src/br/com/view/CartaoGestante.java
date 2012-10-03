@@ -22,6 +22,8 @@ public class CartaoGestante extends Activity {
 		
 		InicializaObjetos();
 		
+		ConsultaVacinas();
+		
 	}
 	
 	public void InicializaObjetos(){

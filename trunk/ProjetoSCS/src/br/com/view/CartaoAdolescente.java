@@ -19,6 +19,10 @@ public class CartaoAdolescente extends Activity {
 		
 		setContentView(R.layout.cartaoadolescente);
 		
+		InicializaObjetos();
+		
+		ConsultaVacinas();
+		
 	}//Fim do OnCreate
 	
 	public void InicializaObjetos(){

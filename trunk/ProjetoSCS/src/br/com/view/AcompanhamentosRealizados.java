@@ -87,6 +87,12 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                        curChildMap.put(SUBTITULO, "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString());
 	                    }while(_cHan.moveToNext());
 	                    childData.add(children);
+                    }else{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                    children.add(curChildMap);
+	                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+	                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+	                    childData.add(children); 
                     }
                     _cHan.close();                    
                     /*******************************************************************************/
@@ -104,7 +110,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _cHip = _bd.consulta("hipertensao", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _cHip.moveToFirst();
-                    if (_cHip.getCount() > 0){
+                    if (_cHip.getCount() > 0){                    	
 	                    do{
 	                    	Map<String, String> curChildMap = new HashMap<String, String>();
 	                        children.add(curChildMap);
@@ -112,6 +118,12 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                        curChildMap.put(SUBTITULO, "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString());
 	                    }while(_cHip.moveToNext());
 	                    childData.add(children);
+                    }else{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                    children.add(curChildMap);
+	                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+	                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+	                    childData.add(children); 
                     }
                     _cHip.close();                    
                     /*******************************************************************************/
@@ -136,6 +148,12 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                        curChildMap.put(SUBTITULO, "Obs: "+_Ges.getString(_Ges.getColumnIndex("OBSERVACAO")).toString());
 	                    }while(_Ges.moveToNext());
 	                    childData.add(children);
+                    }else{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                    children.add(curChildMap);
+	                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+	                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+	                    childData.add(children); 
                     }
                     _Ges.close();                    
                     /*******************************************************************************/
@@ -152,14 +170,20 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/
                     _Tb = _bd.consulta("tuberculose", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
                     _Tb.moveToFirst();
-                    if (_Tb.getCount() > 0){
-	                    do{
-	                    	Map<String, String> curChildMap = new HashMap<String, String>();
-	                        children.add(curChildMap);
-	                        curChildMap.put(TITULO,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
-	                        curChildMap.put(SUBTITULO, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
-	                    }while(_Tb.moveToNext());
-	                    childData.add(children);
+                    if (_Tb.getCount() > 0){                    
+		                do{
+		                   	Map<String, String> curChildMap = new HashMap<String, String>();
+		                    children.add(curChildMap);
+		                    curChildMap.put(TITULO,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
+		                    curChildMap.put(SUBTITULO, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
+		                }while(_Tb.moveToNext());
+		                childData.add(children);                    	
+                    }else{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                    children.add(curChildMap);
+	                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+	                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+	                    childData.add(children); 
                     }
                     _Tb.close();                    
                     /*******************************************************************************/
@@ -184,6 +208,12 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                        curChildMap.put(SUBTITULO, "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString());
 	                    }while(_Dia.moveToNext());
 	                    childData.add(children);
+                    }else{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+	                    children.add(curChildMap);
+	                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+	                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+	                    childData.add(children); 
                     }
                     _Dia.close();                    
                     /*******************************************************************************/		          
