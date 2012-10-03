@@ -22,7 +22,7 @@ import android.widget.TextView;
 public class TelaPrincipal extends Activity implements OnClickListener{
 
 	private Button btnAgendamento, btnFamilias, btnAcompanhamento,btnVacinas, 
-				   btnUsuarios, btnSincronizar, btnSobre, btnSair;
+				   btnAparelho, btnSincronizar, btnSobre, btnSair;
 	TextView tv1;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,8 @@ public class TelaPrincipal extends Activity implements OnClickListener{
         btnFamilias.setOnClickListener(this);
         btnAcompanhamento = (Button) findViewById(R.id.BtnAcompanhamento); 
         btnAcompanhamento.setOnClickListener(this);
-        btnUsuarios = (Button) findViewById(R.id.BtnUsuarios);
-        btnUsuarios.setOnClickListener(this);
+        btnAparelho = (Button) findViewById(R.id.BtnAparelho);
+        btnAparelho.setOnClickListener(this);
         btnSincronizar = (Button) findViewById(R.id.BtnSincronizar);
         btnSincronizar.setOnClickListener(this);
         btnSobre = (Button) findViewById(R.id.BtnSobre);
@@ -115,7 +115,7 @@ public class TelaPrincipal extends Activity implements OnClickListener{
 			Intent i = new Intent(this, TelaAcompanhamento.class);
 			startActivity(i);
 		}
-		else if (v == btnUsuarios){			
+		else if (v == btnAparelho){			
 			Intent i = new Intent(this, TelaInfo.class);
 			startActivity(i);
 		}
