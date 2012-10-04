@@ -318,13 +318,16 @@ public final class R {
         public static final int Theme_Transparent=0x7f060001;
     }
     public static final class telaAgendamento {
-        public static final int ChkFLUrgente=0x7f0f0004;
-        public static final int EdtDescricao=0x7f0f0006;
-        public static final int EdtPessoa=0x7f0f0001;
-        public static final int SpTipoAgendamento=0x7f0f0003;
-        public static final int TxtDescricao=0x7f0f0005;
-        public static final int TxtPessoa=0x7f0f0000;
-        public static final int TxtTipoAgendamento=0x7f0f0002;
+        public static final int ChkFLUrgente=0x7f0f0007;
+        public static final int EdtDescricao=0x7f0f0009;
+        public static final int EdtPessoa=0x7f0f0004;
+        public static final int SpTipoAgendamento=0x7f0f0006;
+        public static final int TxtDescricao=0x7f0f0008;
+        public static final int TxtPessoa=0x7f0f0003;
+        public static final int TxtTipoAgendamento=0x7f0f0005;
+        public static final int btnSalvarTelaAgend=0x7f0f0002;
+        public static final int btnVoltarTelaAgend=0x7f0f0000;
+        public static final int tableRow1=0x7f0f0001;
     }
     public static final class telaFamilia {
         public static final int btnEditar=0x7f120001;

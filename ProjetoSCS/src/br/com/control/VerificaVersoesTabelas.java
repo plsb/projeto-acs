@@ -6,21 +6,6 @@ import br.com.control.Banco.BancoDados;
 
 public class VerificaVersoesTabelas {
 	
-	/**
-	private static final String _nomeTabelaUsuario 	   = "usuarios";
-	private static final String _nomeTabelaUsuarioAux  = "usuariosAux";
-	private static final String _nomeTabelaResidencia  = "residencia";
-	private static final String _nomeTabelaRuas        = "ruas";
-	private static final String _nomeTabelaSessao      = "sessao";
-	private static final String _nomeTabelaResidente   = "residente";
-	private static final String _nomeTabelaBairros     = "bairros";
-	private static final String _nomeTabelaGestacao    = "gestacao";
-	private static final String _nomeTabelaHanseniase  = "hanseniase";
-	private static final String _nomeTabelaDiabete     = "diabete";
-	private static final String _nomeTabelaTuberculose = "tuberculose";
-	private static final String _nomeTabelaHipertensao = "hipertensao";
-	private static final String _nomeTabelaVacinas     = "vacinas";**/
-	
 	public static Boolean jaVerificouAtualizacao = false;
 	
 	private BancoDados _dao;
@@ -48,6 +33,7 @@ public class VerificaVersoesTabelas {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaTuberlose, "tuberculose");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaHipertensao, "hipertensao");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaVacina, "vacinas");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaAgendamento, "agendamento");
 	}
 
 }
