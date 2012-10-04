@@ -169,8 +169,8 @@ public void InformacoesFamiliar(){
 			DoseAplicada.add("R-REFORÇO");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("TRIPLICE BACTERIANA"))){
 			DoseAplicada.clear();
-			DoseAplicada.add("R1-REFORÇO");
-			DoseAplicada.add("R2-REFORÇO");
+			DoseAplicada.add("1R-REFORÇO");
+			DoseAplicada.add("2R-REFORÇO");
 		/**************************** A D O L E S C E N T E ******************************/	
 		}else if ((IdadeFamiliar >= 11)&&(IdadeFamiliar <= 19)&&(_TipoVacina.equals("HEPATITE B"))){
 			DoseAplicada.clear();

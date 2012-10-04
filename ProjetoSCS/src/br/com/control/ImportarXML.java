@@ -26,7 +26,7 @@ public class ImportarXML extends Activity {
 	private ProgressDialog mprogressDialog;
 	private Handler mhandler;
 	
-	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,cHan,cHa,cDia,cTb,cGes = null;
+	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,cHan,cHa,cDia,cTb,cGes,cVacina = null;
 	
 	String msg = "";
 	
@@ -49,7 +49,7 @@ public class ImportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(10);
+        mprogressDialog.setMax(11);
         
         mprogressDialog.show();
         
@@ -57,8 +57,6 @@ public class ImportarXML extends Activity {
             public void run() {
                 
                 try{
-                    //while (mprogressDialog.getProgress() < mprogressDialog.getMax()) {
-                        //esse é apenas um método de teste que pode ser demorado
                 	ImportaRuas();
                 	mprogressDialog.incrementProgressBy(1);               
         			ImportaBairros();
@@ -79,7 +77,9 @@ public class ImportarXML extends Activity {
         			mprogressDialog.incrementProgressBy(1);
         			ImportaGes(); 
                     mprogressDialog.incrementProgressBy(1);
-                    //}
+                    ImportaVacinas();
+                    mprogressDialog.incrementProgressBy(1);
+                    
                 } catch (Exception e) {
                     Log.e("tag", e.getMessage());
                 }
@@ -241,7 +241,7 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Ruas: "+e.getMessage());				
 			}
-	}//Fim do Método ImportaRuas
+	}//Fim do Método ImportaRuas	
 	
 	public void ImportaResidencias(){
 		
@@ -584,6 +584,54 @@ public class ImportarXML extends Activity {
 			}
 	}//Fim do Método ImportaTb
 	
+	public void ImportaVacinas(){
+		
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  V A C I N A S 	
+		try {
+			if (!(xml.carregar("scs.xml","vacinas") == null)){
+				List<Element> Lista_Vacinas = xml.carregar("scs.xml","vacinas"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();		
+				
+				SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+				
+				for(Element Vacina : Lista_Vacinas){
+					c.clear();				
+					c.put("HASH", Vacina.getChildText("idfamiliar").trim());					
+					c.put("TIPO_VACINA", Vacina.getChildText("tipovacina"));
+					c.put("DOSE_APLICADA", Vacina.getChildText("doseaplicada").trim());
+					c.put("DT_APLICACAO", Vacina.getChildText("dataaplicacao"));
+					c.put("DT_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));					
+					c.put("LOTE", Vacina.getChildText("lotevacina"));
+					c.put("FL_APLICADA", Vacina.getChildText("aplicada")); 
+					c.put("TIPO", Vacina.getChildText("tipo").trim());
+					cVacina = bd.consulta("vacinas", new String[] { "_ID, HASH, TIPO_VACINA, DOSE_APLICADA, TIPO " }, "HASH = '"+Vacina.getChildText("idfamiliar").trim()+
+																													  "' AND TIPO_VACINA = '"+Vacina.getChildText("tipovacina")+
+																													  "' AND DOSE_APLICADA = '"+Vacina.getChildText("doseaplicada").trim()+
+																													  "' AND TIPO = '"+Vacina.getChildText("tipo").trim()+"'", null, null, null, null, null);										
+					cVacina.moveToFirst();						
+					if (cVacina.getCount() > 0){
+						bd.atualizarDadosTabela("vacinas",Integer.valueOf(cVacina.getString(cVacina.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("vacinas", c);							
+					}//Fim else
+					cVacina.close();
+				}//Fim for
+					msg = msg + "Vacinas - SIM\n";
+					bd.fechaBanco();
+			} else {
+				msg = msg + "Vacinas - NÃO\n";
+			}//Fim else
+		} catch (FileNotFoundException e) {
+			System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
+		} catch (IOException e) {
+			System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
+		} catch (JDOMException e) {
+			System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());				
+		}
+		
+	}//Fim do Método ImportaVacinas
+	
 			
 	@Override
 	protected void onDestroy() {		
@@ -598,6 +646,7 @@ public class ImportarXML extends Activity {
 		cGes		= null;
 		cDia		= null;
 		cTb			= null;
+		cVacina     = null;
 		super.onDestroy();		
 	}
 
