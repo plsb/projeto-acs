@@ -2,14 +2,15 @@ package br.com.view;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import br.com.control.Banco;
 import br.com.scs.R;
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,30 +19,36 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.Toast; 
 
-public class TelaAgendamento extends ListActivity implements OnClickListener{
+@SuppressLint("ParserError")
+public class Lista_Familiar_Agendamento extends ListActivity implements OnClickListener {
 	
 	Banco _bd = new Banco(this);
 	
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
 	
+	public static String END,NUM = "";	
+	
+	String _ID;
+	
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
 	private SimpleAdapter sa;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listax);
+        setContentView(R.layout.listaresidente); 
         
-        edtFiltro  = (EditText) findViewById(R.id.edtFiltro);
-        btnFiltrar = (Button) findViewById(R.id.btnFiltrar);
+        edtFiltro  = (EditText) findViewById(R.listaResidente.edtFiltro);
+        btnFiltrar = (Button) findViewById(R.listaResidente.btnFiltrar);
         btnFiltrar.setOnClickListener(this);  
-        btnVoltar  = (Button) findViewById(R.id.btnVoltarLista);
+        btnVoltar  = (Button) findViewById(R.listaResidente.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
-         
-        ListarResidencias(true);
+        
+        ListarResidentes(true);
         
     }//Fim do método Main
     
@@ -55,48 +62,39 @@ public class TelaAgendamento extends ListActivity implements OnClickListener{
 	public void onListItemClick(ListView l,View v,int position,long id){
     	
     	super.onListItemClick(l, v, position, id);
-    	
-    	Object o = this.getListAdapter().getItem(position);
-    	
-    	Log.i("Retorno", o.toString());
     	    	
-    	String endereco = o.toString();
+    	_ID = this.getListAdapter().getItem(position).toString();
     	
-    	endereco = endereco.substring(endereco.indexOf("{line1=")+7, endereco.indexOf(", Nº"));
+    	_ID = _ID.substring(_ID.indexOf("=")+1,_ID.indexOf("-"));
     	
-    	String numero = o.toString();
-    	
-    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
-    	
-    	//Toast.makeText(this, "END: "+endereco+",NUM: "+numero, Toast.LENGTH_LONG).show();
-    	
-    	Intent i = new Intent(this, Lista_Familiar_Agendamento.class);    	
-    	Lista_Familiar_Agendamento.END = endereco;
-    	Lista_Familiar_Agendamento.NUM = numero;    	
-    	startActivity(i);
+    	System.out.println(_ID);
+
+    	Intent i = new Intent(this, InsereAgendamento.class); 
+    	InsereAgendamento._ID = Integer.valueOf(_ID.trim());    	    
+	    startActivity(i);
     	
     }
     
-    public void ListarResidencias(boolean usaFiltro){
+    public void ListarResidentes(boolean usaFiltro){
     	HashMap<String,String> item;
         _bd.open();
         try{
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },null,null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },null,null,null,null,"_ID",null);  
         	}else{
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },"endereco like '%"+edtFiltro.getText().toString()+"%' ",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
         	if (_cursor.getCount() > 0){
 	        	do{	
 	        	  item = new HashMap<String,String>();
-	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
-						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
-	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
+	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("_ID")).toString()+"-"+
+	        			  			 _cursor.getString(_cursor.getColumnIndex("NOME")).toString());
+	        	  item.put( "line2", "Sexo: "+_cursor.getString(_cursor.getColumnIndex("SEXO")).toString()+" - Dt. Nascimento: "+
+	        			  			 _cursor.getString(_cursor.getColumnIndex("DTNASCIMENTO")).toString());
 		          list.add( item );
 		        }while (_cursor.moveToNext());	
         	}
@@ -120,7 +118,7 @@ public class TelaAgendamento extends ListActivity implements OnClickListener{
 		switch (item.getItemId()) {
 
 		case R.listaresidencia.menu_filtrar:
-			ListarResidencias(true);
+			ListarResidentes(true);
 			break;
 		}
 		return true;
@@ -129,11 +127,10 @@ public class TelaAgendamento extends ListActivity implements OnClickListener{
 	public void onClick(View v) {
 		
 		if (v == btnFiltrar){
-			ListarResidencias(true);
+			ListarResidentes(true);
 		}
 		if (v == btnVoltar){
 			finish();
-		}
-		
+		}		
 	}
 }
