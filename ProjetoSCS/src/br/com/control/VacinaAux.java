@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
 public class VacinaAux {
 	
@@ -30,6 +31,7 @@ public class VacinaAux {
 	}
 	
 	public boolean Inserir(Context contexto){
+		boolean retorno = false;
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
@@ -43,14 +45,31 @@ public class VacinaAux {
 			c.put("FL_APLICADA", FL_APLICADA);
 			c.put("DT_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
 			
-			_bd.open();
-			_bd.inserirRegistro("vacinas", c);
+			try{
+				_bd.open();
+				Cursor cursor = _bd.consulta("vacinas", new String[] { "_ID, HASH, TIPO_VACINA, DOSE_APLICADA, TIPO " }, "HASH = '"+HASH+
+																	   "' AND TIPO_VACINA = '"+TP_VACINA+
+																       "' AND DOSE_APLICADA = '"+DS_VACINA+
+																       "' AND TIPO = '"+TIPO+"'", null, null, null, null, null);
+				cursor.moveToFirst();
+				if (cursor.getCount() > 0){
+					_bd.atualizarDadosTabela("vacinas",Integer.valueOf(cursor.getString(cursor.getColumnIndex("_ID")).toString().trim()), c);
+					cursor.close();
+					retorno = true;					
+				}else{
+					_bd.inserirRegistro("vacinas", c);	
+					retorno = true;
+				}
+				
+			}catch(Exception e){
+				System.out.println("Erro no método Salvar VacinaAux");
+			}
 			_bd.fechaBanco();
 			Limpar();
-			return true;
 		}catch(Exception e){
-			return false;
+			retorno = false;
 		}
+		return retorno;
 	}//Fim do Método Inserir
 	
 	public boolean Atualizar(Context contexto,int indice){
