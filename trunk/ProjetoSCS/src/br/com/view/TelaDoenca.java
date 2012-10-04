@@ -71,12 +71,12 @@ public class TelaDoenca extends Activity{
 	EditText EdtHtPe, EdtHtObs;
 	/*HIPERTENSAO*/
 	
-	/*HIPERTENSAO*/
+	/*GESTANTE*/
 	TextView TxtGDtUltimaRegra, TxtGDtParto, TxtGDtVacina, TxtGEn, TxtGDtPN, TxtGFr, TxtGRG, TxtGDtPuerbio, TxtGEnMes, TxtGObs;
 	DatePicker GDtUltimaRegra, GDtParto, GDtVacina, GDtPuerbio, DtGPreNatal;
-	CheckBox ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao, ChGUm, ChG2, ChGR;
+	CheckBox ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao,ChkGNV,ChkGNM,ChkGAB;
 	EditText EdtGEn,EdtMesGestacao, EdtGObs;
-	/*HIPERTENSAO*/
+	/*GESTANTE*/
 	
 
 	@Override
@@ -85,7 +85,6 @@ public class TelaDoenca extends Activity{
 		setContentView(R.layout.teladoenca);
 		
 		//Componentes Hanseniase
-		//datavisita           = (TextView)    findViewById(R.teladoenca.TxtHDataVisita);
 		medicacaodiaria      = (TextView)    findViewById(R.teladoenca.TxtHMedicacaoDiaria);
 		ultimadose           = (TextView)    findViewById(R.teladoenca.TxtHDataUltimaDose);
 		cuidados             = (TextView)    findViewById(R.teladoenca.TxtHFazCuidados);
@@ -93,8 +92,7 @@ public class TelaDoenca extends Activity{
 		bcg                  = (TextView)    findViewById(R.teladoenca.TxtHBCG);
 		TxtHNComunicantes    = (TextView)    findViewById(R.teladoenca.TxtHNComunicantes);
 		TxtHDtUltimaConsulta = (TextView)    findViewById(R.teladoenca.TxtHDtUltimaConsulta);
-		DtHDtUltimaConsulta  = (DatePicker)  findViewById(R.teladoenca.DtHDtUltimaConsulta); 
-		//DtHVisita            = (DatePicker)  findViewById(R.teladoenca.DtHDataProfissional);
+		DtHDtUltimaConsulta  = (DatePicker)  findViewById(R.teladoenca.DtHDtUltimaConsulta);
 		DtHUltimadose        = (DatePicker)  findViewById(R.teladoenca.DtHUltimaDose);
 		rgmedicacaodiaria    = (RadioGroup)  findViewById(R.teladoenca.RgHMedicacaoDiaria);
 		autocuidados         = (RadioGroup)  findViewById(R.teladoenca.RgHAutoCuidados);
@@ -109,13 +107,11 @@ public class TelaDoenca extends Activity{
 		
 		//Componentes Diabetes
 		dUltimaVisita      = (TextView)    findViewById(R.teladoenca.TxtDUltimaVisita);
-		//dDataVisita        = (TextView)    findViewById(R.teladoenca.TxtDDataVisita);
 		dFazDieta          = (TextView)    findViewById(R.teladoenca.TxtDFazDieta);
 		dFazExercicio      = (TextView)    findViewById(R.teladoenca.TxtDFazExercicio);
 		dUsaInsulina       = (TextView)    findViewById(R.teladoenca.TxtDInsulina);
 		dTomaHipo          = (TextView)    findViewById(R.teladoenca.TxtDHipoglicemiante);
 		TxtDObs            = (TextView)    findViewById(R.teladoenca.TxtDObs);
-		//dDtDataVisita      = (DatePicker)  findViewById(R.teladoenca.DtDDataProfissional);
 		dDtUltimaConsulta  = (DatePicker)  findViewById(R.teladoenca.DtDUltimaConsulta);
 		dRgFazExercicio    = (RadioGroup)  findViewById(R.teladoenca.RgDFazExercicio);
 		dRgFazDieta        = (RadioGroup)  findViewById(R.teladoenca.RgDDieta);
@@ -132,14 +128,12 @@ public class TelaDoenca extends Activity{
 		dHipog_N           = (RadioButton) findViewById(R.teladoenca.RbHipoglicemianteNao);
 		
 		//Componentes tuberculose
-		//TxtTDataVisita  		 = (TextView) 	 findViewById(R.teladoenca.TxtTDataVisita);
 		TxtTMd          		 = (TextView) 	 findViewById(R.teladoenca.TxtTMedicacaoDiaria);
 		TxtTRi          		 = (TextView) 	 findViewById(R.teladoenca.TxtTReacoesIndesejadas);
 		TxtTEe          		 = (TextView) 	 findViewById(R.teladoenca.TxtTExameEscarro);
 		TxtTCe          		 = (TextView) 	 findViewById(R.teladoenca.TxtTComunicantesExaminados);
 		TxtTM5Bcg       		 = (TextView) 	 findViewById(R.teladoenca.TxtTMenor5Bcg);
 		TxtTObs         		 = (TextView) 	 findViewById(R.teladoenca.TxtTObs);
-		//DtTDataVisita   		 = (DatePicker)  findViewById(R.teladoenca.DtTDataVisita);
 		RgTMd           		 = (RadioGroup)  findViewById(R.teladoenca.RgTMedicacaoDiaria);
 		RgTEe           		 = (RadioGroup)  findViewById(R.teladoenca.RgTExameEscarro);
 		RgTRi           		 = (RadioGroup)  findViewById(R.teladoenca.RgTReacoesIndesejadas);
@@ -154,14 +148,12 @@ public class TelaDoenca extends Activity{
 		EdtTObs					 = (EditText) 	 findViewById(R.teladoenca.EdtTObs);
 		
 		//Componentes Hipertensao
-		//TxtHtDataVisita 		 = (TextView) 	 findViewById(R.teladoenca.TxtHtDataVisita);
 		TxtHtFd 				 = (TextView) 	 findViewById(R.teladoenca.TxtHtFazDieta); 
 		TxtHtTm					 = (TextView) 	 findViewById(R.teladoenca.TxtHtTomaMedicacao);
 		TxtHtFe					 = (TextView) 	 findViewById(R.teladoenca.TxtHtFazExercicio); 
 		TxtHtPa					 = (TextView) 	 findViewById(R.teladoenca.TxtHtPressaoArterial); 
 		TxtHtDtUV				 = (TextView) 	 findViewById(R.teladoenca.TxtHtDtUltimaVisita);
 		TxtHtObs				 = (TextView) 	 findViewById(R.teladoenca.TxtHtObs);
-		//DtHtDataVisita			 = (DatePicker)  findViewById(R.teladoenca.DtHtDataVisita);
 		DtHtUltimaVisita		 = (DatePicker)  findViewById(R.teladoenca.DtHtUltimaVisita);
 		RgHtFd					 = (RadioGroup)  findViewById(R.teladoenca.RgHtDieta); 
 		RgHtTm					 = (RadioGroup)  findViewById(R.teladoenca.RgHtMedicacao); 
@@ -178,7 +170,6 @@ public class TelaDoenca extends Activity{
 		//Componentes Gestante
 		TxtGDtUltimaRegra = (TextView)   findViewById(R.teladoenca.TxtGDtUltimaRegra);
 		TxtGDtParto       = (TextView)   findViewById(R.teladoenca.TxtGParto);
-		TxtGDtVacina      = (TextView)   findViewById(R.teladoenca.TxtGVacina);
 		TxtGEn         	  = (TextView)   findViewById(R.teladoenca.TxtGEn);
 		TxtGDtPN      	  = (TextView)   findViewById(R.teladoenca.TxtGPreNatal);
 		TxtGFr        	  = (TextView)   findViewById(R.teladoenca.TxtGFr);
@@ -188,12 +179,8 @@ public class TelaDoenca extends Activity{
 		TxtGObs       	  = (TextView)   findViewById(R.teladoenca.TxtGObs);
 		GDtUltimaRegra	  = (DatePicker) findViewById(R.teladoenca.DtGDataRegra);
 		GDtParto	  	  = (DatePicker) findViewById(R.teladoenca.DtGParto);
-		GDtVacina 	  	  = (DatePicker) findViewById(R.teladoenca.DtGVacina);
 		GDtPuerbio 	  	  = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
 		GDtUltimaRegra	  = (DatePicker) findViewById(R.teladoenca.DtGDataRegra); 
-		GDtParto 	  	  = (DatePicker) findViewById(R.teladoenca.DtGParto);  
-		GDtVacina 		  = (DatePicker) findViewById(R.teladoenca.DtGVacina);  
-		GDtPuerbio        = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
 		DtGPreNatal       = (DatePicker) findViewById(R.teladoenca.DtGPreNatal);
 		EdtGEn            = (EditText)   findViewById(R.teladoenca.EdtGEn);
 		EdtGObs           = (EditText)   findViewById(R.teladoenca.EdtGObs);
@@ -206,9 +193,9 @@ public class TelaDoenca extends Activity{
 		ChGEdema          = (CheckBox)   findViewById(R.teladoenca.ChGEdema); 
 		ChGDiabetes       = (CheckBox)   findViewById(R.teladoenca.ChGDiabetes); 
 		ChGPressao        = (CheckBox)   findViewById(R.teladoenca.ChGPressao);
-		ChGUm             = (CheckBox)   findViewById(R.teladoenca.ChGUm); 
-		ChG2              = (CheckBox)   findViewById(R.teladoenca.ChG2);
-		ChGR              = (CheckBox)   findViewById(R.teladoenca.ChGR);	
+		ChkGNV			  = (CheckBox)   findViewById(R.teladoenca.ChkGNV);
+		ChkGNM			  = (CheckBox)   findViewById(R.teladoenca.ChkGNM);
+		ChkGAB			  = (CheckBox)   findViewById(R.teladoenca.ChkGAB);
 		
 		if (_editando == true)
 			EditaDados();
@@ -388,10 +375,7 @@ public class TelaDoenca extends Activity{
 		    		GDtParto.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().lastIndexOf("/")+1)), 
 		    							Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().lastIndexOf("/")))-1, 
 		    							Integer.valueOf(c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().substring(0, c.getString(c.getColumnIndex("DT_PROVAVEL_PARTO")).toString().indexOf("/"))));
-		    		//Data de Vacina
-		    		//GDtVacina.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")+1)), 
-					//					 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_VACINA")).toString().lastIndexOf("/")))-1, 
-					//					 Integer.valueOf(c.getString(c.getColumnIndex("DT_VACINA")).toString().substring(0, c.getString(c.getColumnIndex("DT_VACINA")).toString().indexOf("/"))));
+
 		    		//Data de Consulta Puerbio
 		    		GDtPuerbio.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().lastIndexOf("/")+1)), 
 										  Integer.valueOf(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().substring(c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_CONSULTA_PUERBIO")).toString().lastIndexOf("/")))-1, 
@@ -403,15 +387,7 @@ public class TelaDoenca extends Activity{
 		    		
 		    		EdtGEn.setText(c.getString(c.getColumnIndex("EST_NUTRICIONAL")).toString());
 		    		EdtGObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
-		    		EdtMesGestacao.setText(c.getString(c.getColumnIndex("MES_GESTACAO")).toString());
-		    		
-		    		/*if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("1"))
-		    			ChGUm.setChecked(true);
-		    		else if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("2"))
-		    			ChG2.setChecked(true);
-		    		else if (c.getString(c.getColumnIndex("TIPO_VACINA")).toString().trim().equals("R"))
-		    			ChGR.setChecked(true);*/
-		    		
+		    		EdtMesGestacao.setText(c.getString(c.getColumnIndex("MES_GESTACAO")).toString());		    		
 		    		
 		    		if (c.getString(c.getColumnIndex("FATORES_RISCO")).substring(0, 1).toString().trim().equals("S"))
 		    			ChGGestacoes.setChecked(true);
@@ -452,6 +428,14 @@ public class TelaDoenca extends Activity{
 		    			ChGPressao.setChecked(true);
 		    		else
 		    			ChGPressao.setChecked(false);
+		    		
+		    		if (c.getString(c.getColumnIndex("RESULTADO_GESTACAO")).toString().trim().equals("AB")){
+		    			ChkGAB.setChecked(true);
+		    		}else if (c.getString(c.getColumnIndex("RESULTADO_GESTACAO")).toString().trim().equals("NV")){
+		    			ChkGNV.setChecked(true);
+		    		}else if (c.getString(c.getColumnIndex("RESULTADO_GESTACAO")).toString().trim().equals("NM")){
+		    			ChkGNM.setChecked(true);
+		    		}
 		       }
 		        if (_Tuberculose == true){			
 		        	ts = th.newTabSpec("tag5");
@@ -625,8 +609,7 @@ public class TelaDoenca extends Activity{
 	
 	public void ComponentesGestante(){
 		TxtGDtUltimaRegra.setVisibility(0); 
-		TxtGDtParto.setVisibility(0) ;
-		TxtGDtVacina.setVisibility(0); 
+		TxtGDtParto.setVisibility(0);
 		TxtGEn.setVisibility(0);
 		TxtGDtPN.setVisibility(0); 
 		TxtGFr.setVisibility(0); 
@@ -634,8 +617,7 @@ public class TelaDoenca extends Activity{
 		TxtGDtPuerbio.setVisibility(0);
 		TxtGEnMes.setVisibility(0);
 		GDtUltimaRegra.setVisibility(0); 
-		GDtParto.setVisibility(0);  
-		GDtVacina.setVisibility(0);  
+		GDtParto.setVisibility(0);   
 		GDtPuerbio.setVisibility(0);
 		DtGPreNatal.setVisibility(0);
 		EdtGEn.setVisibility(0);
@@ -648,21 +630,19 @@ public class TelaDoenca extends Activity{
 		ChGEdema.setVisibility(0);
 		ChGDiabetes.setVisibility(0);
 		ChGPressao.setVisibility(0);
-		ChGUm.setVisibility(0); 
-		ChG2.setVisibility(0);
-		ChGR.setVisibility(0);
 		TxtGObs.setVisibility(0);
 		EdtGObs.setVisibility(0);
+		ChkGNV.setVisibility(0);
+		ChkGNM.setVisibility(0);
+		ChkGAB.setVisibility(0);
 	}
 	
 	public void ComponentesHiperTensao(){
-		//TxtHtDataVisita.setVisibility(0);
 		TxtHtFd.setVisibility(0); 
 		TxtHtTm.setVisibility(0); 
 		TxtHtFe.setVisibility(0); 
 		TxtHtPa.setVisibility(0); 
 		TxtHtDtUV.setVisibility(0);
-		//DtHtDataVisita.setVisibility(0);
 		DtHtUltimaVisita.setVisibility(0);
 		RgHtFd.setVisibility(0); 
 		RgHtTm.setVisibility(0); 
@@ -670,6 +650,29 @@ public class TelaDoenca extends Activity{
 		EdtHtPe.setVisibility(0);
 		TxtHtObs.setVisibility(0);
 		EdtHtObs.setVisibility(0);
+	}
+	
+	public boolean CamposValidos(){
+		boolean retorno = false;
+		if (_Gestante==true){
+			if ((!ChkGAB.isChecked())&&(!ChkGNM.isChecked())&&(!ChkGNV.isChecked())){
+				retorno = true;
+			}else if ((ChkGAB.isChecked())&&(!ChkGNM.isChecked())&&(!ChkGNV.isChecked())){
+				retorno = true;
+			}else if ((!ChkGAB.isChecked())&&(ChkGNM.isChecked())&&(!ChkGNV.isChecked())){
+				retorno = true;
+			}else if ((!ChkGAB.isChecked())&&(!ChkGNM.isChecked())&&(ChkGNV.isChecked())){
+				retorno = true;
+			}else{
+				retorno = false;
+			}
+			if (EdtGEn.getText().toString().trim().length()>0){
+				retorno = true;
+			}else{
+				retorno = false;
+			}
+		}
+		return retorno;
 	}
 	
 	public void Inserir(){
@@ -685,23 +688,13 @@ public class TelaDoenca extends Activity{
 				String fatores_risco = "";
 				g = new Gestante();
 				g.DT_ULTIMA_REGRA     = String.valueOf(GDtUltimaRegra.getDayOfMonth())+"/"+String.valueOf(GDtUltimaRegra.getMonth()+1)+"/"+String.valueOf(GDtUltimaRegra.getYear());
-				g.DT_PROVAVEL_PARTO   = String.valueOf(GDtParto.getDayOfMonth())+"/"+String.valueOf(GDtParto.getMonth()+1)+"/"+String.valueOf(GDtParto.getYear());
-				g.DT_VACINA           = String.valueOf(GDtVacina.getDayOfMonth())+"/"+String.valueOf(GDtVacina.getMonth()+1)+"/"+String.valueOf(GDtVacina.getYear());
+				g.DT_PROVAVEL_PARTO   = String.valueOf(GDtParto.getDayOfMonth())+"/"+String.valueOf(GDtParto.getMonth()+1)+"/"+String.valueOf(GDtParto.getYear());			
 				g.DT_PRE_NATAL        = String.valueOf(DtGPreNatal.getDayOfMonth())+"/"+String.valueOf(DtGPreNatal.getMonth()+1)+"/"+String.valueOf(DtGPreNatal.getYear());
 				g.DT_CONSULTA_PUERBIO = String.valueOf(GDtPuerbio.getDayOfMonth())+"/"+String.valueOf(GDtPuerbio.getMonth()+1)+"/"+String.valueOf(GDtPuerbio.getYear());
 				g.EST_NUTRICIONAL     = EdtGEn.getText().toString();
 				g.MES_GESTACAO        = EdtMesGestacao.getText().toString();
 				g.OBSERVACAO          = EdtGObs.getText().toString();
-				g.HASH                = _HASH;
-				
-				
-				//Tipo de Vacina
-				if (ChGUm.isChecked())
-				  g.TIPO_VACINA = "1";
-				else if (ChG2.isChecked())
-					g.TIPO_VACINA = "2";
-				else if (ChGR.isChecked())
-					g.TIPO_VACINA = "R";
+				g.HASH                = _HASH;		
 				
 				//Fatores de Risco
 				if (ChGGestacoes.isChecked())
@@ -739,6 +732,14 @@ public class TelaDoenca extends Activity{
 				
 				g.FATORES_RISCO = fatores_risco;
 				
+				//Resultado Gestação
+				if (ChkGAB.isChecked())
+					g.RESULTADO_GESTACAO = "AB";
+				else if (ChkGNV.isChecked())
+					g.RESULTADO_GESTACAO = "NV";
+				else if (ChkGNM.isChecked())
+					g.RESULTADO_GESTACAO = "NM";
+				
 				if (_IdTransacao == 0){
 					if (g.Inserir(this) == true){
 						msgInsercao += "Gestante - Gravado\n";
@@ -751,7 +752,7 @@ public class TelaDoenca extends Activity{
 					}else{
 						msgInsercao += "Gestante - Erro\n";
 					}
-				}
+				}				
 			}finally{
 				g = null;			
 			}

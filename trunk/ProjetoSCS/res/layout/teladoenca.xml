@@ -763,58 +763,9 @@
 				        android:visibility="invisible"
 			
 				        />
-				    			    
-				    <LinearLayout 
-				        android:orientation="horizontal"
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content"
-				        android:layout_marginBottom="5dp"
-				        >
-				    <TextView 
-				        android:id="@+teladoenca/TxtGVacina"
-				        android:text=" Data da Vacina:"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:textSize="15dp"
-				        android:textColor="#000"
-				        android:layout_marginBottom="3dp"
-				        android:visibility="invisible"
-		
-				        />
-				     <CheckBox 
-				          android:id="@+teladoenca/ChGUm"
-				          android:text="1"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"
-				          android:layout_marginLeft="10dp"
-				          android:visibility="invisible"
-				          />
-				         <CheckBox 
-				          android:id="@+teladoenca/ChG2"
-				          android:text="2"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"
-				          android:layout_marginLeft="10dp"
-				           android:visibility="invisible"
-				          />
-				       <CheckBox 
-				          android:id="@+teladoenca/ChGR"
-				          android:text="R"
-				          android:layout_width="wrap_content"
-				          android:layout_height="wrap_content"
-				          android:layout_marginLeft="10dp"
-				          android:visibility="invisible"
-				          />
-					</LinearLayout>
+
 				    
-				    <DatePicker 
-				        android:id="@+teladoenca/DtGVacina"
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content"
-				        android:visibility="invisible"
-				        android:layout_marginBottom="5dp"
-				        />
-				    
+				  				    
 				    <LinearLayout 
 				        android:orientation="horizontal"
 				        android:layout_width="fill_parent"
@@ -1015,6 +966,41 @@
 				        android:visibility="invisible"
 			
 				        /> 
+				        
+				 <LinearLayout 
+				     android:orientation="horizontal"
+				     android:layout_width="fill_parent"
+				     android:layout_height="wrap_content"
+				     >
+        				
+				    <CheckBox 
+				        android:id="@+teladoenca/ChkGNV"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="NV"
+				        android:visibility="invisible"
+				        />
+				    
+				    <CheckBox 
+				        android:id="@+teladoenca/ChkGNM"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="NM"
+				        android:visibility="invisible"
+				        /> 
+				        
+				    <CheckBox 
+				        android:id="@+teladoenca/ChkGAB"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="AB"
+				        android:visibility="invisible"
+				        /> 
+				     
+				 </LinearLayout>
 				       
 				 <TextView
 				     	android:id="@+teladoenca/TxtGDtPuerbio" 

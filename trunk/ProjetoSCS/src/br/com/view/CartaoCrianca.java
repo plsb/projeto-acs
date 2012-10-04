@@ -228,13 +228,13 @@ public class CartaoCrianca extends Activity {
 				}
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TRIPLICE BACTERIANA"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R1"))
+					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1R"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose1TB.setChecked(true);
 				}
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TRIPLICE BACTERIANA"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R2"))
+					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2R"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDoseRTB.setChecked(true);
 				}
