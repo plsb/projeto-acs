@@ -191,8 +191,15 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 
 		switch (item.getItemId()) {
 			
-		case R.MenuTelaFamilia.menu_gravar :{			
+		case R.MenuTelaFamilia.menu_gravar :{	
+			 if (EdtNome.getText().length() <= 0){
+				 EdtNome.setError("Nome Precisa ser Preenchido!");
+			 }else if(!(RdbMasculino.isChecked()) && !(RdbFeminino.isChecked())){
+				 Mensagem.exibeMessagem(this, "Atenção", "É necessário escolher uma opção de sexo!");
+			 }
+			 else{
 				InsereBD();
+			 }
 			}
 		}
 		return true;
