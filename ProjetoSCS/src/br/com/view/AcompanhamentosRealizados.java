@@ -47,11 +47,18 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         super.onCreate(savedInstanceState);
       
         _bd = new Banco(this);
-        
-        ListarResidentes();        
+             
     }
     
-    public void ListarResidentes(){
+    @Override
+    protected void onResume() {
+    	groupData.clear();
+    	childData.clear();
+    	ListarAcompanhamentos();
+    	super.onResume();
+    }
+    
+    public void ListarAcompanhamentos(){
     	
         _bd.open();
         
