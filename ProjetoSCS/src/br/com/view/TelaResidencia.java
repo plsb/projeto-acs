@@ -1,5 +1,6 @@
 package br.com.view;
 
+import java.security.spec.MGF1ParameterSpec;
 import java.util.ArrayList;
 
 import br.com.control.Banco;
@@ -35,6 +36,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3    
     
     Button btnVoltar, btnSalvar;
+    
+    private TabHost th;
     
     public static int ID = 0;
     
@@ -88,7 +91,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	    btnVoltar.setOnClickListener(this);
 	    btnSalvar.setOnClickListener(this);
 		
-		TabHost th = (TabHost) findViewById(R.imovel.tabhost);
+		th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
         TabSpec ts;
         
@@ -187,6 +190,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	public boolean validaCampos(){
 		
 		boolean retorno = false;
+		String msgPendecias = "";
 		
 		if (EdtNumero.getText().toString().length() == 0){
 			EdtNumero.setError("Informe o Número da Casa!");
@@ -212,6 +216,71 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		}else{
 			retorno = true;
 		}
+		if (SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o município!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpTipoCasa.getItemAtPosition(SpTipoCasa.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o tipo de casa!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpDestinoLixo.getItemAtPosition(SpDestinoLixo.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o destino do lixo!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o tipo de abastecimento de água!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}		
+		if (SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o tipo de tratamento de água!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpDestFezesUrina.getItemAtPosition(SpDestFezesUrina.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o destino das fezes e urina!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o que procura em caso de doença!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o meio de comunicação mais utilizado!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione se participa de grupos comunitários!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		if (SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
+			msgPendecias += "-> Selecione o meio de transporte mais utilizado!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		
+		if (msgPendecias.trim().length() > 0){
+			Mensagem.exibeMessagem(this, "Pendências", msgPendecias);
+		}
+		
 		return retorno;
 	}
 	
