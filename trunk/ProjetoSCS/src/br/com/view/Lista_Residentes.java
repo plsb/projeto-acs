@@ -42,9 +42,15 @@ Banco _bd = new Banco(this);
         btnVoltar  = (Button) findViewById(R.listaResidente.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
         
-        ListarResidentes(false);
+        //ListarResidentes(false);
         
     }//Fim do método Main
+    
+    @Override
+    	protected void onResume() {
+    		ListarResidentes(false);
+    		super.onResume();
+    	}
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
