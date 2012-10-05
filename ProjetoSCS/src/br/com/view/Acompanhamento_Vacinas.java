@@ -30,12 +30,13 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 	private EditText   EdtFamiliar,EdtLote;
 	private Spinner    SpTipoVacina, SpDoseAplicada;
 	private DatePicker DtDataAPlicacao;
-	private CheckBox   ChkAplicado;
-	private int 	   IdadeFamiliar = 0;
-	private boolean    FalimiarGestante = false;
+	private CheckBox   ChkAplicado;	
 	private String 	   Hash = "";
 	
 	public static int _ID = 0;
+	public static int IdadeFamiliar = 0;
+	public static boolean FalimiarGestante = false;
+		
 	
 	ArrayList<String> TipoVacina   = new ArrayList<String>();
 	ArrayList<String> DoseAplicada = new ArrayList<String>();
@@ -62,13 +63,13 @@ public void InformacoesFamiliar(){
 		if (cAux.getCount() > 0){
 			EdtFamiliar.setText(cAux.getString(cAux.getColumnIndex("NOME")).toString());
 			Hash = cAux.getString(cAux.getColumnIndex("HASH")).toString();
-			if (cAux.getString(cAux.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
-				FalimiarGestante = true;
-			}
+			//if (cAux.getString(cAux.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
+			//	FalimiarGestante = true;
+			//}
 			
-			IdadeFamiliar = CalculaIdade(Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(0, cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))), 
-										 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
-										 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));	
+			//IdadeFamiliar = CalculaIdade(Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(0, cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))), 
+			//							 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
+			//							 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));	
 		}//Fim if
 		
 		cAux.close();

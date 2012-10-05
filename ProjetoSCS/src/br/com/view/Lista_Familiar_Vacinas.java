@@ -96,8 +96,8 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     }
     
     public void AtualizaVacina(){
-    	Intent i = new Intent(this, Acompanhamento_Vacinas.class); 
-	    Acompanhamento_Vacinas._ID = Integer.valueOf(_ID.trim());    
+    	Intent i = new Intent(this, OpcoesVacina.class); 
+    	OpcoesVacina._ID = Integer.valueOf(_ID.trim());    
 	    startActivity(i);
     }
     

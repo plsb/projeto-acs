@@ -41,7 +41,6 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
         btnVoltar  = (Button) findViewById(R.id.btnVoltarLista);
         btnVoltar.setOnClickListener(this);
         
-        //ListarResidencias(false);
         
     }//Fim do método Main
     
