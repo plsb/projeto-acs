@@ -26,7 +26,7 @@ public class Mensagem {
 		AlertDialog.Builder mensagem = new AlertDialog.Builder(act);
 		mensagem.setTitle(Titulo);
 		mensagem.setMessage(Texto);
-		mensagem.setIcon(R.drawable.scs_icone);
+		mensagem.setIcon(R.drawable.iconscs);
 		mensagem.setNeutralButton("OK",null);
 		mensagem.show();
 	}	
@@ -36,7 +36,7 @@ public class Mensagem {
 		AlertDialog.Builder builder = new AlertDialog.Builder(act);
 		builder.setTitle(Titulo);
 		builder.setMessage(Texto);
-		builder.setIcon(R.drawable.scs_icone);
+		builder.setIcon(R.drawable.iconscs);
 		builder.setCancelable(true);
 		
 		final AlertDialog dlg = builder.create();		
