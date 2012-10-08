@@ -44,8 +44,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		}
 		
 		if (v == btnExportarVisitas){
-			Intent i = new Intent(this, ExportarXML.class);
-			ExportarXML.Residencias = true;
+			Intent i = new Intent(this, ExportarXML.class);		
 			startActivity(i);			
 		}
 		

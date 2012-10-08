@@ -75,7 +75,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     	
     	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     	dialog.setMessage("Escolha uma Opção:");
-    	dialog.setIcon(R.drawable.scs_icone);
+    	dialog.setIcon(R.drawable.iconscs);
     	dialog.setPositiveButton("Agendar", new
 				DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
@@ -102,13 +102,14 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     }
     
     public void VisualizarCartaoVacina(){
-    	String Hash = ""; 
+    	String Hash = "";
+    	Cursor c = null;
     	try{
     		_bd.open();
-    		Cursor c = _bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(_ID), null, null, null, null, null);
+    		c = _bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(_ID), null, null, null, null, null);
     		c.moveToFirst();    		
     		if (c.getCount() > 0){
-    			Hash = c.getString(c.getColumnIndex("HASH")).toString().trim();
+    			Hash = c.getString(c.getColumnIndex("HASH")).toString().trim();    	
     		}    		    
     		
     	}catch (Exception e) {
@@ -116,6 +117,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 		}    	
     	Intent i = new Intent(this,CartoesVacinacao.class);
     	CartoesVacinacao._Hash = Hash;
+    	CartoesVacinacao._CartaoGestante = ( c.getString(c.getColumnIndex("SEXO")).toString().trim().equals("F") ? true : false);
     	startActivity(i);    	
     }
     
