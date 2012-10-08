@@ -11,6 +11,7 @@ import android.widget.TabHost;
 public class CartoesVacinacao extends ActivityGroup implements OnClickListener {
 	
 	public static String _Hash = "";
+	public static boolean _CartaoGestante = false;
 	
 	static TabHost th;
 	static int tab = -1;
@@ -42,16 +43,25 @@ public class CartoesVacinacao extends ActivityGroup implements OnClickListener {
         CartaoAdulto.Hash = _Hash;        
         spec = th.newTabSpec("2").setIndicator("Adulto", getResources().getDrawable(R.drawable.adulto)).setContent(intent);        
         th.addTab(spec);
-
-        intent = new Intent().setClass(this, CartaoGestante.class);
-        CartaoGestante.Hash = _Hash;        
-        spec = th.newTabSpec("3").setIndicator("Gestante", getResources().getDrawable(R.drawable.gravida)).setContent(intent);        
-        th.addTab(spec);
+        
+        if (_CartaoGestante == true) {
+	        intent = new Intent().setClass(this, CartaoGestante.class);
+	        CartaoGestante.Hash = _Hash;        
+	        spec = th.newTabSpec("3").setIndicator("Gestante", getResources().getDrawable(R.drawable.gravida)).setContent(intent);        
+	        th.addTab(spec);
+        }
         
 	}
 	
 	public void onClick(View v) {
 				
+	}
+	
+	@Override
+	protected void onDestroy() {
+		_CartaoGestante = false;
+		_Hash = "";
+		super.onDestroy();
 	}
 
 }

@@ -30,17 +30,18 @@ public class ResidenteAux {
 	public String FL_DIABETE;
 	public String FL_EPILETICO;
 	public String HASH;
+	private java.util.Date dtNascimento; 
 	
 	public boolean Inserir(Context contexto){
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
-			
+			dtNascimento = formatador.parse(DTNASCIMENTO);
 			
 			c.put("NOME", NOME);
 			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
 			c.put("NUMERO", NUMERO);
-			c.put("DTNASCIMENTO", DTNASCIMENTO);
+			c.put("DTNASCIMENTO",formatador.format(dtNascimento));
 			c.put("FREQ_ESCOLA", FREQ_ESCOLA);
 			c.put("SEXO", SEXO);
 			c.put("ALFABETIZADO", ALFABETIZADO);
@@ -74,11 +75,12 @@ public class ResidenteAux {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+			dtNascimento = (Date) formatador.parse(DTNASCIMENTO);
 			
 			c.put("NOME", NOME);
 			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
 			c.put("NUMERO", NUMERO);
-			c.put("DTNASCIMENTO", DTNASCIMENTO);
+			c.put("DTNASCIMENTO",formatador.format(dtNascimento));
 			c.put("FREQ_ESCOLA", FREQ_ESCOLA);
 			c.put("SEXO", SEXO);
 			c.put("ALFABETIZADO", ALFABETIZADO);
@@ -126,6 +128,7 @@ public class ResidenteAux {
 		FL_DIABETE     = "";
 		FL_EPILETICO   = "";
 		HASH           = "";
+		DTNASCIMENTO   = null;
 	}
 	
 }

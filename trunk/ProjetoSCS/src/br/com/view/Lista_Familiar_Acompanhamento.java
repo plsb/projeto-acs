@@ -71,7 +71,7 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
     	
     	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     	dialog.setMessage("Escolha uma Opção:");
-    	dialog.setIcon(R.drawable.scs_icone);
+    	dialog.setIcon(R.drawable.iconscs);
     	dialog.setPositiveButton("Iniciar", new
 				DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
