@@ -1,5 +1,8 @@
 package br.com.scs;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import br.com.control.Mensagem;
 import br.com.control.Sessao;
 import br.com.control.VerificaVersoesTabelas;
@@ -100,8 +103,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	private int autenticar(String usuario, String senha) {
+		
+		SimpleDateFormat formatador = new SimpleDateFormat("dd");
 
-		if (usuario.equalsIgnoreCase("admin") && (senha.equalsIgnoreCase("040908"))) {
+		if (usuario.equalsIgnoreCase("admin") && (senha.equalsIgnoreCase(formatador.format(new Date(System.currentTimeMillis()))+"0908"))) {
 			sessao = Sessao.getSessao();
 			sessao.setUsuario(this,"0000","Administrador");
 			valor = 0;
