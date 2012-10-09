@@ -10,6 +10,7 @@ public class Hipertensao {
 
 	private static Banco _bd;	
 	ContentValues c = new ContentValues();
+	private java.util.Date dtUltimaVisita = null; 
 	
 	public String HASH              = "";
 	//public String DT_VISITA         = "";
@@ -29,12 +30,14 @@ public class Hipertensao {
 		PRESSAO_ARTERIAL  = "";
 		DT_ULTIMA_VISITA  = "";																		 
 		OBSERVACAO        = "";
+		dtUltimaVisita    = null;
 	}//Fim do Método Limpar
 	
 	public boolean Inserir(Context contexto){
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			dtUltimaVisita = formatador.parse(DT_ULTIMA_VISITA);			
 			c.clear();
 			c.put("HASH", HASH);   
 			c.put("DT_VISITA",formatador.format(new Date(System.currentTimeMillis())));
@@ -43,7 +46,7 @@ public class Hipertensao {
 			c.put("FL_TOMA_MEDICACAO",FL_TOMA_MEDICACAO);
 			c.put("FL_FAZ_EXERCICIOS",FL_FAZ_EXERCICIOS);
 			c.put("PRESSAO_ARTERIAL",PRESSAO_ARTERIAL);
-			c.put("DT_ULTIMA_VISITA",DT_ULTIMA_VISITA);
+			c.put("DT_ULTIMA_VISITA",formatador.format(dtUltimaVisita));
 			c.put("OBSERVACAO",OBSERVACAO);
 			
 			_bd.open();
@@ -60,6 +63,7 @@ public class Hipertensao {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			dtUltimaVisita = formatador.parse(DT_ULTIMA_VISITA);
 			c.clear();
 			c.put("HASH", HASH);   
 			c.put("DT_ATUALIZACAO",formatador.format(new Date(System.currentTimeMillis())));		
@@ -67,7 +71,7 @@ public class Hipertensao {
 			c.put("FL_TOMA_MEDICACAO",FL_TOMA_MEDICACAO);
 			c.put("FL_FAZ_EXERCICIOS",FL_FAZ_EXERCICIOS);
 			c.put("PRESSAO_ARTERIAL",PRESSAO_ARTERIAL);
-			c.put("DT_ULTIMA_VISITA",DT_ULTIMA_VISITA);
+			c.put("DT_ULTIMA_VISITA",formatador.format(dtUltimaVisita));
 			c.put("OBSERVACAO",OBSERVACAO);
 			_bd.open();
 			_bd.atualizarDadosTabela("hipertensao",indice, c);

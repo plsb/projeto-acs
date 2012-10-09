@@ -61,8 +61,6 @@ public class Banco{
 																	     "DT_ULTIMA_REGRA text,		"+
 																	     "DT_PROVAVEL_PARTO text,	"+
 																	     "DT_CONSULTA_PUERBIO text,	"+
-																	     "TIPO_VACINA text,		    "+
-																	     "DT_VACINA text,			"+
 																	     "EST_NUTRICIONAL text,		"+
 																	     "MES_GESTACAO integer,		"+
 																	     "DT_PRE_NATAL text,		"+

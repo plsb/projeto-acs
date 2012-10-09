@@ -53,7 +53,7 @@ public class ExportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(6);
+        mprogressDialog.setMax(9);
         
         mprogressDialog.show();
         
@@ -79,6 +79,15 @@ public class ExportarXML extends Activity {
                 		mprogressDialog.incrementProgressBy(1);
                 	}
                 	if (ExportarAcompanhamentoHanseniase() == true){
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	if (ExportarAcompanhamentoDiabete() == true){
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	if (ExportarAcompanhamentoHipertensao() == true){
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	if (ExportarAcompanhamentoTuberculose() == true){
                 		mprogressDialog.incrementProgressBy(1);
                 	}
                 	
@@ -111,12 +120,13 @@ public class ExportarXML extends Activity {
                 //Exibe mensagem apenas informando o fim da execução da thread
                 mhandler.post(new Runnable() {
                     public void run() {
+                    	Toast.makeText(getApplicationContext(), "Exportação Concluída!", Toast.LENGTH_SHORT).show();
                     	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
                     }
                 });            
                  
                 //encerra progress dialog
-                mprogressDialog.dismiss();  
+                mprogressDialog.dismiss();
                 finish();
             }
         }.start();
@@ -363,7 +373,7 @@ public class ExportarXML extends Activity {
 		}
 	}//Fim do Método ExportarAcompanhamentoGestante
 	
-public boolean ExportarAcompanhamentoHanseniase(){
+	public boolean ExportarAcompanhamentoHanseniase(){
 		
 		try{			
 			Cursor csr = null;
@@ -392,7 +402,7 @@ public boolean ExportarAcompanhamentoHanseniase(){
 					HANSENIASE.addContent(TOMA_MEDICACAO.setText(csr.getString(csr.getColumnIndex("TOMA_MEDICACAO")).toString()));
 					HANSENIASE.addContent(AUTO_CUIDADOS.setText(csr.getString(csr.getColumnIndex("AUTO_CUIDADOS")).toString()));
 					HANSENIASE.addContent(COMUNICANTES_EXAMINADOS.setText(csr.getString(csr.getColumnIndex("COMUNICANTES_EXAMINADOS")).toString()));
-					HANSENIASE.addContent(COMUNICANTES_BCG.setText(csr.getString(csr.getColumnIndex("COMUNICANTES_BCG")).toString().substring(0, 1)));										
+					HANSENIASE.addContent(COMUNICANTES_BCG.setText(csr.getString(csr.getColumnIndex("COMUNICANTES_BCG")).toString()));										
 					
 					SCS.addContent(HANSENIASE);
 					
@@ -402,10 +412,142 @@ public boolean ExportarAcompanhamentoHanseniase(){
 			bd.fechaBanco();
 			return true;
 		}catch(Exception e){
-			Log.i("Erro Exportando Acompanhamento de Gestante:", e.getMessage());
+			Log.i("Erro Exportando Acompanhamento de Hanseniase:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAcompanhamentoGestante
+	}//Fim do Método ExportarAcompanhamentoHanseniase
+	
+	public boolean ExportarAcompanhamentoDiabete(){
+		
+		try{			
+			Cursor csr = null;
+			bd.open();
+			csr = bd.consulta("diabete", new String[] {"*"}, null, null, null, null, "_ID", "");
+			csr.moveToFirst();
+			
+			if (csr.getCount()>0){
+				do{	      
+					Element DIABETE         	   = new Element("DIABETE");				
+					Element HASH               	   = new Element("HASH");				
+					Element DT_VISITA   	   	   = new Element("DT_VISITA");
+					Element DT_ATUALIZACAO         = new Element("DT_ATUALIZACAO");
+					Element FL_FAZ_DIETA      	   = new Element("FAZ_DIETA");
+					Element FL_FAZ_EXCERCICIOS     = new Element("FAZ_EXCERCICIOS");
+					Element FL_USA_INSULINA        = new Element("USA_INSULINA");
+					Element FL_USA_HIPOGLICEMIANTE = new Element("USA_HIPOGLICEMIANTE");
+					Element DT_ULTIMA_VISITA       = new Element("DT_ULTIMA_VISITA");					
+					Element OBSERVACAO             = new Element("OBSERVACAO");
+					
+					DIABETE.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
+					DIABETE.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
+					DIABETE.addContent(DT_ATUALIZACAO.setText(csr.getString(csr.getColumnIndex("DT_ATUALIZACAO")).toString()));
+					DIABETE.addContent(FL_FAZ_DIETA.setText(csr.getString(csr.getColumnIndex("FL_FAZ_DIETA")).toString().trim()));
+					DIABETE.addContent(FL_FAZ_EXCERCICIOS.setText(csr.getString(csr.getColumnIndex("FL_FAZ_EXCERCICIOS")).toString().trim()));
+					DIABETE.addContent(FL_USA_INSULINA.setText(csr.getString(csr.getColumnIndex("FL_USA_INSULINA")).toString().trim()));
+					DIABETE.addContent(FL_USA_HIPOGLICEMIANTE.setText(csr.getString(csr.getColumnIndex("FL_USA_HIPOGLICEMIANTE")).toString().trim()));
+					DIABETE.addContent(DT_ULTIMA_VISITA.setText(csr.getString(csr.getColumnIndex("DT_ULTIMA_VISITA")).toString()));
+					DIABETE.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));										
+					
+					SCS.addContent(DIABETE);
+					
+				}while (csr.moveToNext());
+			}//Fim if		
+			csr.close();
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Log.i("Erro Exportando Acompanhamento de Diabete:", e.getMessage());
+			return false;
+		}
+	}//Fim do Método ExportarAcompanhamentoDiabete
+	
+	public boolean ExportarAcompanhamentoHipertensao(){
+		
+		try{			
+			Cursor csr = null;
+			bd.open();
+			csr = bd.consulta("hipertensao", new String[] {"*"}, null, null, null, null, "_ID", "");
+			csr.moveToFirst();
+			
+			if (csr.getCount()>0){
+				do{	      
+					Element HIPERTENSAO       = new Element("HIPERTENSAO");				
+					Element HASH              = new Element("HASH");				
+					Element DT_VISITA   	  = new Element("DT_VISITA");
+					Element DT_ATUALIZACAO    = new Element("DT_ATUALIZACAO");
+					Element FL_FAZ_DIETA      = new Element("FAZ_DIETA");
+					Element FL_TOMA_MEDICACAO = new Element("TOMA_MEDICACAO");
+					Element FL_FAZ_EXERCICIOS = new Element("FAZ_EXERCICIOS");
+					Element PRESSAO_ARTERIAL  = new Element("PRESSAO_ARTERIAL");
+					Element DT_ULTIMA_VISITA  = new Element("DT_ULTIMA_VISITA");					
+					Element OBSERVACAO        = new Element("OBSERVACAO");
+					
+					HIPERTENSAO.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
+					HIPERTENSAO.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
+					HIPERTENSAO.addContent(DT_ATUALIZACAO.setText(csr.getString(csr.getColumnIndex("DT_ATUALIZACAO")).toString()));
+					HIPERTENSAO.addContent(FL_FAZ_DIETA.setText(csr.getString(csr.getColumnIndex("FL_FAZ_DIETA")).toString()));
+					HIPERTENSAO.addContent(FL_TOMA_MEDICACAO.setText(csr.getString(csr.getColumnIndex("FL_TOMA_MEDICACAO")).toString()));
+					HIPERTENSAO.addContent(FL_FAZ_EXERCICIOS.setText(csr.getString(csr.getColumnIndex("FL_FAZ_EXERCICIOS")).toString()));
+					HIPERTENSAO.addContent(PRESSAO_ARTERIAL.setText(csr.getString(csr.getColumnIndex("PRESSAO_ARTERIAL")).toString()));
+					HIPERTENSAO.addContent(DT_ULTIMA_VISITA.setText(csr.getString(csr.getColumnIndex("DT_ULTIMA_VISITA")).toString()));
+					HIPERTENSAO.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));										
+					
+					SCS.addContent(HIPERTENSAO);
+					
+				}while (csr.moveToNext());
+			}//Fim if		
+			csr.close();
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Log.i("Erro Exportando Acompanhamento de Hanseniase:", e.getMessage());
+			return false;
+		}
+	}//Fim do Método ExportarAcompanhamentoHipertensao
+	
+	public boolean ExportarAcompanhamentoTuberculose(){
+		
+		try{			
+			Cursor csr = null;
+			bd.open();
+			csr = bd.consulta("tuberculose", new String[] {"*"}, null, null, null, null, "_ID", "");
+			csr.moveToFirst();
+			
+			if (csr.getCount()>0){
+				do{	      
+					Element TUBERCULOSE        = new Element("TUBERCULOSE");				
+					Element HASH               = new Element("HASH");				
+					Element DT_VISITA   	   = new Element("DT_VISITA");
+					Element DT_ATUALIZACAO     = new Element("DT_ATUALIZACAO");
+					Element FL_MEDIC_DIARIA    = new Element("MEDIC_DIARIA");
+					Element FL_REACOES_IND     = new Element("REACOES_INDESEJADAS");
+					Element FL_EXAME_ESCARRO   = new Element("EXAME_ESCARRO");
+					Element COMUNIC_EXAMINADOS = new Element("COMUNIC_EXAMINADOS");
+					Element MENOR_BCG  		   = new Element("MENOR_BCG");					
+					Element OBSERVACAO         = new Element("OBSERVACAO");
+					
+					TUBERCULOSE.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
+					TUBERCULOSE.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
+					TUBERCULOSE.addContent(DT_ATUALIZACAO.setText(csr.getString(csr.getColumnIndex("DT_ATUALIZACAO")).toString()));
+					TUBERCULOSE.addContent(FL_MEDIC_DIARIA.setText(csr.getString(csr.getColumnIndex("FL_MEDIC_DIARIA")).toString()));
+					TUBERCULOSE.addContent(FL_REACOES_IND.setText(csr.getString(csr.getColumnIndex("FL_REACOES_IND")).toString()));
+					TUBERCULOSE.addContent(FL_EXAME_ESCARRO.setText(csr.getString(csr.getColumnIndex("FL_EXAME_ESCARRO")).toString()));
+					TUBERCULOSE.addContent(COMUNIC_EXAMINADOS.setText(csr.getString(csr.getColumnIndex("COMUNIC_EXAMINADOS")).toString()));
+					TUBERCULOSE.addContent(MENOR_BCG.setText(csr.getString(csr.getColumnIndex("MENOR_BCG")).toString()));
+					TUBERCULOSE.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));										
+					
+					SCS.addContent(TUBERCULOSE);
+					
+				}while (csr.moveToNext());
+			}//Fim if		
+			csr.close();
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Log.i("Erro Exportando Acompanhamento de Tuberculose:", e.getMessage());
+			return false;
+		}
+	}//Fim do Método ExportarAcompanhamentoTuberculose
 	
 	public boolean ExportarAgendamentos(){
 		
