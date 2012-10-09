@@ -1,8 +1,10 @@
 package br.com.view;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import br.com.control.Banco;
 import br.com.control.Mensagem;
@@ -10,6 +12,8 @@ import br.com.control.VacinaAux;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,9 +33,12 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 	
 	private EditText   EdtFamiliar,EdtLote;
 	private Spinner    SpTipoVacina, SpDoseAplicada;
-	private DatePicker DtDataAPlicacao;
+	private EditText   DtDataAPlicacao;
 	private CheckBox   ChkAplicado;	
 	private String 	   Hash = "";
+	
+	private java.util.Date data = null;
+	static final int DATE_DIALOG_ID = 0;
 	
 	public static int _ID = 0;
 	public static int IdadeFamiliar = 0;
@@ -87,8 +94,9 @@ public void InformacoesFamiliar(){
 		EdtLote         = (EditText)   findViewById(R.telavacina.EdtLoteVacina);
 		SpTipoVacina    = (Spinner)    findViewById(R.telavacina.SpTipoVacina);		
 		SpDoseAplicada  = (Spinner)    findViewById(R.telavacina.SpDose);
-		DtDataAPlicacao = (DatePicker) findViewById(R.telavacina.DtDataAplicacao);
+		DtDataAPlicacao = (EditText)   findViewById(R.telavacina.DtDataAplicacao);
 		ChkAplicado     = (CheckBox)   findViewById(R.telavacina.ChkFLAplicada);
+		DtDataAPlicacao.setOnClickListener(this);
 		
 	}//Fim InicializaObjetos
 	
@@ -211,8 +219,10 @@ public void InformacoesFamiliar(){
 		PreencheSpinner(SpDoseAplicada, DoseAplicada);
 	}
 
-	public void onClick(View arg0) {			
-		
+	public void onClick(View v) {			
+		if (v == DtDataAPlicacao){
+			showDialog(DATE_DIALOG_ID);
+		}
 	}//Fim onClick
 	
 	public boolean CamposValidos(){
@@ -235,7 +245,7 @@ public void InformacoesFamiliar(){
 			}
 				
 			va.TP_VACINA   	= SpTipoVacina.getItemAtPosition(SpTipoVacina.getSelectedItemPosition()).toString();
-			va.DT_APLICACAO = String.valueOf(DtDataAPlicacao.getDayOfMonth())+"/"+String.valueOf(DtDataAPlicacao.getMonth()+1)+"/"+String.valueOf(DtDataAPlicacao.getYear());
+			va.DT_APLICACAO = DtDataAPlicacao.getText().toString().trim();
 			va.HASH         = Hash;
 			va.LOTE         = EdtLote.getText().toString();
 			
@@ -334,5 +344,37 @@ public void InformacoesFamiliar(){
 		}
 		return true;
 	}
+	
+	@Override
+    protected Dialog onCreateDialog(int id) {
+        Calendar calendario = Calendar.getInstance();
+         
+        int ano = calendario.get(Calendar.YEAR);
+        int mes = calendario.get(Calendar.MONTH);
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+         
+        switch (id) {
+        case DATE_DIALOG_ID:
+            return new DatePickerDialog(this, mDateSetListener, ano, mes,
+                    dia);
+        }
+        return null;
+    }
+ 
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                int dayOfMonth) {
+           String data1 = String.valueOf(dayOfMonth) + "/"
+                    + String.valueOf(monthOfYear+1) + "/" + String.valueOf(year);
+            SimpleDateFormat formatador =  new SimpleDateFormat("dd/MM/yyyy");
+            try {
+            	 data = formatador.parse(data1);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());;
+			}
+            DtDataAPlicacao.setText(formatador.format(data));
+        }
+    };
 
 }
