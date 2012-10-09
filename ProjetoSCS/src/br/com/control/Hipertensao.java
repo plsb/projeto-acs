@@ -13,7 +13,6 @@ public class Hipertensao {
 	private java.util.Date dtUltimaVisita = null; 
 	
 	public String HASH              = "";
-	//public String DT_VISITA         = "";
 	public String FL_FAZ_DIETA      = "";
 	public String FL_TOMA_MEDICACAO = "";
 	public String FL_FAZ_EXERCICIOS = "";
@@ -23,7 +22,6 @@ public class Hipertensao {
 	
 	public void Limpar(){
 		HASH              = "";
-		//DT_VISITA         = "";
 		FL_FAZ_DIETA      = "";
 		FL_TOMA_MEDICACAO = "";
 		FL_FAZ_EXERCICIOS = "";
