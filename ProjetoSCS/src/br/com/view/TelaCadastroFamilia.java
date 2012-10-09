@@ -484,7 +484,7 @@ public void InsereBD(){
 		if (v == btnSalvar){
 			InsereBD();
 		}
-		if (v == DtNascimento){
+		if (v == DtNascimento){			
 			showDialog(DATE_DIALOG_ID);
 		}
 		

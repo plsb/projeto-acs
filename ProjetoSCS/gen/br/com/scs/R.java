@@ -97,7 +97,7 @@ public final class R {
         public static final int ChHipertensao=0x7f11000e;
         public static final int ChMalaria=0x7f110014;
         public static final int ChTuberculose=0x7f110010;
-        public static final int DpDataNascimento=0x7f110006;
+        public static final int EdtDataNascimento=0x7f110006;
         public static final int EdtNome=0x7f110003;
         public static final int EdtOcupacao=0x7f11000c;
         public static final int RbFeminino=0x7f110009;

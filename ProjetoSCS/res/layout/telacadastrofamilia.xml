@@ -138,17 +138,16 @@
                android:layout_height="wrap_content"
                android:maxLength="10"
                android:layout_weight="2"
-               android:focusableInTouchMode="false"
-               android:focusable="false"
                android:paddingBottom="5dp"
-            />
-   <TextView 
-         android:text="Sexo"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:textStyle="bold"
-         />	
+               android:focusable="false"/>
+
+       <TextView 
+	         android:text="Sexo"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_weight="1"
+	         android:textStyle="bold"
+	         />	
 
     <RadioGroup 
          android:orientation="horizontal"
