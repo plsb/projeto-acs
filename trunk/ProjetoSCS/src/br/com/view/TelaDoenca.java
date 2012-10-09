@@ -72,10 +72,12 @@ public class TelaDoenca extends Activity{
 	/*HIPERTENSAO*/
 	
 	/*GESTANTE*/
-	TextView TxtGDtUltimaRegra, TxtGDtParto, TxtGDtVacina, TxtGEn, TxtGDtPN, TxtGFr, TxtGRG, TxtGDtPuerbio, TxtGEnMes, TxtGObs;
-	DatePicker GDtUltimaRegra, GDtParto, GDtVacina, GDtPuerbio, DtGPreNatal;
-	CheckBox ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao,ChkGNV,ChkGNM,ChkGAB;
-	EditText EdtGEn,EdtMesGestacao, EdtGObs;
+	TextView    TxtGDtUltimaRegra, TxtGDtParto, TxtGDtVacina, TxtGEn, TxtGDtPN, TxtGFr, TxtGRG, TxtGDtPuerbio, TxtGEnMes, TxtGObs;
+	DatePicker  GDtUltimaRegra, GDtParto, GDtVacina, GDtPuerbio, DtGPreNatal;
+	CheckBox    ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao,ChkGNV,ChkGNM,ChkGAB;
+	EditText    EdtGEn,EdtMesGestacao, EdtGObs;
+	RadioGroup  RdgEstadoNutri;
+	RadioButton RbNutrida,RbDesnutrida;
 	/*GESTANTE*/
 	
 
@@ -182,7 +184,7 @@ public class TelaDoenca extends Activity{
 		GDtPuerbio 	  	  = (DatePicker) findViewById(R.teladoenca.DtGDtPuerbio);
 		GDtUltimaRegra	  = (DatePicker) findViewById(R.teladoenca.DtGDataRegra); 
 		DtGPreNatal       = (DatePicker) findViewById(R.teladoenca.DtGPreNatal);
-		EdtGEn            = (EditText)   findViewById(R.teladoenca.EdtGEn);
+		//EdtGEn            = (EditText)   findViewById(R.teladoenca.EdtGEn);
 		EdtGObs           = (EditText)   findViewById(R.teladoenca.EdtGObs);
 		EdtMesGestacao    = (EditText)   findViewById(R.teladoenca.EdtMesGestacao);
 		ChGGestacoes      = (CheckBox)   findViewById(R.teladoenca.ChGGestacoes); 
@@ -196,6 +198,9 @@ public class TelaDoenca extends Activity{
 		ChkGNV			  = (CheckBox)   findViewById(R.teladoenca.ChkGNV);
 		ChkGNM			  = (CheckBox)   findViewById(R.teladoenca.ChkGNM);
 		ChkGAB			  = (CheckBox)   findViewById(R.teladoenca.ChkGAB);
+		RdgEstadoNutri    = (RadioGroup) findViewById(R.teladoenca.RgEstNut);
+		RbNutrida         = (RadioButton)findViewById(R.teladoenca.RbNutrida);
+		RbDesnutrida      = (RadioButton)findViewById(R.teladoenca.RbDesnutrida);
 		
 		if (_editando == true)
 			EditaDados();
@@ -385,7 +390,13 @@ public class TelaDoenca extends Activity{
 							        	   Integer.valueOf(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().substring(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().lastIndexOf("/")))-1, 
 							        	   Integer.valueOf(c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().substring(0, c.getString(c.getColumnIndex("DT_PRE_NATAL")).toString().indexOf("/"))));
 		    		
-		    		EdtGEn.setText(c.getString(c.getColumnIndex("EST_NUTRICIONAL")).toString());
+		    		//Estado Nutricional
+		    		if (c.getString(c.getColumnIndex("EST_NUTRICIONAL")).toString().trim().equals("N"))
+		    			RbNutrida.setChecked(true);
+		    		else
+		    			RbDesnutrida.setChecked(true);
+		    		
+		    		
 		    		EdtGObs.setText(c.getString(c.getColumnIndex("OBSERVACAO")).toString());
 		    		EdtMesGestacao.setText(c.getString(c.getColumnIndex("MES_GESTACAO")).toString());		    		
 		    		
@@ -620,7 +631,9 @@ public class TelaDoenca extends Activity{
 		GDtParto.setVisibility(0);   
 		GDtPuerbio.setVisibility(0);
 		DtGPreNatal.setVisibility(0);
-		EdtGEn.setVisibility(0);
+		RdgEstadoNutri.setVisibility(0);
+		RbNutrida.setVisibility(0);
+		RbDesnutrida.setVisibility(0);
 		EdtMesGestacao.setVisibility(0);
 		ChGGestacoes.setVisibility(0); 
 		ChGAborto.setVisibility(0); 
@@ -690,11 +703,17 @@ public class TelaDoenca extends Activity{
 				g.DT_ULTIMA_REGRA     = String.valueOf(GDtUltimaRegra.getDayOfMonth())+"/"+String.valueOf(GDtUltimaRegra.getMonth()+1)+"/"+String.valueOf(GDtUltimaRegra.getYear());
 				g.DT_PROVAVEL_PARTO   = String.valueOf(GDtParto.getDayOfMonth())+"/"+String.valueOf(GDtParto.getMonth()+1)+"/"+String.valueOf(GDtParto.getYear());			
 				g.DT_PRE_NATAL        = String.valueOf(DtGPreNatal.getDayOfMonth())+"/"+String.valueOf(DtGPreNatal.getMonth()+1)+"/"+String.valueOf(DtGPreNatal.getYear());
-				g.DT_CONSULTA_PUERBIO = String.valueOf(GDtPuerbio.getDayOfMonth())+"/"+String.valueOf(GDtPuerbio.getMonth()+1)+"/"+String.valueOf(GDtPuerbio.getYear());
-				g.EST_NUTRICIONAL     = EdtGEn.getText().toString();
+				g.DT_CONSULTA_PUERBIO = String.valueOf(GDtPuerbio.getDayOfMonth())+"/"+String.valueOf(GDtPuerbio.getMonth()+1)+"/"+String.valueOf(GDtPuerbio.getYear());				
 				g.MES_GESTACAO        = EdtMesGestacao.getText().toString();
 				g.OBSERVACAO          = EdtGObs.getText().toString();
-				g.HASH                = _HASH;		
+				g.HASH                = _HASH;
+				
+				//Estado Nutricional
+				if (RbNutrida.isChecked()){
+					g.EST_NUTRICIONAL = "N";     
+				}else{
+					g.EST_NUTRICIONAL = "D";
+				}
 				
 				//Fatores de Risco
 				if (ChGGestacoes.isChecked())

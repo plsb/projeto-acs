@@ -21,7 +21,6 @@ public class Tuberculose {
 	
 	public void Limpar(){
 		HASH			   = "";
-		//DT_VISITA 		   = "";
 		FL_MEDIC_DIARIA	   = "";
 		FL_REACOES_IND	   = "";
 		FL_EXAME_ESCARRO   = "";

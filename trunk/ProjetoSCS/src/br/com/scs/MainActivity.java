@@ -60,7 +60,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 	
 	public void LembrarMe(String usuario){
-		//VerificaVersaoTabela();
 		Cursor cAux = null;
 		ContentValues c = new ContentValues(); 
 		try{			
@@ -87,7 +86,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		Cursor cAux = null;				 
 		try{
 			_bd.open();
-			//VerificaVersaoTabela();
 			cAux = _bd.consulta("usuariosAux", new String[] { "*" }, null, null, null, null, null, null);
 			cAux.moveToFirst();
 			if (cAux.getCount() > 0){

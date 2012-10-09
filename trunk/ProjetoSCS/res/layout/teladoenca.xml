@@ -775,7 +775,7 @@
 	                
 				    <TextView 
 				        android:id="@+teladoenca/TxtGEn"
-				        android:text="Estado Nutricional:"
+				        android:text=" Estado Nutricional:"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_weight="1"
@@ -795,16 +795,43 @@
 				        android:orientation="horizontal"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
-				        android:layout_marginBottom="5dp"
 				        >
 	                
-				    <EditText 
+				    <!-- <EditText 
 				        android:id="@+teladoenca/EdtGEn"
 				        android:layout_width="130dp"
 				        android:layout_height="wrap_content"
 				        android:hint="N ou D"
 				        android:visibility="invisible"
-				     />
+				     /> -->
+				     
+				     <RadioGroup 
+				         android:orientation="horizontal"
+				         android:layout_width="130dp"
+				         android:layout_height="wrap_content"
+				         android:id="@+teladoenca/RgEstNut"
+				         android:visibility="invisible"
+				         >
+				             
+				         <RadioButton 
+				             android:id="@+teladoenca/RbNutrida"
+				             android:text="N"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             android:visibility="invisible"
+				             />
+				         
+				         <RadioButton 
+				             android:id="@+teladoenca/RbDesnutrida"
+				             android:text="D"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             android:visibility="invisible"
+				             />
+				         
+				     </RadioGroup>  
 				    
 				    <EditText 
 				        android:id="@+teladoenca/EdtMesGestacao"
@@ -1023,7 +1050,7 @@
 				 
 				  <TextView 
 		          android:id="@+teladoenca/TxtGObs" 
-			       android:text="Observações:"
+			       android:text=" Observações:"
 			       android:layout_width="wrap_content"
 			       android:layout_height="wrap_content"
 			       android:textSize="15dp"
