@@ -168,7 +168,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					break;
 				// SE FOR 2 O LOGIN OU SENHA ESTÃO ERRADOS
 				case 2:
-					Toast.makeText(this, "USUÁRIO OU SENHA INCORRETOS", Toast.LENGTH_SHORT).show();
+					Mensagem.exibeMessagem(this, "SCS", "Usuário ou Senha Incorretos");
 				
 				}//Fim switch				
 

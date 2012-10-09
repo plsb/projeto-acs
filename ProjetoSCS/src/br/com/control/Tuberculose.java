@@ -12,7 +12,6 @@ public class Tuberculose {
 	ContentValues c = new ContentValues();
 	
 	public String HASH               = "";
-	//public String DT_VISITA          = "";
 	public String FL_MEDIC_DIARIA    = "";
 	public String FL_REACOES_IND     = "";
 	public String FL_EXAME_ESCARRO   = "";

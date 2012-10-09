@@ -9,6 +9,8 @@ import android.content.Context;
 public class Hanseniase {
 	
 	private static Banco _bd;	
+	private java.util.Date dtUltimaDose, dtUltimaConsulta = null;
+	
 	ContentValues c = new ContentValues();
 	
 	public String HASH = ""; 		
@@ -28,10 +30,13 @@ public class Hanseniase {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			dtUltimaDose     = formatador.parse(DT_ULTIMA_DOSE);
+			dtUltimaConsulta = formatador.parse(DT_ULTIMA_CONSULTA);
+			
 			c.clear();
 			c.put("HASH", HASH); 		
-			c.put("DT_ULTIMA_CONSULTA",DT_ULTIMA_CONSULTA);		
-			c.put("DT_ULTIMA_DOSE",DT_ULTIMA_DOSE);
+			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));		
+			c.put("DT_ULTIMA_DOSE",formatador.format(dtUltimaDose));
 			c.put("TOMA_MEDICACAO",TOMA_MEDICACAO);
 			c.put("AUTO_CUIDADOS",AUTO_CUIDADOS);
 			c.put("COMUNICANTES_EXAMINADOS",COMUNICANTES_EXAMINADOS);	   
@@ -55,10 +60,12 @@ public class Hanseniase {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+			dtUltimaDose     = formatador.parse(DT_ULTIMA_DOSE);
+			dtUltimaConsulta = formatador.parse(DT_ULTIMA_CONSULTA);
 			c.clear();
 			c.put("HASH", HASH); 		
-			c.put("DT_ULTIMA_CONSULTA",DT_ULTIMA_CONSULTA);		
-			c.put("DT_ULTIMA_DOSE",DT_ULTIMA_DOSE);
+			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));		
+			c.put("DT_ULTIMA_DOSE",formatador.format(dtUltimaDose));
 			c.put("TOMA_MEDICACAO",TOMA_MEDICACAO);
 			c.put("AUTO_CUIDADOS",AUTO_CUIDADOS);
 			c.put("COMUNICANTES_EXAMINADOS",COMUNICANTES_EXAMINADOS);	   			
@@ -79,15 +86,16 @@ public class Hanseniase {
     public void Limpar(){
     	HASH 				     = ""; 		
     	DT_ULTIMA_CONSULTA 	     = "";		
-    	DT_ULTIMA_DOSE           = "";	
-    	DT_ULTIMA_DOSE           = "";
+    	DT_ULTIMA_DOSE           = "";	    	
     	TOMA_MEDICACAO 		     = "";
     	AUTO_CUIDADOS 		     = "";	
     	OBS						 = "";
     	COMUNICANTES_EXAMINADOS  = 0;			
     	DT_VISITA 	             = "";		        		
     	COMUNICANTES_BCG 		 = 0;		
-    	NUMERO_COMUNICANTES      = 0;	
+    	NUMERO_COMUNICANTES      = 0;
+    	dtUltimaDose 			 = null; 
+    	dtUltimaConsulta         = null;
  
     }
 }

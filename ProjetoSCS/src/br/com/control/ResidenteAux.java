@@ -75,7 +75,7 @@ public class ResidenteAux {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
-			dtNascimento = (Date) formatador.parse(DTNASCIMENTO);
+			dtNascimento = formatador.parse(DTNASCIMENTO);
 			
 			c.put("NOME", NOME);
 			c.put("ENDERECO", ENDERECO.substring(ENDERECO.indexOf("-")+1));
