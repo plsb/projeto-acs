@@ -132,11 +132,10 @@
             	android:textStyle="bold"
             />
         
-       <DatePicker
-               android:id="@+cadastrofamilia/DpDataNascimento"
+       <EditText
+               android:id="@+cadastrofamilia/EdtDataNascimento"
                android:layout_width="fill_parent"
                android:layout_height="wrap_content"
-               android:inputType="date"
                android:maxLength="10"
                android:layout_weight="2"
                android:paddingBottom="5dp"               

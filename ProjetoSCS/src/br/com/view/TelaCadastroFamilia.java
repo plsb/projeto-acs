@@ -2,8 +2,10 @@ package br.com.view;
 
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import br.com.control.Banco;
 import br.com.control.Mensagem;
@@ -12,6 +14,8 @@ import br.com.control.Sessao;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.FeatureInfo;
@@ -44,15 +48,16 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	public static int hanseniase, hipertensao, diabetes, tuberculose, gestante;
 	
 	public static int ID = 0;	
+	static final int DATE_DIALOG_ID = 0;
+	private java.util.Date data;
 	private String HASH_FAMILIAR = "";
 	Banco bd = null;
     Cursor c = null;
     
 
 	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero;
-	DatePicker  DtNascimento;
 	CheckBox    Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante, Alcolismo, Chagas, Deficiencia, Malaria, Epilepsia;
-	EditText    EdtNome, EdtOcupacao; 
+	EditText    EdtNome, EdtOcupacao, DtNascimento; 
 	RadioGroup  RdSexo;
 	RadioButton RdbMasculino, RdbFeminino;
 	Button      btnVoltar,btnSalvar;
@@ -75,7 +80,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		SpFreqEscola   = (Spinner)    findViewById(R.cadastrofamilia.SpFrequenEsc);
 		SpRua          = (Spinner)    findViewById(R.cadastrofamilia.SpRua);
 		SpNumero 	   = (Spinner)    findViewById(R.cadastrofamilia.SpNumero);
-		DtNascimento   = (DatePicker) findViewById(R.cadastrofamilia.DpDataNascimento);
+		DtNascimento   = (EditText)   findViewById(R.cadastrofamilia.EdtDataNascimento);
 		Hanseniase     = (CheckBox)   findViewById(R.cadastrofamilia.ChHanseniase);
 		Hipertensao    = (CheckBox)   findViewById(R.cadastrofamilia.ChHipertensao);
 		Diabetes       = (CheckBox)   findViewById(R.cadastrofamilia.ChDiabetes);
@@ -95,6 +100,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		btnSalvar      = (Button)     findViewById(R.cadastrofamilia.btnSalvarFamiliar);
 		btnVoltar.setOnClickListener(this);
 		btnSalvar.setOnClickListener(this);
+		DtNascimento.setOnClickListener(this);
 		
 		OpcaoAlfabetizado("");
 		OpcaoFreqEscola("");		
@@ -116,9 +122,10 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 					setOpcoesEnderecos(c.getString(c.getColumnIndex("COD_ENDERECO")).toString()+"-"+
 									   c.getString(c.getColumnIndex("ENDERECO")).toString());
 					setOpcoesNumeros(c.getString(c.getColumnIndex("NUMERO")).toString());
-					DtNascimento.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)), 
-							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
-							Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))));
+					DtNascimento.setText(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString());
+					//DtNascimento.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)), 
+						//	Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
+							//Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))));
 					if (c.getString(c.getColumnIndex("SEXO")).toString().equals("M")){
 						RdbMasculino.setChecked(true);
 						RdbFeminino.setChecked(false);
@@ -337,7 +344,7 @@ public void InsereBD(){
 		r.NOME         = EdtNome.getText().toString();
 		r.ENDERECO     = SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString();
 		r.NUMERO       = SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString();
-		r.DTNASCIMENTO = String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth()+1)+"/"+String.valueOf(DtNascimento.getYear());
+		r.DTNASCIMENTO = DtNascimento.getText().toString().trim();//String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth()+1)+"/"+String.valueOf(DtNascimento.getYear());
 		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString().substring(0, 1);
 		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString().substring(0, 1);
 		r.OCUPACAO     = EdtOcupacao.getText().toString();
@@ -434,6 +441,39 @@ public void InsereBD(){
 		}
 		super.onDestroy();
 	}
+	
+	 @Override
+	    protected Dialog onCreateDialog(int id) {
+	        Calendar calendario = Calendar.getInstance();
+	         
+	        int ano = calendario.get(Calendar.YEAR);
+	        int mes = calendario.get(Calendar.MONTH);
+	        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+	         
+	        switch (id) {
+	        case DATE_DIALOG_ID:
+	            return new DatePickerDialog(this, mDateSetListener, ano, mes,
+	                    dia);
+	        }
+	        return null;
+	    }
+	 
+	 private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+	        public void onDateSet(DatePicker view, int year, int monthOfYear,
+	                int dayOfMonth) {
+	           String data1 = String.valueOf(dayOfMonth) + "/"
+	                    + String.valueOf(monthOfYear+1) + "/" + String.valueOf(year);
+	            SimpleDateFormat formatador =  new SimpleDateFormat("dd/MM/yyyy");
+	            try {
+	            	 data = formatador.parse(data1);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e.getMessage());;
+				}
+	            DtNascimento.setText(formatador.format(data));
+	        }
+	    };
+	 
 
 	public void onClick(View v) {
 		if (v == btnVoltar){
@@ -441,6 +481,9 @@ public void InsereBD(){
 		}
 		if (v == btnSalvar){
 			InsereBD();
+		}
+		if (v == DtNascimento){
+			showDialog(DATE_DIALOG_ID);
 		}
 		
 	}
