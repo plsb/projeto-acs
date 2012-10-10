@@ -31,11 +31,11 @@ import android.widget.Spinner;
 
 public class Acompanhamento_Vacinas extends Activity implements OnClickListener {
 	
-	private EditText   EdtFamiliar,EdtLote;
-	private Spinner    SpTipoVacina, SpDoseAplicada;
-	private EditText   DtDataAPlicacao;
-	private CheckBox   ChkAplicado;	
-	private String 	   Hash = "";
+	private EditText EdtFamiliar,EdtLote;
+	private Spinner  SpTipoVacina, SpDoseAplicada;
+	private EditText DtDataAPlicacao;
+	private CheckBox ChkAplicado;	
+	private String 	 Hash = "";
 	
 	private java.util.Date data = null;
 	static final int DATE_DIALOG_ID = 0;
@@ -69,14 +69,7 @@ public void InformacoesFamiliar(){
 		cAux.moveToFirst();
 		if (cAux.getCount() > 0){
 			EdtFamiliar.setText(cAux.getString(cAux.getColumnIndex("NOME")).toString());
-			Hash = cAux.getString(cAux.getColumnIndex("HASH")).toString();
-			//if (cAux.getString(cAux.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
-			//	FalimiarGestante = true;
-			//}
-			
-			//IdadeFamiliar = CalculaIdade(Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(0, cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))), 
-			//							 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
-			//							 Integer.valueOf(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().substring(cAux.getString(cAux.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)));	
+			Hash = cAux.getString(cAux.getColumnIndex("HASH")).toString();	
 		}//Fim if
 		
 		cAux.close();
