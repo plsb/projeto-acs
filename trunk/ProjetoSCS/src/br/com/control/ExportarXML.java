@@ -53,7 +53,7 @@ public class ExportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(9);
+        mprogressDialog.setMax(10);
         
         mprogressDialog.show();
         
@@ -90,6 +90,10 @@ public class ExportarXML extends Activity {
                 	if (ExportarAcompanhamentoTuberculose() == true){
                 		mprogressDialog.incrementProgressBy(1);
                 	}
+                	if (ApagaAgendamentos() == true){
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	
                 	
                 	/****************** CRIANDO O XML******************/
                 	Document doc = new Document();
@@ -123,8 +127,7 @@ public class ExportarXML extends Activity {
                     	Toast.makeText(getApplicationContext(), "Exportação Concluída!", Toast.LENGTH_SHORT).show();
                     	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
                     }
-                });            
-                 
+                });                                       
                 //encerra progress dialog
                 mprogressDialog.dismiss();
                 finish();
@@ -133,6 +136,18 @@ public class ExportarXML extends Activity {
         
 	}    
 	
+	public boolean ApagaAgendamentos(){
+		try{
+			bd.open();
+			bd.ExecutaSql("delete from agendamento where 1 = 1");
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no método ApagaAgendamento:\n"+e.getMessage());
+			return false;
+		}
+		
+	}
 	
 	public boolean ExportarResidencias(){
 		
@@ -152,7 +167,7 @@ public class ExportarXML extends Activity {
 					Element SEG_TERRIT   	 = new Element("SEGTERRITORIAL");
 					Element AREA 		 	 = new Element("AREA");
 					Element MICROAREA    	 = new Element("MICROAREA");
-					Element COD_FAMILIA  	 = new Element("CODFAMILIA");
+					//Element COD_FAMILIA  	 = new Element("CODFAMILIA");
 					Element DATA_CADASTRO	 = new Element("DATACADASTRO");
 					Element TIPO_CASA    	 = new Element("TIPOCASA");
 					Element DEST_LIXO     	 = new Element("DESTLIXO");
@@ -173,7 +188,7 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(SEG_TERRIT.setText(csr.getString(csr.getColumnIndex("SEG_TERRIT")).toString()));
 					RESIDENCIA.addContent(AREA.setText(csr.getString(csr.getColumnIndex("AREA")).toString()));
 					RESIDENCIA.addContent(MICROAREA.setText(csr.getString(csr.getColumnIndex("MICROAREA")).toString()));
-					RESIDENCIA.addContent(COD_FAMILIA.setText(""));
+					//RESIDENCIA.addContent(COD_FAMILIA.setText(""));
 					RESIDENCIA.addContent(DATA_CADASTRO.setText(csr.getString(csr.getColumnIndex("DATA_CADASTRO")).toString()));
 					RESIDENCIA.addContent(TIPO_CASA.setText(csr.getString(csr.getColumnIndex("TIPO_CASA")).toString()));
 					RESIDENCIA.addContent(TIPO_CASA_OUTRO.setText(csr.getString(csr.getColumnIndex("TIPO_CASA_OUTROS")).toString()));
