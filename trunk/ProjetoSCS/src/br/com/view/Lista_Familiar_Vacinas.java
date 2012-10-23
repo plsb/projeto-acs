@@ -21,9 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TabHost;
 import android.widget.Toast; 
-import android.widget.TabHost.TabSpec;
 
 @SuppressLint("ParserError")
 public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListener {

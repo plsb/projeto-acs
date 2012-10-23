@@ -408,6 +408,7 @@ public class ExportarXML extends Activity {
 					Element AUTO_CUIDADOS   	    = new Element("AUTO_CUIDADOS");
 					Element COMUNICANTES_EXAMINADOS = new Element("COMUNICANTES_EXAMINADOS");					
 					Element COMUNICANTES_BCG        = new Element("COMUNICANTES_BCG");
+					Element OBSERVACAO              = new Element("OBSERVACAO");
 					
 					HANSENIASE.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
 					HANSENIASE.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
@@ -418,6 +419,7 @@ public class ExportarXML extends Activity {
 					HANSENIASE.addContent(AUTO_CUIDADOS.setText(csr.getString(csr.getColumnIndex("AUTO_CUIDADOS")).toString()));
 					HANSENIASE.addContent(COMUNICANTES_EXAMINADOS.setText(csr.getString(csr.getColumnIndex("COMUNICANTES_EXAMINADOS")).toString()));
 					HANSENIASE.addContent(COMUNICANTES_BCG.setText(csr.getString(csr.getColumnIndex("COMUNICANTES_BCG")).toString()));										
+					HANSENIASE.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));
 					
 					SCS.addContent(HANSENIASE);
 					
