@@ -114,7 +114,7 @@
 			    
 			    <EditText 
 			        android:id="@+imovel/EdtTipoCasa"
-			        android:enabled="false"
+			        android:enabled="false"			        
 			        android:layout_width="fill_parent"
 			        android:layout_height="45dp"
 			        android:layout_marginBottom="5dp"
@@ -403,6 +403,75 @@
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 		        >
+	                
+                    <TextView 
+				        android:text=" A família possui plano de saúde?"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                    
+                    <RadioGroup 
+				         android:orientation="horizontal"
+				         android:layout_width="fill_parent"
+				         android:layout_height="wrap_content"
+				         android:id="@+imovel/RgPlanoSaude" >
+				             
+				         <RadioButton 
+				             android:id="@+imovel/RbSim"
+				             android:text="Sim"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				         <RadioButton 
+				             android:id="@+imovel/RbNao"
+				             android:text="Não"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				    </RadioGroup>
+				    
+                    <TextView 
+				        android:text=" Nº de Pessoas Cobertas:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                    
+                    <EditText 
+				        android:id="@+imovel/EdtNumPessoasCobertas"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
+				        android:inputType="number"
+				        android:layout_marginBottom="5dp"
+				        />
+                    
+                    <TextView 
+				        android:text=" Nome do Plano de Saúde:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                    
+                    <EditText 
+				        android:id="@+imovel/EdtNomePlano"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
+				        android:inputType="textCapCharacters"
+				        android:layout_marginBottom="5dp"
+				        />
 		        
 			        <TextView 
 				        android:text=" Em caso de doença procura:"

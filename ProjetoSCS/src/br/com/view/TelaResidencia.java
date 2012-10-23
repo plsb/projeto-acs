@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -30,10 +31,11 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
 	EditText EdtTipoCasa; //TAB2
-    EditText EdtCasoDoenca; //TAB3
+    EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano; //TAB3
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
-    Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3    
+    Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3  
+    RadioButton RbSim, RbNao;
     
     Button btnVoltar, btnSalvar;
     
@@ -67,30 +69,36 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		setContentView(R.layout.telaresidencia);	
 		
 		//SpUF                  = (Spinner)  findViewById(R.imovel.SpUF);
-		SpMunicipio           = (Spinner)  findViewById(R.imovel.SpMunicipio);
-		SpEndereco            = (Spinner)  findViewById(R.imovel.SpEndereco);
-		Edtbairro 		      = (EditText) findViewById(R.imovel.edtBairro);
-		EdtCep			      = (EditText) findViewById(R.imovel.edtCEP);
-		EdtNumero		      = (EditText) findViewById(R.imovel.edtNumero);
-		EdtSegTerritorial     = (EditText) findViewById(R.imovel.edtSegTerritorial);
-		EdtArea			      = (EditText) findViewById(R.imovel.edtArea);
-		EdtMicArea			  = (EditText) findViewById(R.imovel.edtMicroArea);
-		EdtTipoCasa           = (EditText) findViewById(R.imovel.EdtTipoCasa);
-		EdtCasoDoenca		  = (EditText) findViewById(R.imovel.EdtCasoDoente);	
-		SpTipoCasa   	      = (Spinner)  findViewById(R.imovel.SpTipoCasa);
-		SpDestinoLixo    	  = (Spinner)  findViewById(R.imovel.SpDestinoLixo);
-		SpTratamentoAgua 	  = (Spinner)  findViewById(R.imovel.SpTratamentoAgua);
-		SpDestFezesUrina      = (Spinner)  findViewById(R.imovel.SpDestFezesUrina);
-		SpAbastecimentoAgua	  = (Spinner)  findViewById(R.imovel.SpAbastecimentoAgua);	
-		SpCasoDoente 		  = (Spinner)  findViewById(R.imovel.SpCasoDoente);
-	    SpMeiosComunicacao 	  = (Spinner)  findViewById(R.imovel.SpMeioComunicacao);
-	    SpGruposComunitarios  = (Spinner)  findViewById(R.imovel.SpGrupoComunitario);
-	    SpTransporteUtilizado = (Spinner)  findViewById(R.imovel.SpMeioTransporte);	
-	    btnVoltar             = (Button)   findViewById(R.imovel.btnVoltarFamiliar);
-	    btnSalvar             = (Button)   findViewById(R.imovel.btnSalvarFamiliar);
+		SpMunicipio           = (Spinner) 	  findViewById(R.imovel.SpMunicipio);
+		SpEndereco            = (Spinner) 	  findViewById(R.imovel.SpEndereco);
+		Edtbairro 		      = (EditText)	  findViewById(R.imovel.edtBairro);
+		EdtCep			      = (EditText)	  findViewById(R.imovel.edtCEP);
+		EdtNumero		      = (EditText)	  findViewById(R.imovel.edtNumero);
+		EdtSegTerritorial     = (EditText)	  findViewById(R.imovel.edtSegTerritorial);
+		EdtArea			      = (EditText)	  findViewById(R.imovel.edtArea);
+		EdtMicArea			  = (EditText)	  findViewById(R.imovel.edtMicroArea);
+		EdtTipoCasa           = (EditText)	  findViewById(R.imovel.EdtTipoCasa);
+		EdtCasoDoenca		  = (EditText)	  findViewById(R.imovel.EdtCasoDoente);
+		EdtNumPessoas         = (EditText)	  findViewById(R.imovel.EdtNumPessoasCobertas);
+		EdtNomePlano          = (EditText)	  findViewById(R.imovel.EdtNomePlano);
+		SpTipoCasa   	      = (Spinner) 	  findViewById(R.imovel.SpTipoCasa);		
+		SpDestinoLixo    	  = (Spinner) 	  findViewById(R.imovel.SpDestinoLixo);
+		SpTratamentoAgua 	  = (Spinner) 	  findViewById(R.imovel.SpTratamentoAgua);
+		SpDestFezesUrina      = (Spinner) 	  findViewById(R.imovel.SpDestFezesUrina);
+		SpAbastecimentoAgua	  = (Spinner) 	  findViewById(R.imovel.SpAbastecimentoAgua);	
+		SpCasoDoente 		  = (Spinner) 	  findViewById(R.imovel.SpCasoDoente);
+	    SpMeiosComunicacao 	  = (Spinner) 	  findViewById(R.imovel.SpMeioComunicacao);
+	    SpGruposComunitarios  = (Spinner)  	  findViewById(R.imovel.SpGrupoComunitario);
+	    SpTransporteUtilizado = (Spinner)     findViewById(R.imovel.SpMeioTransporte);	
+	    RbSim				  = (RadioButton) findViewById(R.imovel.RbSim);
+	    RbNao				  = (RadioButton) findViewById(R.imovel.RbNao);
+	    btnVoltar             = (Button)      findViewById(R.imovel.btnVoltarFamiliar);
+	    btnSalvar             = (Button)      findViewById(R.imovel.btnSalvarFamiliar);
 	    btnVoltar.setOnClickListener(this);
 	    btnSalvar.setOnClickListener(this);
-		
+		RbSim.setOnClickListener(this);
+		RbNao.setOnClickListener(this);
+	    
 		th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
         TabSpec ts;
@@ -564,17 +572,17 @@ public class TelaResidencia extends Activity implements OnClickListener {
 				
 				if (s == SpTipoCasa){
 					if (SpTipoCasa.getItemAtPosition(posicao).toString().equals("Outro")){						
-						EdtTipoCasa.setEnabled(true); 				
+						EdtTipoCasa.setEnabled(true);						
 					}else{
-						EdtTipoCasa.setEnabled(false); 
+						EdtTipoCasa.setEnabled(false); 						
 					}
 				}
 				
 				if (s == SpCasoDoente){
 					if (SpCasoDoente.getItemAtPosition(posicao).toString().equals("Outro")){						
-						EdtCasoDoenca.setEnabled(true); 				
+						EdtCasoDoenca.setEnabled(true);					
 					}else{
-						EdtCasoDoenca.setEnabled(false); 
+						EdtCasoDoenca.setEnabled(false);					
 					}
 				}
 				
@@ -623,6 +631,14 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		}
 		if (v == btnVoltar){
 			finish();
+		}
+		if (v == RbSim){
+			EdtNumPessoas.setEnabled(true);
+			EdtNomePlano.setEnabled(true);
+		}
+		if (v == RbNao){
+			EdtNumPessoas.setEnabled(false);
+			EdtNomePlano.setEnabled(false);
 		}
 		
 	}
