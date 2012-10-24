@@ -181,6 +181,9 @@ public class Banco{
 																		   "CASO_DOENCA_OUTROS TEXT,	 "+
 																		   "MEIO_COMUNICACAO TEXT,		 "+
 																		   "PART_GRUPOS TEXT,		   	 "+
+																		   "POSSUI_PLANO TEXT,		   	 "+
+																		   "NUM_PESSOAS_COM_PLANO TEXT,  "+
+																		   "NOME_PLANO_SAUDE TEXT,       "+
 																		   "MEIO_TRANSPORTE TEXT);	     "};
 
 		

@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import android.content.ContentValues;
 import android.content.Context;
 import br.com.control.Banco;
-import br.com.view.TelaResidencia;
 
 public class ResidenciaAux {
 	
@@ -35,6 +34,9 @@ public class ResidenciaAux {
 	public String MEIO_TRANSPORTE;
 	public String TIPO_CASA_OUTROS;
 	public String CASO_DOENCA_OUTROS;
+	public String POSSUI_PLANO;
+	public String NUM_COM_PLANO;
+	public String NOME_PLANO;
 	//public String COD_BAIRRO;
 	//public String COD_ENDERECO;
 	
@@ -68,6 +70,9 @@ public class ResidenciaAux {
 			c.put("COD_BAIRRO", BAIRRO.substring(0,BAIRRO.indexOf("-")));
 			c.put("COD_ENDERECO", ENDERECO.substring(0,ENDERECO.indexOf("-")));
 			c.put("DATA_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
+			c.put("POSSUI_PLANO", POSSUI_PLANO);
+			c.put("NUM_PESSOAS_COM_PLANO", NUM_COM_PLANO);
+			c.put("NOME_PLANO_SAUDE", NOME_PLANO);
 			_bd.open();
 			_bd.inserirRegistro("residencia", c);
 			_bd.fechaBanco();
@@ -108,6 +113,9 @@ public class ResidenciaAux {
 			c.put("COD_BAIRRO", BAIRRO.substring(0,BAIRRO.indexOf("-")));
 			c.put("COD_ENDERECO", ENDERECO.substring(0,ENDERECO.indexOf("-")));
 			c.put("DATA_CADASTRO", formatador.format(new Date(System.currentTimeMillis())));
+			c.put("POSSUI_PLANO", POSSUI_PLANO);
+			c.put("NUM_PESSOAS_COM_PLANO", NUM_COM_PLANO);
+			c.put("NOME_PLANO_SAUDE", NOME_PLANO);
 			_bd.open();
 			_bd.atualizarDadosTabela("residencia",indice, c);
 			_bd.fechaBanco();
@@ -140,6 +148,9 @@ public class ResidenciaAux {
 		MEIO_TRANSPORTE    = "";
 		TIPO_CASA_OUTROS   = "";
 		CASO_DOENCA_OUTROS = "";
+		POSSUI_PLANO       = "";
+		NUM_COM_PLANO      = "";
+		NOME_PLANO		   = "";
 		
 	}
 }

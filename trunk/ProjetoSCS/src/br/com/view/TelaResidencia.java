@@ -123,7 +123,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
         ts = th.newTabSpec("tag3");
         ts.setContent(R.imovel.tabOutras);        
         ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
-        setOpcoesSpinnerTab3("","","","");
+        setOpcoesSpinnerTab3("","","","",false,"","");
         PreencheCampos(String.valueOf(ID), 3);
         th.addTab(ts);	
       
@@ -158,7 +158,10 @@ public class TelaResidencia extends Activity implements OnClickListener {
 						setOpcoesSpinnerTab3(c.getString(c.getColumnIndex("CASO_DOENCA")).toString(), 
 										     c.getString(c.getColumnIndex("MEIO_COMUNICACAO")).toString(), 
 										     c.getString(c.getColumnIndex("PART_GRUPOS")).toString(), 
-										     c.getString(c.getColumnIndex("MEIO_TRANSPORTE")).toString());
+										     c.getString(c.getColumnIndex("MEIO_TRANSPORTE")).toString(),
+										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? true : false),
+										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? c.getString(c.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString() : ""),
+										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? c.getString(c.getColumnIndex("NOME_PLANO_SAUDE")).toString() : ""));
 					}
 					
 				}
@@ -306,11 +309,18 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		setOpcoesAbastAgua(pAbastAgua);
 	}
 	
-	private void setOpcoesSpinnerTab3(String pCasoDoente, String pMeiosComunic, String pGrupoComunit,String pTransporteUtilizado){
+	private void setOpcoesSpinnerTab3(String pCasoDoente, String pMeiosComunic, String pGrupoComunit,String pTransporteUtilizado,boolean pTem_plano,String pNum_Com_Plano,String pNome_Plano){
 		setOpcoesCasoDoente(pCasoDoente);
 		setOpcoesMeiosComunicacao(pMeiosComunic);
 		setOpcoesGruposComunitarios(pGrupoComunit);
 		setOpcoesTransporteUtilizado(pTransporteUtilizado);
+		if (pTem_plano == true){
+			RbSim.setChecked(true);
+			EdtNumPessoas.setText(pNum_Com_Plano);
+			EdtNomePlano.setText(pNome_Plano);
+		}else{
+			RbNao.setChecked(true);
+		}
 	}
 	
 	private void setOpcoesEnderecos(String pEnd,String pBairro){
@@ -388,8 +398,10 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			GruposComunitarios.add(pGrupoComunit);
 		}
 		GruposComunitarios.add("Selecione");
-		GruposComunitarios.add("Sim");
-		GruposComunitarios.add("Nao");		
+		GruposComunitarios.add("Cooperativa");
+		GruposComunitarios.add("Grupo Religioso");
+		GruposComunitarios.add("Associacoes");
+		GruposComunitarios.add("Outros");
 		PreencheSpinner(SpGruposComunitarios, GruposComunitarios);
 	}
 	
@@ -508,6 +520,16 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		r.MEIO_TRANSPORTE    = SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString();
 		r.TIPO_CASA_OUTROS   = EdtTipoCasa.getText().toString();
 		r.CASO_DOENCA_OUTROS = EdtCasoDoenca.getText().toString();
+		
+		if (RbSim.isChecked()){
+			r.POSSUI_PLANO  = "S";
+			r.NUM_COM_PLANO = EdtNumPessoas.getText().toString().trim();
+			r.NOME_PLANO    = EdtNomePlano.getText().toString().trim(); 
+		}else{
+			r.POSSUI_PLANO  = "N";
+			r.NUM_COM_PLANO = "";
+			r.NOME_PLANO    = "";
+		}
 		
 		if (this.ID == 0){		
 			if (r.Inserir(TelaResidencia.this)==true){
