@@ -279,6 +279,7 @@ public class ImportarXML extends Activity {
 					c.put("MEIO_COMUNICACAO", residencia.getChildText("meiocomunicacaoResidencia").trim());
 					c.put("PART_GRUPOS", residencia.getChildText("participagrupoResidencia").trim());
 					c.put("MEIO_TRANSPORTE", residencia.getChildText("meiotransporteResidencia").trim());
+					c.put("POSSUI_PLANO", "N");
 										
 					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? ",  new String[] { residencia.getChildText("codigoRuaResidencia").trim(), residencia.getChildText("num_residenciaResidencia").trim() }, null, null, null, null);
 					cResidencia.moveToFirst();						
