@@ -44,8 +44,8 @@ public class ImportarXML extends Activity {
         mprogressDialog.setCancelable(true);
         mprogressDialog.setMessage("Importando Dados...");
  
-        //define o estilo como horizontal que nesse caso signifca que ter· 
-        //barra de progress„o/contagem
+        //define o estilo como horizontal que nesse caso signifca que ter√° 
+        //barra de progress√£o/contagem
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
@@ -84,7 +84,7 @@ public class ImportarXML extends Activity {
                     Log.e("tag", e.getMessage());
                 }
                  
-                //Exibe mensagem apenas informando o fim da execuÁ„o da thread
+                //Exibe mensagem apenas informando o fim da execu√ß√£o da thread
                 mhandler.post(new Runnable() {
                     public void run() {
                     	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
@@ -129,7 +129,7 @@ public class ImportarXML extends Activity {
 		
 		try {			
 			if (!(xml.carregar("scs.xml","usuario") == null)){		
-				//I M P O R T A « √ O   D E   U S U ¡ R I O S
+				//I M P O R T A √á √É O   D E   U S U ÔøΩ R I O S
 				@SuppressWarnings("rawtypes")
 				List<Element> usuarios = xml.carregar("scs.xml","usuario");
 				bd = bd.open();				
@@ -153,23 +153,23 @@ public class ImportarXML extends Activity {
 					}//Fim else
 					cUsuario.close();
 				}	
-				msg = msg + "Usu·rios - SIM\n";				
+				msg = msg + "Usu√°rios - SIM\n";				
 				bd.fechaBanco();
 			} else {
-				msg = msg + "Usu·rios - N√O\n";			
+				msg = msg + "Usu√°rios - N√ÉO\n";			
 			}//Fim else
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Usu√°rios: "+e.getMessage());
 		} catch (IOException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Usu√°rios: "+e.getMessage());
 		} catch (JDOMException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Usu√°rios: "+e.getMessage());
 		}
 		
-	}//Fim do MÈtodo ImportarUsuarios
+	}//Fim do M√©todo ImportarUsuarios
 	
 	public void ImportaBairros(){
-		//I M P O R T A « √ O   D O S   B A I R R O S					
+		//I M P O R T A √á √É O   D O S   B A I R R O S					
 		try {
 			
 			if (!(xml.carregar("scs.xml","bairro") == null)){
@@ -193,7 +193,7 @@ public class ImportarXML extends Activity {
 					msg = msg + "Bairros - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "Bairros - N√O\n";
+					msg = msg + "Bairros - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
 				System.out.println("Erro Importando Bairros: "+e.getMessage());
@@ -202,10 +202,10 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Bairros: "+e.getMessage());
 			}
-	}//Fim do MÈtodo ImportaBairros
+	}//Fim do M√©todo ImportaBairros
 	
 	public void ImportaRuas(){
-		//I M P O R T A « √ O   D O S   L O G R A D O U R O S		
+		//I M P O R T A √á √É O   D O S   L O G R A D O U R O S		
 		try {
 			if (!(xml.carregar("scs.xml","rua") == null)){
 				List<Element> ruas = xml.carregar("scs.xml","rua"); 
@@ -232,7 +232,7 @@ public class ImportarXML extends Activity {
 					msg = msg + "Ruas - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "Ruas - N√O\n";
+					msg = msg + "Ruas - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
 				System.out.println("Erro Importando Ruas: "+e.getMessage());
@@ -241,7 +241,7 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Ruas: "+e.getMessage());				
 			}
-	}//Fim do MÈtodo ImportaRuas	
+	}//Fim do M√©todo ImportaRuas	
 	
 	public void ImportaResidencias(){
 		
@@ -290,20 +290,20 @@ public class ImportarXML extends Activity {
 					}//Fim else
 					cResidencia.close();
 				}	
-				msg = msg + "ResidÍncias - SIM\n";				
+				msg = msg + "Resid√™ncias - SIM\n";				
 				bd.fechaBanco();
 			} else {
-				msg = msg + "ResidÍncias - N√O\n";			
+				msg = msg + "Resid√™ncias - N√ÉO\n";			
 			}//Fim else
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Resid√™ncias: "+e.getMessage());
 		} catch (IOException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Resid√™ncias: "+e.getMessage());
 		} catch (JDOMException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Resid√™ncias: "+e.getMessage());
 		}
 		
-	}//Fim do MÈtodo ResidÍncias
+	}//Fim do M√©todo Resid√™ncias
 	
 	public void ImportaFamiliar(){
 		
@@ -355,21 +355,21 @@ public class ImportarXML extends Activity {
 				msg = msg + "Familiares - SIM\n";				
 				bd.fechaBanco();
 			} else {
-				msg = msg + "Familiares - N√O\n";			
+				msg = msg + "Familiares - N√ÉO\n";			
 			}//Fim else
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Familiares: "+e.getMessage());
 		} catch (IOException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Familiares: "+e.getMessage());
 		} catch (JDOMException e) {
-			System.out.println("Erro Importando Usu·rios: "+e.getMessage());
+			System.out.println("Erro Importando Familiares: "+e.getMessage());
 		}
 		
-	}//Fim do MÈtodo Familiar
+	}//Fim do M√©todo Familiar
 	
 	
 	public void ImportaHan(){
-		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
+		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
 		try {
 			if (!(xml.carregar("scs.xml","hanseniase") == null)){
 				List<Element> Lista_Han = xml.carregar("scs.xml","hanseniase"); 
@@ -397,10 +397,10 @@ public class ImportarXML extends Activity {
 					}//Fim else
 					cHan.close();
 				}//Fim for
-					msg = msg + "HansenÌase - SIM\n";
+					msg = msg + "Hansen√≠ase - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "HansenÌase - N√O\n";
+					msg = msg + "Hansen√≠ase - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
 				System.out.println("Erro Importando Acompanhamento Hanseniase: "+e.getMessage());
@@ -409,11 +409,11 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Acompanhamento Hanseniase: "+e.getMessage());				
 			}
-	}//Fim do MÈtodo Importahan
+	}//Fim do M√©todo Importahan
 	
 	
 	public void ImportaHa(){
-		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S √ O		
+		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S ÔøΩ O		
 		try {
 			if (!(xml.carregar("scs.xml","hipertensao") == null)){
 				List<Element> Lista_Ha = xml.carregar("scs.xml","hipertensao"); 
@@ -439,23 +439,23 @@ public class ImportarXML extends Activity {
 					}//Fim else
 					cHa.close();
 				}//Fim for
-					msg = msg + "Hipertens„o - SIM\n";
+					msg = msg + "Hipertens√£o - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "Hipertens„o - N√O\n";
+					msg = msg + "Hipertens√£o - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
-				System.out.println("Erro Importando Acompanhamento Hipertens„o: "+e.getMessage());
+				System.out.println("Erro Importando Acompanhamento Hipertens√£o: "+e.getMessage());
 			} catch (IOException e) {
-				System.out.println("Erro Importando Acompanhamento Hipertens„o: "+e.getMessage());
+				System.out.println("Erro Importando Acompanhamento Hipertens√£o: "+e.getMessage());
 			} catch (JDOMException e) {
-				System.out.println("Erro Importando Acompanhamento Hipertens„o: "+e.getMessage());				
+				System.out.println("Erro Importando Acompanhamento Hipertens√£o: "+e.getMessage());				
 			}
-	}//Fim do MÈtodo ImportaHa
+	}//Fim do M√©todo ImportaHa
 	
 	
 	public void ImportaDia(){
-		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S √ O		
+		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S √É O		
 		try {
 			if (!(xml.carregar("scs.xml","diabetes") == null)){
 				List<Element> Lista_Ha = xml.carregar("scs.xml","diabetes"); 
@@ -484,7 +484,7 @@ public class ImportarXML extends Activity {
 					msg = msg + "Diabete - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "Diabete - N√O\n";
+					msg = msg + "Diabete - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
 				System.out.println("Erro Importando Acompanhamento Diabete: "+e.getMessage());
@@ -493,11 +493,11 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Acompanhamento Diabete: "+e.getMessage());				
 			}
-	}//Fim do MÈtodo ImportaHa
+	}//Fim do M√©todo ImportaHa
 	
 	
 	public void ImportaGes(){
-		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  G E S T A N T E S	
+		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  G E S T A N T E S	
 		try {
 			if (!(xml.carregar("scs.xml","gestante") == null)){
 				List<Element> Lista_Ges = xml.carregar("scs.xml","gestante"); 
@@ -529,23 +529,23 @@ public class ImportarXML extends Activity {
 					}//Fim else
 					cGes.close();
 				}//Fim for
-					msg = msg + "GestaÁ„o - SIM\n";
+					msg = msg + "Gestantes - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "GestaÁ„o - N√O\n";
+					msg = msg + "Gestantes - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
-				System.out.println("Erro Importando Acompanhamento GestaÁ„o: "+e.getMessage());
+				System.out.println("Erro Importando Acompanhamento Gestantes: "+e.getMessage());
 			} catch (IOException e) {
-				System.out.println("Erro Importando Acompanhamento GestaÁ„o: "+e.getMessage());
+				System.out.println("Erro Importando Acompanhamento Gestantes: "+e.getMessage());
 			} catch (JDOMException e) {
-				System.out.println("Erro Importando Acompanhamento GestaÁ„o: "+e.getMessage());				
+				System.out.println("Erro Importando Acompanhamento Gestantes: "+e.getMessage());				
 			}
-	}//Fim do MÈtodo ImportaGes
+	}//Fim do M√©todo ImportaGes
 
 	
 	public void ImportaTb(){
-		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  T U B E R C U L O S E		
+		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  T U B E R C U L O S E		
 		try {
 			if (!(xml.carregar("scs.xml","tuberculose") == null)){
 				List<Element> Lista_Tb = xml.carregar("scs.xml","tuberculose"); 
@@ -574,7 +574,7 @@ public class ImportarXML extends Activity {
 					msg = msg + "Tuberculose - SIM\n";
 					bd.fechaBanco();
 				} else {
-					msg = msg + "Tuberculose - N√O\n";
+					msg = msg + "Tuberculose - N√ÉO\n";
 				}//Fim else
 			} catch (FileNotFoundException e) {
 				System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
@@ -583,11 +583,11 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());				
 			}
-	}//Fim do MÈtodo ImportaTb
+	}//Fim do M√©todo ImportaTb
 	
 	public void ImportaVacinas(){
 		
-		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  V A C I N A S 	
+		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  V A C I N A S 	
 		try {
 			if (!(xml.carregar("scs.xml","vacinas") == null)){
 				List<Element> Lista_Vacinas = xml.carregar("scs.xml","vacinas"); 
@@ -621,17 +621,17 @@ public class ImportarXML extends Activity {
 					msg = msg + "Vacinas - SIM\n";
 					bd.fechaBanco();
 			} else {
-				msg = msg + "Vacinas - N√O\n";
+				msg = msg + "Vacinas - N√ÉO\n";
 			}//Fim else
 		} catch (FileNotFoundException e) {
-			System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
+			System.out.println("Erro Importando Acompanhamento Vacinas: "+e.getMessage());
 		} catch (IOException e) {
-			System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());
+			System.out.println("Erro Importando Acompanhamento Vacinas: "+e.getMessage());
 		} catch (JDOMException e) {
-			System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());				
+			System.out.println("Erro Importando Acompanhamento Vacinas: "+e.getMessage());				
 		}
 		
-	}//Fim do MÈtodo ImportaVacinas
+	}//Fim do M√©todo ImportaVacinas
 	
 			
 	@Override
