@@ -180,11 +180,14 @@ public class Banco{
 																		   "CASO_DOENCA TEXT,			 "+
 																		   "CASO_DOENCA_OUTROS TEXT,	 "+
 																		   "MEIO_COMUNICACAO TEXT,		 "+
+																		   "MEIO_COMUNICACAO_OUTRO TEXT, "+
 																		   "PART_GRUPOS TEXT,		   	 "+
+																		   "PART_GRUPOS_OUTRO TEXT,      "+
 																		   "POSSUI_PLANO TEXT,		   	 "+
 																		   "NUM_PESSOAS_COM_PLANO TEXT,  "+
 																		   "NOME_PLANO_SAUDE TEXT,       "+
-																		   "MEIO_TRANSPORTE TEXT);	     "};
+																		   "MEIO_TRANSPORTE TEXT,        "+
+																		   "MEIO_TRANSPORTE_OUTRO TEXT); "};
 
 		
 		
@@ -239,7 +242,7 @@ public class Banco{
 					_instDAO.atualizarDadosTabela(_nomeTabelaVersao, _cursor.getInt(0), _valores);
 		
 				} else {
-					//cria uma linha na tabela versao caso não exista com o nome da tabela
+					//cria uma linha na tabela versao caso nï¿½o exista com o nome da tabela
 					ContentValues _valores = new ContentValues();
 					_valores.put(Banco.NOMETABELA, nomeTabela);
 					_valores.put(Banco.VERSAOTABELA, 1);

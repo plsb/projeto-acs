@@ -243,6 +243,9 @@ public final class R {
     }
     public static final class imovel {
         public static final int EdtCasoDoente=0x7f15001b;
+        public static final int EdtGrupoComunitario=0x7f15001f;
+        public static final int EdtMeioComunicacao=0x7f15001d;
+        public static final int EdtMeioTransporte=0x7f150021;
         public static final int EdtNomePlano=0x7f150019;
         public static final int EdtNumPessoasCobertas=0x7f150018;
         public static final int EdtTipoCasa=0x7f150006;
@@ -254,9 +257,9 @@ public final class R {
         public static final int SpDestFezesUrina=0x7f15000a;
         public static final int SpDestinoLixo=0x7f150007;
         public static final int SpEndereco=0x7f15000c;
-        public static final int SpGrupoComunitario=0x7f15001d;
+        public static final int SpGrupoComunitario=0x7f15001e;
         public static final int SpMeioComunicacao=0x7f15001c;
-        public static final int SpMeioTransporte=0x7f15001e;
+        public static final int SpMeioTransporte=0x7f150020;
         public static final int SpMunicipio=0x7f150010;
         public static final int SpTipoCasa=0x7f150005;
         public static final int SpTratamentoAgua=0x7f150009;
