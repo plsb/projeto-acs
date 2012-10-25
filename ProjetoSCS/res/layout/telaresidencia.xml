@@ -524,6 +524,24 @@
 				        android:layout_marginBottom="5dp"
 				        />
 				    
+				    <TextView 
+				        android:text=" Outro-Especificar:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <EditText 
+				        android:id="@+imovel/EdtMeioComunicacao"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
+				        android:inputType="textCapCharacters"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
 				     <TextView 
 				        android:text=" Participa de grupos comunitários:"
 				        android:layout_width="wrap_content"
@@ -541,6 +559,24 @@
 				        />
 				    
 				    <TextView 
+				        android:text=" Outro-Especificar:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <EditText 
+				        android:id="@+imovel/EdtGrupoComunitario"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
+				        android:inputType="textCapCharacters"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
 				        android:text=" Meio de transporte mais utilizado:"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
@@ -553,6 +589,24 @@
 				        android:id="@+imovel/SpMeioTransporte"
 				        android:layout_width="fill_parent"
 				        android:layout_height="45dp"
+				        android:layout_marginBottom="5dp"
+				        />
+				    
+				    <TextView 
+				        android:text=" Outro-Especificar:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <EditText 
+				        android:id="@+imovel/EdtMeioTransporte"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
+				        android:inputType="textCapCharacters"
 				        android:layout_marginBottom="5dp"
 				        />
 			    

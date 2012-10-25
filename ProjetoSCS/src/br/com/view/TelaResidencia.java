@@ -1,6 +1,5 @@
 package br.com.view;
 
-import java.security.spec.MGF1ParameterSpec;
 import java.util.ArrayList;
 
 import br.com.control.Banco;
@@ -31,7 +30,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
 	EditText EdtTipoCasa; //TAB2
-    EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano; //TAB3
+    EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano, EdtMeioComunic, EdtGruposComunit, EdtMeioTransp; //TAB3
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3  
@@ -81,6 +80,9 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		EdtCasoDoenca		  = (EditText)	  findViewById(R.imovel.EdtCasoDoente);
 		EdtNumPessoas         = (EditText)	  findViewById(R.imovel.EdtNumPessoasCobertas);
 		EdtNomePlano          = (EditText)	  findViewById(R.imovel.EdtNomePlano);
+		EdtMeioComunic        = (EditText)	  findViewById(R.imovel.EdtMeioComunicacao);
+		EdtGruposComunit      = (EditText)	  findViewById(R.imovel.EdtGrupoComunitario);
+		EdtMeioTransp         = (EditText)	  findViewById(R.imovel.EdtMeioTransporte); 
 		SpTipoCasa   	      = (Spinner) 	  findViewById(R.imovel.SpTipoCasa);		
 		SpDestinoLixo    	  = (Spinner) 	  findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	  = (Spinner) 	  findViewById(R.imovel.SpTratamentoAgua);
@@ -123,14 +125,14 @@ public class TelaResidencia extends Activity implements OnClickListener {
         ts = th.newTabSpec("tag3");
         ts.setContent(R.imovel.tabOutras);        
         ts.setIndicator("Outros",getResources().getDrawable(R.drawable.outros));
-        setOpcoesSpinnerTab3("","","","",false,"","");
+        setOpcoesSpinnerTab3("","","","",false,"","","","","");
         PreencheCampos(String.valueOf(ID), 3);
         th.addTab(ts);	
       
 		
 	}
 	
-	public void PreencheCampos(String pID,int pTab){
+	public void PreencheCampos(String pID,int pTab){ 
 		try{
 			try{
 				bd = new Banco(this); 
@@ -161,12 +163,15 @@ public class TelaResidencia extends Activity implements OnClickListener {
 										     c.getString(c.getColumnIndex("MEIO_TRANSPORTE")).toString(),
 										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? true : false),
 										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? c.getString(c.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString() : ""),
-										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? c.getString(c.getColumnIndex("NOME_PLANO_SAUDE")).toString() : ""));
-					}
+										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? c.getString(c.getColumnIndex("NOME_PLANO_SAUDE")).toString() : ""),
+										     (c.getString(c.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString()),
+										     (c.getString(c.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString()),
+										     (c.getString(c.getColumnIndex("PART_GRUPOS_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("PART_GRUPOS_OUTRO")).toString()));					
+					} 
 					
 				}
 			}catch(Exception e){
-				Log.i("Erro no m�todo PreencheCampos", e.getMessage());
+				Log.i("Erro no método PreencheCampos", e.getMessage());
 			}
 		}finally{
 			if (c != null){
@@ -309,11 +314,15 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		setOpcoesAbastAgua(pAbastAgua);
 	}
 	
-	private void setOpcoesSpinnerTab3(String pCasoDoente, String pMeiosComunic, String pGrupoComunit,String pTransporteUtilizado,boolean pTem_plano,String pNum_Com_Plano,String pNome_Plano){
+	private void setOpcoesSpinnerTab3(String pCasoDoente, String pMeiosComunic, String pGrupoComunit,String pTransporteUtilizado,
+									  boolean pTem_plano,String pNum_Com_Plano,String pNome_Plano, String pMTransp, String pMComunic, String pGpComunit){
 		setOpcoesCasoDoente(pCasoDoente);
 		setOpcoesMeiosComunicacao(pMeiosComunic);
 		setOpcoesGruposComunitarios(pGrupoComunit);
 		setOpcoesTransporteUtilizado(pTransporteUtilizado);
+		EdtMeioComunic.setText(pMComunic);
+		EdtMeioTransp.setText(pMTransp);
+		EdtGruposComunit.setText(pGpComunit);
 		if (pTem_plano == true){
 			RbSim.setChecked(true);
 			EdtNumPessoas.setText(pNum_Com_Plano);
@@ -401,7 +410,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		GruposComunitarios.add("Cooperativa");
 		GruposComunitarios.add("Grupo Religioso");
 		GruposComunitarios.add("Associacoes");
-		GruposComunitarios.add("Outros");
+		GruposComunitarios.add("Outro");
 		PreencheSpinner(SpGruposComunitarios, GruposComunitarios);
 	}
 	
@@ -418,7 +427,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		TransporteUtilizado.add("Metro");
 		TransporteUtilizado.add("Moto");
 		TransporteUtilizado.add("Bicicleta");
-		TransporteUtilizado.add("Nenhum");		
+		TransporteUtilizado.add("Outro");
 		PreencheSpinner(SpTransporteUtilizado, TransporteUtilizado);
 		
 	}
@@ -500,26 +509,29 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	
 	public void PreparaInsercao(){
 		ResidenciaAux r = new ResidenciaAux();
-		r.ENDERECO		  	 = SpEndereco.getItemAtPosition(SpEndereco.getSelectedItemPosition()).toString();
-		r.NUMERO		  	 = EdtNumero.getText().toString();
-		r.BAIRRO		  	 = Edtbairro.getText().toString();
-		r.CEP			  	 = EdtCep.getText().toString();
-		r.MUNICIPIO		  	 = SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString();
-		r.SEG_TERRIT	  	 = EdtSegTerritorial.getText().toString();
-		r.AREA			  	 = EdtArea.getText().toString();
-		r.MICROAREA		  	 = EdtMicArea.getText().toString();
-		r.COD_FAMILIA	  	 = "";
-		r.TIPO_CASA		  	 = SpTipoCasa.getItemAtPosition(SpTipoCasa.getSelectedItemPosition()).toString();
-		r.DEST_LIXO		  	 = SpDestinoLixo.getItemAtPosition(SpDestinoLixo.getSelectedItemPosition()).toString();
-		r.TRAT_AGUA 	  	 = SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString();
-		r.ABAST_AGUA 	 	 = SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString();
-		r.DEST_FEZES	  	 = SpDestFezesUrina.getItemAtPosition(SpDestFezesUrina.getSelectedItemPosition()).toString();
-		r.CASO_DOENCA	   	 = SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString();
-		r.MEIO_COMUNICACAO   = SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString();
-		r.PART_GRUPOS	     = SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString();
-		r.MEIO_TRANSPORTE    = SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString();
-		r.TIPO_CASA_OUTROS   = EdtTipoCasa.getText().toString();
-		r.CASO_DOENCA_OUTROS = EdtCasoDoenca.getText().toString();
+		r.ENDERECO		  	      = SpEndereco.getItemAtPosition(SpEndereco.getSelectedItemPosition()).toString();
+		r.NUMERO		  	      = EdtNumero.getText().toString();
+		r.BAIRRO		  	      = Edtbairro.getText().toString();
+		r.CEP			  	      = EdtCep.getText().toString();
+		r.MUNICIPIO		  	      = SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString();
+		r.SEG_TERRIT	  	      = EdtSegTerritorial.getText().toString();
+		r.AREA			  	      = EdtArea.getText().toString();
+		r.MICROAREA		  	      = EdtMicArea.getText().toString();
+		r.COD_FAMILIA	  	      = "";
+		r.TIPO_CASA		  	      = SpTipoCasa.getItemAtPosition(SpTipoCasa.getSelectedItemPosition()).toString();
+		r.DEST_LIXO		  	      = SpDestinoLixo.getItemAtPosition(SpDestinoLixo.getSelectedItemPosition()).toString();
+		r.TRAT_AGUA 	  	      = SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString();
+		r.ABAST_AGUA 	 	 	  = SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString();
+		r.DEST_FEZES	  		  = SpDestFezesUrina.getItemAtPosition(SpDestFezesUrina.getSelectedItemPosition()).toString();
+		r.CASO_DOENCA	   		  = SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString();
+		r.MEIO_COMUNICACAO 		  = SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString();
+		r.PART_GRUPOS	   		  = SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString();
+		r.MEIO_TRANSPORTE   	  = SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString();
+		r.TIPO_CASA_OUTROS   	  = EdtTipoCasa.getText().toString();
+		r.CASO_DOENCA_OUTROS 	  = EdtCasoDoenca.getText().toString();
+		r.MEIO_COMUNICACAO_OUTROS = EdtMeioComunic.getText().toString();
+		r.MEIO_TRANSPORTE_OUTROS  = EdtMeioTransp.getText().toString();
+		r.PART_GRUPOS_OUTROS      = EdtGruposComunit.getText().toString();
 		
 		if (RbSim.isChecked()){
 			r.POSSUI_PLANO  = "S";
@@ -605,6 +617,30 @@ public class TelaResidencia extends Activity implements OnClickListener {
 						EdtCasoDoenca.setEnabled(true);					
 					}else{
 						EdtCasoDoenca.setEnabled(false);					
+					}
+				}
+				
+				if (s == SpMeiosComunicacao){
+					if (SpMeiosComunicacao.getItemAtPosition(posicao).toString().equals("Outro")){						
+						EdtMeioComunic.setEnabled(true);					
+					}else{
+						EdtMeioComunic.setEnabled(false);					
+					}
+				}
+				
+				if (s == SpGruposComunitarios){
+					if (SpGruposComunitarios.getItemAtPosition(posicao).toString().equals("Outro")){						
+						EdtGruposComunit.setEnabled(true);					
+					}else{
+						EdtGruposComunit.setEnabled(false);					
+					}
+				}
+				
+				if (s == SpTransporteUtilizado){
+					if (SpTransporteUtilizado.getItemAtPosition(posicao).toString().equals("Outro")){						
+						EdtMeioTransp.setEnabled(true);					
+					}else{
+						EdtMeioTransp.setEnabled(false);					
 					}
 				}
 				

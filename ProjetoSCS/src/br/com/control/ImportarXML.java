@@ -280,6 +280,10 @@ public class ImportarXML extends Activity {
 					c.put("PART_GRUPOS", residencia.getChildText("participagrupoResidencia").trim());
 					c.put("MEIO_TRANSPORTE", residencia.getChildText("meiotransporteResidencia").trim());
 					c.put("POSSUI_PLANO", "N");
+					c.put("NUM_PESSOAS_COM_PLANO", (residencia.getChildText("meiotransporteResidencia").trim().equals("") ? residencia.getChildText("meiotransporteResidencia").trim() : "0"));
+					c.put("MEIO_COMUNICACAO_OUTRO", "");
+					c.put("PART_GRUPOS_OUTRO", "");
+					c.put("MEIO_TRANSPORTE_OUTRO", "");
 										
 					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? ",  new String[] { residencia.getChildText("codigoRuaResidencia").trim(), residencia.getChildText("num_residenciaResidencia").trim() }, null, null, null, null);
 					cResidencia.moveToFirst();						

@@ -48,8 +48,8 @@ public class ExportarXML extends Activity {
         mprogressDialog.setCancelable(true);
         mprogressDialog.setMessage("Importando Dados...");
  
-        //define o estilo como horizontal que nesse caso signifca que terá 
-        //barra de progressão/contagem
+        //define o estilo como horizontal que nesse caso signifca que terï¿½ 
+        //barra de progressï¿½o/contagem
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
@@ -115,16 +115,16 @@ public class ExportarXML extends Activity {
                         e.printStackTrace();  
                     }
             	
-            		/****************** FIM DA CRIAÇÃO DO XML******************/
+            		/****************** FIM DA CRIAï¿½ï¿½O DO XML******************/
             		
                 } catch (Exception e) {
                     Log.e("tag", e.getMessage());
                 }
                  
-                //Exibe mensagem apenas informando o fim da execução da thread
+                //Exibe mensagem apenas informando o fim da execuï¿½ï¿½o da thread
                 mhandler.post(new Runnable() {
                     public void run() {
-                    	Toast.makeText(getApplicationContext(), "Exportação Concluída!", Toast.LENGTH_SHORT).show();
+                    	Toast.makeText(getApplicationContext(), "ExportaÃ§Ã£o ConcluÃ­da!", Toast.LENGTH_SHORT).show();
                     	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
                     }
                 });                                       
@@ -143,7 +143,7 @@ public class ExportarXML extends Activity {
 			bd.fechaBanco();
 			return true;
 		}catch(Exception e){
-			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no método ApagaAgendamento:\n"+e.getMessage());
+			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no mï¿½todo ApagaAgendamento:\n"+e.getMessage());
 			return false;
 		}
 		
@@ -180,6 +180,12 @@ public class ExportarXML extends Activity {
 					Element MEIO_COMUNICACAO = new Element("MEIOCOMUNICACAO");
 					Element PART_GRUPOS		 = new Element("PARTICIPAGRUPO");
 					Element MEIO_TRANSPORTE  = new Element("MEIOTRANSPORTE");
+					Element FL_PLANO_SAUDE   = new Element("FL_PLANO_SAUDE");
+					Element PES_COBERTAS     = new Element("NUM_PESSOAS_COBERTAS");
+					Element NOME_PLANO_SAUDE = new Element("NOME_PLANO_SAUDE");
+					Element MCOMUNIC_OUTROS  = new Element("MEIOCOMUNICACAO_OUTROS");
+					Element MTRANSP_OUTROS   = new Element("MEIOTRANSPORTE_OUTROS");
+					Element PGRUPOS_OUTROS   = new Element("PARTICIPAGRUPO_OUTROS");
 					
 					RESIDENCIA.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					RESIDENCIA.addContent(ENDERECO.setText(csr.getString(csr.getColumnIndex("COD_ENDERECO")).toString()));
@@ -188,7 +194,6 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(SEG_TERRIT.setText(csr.getString(csr.getColumnIndex("SEG_TERRIT")).toString()));
 					RESIDENCIA.addContent(AREA.setText(csr.getString(csr.getColumnIndex("AREA")).toString()));
 					RESIDENCIA.addContent(MICROAREA.setText(csr.getString(csr.getColumnIndex("MICROAREA")).toString()));
-					//RESIDENCIA.addContent(COD_FAMILIA.setText(""));
 					RESIDENCIA.addContent(DATA_CADASTRO.setText(csr.getString(csr.getColumnIndex("DATA_CADASTRO")).toString()));
 					RESIDENCIA.addContent(TIPO_CASA.setText(csr.getString(csr.getColumnIndex("TIPO_CASA")).toString()));
 					RESIDENCIA.addContent(TIPO_CASA_OUTRO.setText(csr.getString(csr.getColumnIndex("TIPO_CASA_OUTROS")).toString()));
@@ -201,6 +206,12 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(MEIO_COMUNICACAO.setText(csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO")).toString()));
 					RESIDENCIA.addContent(PART_GRUPOS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString())); 
 					RESIDENCIA.addContent(MEIO_TRANSPORTE.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString()));
+					RESIDENCIA.addContent(FL_PLANO_SAUDE.setText(csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString()));
+					RESIDENCIA.addContent(PES_COBERTAS.setText(""));
+					RESIDENCIA.addContent(NOME_PLANO_SAUDE.setText("")); 
+					RESIDENCIA.addContent(MCOMUNIC_OUTROS.setText(csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString()));
+					RESIDENCIA.addContent(MTRANSP_OUTROS.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString()));
+					RESIDENCIA.addContent(PGRUPOS_OUTROS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS_OUTRO")).toString()));
 					
 					SCS.addContent(RESIDENCIA);
 					
@@ -210,7 +221,7 @@ public class ExportarXML extends Activity {
 			bd.fechaBanco();
 			return true;
 		}catch(Exception e){
-			Log.i("Erro Exportando Residências:", e.getMessage());
+			Log.i("Erro Exportando ResidÃªncias:", e.getMessage());
 			return false;
 		}
 	}
@@ -281,7 +292,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Familiares:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarFamiliar
+	}//Fim do Mï¿½todo ExportarFamiliar
 	
 	public boolean ExportarVacinas(){
 		
@@ -323,7 +334,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Vacinas:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarVacinas
+	}//Fim do Mï¿½todo ExportarVacinas
 	
 	public boolean ExportarAcompanhamentoGestante(){
 		
@@ -386,7 +397,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Gestante:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAcompanhamentoGestante
+	}//Fim do Mï¿½todo ExportarAcompanhamentoGestante
 	
 	public boolean ExportarAcompanhamentoHanseniase(){
 		
@@ -432,7 +443,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Hanseniase:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAcompanhamentoHanseniase
+	}//Fim do Mï¿½todo ExportarAcompanhamentoHanseniase
 	
 	public boolean ExportarAcompanhamentoDiabete(){
 		
@@ -476,7 +487,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Diabete:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAcompanhamentoDiabete
+	}//Fim do Mï¿½todo ExportarAcompanhamentoDiabete
 	
 	public boolean ExportarAcompanhamentoHipertensao(){
 		
@@ -520,7 +531,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Hanseniase:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAcompanhamentoHipertensao
+	}//Fim do Mï¿½todo ExportarAcompanhamentoHipertensao
 	
 	public boolean ExportarAcompanhamentoTuberculose(){
 		
@@ -564,7 +575,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Tuberculose:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAcompanhamentoTuberculose
+	}//Fim do Mï¿½todo ExportarAcompanhamentoTuberculose
 	
 	public boolean ExportarAgendamentos(){
 		
@@ -600,7 +611,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Agendamentos:", e.getMessage());
 			return false;
 		}
-	}//Fim do Método ExportarAgendamento
+	}//Fim do Mï¿½todo ExportarAgendamento
 	
 
 }
