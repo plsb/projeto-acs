@@ -42,7 +42,7 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
         btnVoltar.setOnClickListener(this);
         
         
-    }//Fim do método Main
+    }//Fim do mï¿½todo Main
     
     @Override
     protected void onResume() {
@@ -71,7 +71,7 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
     	
     	String numero = o.toString();
     	
-    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
+    	numero = numero.substring(numero.indexOf(", NÂº")+4, numero.lastIndexOf(","));
     	
     	System.out.println("ID DA TABELA RESIDENCIA:"+_ID.trim());
     	
@@ -98,7 +98,7 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
 	        	do{	
 	        	  item = new HashMap<String,String>();
 	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("_ID")).toString()+"-"+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
+	        			  			 _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", NÂº "+
 						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
 	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
 	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
@@ -108,7 +108,7 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
         	_cursor.close();
         	_bd.fechaBanco();
         }catch(Exception e){
-        	Toast.makeText(this, "Exceção:" +e.getMessage(), Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "ExceÃ§Ã£o:" +e.getMessage(), Toast.LENGTH_LONG).show();
         }
         
 	    sa = new SimpleAdapter(this, list,R.layout.lista_residencias, new String[] { "line1","line2" }, new int[] {R.id.line_a, R.id.line_b});

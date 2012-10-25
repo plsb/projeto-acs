@@ -73,14 +73,14 @@ public class MainActivity extends Activity implements OnClickListener {
 					_bd.inserirRegistro("usuariosAux", c);
 				}//Fim else
 			}catch(Exception E){
-				Toast.makeText(this, "Erro no método Lembrar-Me "+E.getMessage(), Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Erro no mÃ©todo Lembrar-Me "+E.getMessage(), Toast.LENGTH_SHORT).show();
 			}//Fim Catch
 		}finally{
 			cAux.close();
 			_bd.fechaBanco();
 			c    = null;
 		}//Fim Finally
-	}//Fim Método LembrarMe
+	}//Fim Mï¿½todo LembrarMe
 	
 	public void setUsuarioLembrado(){		
 		Cursor cAux = null;				 
@@ -96,7 +96,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			cAux.close();
 			_bd.fechaBanco();
 		}catch(Exception E){
-			Toast.makeText(this, "Erro no método UsuarioLembrado "+E.getMessage(), Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Erro no mÃ©todo UsuarioLembrado "+E.getMessage(), Toast.LENGTH_LONG).show();
 		}//Fim Catch
 	}
 
@@ -143,7 +143,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			_bd.fechaBanco();
 		}// Fim else		
 		return valor;
-	}//Fim do Método Autenticar
+	}//Fim do Mï¿½todo Autenticar
 
 	public void onClick(View v) {
 		if (v == btnLogin) {
@@ -157,31 +157,31 @@ public class MainActivity extends Activity implements OnClickListener {
 				}
 
 				switch (autenticar(usuario, senha)) {
-				// SE FOR 0 é ADMINISTRADOR
+				// SE FOR 0 ï¿½ ADMINISTRADOR
 				case 0:
 					Intent admOpcoes = new Intent(this, TelaPrincipal.class); 
 					startActivity(admOpcoes);
 					finish();
 					break;
-				// SE FOR 1 é USUARIO NORMAL
+				// SE FOR 1 ï¿½ USUARIO NORMAL
 				case 1:
 					Intent usuOpcoes = new Intent(this, TelaPrincipal.class); 
 					startActivity(usuOpcoes);
 					finish();					
 					break;
-				// SE FOR 2 O LOGIN OU SENHA ESTÃO ERRADOS
+				// SE FOR 2 O LOGIN OU SENHA ESTï¿½O ERRADOS
 				case 2:
-					Mensagem.exibeMessagem(this, "SCS", "Usuário ou Senha Incorretos");
+					Mensagem.exibeMessagem(this, "SCS", "UsuÃ¡rio ou Senha Incorretos");
 				
 				}//Fim switch				
 
 			} catch (Exception e) {
-				Toast.makeText(this, "Erro no método logar!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "Erro no mÃ©todo logar!" + e.getMessage(), Toast.LENGTH_SHORT).show();
 			}//Fim do Catch
 			
 		}//Fim do If
 
-	}//Fim do Método onClick 
+	}//Fim do Mï¿½todo onClick 
 
 	public void onClose() {
 		_bd.fechaBanco();

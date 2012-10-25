@@ -166,7 +166,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 					
 				}
 			}catch(Exception e){
-				Log.i("Erro no método PreencheCampos", e.getMessage());
+				Log.i("Erro no mï¿½todo PreencheCampos", e.getMessage());
 			}
 		}finally{
 			if (c != null){
@@ -176,7 +176,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 				bd.fechaBanco();
 			}
 		}
-	}//Fim do Método PreencheCampos
+	}//Fim do Mï¿½todo PreencheCampos
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,7 +204,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		String msgPendecias = "";
 		
 		if (EdtNumero.getText().toString().length() == 0){
-			EdtNumero.setError("Informe o Número da Casa!");
+			EdtNumero.setError("Informe o NÃºmero da Casa!");
 			retorno = false;
 		}else{
 			retorno = true;
@@ -216,19 +216,19 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			retorno = true;
 		}
 		if (EdtArea.getText().toString().length() == 0){
-			EdtArea.setError("Informe o Código da Área!");
+			EdtArea.setError("Informe o CÃ³digo da Ã¡rea!");
 			retorno = false;
 		}else{
 			retorno = true;
 		}
 		if (EdtMicArea.getText().toString().length() == 0){
-			EdtMicArea.setError("Informe o Código da Área!");
+			EdtMicArea.setError("Informe o CÃ³digo da Microarea!");
 			retorno = false;
 		}else{
 			retorno = true;
 		}
 		if (SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
-			msgPendecias += "-> Selecione o município!\n";
+			msgPendecias += "-> Selecione o municÃ­pio!\n";
 			retorno = false;
 		}else{
 			retorno = true;
@@ -246,13 +246,13 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			retorno = true;
 		}
 		if (SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
-			msgPendecias += "-> Selecione o tipo de abastecimento de água!\n";
+			msgPendecias += "-> Selecione o tipo de abastecimento de Ã¡gua!\n";
 			retorno = false;
 		}else{
 			retorno = true;
 		}		
 		if (SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
-			msgPendecias += "-> Selecione o tipo de tratamento de água!\n";
+			msgPendecias += "-> Selecione o tipo de tratamento de Ã¡gua!\n";
 			retorno = false;
 		}else{
 			retorno = true;
@@ -264,19 +264,19 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			retorno = true;
 		}
 		if (SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
-			msgPendecias += "-> Selecione o que procura em caso de doença!\n";
+			msgPendecias += "-> Selecione o que procura em caso de doenÃ§a!\n";
 			retorno = false;
 		}else{
 			retorno = true;
 		}
 		if (SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
-			msgPendecias += "-> Selecione o meio de comunicação mais utilizado!\n";
+			msgPendecias += "-> Selecione o meio de comunicaÃ§Ã£o mais utilizado!\n";
 			retorno = false;
 		}else{
 			retorno = true;
 		}
 		if (SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
-			msgPendecias += "-> Selecione se participa de grupos comunitários!\n";
+			msgPendecias += "-> Selecione se participa de grupos comunitÃ¡rios!\n";
 			retorno = false;
 		}else{
 			retorno = true;
@@ -289,7 +289,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		}
 		
 		if (msgPendecias.trim().length() > 0){
-			Mensagem.exibeMessagem(this, "Pendências", msgPendecias);
+			Mensagem.exibeMessagem(this, "PendÃªncias", msgPendecias);
 		}
 		
 		return retorno;
@@ -354,7 +354,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 				
 				PreencheSpinner(SpEndereco, Enderecos);
 			}catch(Exception e){
-				Log.i("Método SetOpcoesEndereco", e.getMessage());
+				Log.i("MÃ©todo SetOpcoesEndereco", e.getMessage());
 			}
 		}finally{
 			if (csr != null){
@@ -632,7 +632,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 				Edtbairro.setText(csr.getString(csr.getColumnIndex("COD_RET")).toString().trim()+"-"+csr.getString(csr.getColumnIndex("DESCRICAO")).toString());
 				EdtCep.setText(csr.getString(csr.getColumnIndex("CEP")).toString());
 			}catch(Exception e){
-				Log.i("Método PreencheBairro", e.getMessage());
+				Log.i("MÃ©todo PreencheBairro", e.getMessage());
 			}
 		}finally{
 			if (csr != null){
