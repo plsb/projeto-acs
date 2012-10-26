@@ -22,7 +22,7 @@ import android.widget.SimpleExpandableListAdapter;
 
 public class AcompanhamentosRealizados extends ExpandableListActivity implements OnChildClickListener {
     
-	/*/ D E C L A R A « ’ E S /*/
+	/*/ D E C L A R A ÔøΩ ÔøΩ E S /*/
 	
 	private static final String TITULO = "NAME";
     private static final String SUBTITULO = "IS_EVEN";
@@ -40,7 +40,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	
 	public static int _ID = 0;
 	
-	/*/ F I M  D E C L A R A « ’ E S /*/
+	/*/ F I M  D E C L A R A ÔøΩ ÔøΩ E S /*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,13 +72,13 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         	//System.out.println("ID DO FAMILIAR SELECIONADO: "+String.valueOf(_ID).trim());
         	
         	if ((_cursor.getCount() > 0)){
-        		//Pega o Hash da sessoa que est· sendo entrevistada pelo agente de sa˙de 
+        		//Pega o Hash da sessoa que estÔøΩ sendo entrevistada pelo agente de saÔøΩde 
         		Hash = _cursor.getString(_cursor.getColumnIndex("HASH")).toString().trim();
         		
         		if (_cursor.getString(_cursor.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(TITULO, "HANSENÕASE");
+                    curGroupMap.put(TITULO, "HANSEN√çASE");
                     curGroupMap.put(SUBTITULO, "HAN-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
@@ -109,7 +109,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         		if (_cursor.getString(_cursor.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(TITULO, "HIPERTENS√O");
+                    curGroupMap.put(TITULO, "HIPERTENS√ÉO");
                     curGroupMap.put(SUBTITULO, "HA-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
@@ -139,7 +139,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         		if (_cursor.getString(_cursor.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(TITULO, "GESTA«√O");
+                    curGroupMap.put(TITULO, "GESTA√á√ÉO");
                     curGroupMap.put(SUBTITULO, "GES-Acompanhamento");
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
@@ -262,7 +262,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 			}, 2000);
         	System.out.println(e.getMessage());
         }       
-    }//Fim do MÈtodo ListarDoencas
+    }//Fim do MÔøΩtodo ListarDoencas
     
     
     public boolean onChildClick(ExpandableListView parent,View v,int groupPosition,int childPosition,long id){

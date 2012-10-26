@@ -50,7 +50,7 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
         
         ListarResidentes(true);
         
-    }//Fim do método Main
+    }//Fim do mï¿½todo Main
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,7 +70,7 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
     	System.out.println(_ID);
     	
     	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-    	dialog.setMessage("Escolha uma Opção:");
+    	dialog.setMessage("Escolha uma OpÃ§Ã£o:");
     	dialog.setIcon(R.drawable.iconscs);
     	dialog.setPositiveButton("Iniciar", new
 				DialogInterface.OnClickListener() {
@@ -130,7 +130,7 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
         	_cursor.close();
         	_bd.fechaBanco();
         }catch(Exception e){
-        	Toast.makeText(this, "Exceção:" +e.getMessage(), Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "ExceÃ§Ã£o:" +e.getMessage(), Toast.LENGTH_LONG).show();
         }
         
 	    sa = new SimpleAdapter(this, list,R.layout.lista_residencias, new String[] { "line1","line2" }, new int[] {R.id.line_a, R.id.line_b});
