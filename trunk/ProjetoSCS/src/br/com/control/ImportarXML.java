@@ -515,8 +515,6 @@ public class ImportarXML extends Activity {
 					c.put("DT_ULTIMA_REGRA", Ges.getChildText("dtultregra"));
 					c.put("DT_PROVAVEL_PARTO", Ges.getChildText("dtprovavelparto"));					
 					c.put("DT_CONSULTA_PUERBIO", Ges.getChildText("dtconspuerbio"));
-					c.put("TIPO_VACINA","");
-					c.put("DT_VACINA","");
 					c.put("EST_NUTRICIONAL", Ges.getChildText("estnutricional"));
 					c.put("MES_GESTACAO", Ges.getChildText("mesgestacao"));
 					c.put("DT_PRE_NATAL", Ges.getChildText("dtconsulprenatal"));

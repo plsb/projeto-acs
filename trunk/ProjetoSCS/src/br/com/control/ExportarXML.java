@@ -48,8 +48,6 @@ public class ExportarXML extends Activity {
         mprogressDialog.setCancelable(true);
         mprogressDialog.setMessage("Importando Dados...");
  
-        //define o estilo como horizontal que nesse caso signifca que ter� 
-        //barra de progress�o/contagem
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
@@ -95,7 +93,7 @@ public class ExportarXML extends Activity {
                 	}
                 	
                 	
-                	/****************** CRIANDO O XML******************/
+                	/****************** CRIANDO O XML ******************/
                 	Document doc = new Document();
             		doc.setRootElement(SCS);	
             		
@@ -115,7 +113,7 @@ public class ExportarXML extends Activity {
                         e.printStackTrace();  
                     }
             	
-            		/****************** FIM DA CRIA��O DO XML******************/
+            		/****************** FIM DA CRIAÇÃO DO XML ******************/
             		
                 } catch (Exception e) {
                     Log.e("tag", e.getMessage());
@@ -143,7 +141,7 @@ public class ExportarXML extends Activity {
 			bd.fechaBanco();
 			return true;
 		}catch(Exception e){
-			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no m�todo ApagaAgendamento:\n"+e.getMessage());
+			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no método ApagaAgendamento:\n"+e.getMessage());
 			return false;
 		}
 		
@@ -334,7 +332,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Vacinas:", e.getMessage());
 			return false;
 		}
-	}//Fim do M�todo ExportarVacinas
+	}//Fim do Método ExportarVacinas
 	
 	public boolean ExportarAcompanhamentoGestante(){
 		
@@ -397,7 +395,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Gestante:", e.getMessage());
 			return false;
 		}
-	}//Fim do M�todo ExportarAcompanhamentoGestante
+	}//Fim do Método ExportarAcompanhamentoGestante
 	
 	public boolean ExportarAcompanhamentoHanseniase(){
 		
@@ -531,7 +529,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Acompanhamento de Hanseniase:", e.getMessage());
 			return false;
 		}
-	}//Fim do M�todo ExportarAcompanhamentoHipertensao
+	}//Fim do Método ExportarAcompanhamentoHipertensao
 	
 	public boolean ExportarAcompanhamentoTuberculose(){
 		
