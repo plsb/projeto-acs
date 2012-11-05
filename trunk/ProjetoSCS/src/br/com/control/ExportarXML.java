@@ -113,7 +113,7 @@ public class ExportarXML extends Activity {
                         e.printStackTrace();  
                     }
             	
-            		/****************** FIM DA CRIAÃ‡ÃƒO DO XML ******************/
+            		/****************** FIM DA CRIAÇÃO DO XML ******************/
             		
                 } catch (Exception e) {
                     Log.e("tag", e.getMessage());
@@ -122,7 +122,7 @@ public class ExportarXML extends Activity {
                 //Exibe mensagem apenas informando o fim da execuï¿½ï¿½o da thread
                 mhandler.post(new Runnable() {
                     public void run() {
-                    	Toast.makeText(getApplicationContext(), "ExportaÃ§Ã£o ConcluÃ­da!", Toast.LENGTH_SHORT).show();
+                    	Toast.makeText(getApplicationContext(), "Exportação Concluí­da!", Toast.LENGTH_SHORT).show();
                     	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
                     }
                 });                                       
@@ -141,7 +141,7 @@ public class ExportarXML extends Activity {
 			bd.fechaBanco();
 			return true;
 		}catch(Exception e){
-			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no mÃ©todo ApagaAgendamento:\n"+e.getMessage());
+			Mensagem.exibeMessagem(this, "SCS - ERRO", "Erro no método ApagaAgendamento:\n"+e.getMessage());
 			return false;
 		}
 		
@@ -219,7 +219,7 @@ public class ExportarXML extends Activity {
 			bd.fechaBanco();
 			return true;
 		}catch(Exception e){
-			Log.i("Erro Exportando ResidÃªncias:", e.getMessage());
+			Log.i("Erro Exportando Residências:", e.getMessage());
 			return false;
 		}
 	}

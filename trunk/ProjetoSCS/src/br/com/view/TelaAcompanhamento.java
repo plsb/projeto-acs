@@ -63,11 +63,11 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
     	    	
     	String endereco = o.toString();
     	
-    	endereco = endereco.substring(endereco.indexOf("{line1=")+7, endereco.indexOf(", NÂº"));
+    	endereco = endereco.substring(endereco.indexOf("{line1=")+7, endereco.indexOf(", Nº"));
     	
     	String numero = o.toString();
     	
-    	numero = numero.substring(numero.indexOf(", NÂº")+4, numero.lastIndexOf(","));
+    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
     	
     	Intent i = new Intent(this, Lista_Familiar_Acompanhamento.class);    
     	Lista_Familiar_Acompanhamento.END = endereco;
@@ -92,7 +92,7 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
         	if (_cursor.getCount() > 0){
 	        	do{	
 	        	  item = new HashMap<String,String>();
-	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", NÂº "+
+	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
 						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
 	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
 	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
@@ -102,7 +102,7 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
         	_cursor.close();
         	_bd.fechaBanco();
         }catch(Exception e){
-        	Toast.makeText(this, "ExceÃ§Ã£o:" +e.getMessage(), Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "Exceção:" +e.getMessage(), Toast.LENGTH_LONG).show();
         }
         
 	    sa = new SimpleAdapter(this, list,R.layout.lista_residencias, new String[] { "line1","line2" }, new int[] {R.id.line_a, R.id.line_b});
