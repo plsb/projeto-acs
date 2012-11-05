@@ -78,7 +78,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         		if (_cursor.getString(_cursor.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(TITULO, "HANSEN√çASE");
+                    curGroupMap.put(TITULO, "HANSENÕASE");
                     curGroupMap.put(SUBTITULO, "HAN-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
@@ -109,7 +109,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         		if (_cursor.getString(_cursor.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(TITULO, "HIPERTENS√ÉO");
+                    curGroupMap.put(TITULO, "HIPERTENS√O");
                     curGroupMap.put(SUBTITULO, "HA-Acompanhamento" /*(i % 2 == 0) ? "This group is even" : */);
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();
@@ -139,7 +139,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         		if (_cursor.getString(_cursor.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S")){
         			
         			Map<String, String> curGroupMap = new HashMap<String, String>();
-                    curGroupMap.put(TITULO, "GESTA√á√ÉO");
+                    curGroupMap.put(TITULO, "GESTA«√O");
                     curGroupMap.put(SUBTITULO, "GES-Acompanhamento");
                     groupData.add(curGroupMap);
                     List<Map<String, String>> children = new ArrayList<Map<String, String>>();

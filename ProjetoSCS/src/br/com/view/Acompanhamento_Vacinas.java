@@ -141,7 +141,7 @@ public void InformacoesFamiliar(){
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 			DoseAplicada.add("3");
-			DoseAplicada.add("R-REFORÃ‡O");
+			DoseAplicada.add("R-REFORÇO");
 		}else if ((_Gestante == true)&&(_TipoVacina.equals("INFLUENZA"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("A-DOSE ANUAL");
@@ -154,7 +154,7 @@ public void InformacoesFamiliar(){
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 			DoseAplicada.add("3");
-			DoseAplicada.add("R-REFORÃ‡O");
+			DoseAplicada.add("R-REFORÇO");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VORH")
 				   ||(_TipoVacina.equals("TRIPLICE VIRAL")))){
 			DoseAplicada.clear();
@@ -164,15 +164,15 @@ public void InformacoesFamiliar(){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
-			DoseAplicada.add("R-REFORÃ‡O");
+			DoseAplicada.add("R-REFORÇO");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("FEBRE AMARELA"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
-			DoseAplicada.add("R-REFORÃ‡O");
+			DoseAplicada.add("R-REFORÇO");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("TRIPLICE BACTERIANA"))){
 			DoseAplicada.clear();
-			DoseAplicada.add("1R-REFORÃ‡O");
-			DoseAplicada.add("2R-REFORÃ‡O");
+			DoseAplicada.add("1R-REFORÇO");
+			DoseAplicada.add("2R-REFORÇO");
 		/**************************** A D O L E S C E N T E ******************************/	
 		}else if ((IdadeFamiliar >= 11)&&(IdadeFamiliar <= 19)&&(_TipoVacina.equals("HEPATITE B"))){
 			DoseAplicada.clear();

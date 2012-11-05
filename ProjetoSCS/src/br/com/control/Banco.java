@@ -242,7 +242,7 @@ public class Banco{
 					_instDAO.atualizarDadosTabela(_nomeTabelaVersao, _cursor.getInt(0), _valores);
 		
 				} else {
-					//cria uma linha na tabela versao caso n�o exista com o nome da tabela
+					//cria uma linha na tabela versao caso nao exista com o nome da tabela
 					ContentValues _valores = new ContentValues();
 					_valores.put(Banco.NOMETABELA, nomeTabela);
 					_valores.put(Banco.VERSAOTABELA, 1);
