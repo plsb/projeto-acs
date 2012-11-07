@@ -46,7 +46,7 @@ public class ExportarXML extends Activity {
 		mhandler = new Handler();
 		mprogressDialog = new ProgressDialog(this);
         mprogressDialog.setCancelable(true);
-        mprogressDialog.setMessage("Importando Dados...");
+        mprogressDialog.setMessage("Exportando Dados...");
  
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
@@ -122,7 +122,7 @@ public class ExportarXML extends Activity {
                 //Exibe mensagem apenas informando o fim da execuï¿½ï¿½o da thread
                 mhandler.post(new Runnable() {
                     public void run() {
-                    	Toast.makeText(getApplicationContext(), "Exportação Concluí­da!", Toast.LENGTH_SHORT).show();
+                    	Toast.makeText(getApplicationContext(), "Exportação Concluída!", Toast.LENGTH_SHORT).show();
                     	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
                     }
                 });                                       
@@ -155,7 +155,7 @@ public class ExportarXML extends Activity {
 			csr = bd.consulta("residencia", new String[] {"*"}, null, null, null, null, "_ID", "");
 			csr.moveToFirst();
 			
-			if (csr.getCount()>0){
+			if (csr.getCount()>0){ 
 				do{	      
 					Element RESIDENCIA       = new Element("RESIDENCIAS");				
 					Element ID           	 = new Element("ID");				
@@ -205,11 +205,11 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(PART_GRUPOS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString())); 
 					RESIDENCIA.addContent(MEIO_TRANSPORTE.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString()));
 					RESIDENCIA.addContent(FL_PLANO_SAUDE.setText(csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString()));
-					RESIDENCIA.addContent(PES_COBERTAS.setText(""));
-					RESIDENCIA.addContent(NOME_PLANO_SAUDE.setText("")); 
-					RESIDENCIA.addContent(MCOMUNIC_OUTROS.setText(csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString()));
-					RESIDENCIA.addContent(MTRANSP_OUTROS.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString()));
-					RESIDENCIA.addContent(PGRUPOS_OUTROS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS_OUTRO")).toString()));
+					RESIDENCIA.addContent(PES_COBERTAS.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") ? "" : csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString())));
+					RESIDENCIA.addContent(NOME_PLANO_SAUDE.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") ? "" : csr.getString(csr.getColumnIndex("NOME_PLANO_SAUDE")).toString()))); 
+					RESIDENCIA.addContent(MCOMUNIC_OUTROS.setText((csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO")).toString().trim().equals("Outro") ? csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString() : "" )));
+					RESIDENCIA.addContent(MTRANSP_OUTROS.setText((csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString().trim().equals("Outro") ? csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString() : "" )));
+					RESIDENCIA.addContent(PGRUPOS_OUTROS.setText((csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString().trim().equals("Outro") ? csr.getString(csr.getColumnIndex("PART_GRUPOS_OUTRO")).toString() : "" )));
 					
 					SCS.addContent(RESIDENCIA);
 					

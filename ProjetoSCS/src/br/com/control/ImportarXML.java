@@ -279,18 +279,18 @@ public class ImportarXML extends Activity {
 					c.put("MEIO_COMUNICACAO", residencia.getChildText("meiocomunicacaoResidencia").trim());
 					c.put("PART_GRUPOS", residencia.getChildText("participagrupoResidencia").trim());
 					c.put("MEIO_TRANSPORTE", residencia.getChildText("meiotransporteResidencia").trim());
-					c.put("POSSUI_PLANO", "N");
-					c.put("NUM_PESSOAS_COM_PLANO", (residencia.getChildText("meiotransporteResidencia").trim().equals("") ? residencia.getChildText("meiotransporteResidencia").trim() : "0"));
-					c.put("MEIO_COMUNICACAO_OUTRO", "");
-					c.put("PART_GRUPOS_OUTRO", "");
-					c.put("MEIO_TRANSPORTE_OUTRO", "");
+					c.put("POSSUI_PLANO", ((residencia.getChildText("possuiplanosaude").trim().equals("N") || residencia.getChildText("possuiplanosaude").trim().equals("") || residencia.getChildText("possuiplanosaude").trim().equals("null")) ? "N" : residencia.getChildText("possuiplanosaude").trim()));
+					c.put("NUM_PESSOAS_COM_PLANO", ((residencia.getChildText("possuiplanosaude").trim().equals("N") || residencia.getChildText("possuiplanosaude").trim().equals("") || residencia.getChildText("possuiplanosaude").trim().equals("null")) ? "0": residencia.getChildText("numeropessoascobertasplanosaude").trim()));
+					c.put("MEIO_COMUNICACAO_OUTRO", (residencia.getChildText("meiocomunicacaoResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outromeiocomunicacao").toString() : ""));
+					c.put("PART_GRUPOS_OUTRO", (residencia.getChildText("participagrupoResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outroparticipagrupo").toString() : ""));
+					c.put("MEIO_TRANSPORTE_OUTRO", (residencia.getChildText("meiotransporteResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outromeiotransporte").toString() : ""));
 										
 					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? ",  new String[] { residencia.getChildText("codigoRuaResidencia").trim(), residencia.getChildText("num_residenciaResidencia").trim() }, null, null, null, null);
 					cResidencia.moveToFirst();						
 					if (cResidencia.getCount() > 0){
 						bd.atualizarDadosTabela("residencia",Integer.valueOf(cResidencia.getString(cResidencia.getColumnIndex("_ID")).toString()),c);													
 					}else{								
-						bd.inserirRegistro("residencia", c);							
+						bd.inserirRegistro("residencia", c); 							
 					}//Fim else
 					cResidencia.close();
 				}	
