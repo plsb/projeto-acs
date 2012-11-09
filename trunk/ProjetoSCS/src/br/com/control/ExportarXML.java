@@ -205,8 +205,12 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(PART_GRUPOS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString())); 
 					RESIDENCIA.addContent(MEIO_TRANSPORTE.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString()));
 					RESIDENCIA.addContent(FL_PLANO_SAUDE.setText(csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString()));
-					RESIDENCIA.addContent(PES_COBERTAS.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") ? "" : csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString())));
-					RESIDENCIA.addContent(NOME_PLANO_SAUDE.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") ? "" : csr.getString(csr.getColumnIndex("NOME_PLANO_SAUDE")).toString()))); 
+					RESIDENCIA.addContent(PES_COBERTAS.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") || 
+																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("null") ||
+																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("") ? "" : csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString())));
+					RESIDENCIA.addContent(NOME_PLANO_SAUDE.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") || 
+																	csr.getString(csr.getColumnIndex("NOME_PLANO_SAUDE")).toString().trim().equals("null") ||
+																	csr.getString(csr.getColumnIndex("NOME_PLANO_SAUDE")).toString().trim().equals("") ? "" : csr.getString(csr.getColumnIndex("NOME_PLANO_SAUDE")).toString()))); 
 					RESIDENCIA.addContent(MCOMUNIC_OUTROS.setText((csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO")).toString().trim().equals("Outro") ? csr.getString(csr.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString() : "" )));
 					RESIDENCIA.addContent(MTRANSP_OUTROS.setText((csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString().trim().equals("Outro") ? csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString() : "" )));
 					RESIDENCIA.addContent(PGRUPOS_OUTROS.setText((csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString().trim().equals("Outro") ? csr.getString(csr.getColumnIndex("PART_GRUPOS_OUTRO")).toString() : "" )));

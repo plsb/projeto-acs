@@ -59,7 +59,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 
 	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero;
 	CheckBox    Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante, Alcolismo, Chagas, Deficiencia, Malaria, Epilepsia;
-	EditText    EdtNome, EdtOcupacao, DtNascimento; 
+	EditText    EdtNome, EdtOcupacao, DtNascimento, EdtNomePai, EdtNomeMae; 
 	RadioGroup  RdSexo;
 	RadioButton RdbMasculino, RdbFeminino;
 	Button      btnVoltar,btnSalvar;
@@ -95,6 +95,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		Epilepsia      = (CheckBox)   findViewById(R.cadastrofamilia.ChEpilepsia);
 		EdtNome        = (EditText)   findViewById(R.cadastrofamilia.EdtNome);
 		EdtOcupacao    = (EditText)   findViewById(R.cadastrofamilia.EdtOcupacao);
+		EdtNomeMae     = (EditText)   findViewById(R.cadastrofamilia.EdtNomeMae);
+		EdtNomePai     = (EditText)   findViewById(R.cadastrofamilia.EdtNomePai);
 		RdSexo         = (RadioGroup) findViewById(R.cadastrofamilia.RgSexo);
 		RdbMasculino   = (RadioButton)findViewById(R.cadastrofamilia.RbMasculino);
 		RdbFeminino    = (RadioButton)findViewById(R.cadastrofamilia.RbFeminino);
@@ -146,6 +148,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 						OpcaoFreqEscola("Nao");
 					}
 					EdtOcupacao.setText(c.getString(c.getColumnIndex("OCUPACAO")).toString());
+					EdtNomeMae.setText(c.getString(c.getColumnIndex("NOME_MAE")).toString());
+					EdtNomePai.setText(c.getString(c.getColumnIndex("NOME_PAI")).toString());
 					
 					if (c.getString(c.getColumnIndex("FL_HANSENIASE")).toString().equals("S")){
 						Hanseniase.setChecked(true);
@@ -350,6 +354,9 @@ public void InsereBD(){
 		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString().substring(0, 1);
 		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString().substring(0, 1);
 		r.OCUPACAO     = EdtOcupacao.getText().toString();
+		r.NOME_MAE     = EdtNomeMae.getText().toString();
+		r.NOME_PAI     = EdtNomePai.getText().toString();
+		
 		if (Hanseniase.isChecked())
 			r.FL_HANSENIASE = "S";
 		else

@@ -160,27 +160,27 @@ public class CartaoCrianca extends Activity {
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose2VORHGV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA 10"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose1PNMCA.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA 10"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose2PNMCA.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA 10"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("3"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDose3PNMCA.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA 10"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
+					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R")) 
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDoseRPNMCA.setChecked(true);
 				}
