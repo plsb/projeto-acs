@@ -156,6 +156,8 @@ public class Banco{
 																		   "FL_ATIVO TEXT,		   		  "+
 																		   "FL_VIVO TEXT,		   		  "+
 																		   "HASH TEXT,			   		  "+
+																		   "NOME_PAI TEXT,		   		  "+
+																		   "NOME_MAE TEXT,		   		  "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   

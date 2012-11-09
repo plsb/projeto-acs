@@ -87,19 +87,21 @@ public final class R {
     public static final class attr {
     }
     public static final class cadastrofamilia {
-        public static final int ChAlcolismo=0x7f110011;
-        public static final int ChChagas=0x7f110012;
-        public static final int ChDeficiencia=0x7f110013;
-        public static final int ChDiabetes=0x7f110015;
-        public static final int ChEpilepsia=0x7f110016;
-        public static final int ChGestante=0x7f11000f;
-        public static final int ChHanseniase=0x7f11000d;
-        public static final int ChHipertensao=0x7f11000e;
-        public static final int ChMalaria=0x7f110014;
-        public static final int ChTuberculose=0x7f110010;
+        public static final int ChAlcolismo=0x7f110013;
+        public static final int ChChagas=0x7f110014;
+        public static final int ChDeficiencia=0x7f110015;
+        public static final int ChDiabetes=0x7f110017;
+        public static final int ChEpilepsia=0x7f110018;
+        public static final int ChGestante=0x7f110011;
+        public static final int ChHanseniase=0x7f11000f;
+        public static final int ChHipertensao=0x7f110010;
+        public static final int ChMalaria=0x7f110016;
+        public static final int ChTuberculose=0x7f110012;
         public static final int EdtDataNascimento=0x7f110006;
         public static final int EdtNome=0x7f110003;
-        public static final int EdtOcupacao=0x7f11000c;
+        public static final int EdtNomeMae=0x7f11000c;
+        public static final int EdtNomePai=0x7f11000d;
+        public static final int EdtOcupacao=0x7f11000e;
         public static final int RbFeminino=0x7f110009;
         public static final int RbMasculino=0x7f110008;
         public static final int RgSexo=0x7f110007;

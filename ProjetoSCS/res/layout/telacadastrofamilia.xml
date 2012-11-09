@@ -222,6 +222,40 @@
      	</LinearLayout>
      	
     <TextView 
+        android:text="Nome da Mãe"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        />
+    
+    <EditText 
+        android:id="@+cadastrofamilia/EdtNomeMae"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Digite Aqui o Nome da Mãe"
+        android:inputType="textCapCharacters"
+        /> 	
+        
+    <TextView 
+        android:text="Nome do Pai"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        />
+    
+    <EditText 
+        android:id="@+cadastrofamilia/EdtNomePai"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Digite Aqui o Nome do Pai"
+        android:inputType="textCapCharacters"
+        />
+     	
+    <TextView 
         android:text="Ocupação"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

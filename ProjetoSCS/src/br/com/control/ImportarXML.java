@@ -345,6 +345,8 @@ public class ImportarXML extends Activity {
 					c.put("FL_EPILETICO", familiar.getChildText("epilepsiaFamiliar"));			
 					c.put("COD_ENDERECO", familiar.getChildText("codigoRuaFamiliar"));
 					c.put("HASH", familiar.getChildText("idMD5Familiar").trim());
+					c.put("NOME_PAI", "");
+					c.put("NOME_MAE", "");
 					c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 										
 					cFamiliar = bd.consulta("residente", new String[] { "_ID" }, "HASH = ? ",  new String[] { familiar.getChildText("idMD5Familiar").trim() }, null, null, null, null);
@@ -417,7 +419,7 @@ public class ImportarXML extends Activity {
 	
 	
 	public void ImportaHa(){
-		//I M P O R T A Ã‡ Ãƒ O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S ï¿½ O		
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S ï¿½ O		
 		try {
 			if (!(xml.carregar("scs.xml","hipertensao") == null)){
 				List<Element> Lista_Ha = xml.carregar("scs.xml","hipertensao"); 
