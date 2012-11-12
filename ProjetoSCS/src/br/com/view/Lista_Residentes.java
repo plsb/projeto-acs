@@ -84,7 +84,7 @@ Banco _bd = new Banco(this);
         	if (!usaFiltro){
         		_cursor = _bd.consulta("residente", new String[] { "*" },null,null,null,null,"_ID",null);  
         	}else{
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },"nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 

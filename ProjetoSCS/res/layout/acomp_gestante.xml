@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+>	
+	
+   			  <LinearLayout
+                android:id="@+acompanhamentogestante/tabGestante"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+				    
+                   
+               <LinearLayout 
+			        android:paddingTop="10dp"
+			        android:orientation="vertical"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+		        >
+	                
+                <TextView
+                        android:id="@+acompanhamentogestante/TxtGDtUltimaRegra"
+				        android:text=" Data da Ultima Regra:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <EditText 
+				        android:id="@+acompanhamentogestante/DtUltimaRegra"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:focusable="false"
+				        />
+				    
+				 <TextView 
+				        android:id="@+acompanhamentogestante/TxtGParto"
+				        android:text=" Data Provavel do Parto:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+			
+				        />
+				    
+				    <EditText 
+				        android:id="@+acompanhamentogestante/DtProvavelParto"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:focusable="false"
+				        />
+				  				    
+				    <LinearLayout 
+				        android:orientation="horizontal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        >
+	                
+				    <TextView 
+				        android:id="@+acompanhamentogestante/TxtGEn"
+				        android:text=" Estado Nutricional:"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        />
+				    <TextView 
+				        android:id="@+acompanhamentogestante/TxtGEnMes"
+				        android:text="Mês Gestação:"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        />
+				    </LinearLayout>
+				    
+				    <LinearLayout 
+				        android:orientation="horizontal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        >
+				     
+				     <RadioGroup 
+				         android:orientation="horizontal"
+				         android:layout_width="130dp"
+				         android:layout_height="wrap_content"
+				         android:id="@+acompanhamentogestante/RgEstNut"
+				         >
+				             
+				         <RadioButton 
+				             android:id="@+acompanhamentogestante/RbNutrida"
+				             android:text="N"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				         <RadioButton 
+				             android:id="@+acompanhamentogestante/RbDesnutrida"
+				             android:text="D"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				     </RadioGroup>  
+				    
+				    <Spinner
+				        android:id="@+acompanhamentogestante/SpMesGestacao"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="25dp"
+				         />
+
+				    </LinearLayout>
+
+				      <TextView 
+				        android:id="@+acompanhamentogestante/TxtGPreNatal"
+				        android:text=" Data da Consulta de Pre Natal:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        />
+				     
+				      <EditText 
+				        android:id="@+acompanhamentogestante/DtConsultaPreNatal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:focusable="false"
+				        />
+				      
+				       <TextView 
+				        android:id="@+acompanhamentogestante/TxtGFr"
+				        android:text=" Fatores de Risco:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+		
+				        />
+				       
+				   		<LinearLayout 
+	        				android:orientation="horizontal"
+	        				android:layout_width="fill_parent"
+	        				android:layout_height="wrap_content"
+	        				>
+     	    
+	        				<CheckBox 
+	           					android:id="@+acompanhamentogestante/ChGGestacoes"
+	            				android:text="6 ou mais gestações"
+	            				android:layout_width="fill_parent"
+	            				android:layout_height="wrap_content"
+	            				android:layout_weight="1"
+	      
+	            			/>
+	        				<CheckBox 
+	          				  	android:id="@+acompanhamentogestante/ChGAborto"
+	            			 	android:text="Natimorto/Aborto"
+	            				android:layout_width="fill_parent"
+	            				android:layout_height="wrap_content"
+	           					android:layout_weight="1"
+	       
+	            			/>
+        
+    			      </LinearLayout>
+    			     
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+acompanhamentogestante/ChGIdade36"
+            				android:text="36 anos ou +"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+            	
+            			/>
+        				<CheckBox 
+          				  	android:id="@+acompanhamentogestante/ChGIdade20"
+            			 	android:text="- de 20 anos"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+          
+            			/>
+        
+    			     </LinearLayout>
+    			     
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+acompanhamentogestante/ChGSangue"
+            				android:text="Sangramento"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+            	
+            			/>
+        				<CheckBox 
+          				  	android:id="@+acompanhamentogestante/ChGEdema"
+            			 	android:text="Edema"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+           
+            			/>
+        
+    			     </LinearLayout>
+    			     
+				   <LinearLayout 
+        				android:orientation="horizontal"
+        				android:layout_width="fill_parent"
+        				android:layout_height="wrap_content"
+        				>
+     	    
+        				<CheckBox 
+           					android:id="@+acompanhamentogestante/ChGDiabetes"
+            				android:text="Diabetes"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+            				android:layout_weight="1"
+    
+            			/>
+        				<CheckBox 
+          				  	android:id="@+acompanhamentogestante/ChGPressao"
+            			 	android:text="Pressão Alta"
+            				android:layout_width="fill_parent"
+            				android:layout_height="wrap_content"
+           					android:layout_weight="1"
+      
+            			/>
+        
+    			     </LinearLayout>
+				      
+				 <TextView
+				     	android:id="@+acompanhamentogestante/TxtGRga" 
+				        android:text=" Resultado da Gestacão Atual:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+			
+				        /> 
+				        
+				 <LinearLayout 
+				     android:orientation="horizontal"
+				     android:layout_width="fill_parent"
+				     android:layout_height="wrap_content"
+				     >
+        				
+				    <CheckBox 
+				        android:id="@+acompanhamentogestante/ChkGNV"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="NV"
+				        />
+				    
+				    <CheckBox 
+				        android:id="@+acompanhamentogestante/ChkGNM"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="NM"
+				        /> 
+				        
+				    <CheckBox 
+				        android:id="@+acompanhamentogestante/ChkGAB"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="AB"
+				        /> 
+				     
+				 </LinearLayout>
+				       
+				<!--  <TextView
+				     	android:id="@+acompanhamentogestante/TxtGDtPuerbio" 
+				        android:text=" Data da Consulta de Puerbio:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+		
+				        /> 
+				        
+				 <EditText 
+				        android:id="@+acompanhamentogestante/DtProvavelParto"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:focusable="false"
+				        />  -->
+				 
+				  <TextView 
+		          android:id="@+acompanhamentogestante/TxtGObs" 
+			       android:text=" Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+		          />
+		      
+		      <EditText
+		           android:id="@+acompanhamentogestante/EdtGObs"
+				   android:layout_width="match_parent"
+		           android:layout_height="wrap_content"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="textMultiLine"
+		          />
+
+                </LinearLayout>
+             
+               </LinearLayout>
+    
+</ScrollView>

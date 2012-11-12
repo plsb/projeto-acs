@@ -14,6 +14,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -23,7 +26,7 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-public class TelaDoenca extends Activity{
+public class TelaDoenca extends Activity implements OnClickListener{
 	
 	public static int COD_FAMILAR = 0;	
 	
@@ -38,6 +41,8 @@ public class TelaDoenca extends Activity{
 	public static boolean _Tuberculose = false;
 	
 	public static String _HASH = "";
+	
+	Button btnVoltar, btnSalvar;
 	
 	 /*HANSENIASE*/
 	TextView datavisita, medicacaodiaria, ultimadose, cuidados, comunicantes, bcg, TxtHNComunicantes, TxtHDtUltimaConsulta; //Hanseniase
@@ -86,6 +91,10 @@ public class TelaDoenca extends Activity{
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.teladoenca);
 		
+		btnVoltar            = (Button)      findViewById(R.teladoenca.btnVoltar);
+		btnVoltar.setOnClickListener(this);
+		btnSalvar            = (Button)      findViewById(R.teladoenca.btnSalvar);
+		btnSalvar.setOnClickListener(this);
 		//Componentes Hanseniase
 		medicacaodiaria      = (TextView)    findViewById(R.teladoenca.TxtHMedicacaoDiaria);
 		ultimadose           = (TextView)    findViewById(R.teladoenca.TxtHDataUltimaDose);
@@ -993,5 +1002,14 @@ public class TelaDoenca extends Activity{
 				finish();
 			}
 		}, 2000);
+	}
+
+	public void onClick(View v) {
+		if (v == btnVoltar){
+			finish();
+		} else if (v == btnSalvar) {
+			Inserir();
+		}
+		
 	}
 }
