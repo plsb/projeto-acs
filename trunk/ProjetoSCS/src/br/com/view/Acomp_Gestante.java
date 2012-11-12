@@ -56,6 +56,9 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		
 		if (DtAcompanhamento != null) {
 			PreencheCampos();
+		} else {
+			setMesGestacao("");
+			setIdTransacao(0);
 		}
 		
 	}

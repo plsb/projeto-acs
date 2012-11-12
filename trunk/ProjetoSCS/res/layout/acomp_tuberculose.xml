@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+>	
+	<LinearLayout
+    	android:id="@+acompanhamentotuberculose/tabTuberculose"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent" >
+
+        <LinearLayout 
+			android:paddingTop="10dp"
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" >
+		        			      
+				    
+				    <TextView
+				        android:id="@+acompanhamentotuberculose/TxtTMedicacaoDiaria" 
+				        android:text=" Toma Medicação Diaria:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
+					/>
+				    
+				    <RadioGroup
+				        android:id="@+acompanhamentotuberculose/RgTMedicacaoDiaria" 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp"
+				    >
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+acompanhamentotuberculose/RbMedicacaoDiariaSim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content"
+			        	android:layout_weight="1"
+			     	/>
+	                  
+	                <RadioButton 
+			         	android:id="@+acompanhamentotuberculose/RbMedicacaoDiariaNao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content"
+			        	android:layout_weight="1"
+			     	/>
+	                
+				</RadioGroup>	
+	                 
+				    
+				     <TextView
+				        android:id="@+acompanhamentotuberculose/TxtTReacoesIndesejadas" 
+				        android:text=" Reações Indesejaveis:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        android:textStyle="bold"
+			
+				        />
+				     
+				     <RadioGroup
+				        android:id="@+acompanhamentotuberculose/RgTReacoesIndesejadas" 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp"
+				     >
+				       
+	                
+	                <RadioButton 
+			         	android:id="@+acompanhamentotuberculose/RbTReacoesIndesejadasSim" 
+			         	android:text="Sim" 
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content"
+			        	android:layout_weight="1"
+			     	/>
+	                
+	                  
+	                <RadioButton 
+			         	android:id="@+acompanhamentotuberculose/RbTReacoesIndesejadasNao" 
+			         	android:text="Não"
+			         	android:textSize="15dp"
+				        android:textColor="#000"
+			         	android:layout_width="fill_parent"
+			        	android:layout_height="wrap_content"
+			        	android:layout_weight="1"
+			     	/>
+	                
+			</RadioGroup>
+				    
+				<TextView
+					android:id="@+acompanhamentotuberculose/TxtTExameEscarro" 
+					android:text=" Exame de Escarro:"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="15dp"
+					android:textColor="#000"
+					android:layout_marginBottom="3dp"
+					android:textStyle="bold"
+				/>
+				    
+				    <RadioGroup
+				        android:id="@+acompanhamentotuberculose/RgTExameEscarro" 
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="horizontal"
+				        android:layout_marginBottom="5dp"
+				    >
+			        
+	              <RadioButton 
+			      	android:id="@+acompanhamentotuberculose/RbTExameEscarroSim" 
+			      	android:text="Sim" 
+			      	android:textSize="15dp"
+				  	android:textColor="#000"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+	
+			      />
+	                
+	                  
+	              <RadioButton 
+			      	android:id="@+acompanhamentotuberculose/RbTExameEscarroNao" 
+			      	android:text="Não"
+			      	android:textSize="15dp"
+				  	android:textColor="#000"
+			      	android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			      />
+	                
+			</RadioGroup>
+				  <TextView
+				  	android:id="@+acompanhamentotuberculose/TxtTComunicantesExaminados" 
+				  	android:text=" Comunicantes Examinados:"
+				  	android:layout_width="wrap_content"
+				  	android:layout_height="wrap_content"
+				  	android:textSize="15dp"
+				  	android:textColor="#000"
+				  	android:layout_marginBottom="3dp"
+				  	android:textStyle="bold"
+				  />
+				    
+				  <EditText 
+				  	android:id="@+acompanhamentotuberculose/EdtTCe"
+				  	android:layout_width="fill_parent"
+				  	android:layout_height="wrap_content"
+				  	android:hint="Nº"
+				  	android:layout_marginBottom="5dp"
+				  	android:inputType="number"
+				  />
+				   
+				     
+				  <TextView
+				  	android:id="@+acompanhamentotuberculose/TxtTMenor5Bcg" 
+				  	android:text=" Menor de 5 anos com BCG:"
+				  	android:layout_width="wrap_content"
+				  	android:layout_height="wrap_content"
+				  	android:textSize="15dp"
+				  	android:textColor="#000"
+				  	android:layout_marginBottom="3dp"
+				  	android:textStyle="bold"
+				  />
+				    
+				  <EditText 
+				  	android:id="@+acompanhamentotuberculose/EdtTMenor5Bcg"
+				  	android:layout_width="fill_parent"
+				  	android:layout_height="wrap_content"
+				  	android:hint="Nº"
+				  	android:layout_marginBottom="5dp"
+				  	android:inputType="number"
+				  />
+				     
+				  <TextView 
+		          	android:id="@+acompanhamentotuberculose/TxtTObs" 
+			      	android:text="Observações:"
+			      	android:layout_width="wrap_content"
+			     	android:layout_height="wrap_content"
+			      	android:textSize="15dp"
+			      	android:textColor="#000"
+			      	android:textStyle="bold"
+		          />
+		      
+		      <EditText
+		           android:id="@+acompanhamentotuberculose/EdtTObs"
+				   android:layout_width="fill_parent"
+				   android:layout_height="wrap_content"
+				   android:hint="Digite Aqui"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="textMultiLine"
+		          />
+			    
+		</LinearLayout> 
+				
+	</LinearLayout><!--  TUBERCULOSE -->
+    
+</ScrollView>
