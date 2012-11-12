@@ -140,7 +140,6 @@ public class Acomp_Hanseniase extends Activity implements OnClickListener  {
             try {
             	 data = formatador.parse(data1);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}if (DATE_DIALOG_ID == 0) {
             	EdtDtUltimadose.setText(formatador.format(data));

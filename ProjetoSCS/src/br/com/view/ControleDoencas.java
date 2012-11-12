@@ -6,6 +6,7 @@ import br.com.control.Gestante;
 import br.com.control.Hanseniase;
 import br.com.control.Hipertensao;
 import br.com.control.Mensagem;
+import br.com.control.Tuberculose;
 import br.com.scs.R;
 import android.app.ActivityGroup;
 import android.content.Intent;
@@ -50,7 +51,11 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				_doencas = _bd.consulta("residente", new String[]{"*"}, "hash = '"+_Hash+"'", null, null, null, null, "1");
 				_doencas.moveToFirst();
 				if (_doencas.getCount() > 0){
-					gestante = (_doencas.getString(_doencas.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S"));
+					gestante    = (_doencas.getString(_doencas.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S"));
+					tuberculose = (_doencas.getString(_doencas.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S"));
+					hipertensao = (_doencas.getString(_doencas.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S"));
+					hanseniase  = (_doencas.getString(_doencas.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S"));
+					diabetes    = (_doencas.getString(_doencas.getColumnIndex("FL_DIABETE")).toString().trim().equals("S"));
 				}
 			} catch(Exception e) {
 				System.out.println("Exceção: "+e.getMessage());
@@ -85,6 +90,14 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			spec = th.newTabSpec("0").setIndicator("Hipertensão", getResources().getDrawable(R.drawable.hipertensao)).setContent(intent);        
 	        th.addTab(spec);
 		}
+		if (tuberculose == true) {
+			intent = new Intent().setClass(this, Acomp_Tuberculose.class);
+			Acomp_Tuberculose.Hash = _Hash;
+			Acomp_Tuberculose.DtAcompanhamento = dataAcomp;
+			spec = th.newTabSpec("0").setIndicator("Tuberculose", getResources().getDrawable(R.drawable.tuberculose)).setContent(intent);        
+	        th.addTab(spec);
+		}
+		
 		if (diabetes == true){
 			intent = new Intent().setClass(this, Acomp_Diabetes.class);
 			Acomp_Hipertensao.Hash = _Hash;
@@ -133,7 +146,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				g.DT_PROVAVEL_PARTO   = Acomp_Gestante.EdtDtProvavelParto.getText().toString().trim();			
 				g.DT_PRE_NATAL        = Acomp_Gestante.EdtDtPreNatal.getText().toString().trim();
 				g.DT_CONSULTA_PUERBIO = "";				
-				g.MES_GESTACAO        = Acomp_Gestante.EdtDtUltimaRegra.getText().toString().trim();
+				g.MES_GESTACAO        = Acomp_Gestante.SpMesGestacao.getItemAtPosition(Acomp_Gestante.SpMesGestacao.getSelectedItemPosition()).toString().trim();
 				g.OBSERVACAO          = Acomp_Gestante.EdtGObs.getText().toString();
 				g.HASH                = _Hash;
 				
@@ -265,7 +278,6 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			
 			try{
 				hi = new Hipertensao();
-				_IdTransacao = Acomp_Hipertensao.getIdTransacao();
 				hi.HASH = Acomp_Hipertensao.Hash;				
 				hi.DT_ULTIMA_VISITA = Acomp_Hipertensao.EdtDtUltimaVisita.getText().toString().trim();
 				hi.PRESSAO_ARTERIAL = Acomp_Hipertensao.EdtHtPe.getText().toString();
@@ -289,6 +301,8 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				else if (Acomp_Hipertensao.RbHiExcercFisico_N.isChecked())	
 					hi.FL_FAZ_EXERCICIOS = "N";
 				
+				_IdTransacao = Acomp_Hipertensao.getIdTransacao();
+				
 				if (_IdTransacao == 0){
 					if (hi.Inserir(this) == true){
 						msgInsercao += "Hipertensão - Gravado\n";
@@ -308,6 +322,58 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			}
 			
 		}/*FIM HIPERTENSÃO*/
+		
+		if (tuberculose == true) {
+			
+			Tuberculose t = null;
+			int _IdTransacao = 0;
+			
+			try{
+				t = new Tuberculose();
+				t.HASH               = Acomp_Tuberculose.Hash; 				
+				t.COMUNIC_EXAMINADOS = Acomp_Tuberculose.EdtTCe.getText().toString();
+				t.MENOR_BCG 		 = Acomp_Tuberculose.EdtTM5Bcg.getText().toString();
+				t.OBSERVACAO 	     = Acomp_Tuberculose.EdtTObs.getText().toString();
+				
+				//Toma Medicação Diária
+				if (Acomp_Tuberculose.RbTMedicDiaria_S.isChecked())
+					t.FL_MEDIC_DIARIA = "S";
+				else if (Acomp_Tuberculose.RbTMedicDiaria_N.isChecked())
+					t.FL_MEDIC_DIARIA = "N";
+				
+				//Reações Indesejáveis
+				if (Acomp_Tuberculose.RbTReacoesIndesejaveis_S.isChecked())
+					t.FL_REACOES_IND = "S";
+				else if (Acomp_Tuberculose.RbTReacoesIndesejaveis_N.isChecked())
+					t.FL_REACOES_IND = "N";
+				
+				//Exame de Escarro
+				if (Acomp_Tuberculose.RbTExameEscarro_S.isChecked())
+					t.FL_EXAME_ESCARRO = "S";
+				else if (Acomp_Tuberculose.RbTExameEscarro_N.isChecked())
+					t.FL_EXAME_ESCARRO = "N";
+				
+				_IdTransacao = Acomp_Tuberculose.getIdTransacao();
+				
+				if (_IdTransacao == 0){
+					if (t.Inserir(this) == true){
+						msgInsercao += "Tuberculose - Gravado\n";
+					}else{
+						msgInsercao += "Tuberculose - Erro\n";
+					}
+				}else{
+					if (t.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Tuberculose - Atualizado\n";
+					}else{
+						msgInsercao += "Tuberculose - Erro\n";
+					}
+				}
+				
+			}finally{
+				t = null;
+			}
+			
+		}/*FIM TUBERCULOSE*/
 		
 		if (diabetes == true){
 			

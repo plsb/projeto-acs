@@ -52,6 +52,7 @@
         <activity android:name="br.com.view.ControleDoencas" android:label="Doenças"></activity>
         <activity android:name="br.com.view.Acomp_Hanseniase" android:label="Hanseniase"></activity>
         <activity android:name="br.com.view.Acomp_Hipertensao" android:label="Hipertensao"></activity>
+        <activity android:name="br.com.view.Acomp_Tuberculose" android:label="Tuberculose"></activity>
         <activity android:name="br.com.view.Acomp_Diabetes" android:label="Diabetes"></activity>
     </application>
 

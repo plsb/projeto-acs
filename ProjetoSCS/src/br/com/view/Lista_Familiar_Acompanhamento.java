@@ -72,6 +72,7 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
     	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     	dialog.setMessage("Escolha uma Opção:");
     	dialog.setIcon(R.drawable.iconscs);
+    	dialog.setTitle("Acompanhamento");
     	dialog.setPositiveButton("Iniciar", new
 				DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
@@ -86,16 +87,33 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
 					VisualizarAcompanhamentos();
 				}
 		});
-		dialog.setTitle("Acompanhamento");
 		dialog.show();
     	
     }
     
     public void IniciaAcompanhamento(){
-    	Intent i = new Intent(this, TelaDoenca.class); 
-	    TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    
-	    TelaDoenca._editando = false;
-	    startActivity(i);
+    	//Intent i = new Intent(this, TelaDoenca.class); 
+	    //TelaDoenca.COD_FAMILAR = Integer.valueOf(_ID.trim());    
+	    //TelaDoenca._editando = false;
+    	Banco _bd = new Banco(this);
+    	_bd.open();
+    	Cursor c = null;
+    	try {
+    		c = _bd.consulta("residente", new String[]{"*"}, "_ID = "+_ID, null, null, null, null, "1");
+    		c.moveToFirst();
+    		if (c.getCount() > 0) {
+    			Intent i = new Intent(this, ControleDoencas.class);
+    	    	ControleDoencas.dataAcomp = null;
+    	    	ControleDoencas.editando  = false;
+    	    	ControleDoencas._Hash     = c.getString(c.getColumnIndex("HASH")).toString();
+    		    startActivity(i);
+    		}
+    	} catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	} finally {
+    		c.close();
+    	}
+    	    	
     }
     
     public void VisualizarAcompanhamentos(){

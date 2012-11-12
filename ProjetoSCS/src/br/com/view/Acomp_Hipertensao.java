@@ -47,6 +47,8 @@ public class Acomp_Hipertensao extends Activity implements OnClickListener {
 		
 		if (DtAcompanhamento != null) {
 			PreencheCampos();
+		} else {
+			setIdTransacao(0);
 		}
 	}
 	
