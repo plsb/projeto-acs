@@ -50,7 +50,7 @@ public class Acomp_Hanseniase extends Activity implements OnClickListener  {
 	private void PreencheCampos() {
 	  try{
 		_bd.open();
-		_cHans = _bd.consulta("hanseniase", new String[]{"*"}, "hash = '"+Hash+"'", null, null, null, null, "1");
+		_cHans = _bd.consulta("hanseniase", new String[]{"*"}, "hash = '"+Hash+"' and dt_visita = '"+DtAcompanhamento+"' ", null, null, null, null, "1");
 		_cHans.moveToFirst();
 		if (_cHans.getCount() > 0){
 			setIdTransacao(Integer.valueOf(_cHans.getString(_cHans.getColumnIndex("_ID")).toString()));
@@ -110,6 +110,8 @@ public class Acomp_Hanseniase extends Activity implements OnClickListener  {
 		RbMdNao             = (RadioButton) findViewById(R.acomphanseniase.RbMNao);
 		RbAcSim             = (RadioButton) findViewById(R.acomphanseniase.RbASim);
 		RbAcNao             = (RadioButton) findViewById(R.acomphanseniase.RbANao);
+		EdtDtUltimaConsulta.setOnClickListener(this);
+		EdtDtUltimadose.setOnClickListener(this);
 	}
 	
 	@Override
