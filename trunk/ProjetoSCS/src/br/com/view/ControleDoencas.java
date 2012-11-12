@@ -78,8 +78,8 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		}
 		if (hanseniase == true){
 			intent = new Intent().setClass(this, Acomp_Hanseniase.class);
-			Acomp_Gestante.Hash = _Hash;
-			Acomp_Gestante.DtAcompanhamento = dataAcomp;
+			Acomp_Hanseniase.Hash = _Hash;
+			Acomp_Hanseniase.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("1").setIndicator("Hanseníase", getResources().getDrawable(R.drawable.hanseniase)).setContent(intent);        
 	        th.addTab(spec);
 		}
@@ -100,8 +100,8 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		
 		if (diabetes == true){
 			intent = new Intent().setClass(this, Acomp_Diabetes.class);
-			Acomp_Hipertensao.Hash = _Hash;
-			Acomp_Hipertensao.DtAcompanhamento = dataAcomp;
+			Acomp_Diabetes.Hash = _Hash;
+			Acomp_Diabetes.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("0").setIndicator("Diabetes", getResources().getDrawable(R.drawable.diabetes)).setContent(intent);        
 	        th.addTab(spec);
 		}
@@ -228,12 +228,12 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			
 			try{
 				h = new Hanseniase();
-				
+				h.HASH                      = Acomp_Hanseniase.Hash;
 				h.DT_ULTIMA_CONSULTA        = Acomp_Hanseniase.EdtDtUltimaConsulta.getText().toString().trim();
 				h.DT_ULTIMA_DOSE            = Acomp_Hanseniase.EdtDtUltimadose.getText().toString().trim();
-				h.COMUNICANTES_BCG          = Integer.valueOf(Acomp_Hanseniase.EdtM5Bcg.getText().toString().trim());
+				h.COMUNICANTES_BCG          = (Acomp_Hanseniase.EdtM5Bcg.getText().toString().trim().length() > 0 ? Integer.valueOf(Acomp_Hanseniase.EdtM5Bcg.getText().toString().trim()) : 0);
 				h.OBS                       = Acomp_Hanseniase.EdtObservacao.getText().toString().trim();
-				h.COMUNICANTES_EXAMINADOS   = Integer.valueOf(Acomp_Hanseniase.EdtCe.getText().toString().trim());
+				h.COMUNICANTES_EXAMINADOS   = (Acomp_Hanseniase.EdtCe.getText().toString().trim().length() > 0 ? Integer.valueOf(Acomp_Hanseniase.EdtCe.getText().toString().trim()) : 0);
 				
 				//Toma Medicacao Diaria
 				if (Acomp_Hanseniase.RbMdNao.isChecked()){
@@ -382,7 +382,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			
 			try{
 				d = new Diabete();
-				
+				d.HASH             = Acomp_Diabetes.Hash;
 				d.DT_ULTIMA_VISITA = Acomp_Diabetes.EdtDtUltimaConsulta.getText().toString().trim();
 				d.OBSERVACAO       = Acomp_Diabetes.EdtObs.getText().toString().trim();
 				
