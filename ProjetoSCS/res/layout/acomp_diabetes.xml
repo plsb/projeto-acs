@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+    <LinearLayout 
+    	android:paddingTop="10dp"
+    	android:orientation="vertical"
+    	android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+    >                
+	                
+	                
+	    <TextView
+	    	android:id="@+acompdiabetes/TxtFazDieta" 
+			android:text=" Faz Dieta:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+			android:textStyle="bold"
+		/>
+	                
+	    <RadioGroup 
+			android:id="@+acompdiabetes/RgDieta"  
+			android:layout_marginBottom="5dp"
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+		>            
+			    
+	    	<RadioButton 
+				android:text="Sim"
+				android:id="@+acompdiabetes/RbDietaSim"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:textSize="15dp"
+				android:textColor="#000"
+			/>
+			    
+	    	<RadioButton 
+				android:id="@+acompdiabetes/RbDietaNao"
+				android:text="Não"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:textSize="15dp"
+				android:textColor="#000"
+			/>  
+	                    
+		</RadioGroup>	     	
+	                
+	    <TextView
+	    	android:id="@+acompdiabetes/TxtFazExercicio" 
+			android:text="  Faz Exercicios Fisicos:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+			android:textStyle="bold"
+		/>
+	                
+	    <RadioGroup
+	    	android:id="@+acompdiabetes/RgFazExercicio" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginBottom="5dp"
+		>
+				               
+	    <RadioButton 
+			android:id="@+acompdiabetes/RbFazExercicioSim" 
+			android:text="Sim" 
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_weight="1"		
+		/>
+	              
+	    <RadioButton 
+			android:id="@+acompdiabetes/RbFazExercicioNao" 
+			android:text="Não"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_weight="1"
+		/>
+	                
+	    </RadioGroup>
+	               
+	    <TextView
+	    	android:id="@+acompdiabetes/TxtInsulina"
+			android:text=" Usa Insulina"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+			android:textStyle="bold"
+		/>
+	                
+	    <RadioGroup 
+	    android:id="@+acompdiabetes/RgInsulina"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginBottom="5dp"
+		>
+            
+	    	<RadioButton 
+				android:id="@+acompdiabetes/RbInsulinaSim" 
+				android:text="Sim" 
+				android:textSize="15dp"
+				android:textColor="#000"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+			/>
+	                          
+	    	<RadioButton 
+				android:id="@+acompdiabetes/RbInsulinaNao" 
+				android:text="Não"
+				android:textSize="15dp"
+				android:textColor="#000"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"	
+			/>
+	                
+	    </RadioGroup>
+	                 
+	    <TextView
+	    	android:id="@+acompdiabetes/TxtHipoglicemiante"
+			android:text=" Toma Hipoglicemiante Oral:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+			android:textStyle="bold"
+		/>
+	                
+	    <RadioGroup 
+	    	android:id="@+acompdiabetes/RgDHipoglicemiante"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginBottom="5dp"
+		>
+				                   
+	    	<RadioButton 
+				android:id="@+acompdiabetes/RbHipoglicemianteSim" 
+				android:text="Sim" 
+				android:textSize="15dp"
+				android:textColor="#000"
+	    		android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+			/>
+	                          
+	        <RadioButton 
+				android:id="@+acompdiabetes/RbHipoglicemianteNao" 
+				android:text="Não"
+				android:textSize="15dp"
+		    	android:textColor="#000"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" 
+				android:layout_weight="1"
+			/>
+	                
+	    </RadioGroup>
+	                 
+	    <TextView 
+	    	android:id="@+acompdiabetes/TxtUltimaVisita"
+			android:text=" Data Ultima Visita:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+			android:textStyle="bold"
+	    />	
+	                  
+	    <EditText     
+			android:id="@+acompdiabetes/EdtDtUltimaConsulta"  
+			android:layout_marginBottom="5dp"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+		/>
+	                 
+	    <TextView 
+			android:id="@+acompdiabetes/TxtObs" 
+			android:text="Observações:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:textStyle="bold"
+		/>
+		      
+		<EditText
+			android:id="@+acompdiabetes/EdtObs"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:hint="Observações"
+			android:layout_marginBottom="5dp"
+			android:inputType="textMultiLine"
+		/>
+	                
+	</LinearLayout>
+
+</ScrollView>
