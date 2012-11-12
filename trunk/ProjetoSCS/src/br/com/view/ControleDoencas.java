@@ -1,6 +1,7 @@
 package br.com.view;
 
 import br.com.control.Banco;
+import br.com.control.Diabete;
 import br.com.control.Gestante;
 import br.com.control.Hanseniase;
 import br.com.control.Hipertensao;
@@ -84,7 +85,13 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			spec = th.newTabSpec("0").setIndicator("Hipertensão", getResources().getDrawable(R.drawable.hipertensao)).setContent(intent);        
 	        th.addTab(spec);
 		}
-		
+		if (diabetes == true){
+			intent = new Intent().setClass(this, Acomp_Diabetes.class);
+			Acomp_Hipertensao.Hash = _Hash;
+			Acomp_Hipertensao.DtAcompanhamento = dataAcomp;
+			spec = th.newTabSpec("0").setIndicator("Diabetes", getResources().getDrawable(R.drawable.diabetes)).setContent(intent);        
+	        th.addTab(spec);
+		}
 	}	
 
 	public void onClick(View v) {	
@@ -204,7 +211,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		if (hanseniase == true){
 			
 			Hanseniase h = null;
-			int Transacao = 0;
+			int _IdTransacao = 0;
 			
 			try{
 				h = new Hanseniase();
@@ -229,16 +236,16 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 					h.TOMA_MEDICACAO = "S";
 				}
 				
-				Transacao = Acomp_Hanseniase.getIdTransacao();
+				_IdTransacao = Acomp_Hanseniase.getIdTransacao();
 				
-				if (Transacao == 0){
+				if (_IdTransacao == 0){
 					if (h.Inserir(this)== true){
 						msgInsercao += "Hanseniase - Gravado\n";
 					}else{
 						msgInsercao += "Hanseniase - Erro\n";
 					}
 				}else{
-					if (h.Atualizar(this, Transacao) == true){
+					if (h.Atualizar(this, _IdTransacao) == true){
 						msgInsercao += "Hanseniase - Atualizado\n";
 					}else{
 						msgInsercao += "Hanseniase - Erro\n";
@@ -249,7 +256,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			}finally{
 				h = null;
 			}
-		}
+		}/*FIM HANSENIASE*/
 		
 		if (hipertensao == true){
 			
@@ -301,6 +308,68 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			}
 			
 		}/*FIM HIPERTENSÃO*/
+		
+		if (diabetes == true){
+			
+			Diabete d = null;
+			int _IdTransacao = 0;
+			
+			try{
+				d = new Diabete();
+				
+				d.DT_ULTIMA_VISITA = Acomp_Diabetes.EdtDtUltimaConsulta.getText().toString().trim();
+				d.OBSERVACAO       = Acomp_Diabetes.EdtObs.getText().toString().trim();
+				
+				//Faz Dieta
+				if (Acomp_Diabetes.RbFazDieta_N.isChecked()){
+					d.FL_FAZ_DIETA = "N";
+				}else{
+					d.FL_FAZ_DIETA = "S";
+				}
+				
+				//Faz Exercicio
+				if (Acomp_Diabetes.RbFazExerc_N.isChecked()){
+					d.FL_FAZ_EXCERCICIOS = "N";
+				}else{
+					d.FL_FAZ_EXCERCICIOS = "S";
+				}
+				
+				//Hipoglicemiante
+				if (Acomp_Diabetes.RbHipog_N.isChecked()){
+					d.FL_USA_HIPOGLICEMIANTE = "N";
+				}else{
+					d.FL_USA_HIPOGLICEMIANTE = "S";
+				}
+				
+				//Usa Insulina
+				if (Acomp_Diabetes.RbUsaInsulina_N.isChecked()){
+					d.FL_USA_INSULINA = "N";
+				}else{
+					d.FL_USA_INSULINA = "S";
+				}
+				
+				_IdTransacao = Acomp_Diabetes.getIdTransacao();
+				
+				if (_IdTransacao == 0){
+					if (d.Inserir(this)== true){
+						msgInsercao += "Diabetes - Gravado\n";
+					}else{
+						msgInsercao += "Diabetes - Erro\n";
+					}
+				}else{
+					if (d.Atualizar(this, _IdTransacao) == true){
+						msgInsercao += "Diabetes - Atualizado\n";
+					}else{
+						msgInsercao += "Diabetes - Erro\n";
+					}
+				}
+				
+			}catch (Exception e){
+				
+			}finally{
+				d = null;
+			}
+		}/*FIM DIABETES*/
 
 		Mensagem.exibeMessagem(this, "SCS - Acompanhamento", msgInsercao,2000);
 		new Handler().postDelayed(new Runnable() {		
