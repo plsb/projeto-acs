@@ -6,7 +6,6 @@ import br.com.control.Hanseniase;
 import br.com.control.Hipertensao;
 import br.com.control.Mensagem;
 import br.com.scs.R;
-import br.com.scs.R.acomphanseniase;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.database.Cursor;
