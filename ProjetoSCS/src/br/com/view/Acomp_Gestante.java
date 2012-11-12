@@ -28,6 +28,8 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 	Banco _bd = new Banco(this);
 	Cursor _cGestante = null;
 	
+	private static int IdTransacao = 0;
+
 	public static CheckBox    ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao,ChkGNV,ChkGNM,ChkGAB;
 	public static EditText    EdtGEn, EdtGObs, EdtDtUltimaRegra, EdtDtProvavelParto, EdtDtPreNatal;
 	public static RadioGroup  RdgEstadoNutri;
@@ -58,12 +60,21 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		
 	}
 	
+	public static int getIdTransacao() {
+		return IdTransacao;
+	}
+
+	public void setIdTransacao(int idTransacao) {
+		IdTransacao = idTransacao;
+	}
+	
 	public void PreencheCampos() {
 		try {			
 			_bd.open();
-			_cGestante = _bd.consulta("gestacao", new String[]{"*"}, "hash = '"+Hash+"'", null, null, null, null, "1");
+			_cGestante = _bd.consulta("gestacao", new String[]{"*"}, "hash = '"+Hash+"' and dt_visita = '"+DtAcompanhamento+"' ", null, null, null, null, "1");
 			_cGestante.moveToFirst();
 			if (_cGestante.getCount() > 0){
+				setIdTransacao(Integer.valueOf(_cGestante.getString(_cGestante.getColumnIndex("_ID")).toString()));
 				setMesGestacao(_cGestante.getString(_cGestante.getColumnIndex("MES_GESTACAO")).toString());
 				EdtDtPreNatal.setText(_cGestante.getString(_cGestante.getColumnIndex("DT_PRE_NATAL")).toString());
 				EdtDtProvavelParto.setText(_cGestante.getString(_cGestante.getColumnIndex("DT_PROVAVEL_PARTO")).toString());
@@ -214,6 +225,7 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		DtAcompanhamento = null;
 		Hash = null;
 		DATE_DIALOG_ID = -1;
+		setIdTransacao(0);
 		super.onDestroy();
 	}
 	
