@@ -2,6 +2,7 @@ package br.com.view;
 
 import br.com.control.Banco;
 import br.com.control.Gestante;
+import br.com.control.Hipertensao;
 import br.com.control.Mensagem;
 import br.com.scs.R;
 import android.app.ActivityGroup;
@@ -61,11 +62,18 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		TabHost.TabSpec spec;
 		Intent intent;  
 		
-		if (gestante == true){
+		if (gestante == true) {
 			intent = new Intent().setClass(this, Acomp_Gestante.class);
 			Acomp_Gestante.Hash = _Hash;
 			Acomp_Gestante.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("0").setIndicator("Gestante", getResources().getDrawable(R.drawable.gravida)).setContent(intent);        
+	        th.addTab(spec);
+		}
+		if (hipertensao == true) {
+			intent = new Intent().setClass(this, Acomp_Hipertensao.class);
+			Acomp_Hipertensao.Hash = _Hash;
+			Acomp_Hipertensao.DtAcompanhamento = dataAcomp;
+			spec = th.newTabSpec("0").setIndicator("Hipertensão", getResources().getDrawable(R.drawable.hipertensao)).setContent(intent);        
 	        th.addTab(spec);
 		}
 		
@@ -95,13 +103,13 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 	}
 	
 	public void Inserir() {
-	
-		int _IdTransacao   = 0;
+		
 		String msgInsercao = "";
 	
 		if (gestante == true){
 			
 			Gestante g = null;
+			int _IdTransacao = 0;
 			
 			try{
 				String fatores_risco = "";
@@ -184,6 +192,57 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				g = null;			
 			}
 		}
+		
+		if (hipertensao == true){
+			
+			Hipertensao hi = null;
+			int _IdTransacao = 0;
+			
+			try{
+				hi = new Hipertensao();
+				_IdTransacao = Acomp_Hipertensao.getIdTransacao();
+				hi.HASH = Acomp_Hipertensao.Hash;				
+				hi.DT_ULTIMA_VISITA = Acomp_Hipertensao.EdtDtUltimaVisita.getText().toString().trim();
+				hi.PRESSAO_ARTERIAL = Acomp_Hipertensao.EdtHtPe.getText().toString();
+				hi.OBSERVACAO = Acomp_Hipertensao.EdtHtObs.getText().toString();
+				
+				//Faz Dieta
+				if (Acomp_Hipertensao.RbHiFazDieta_S.isChecked())
+					hi.FL_FAZ_DIETA = "S";
+				else if (Acomp_Hipertensao.RbHiFazDieta_N.isChecked())	
+					hi.FL_FAZ_DIETA = "N";
+				
+				//Toma Medicação
+				if (Acomp_Hipertensao.RbHiTomaMedic_S.isChecked())
+					hi.FL_TOMA_MEDICACAO = "S";
+				else if (Acomp_Hipertensao.RbHiTomaMedic_N.isChecked())	
+					hi.FL_TOMA_MEDICACAO = "N";
+				
+				//Faz Exercícios Físicos
+				if (Acomp_Hipertensao.RbHiExcercFisico_S.isChecked())
+					hi.FL_FAZ_EXERCICIOS = "S";
+				else if (Acomp_Hipertensao.RbHiExcercFisico_N.isChecked())	
+					hi.FL_FAZ_EXERCICIOS = "N";
+				
+				if (_IdTransacao == 0){
+					if (hi.Inserir(this) == true){
+						msgInsercao += "Hipertensão - Gravado\n";
+					}else{
+						msgInsercao += "Hipertensão - Erro\n";
+					}
+				}else{
+					if (hi.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Hipertensão - Atualizado\n";
+					}else{
+						msgInsercao += "Hipertensão - Erro\n";
+					}
+				}
+				
+			}finally{
+				hi = null;
+			}
+			
+		}/*FIM HIPERTENSÃO*/
 		
 		Mensagem.exibeMessagem(this, "SCS - Acompanhamento", msgInsercao,2000);
 		new Handler().postDelayed(new Runnable() {		
