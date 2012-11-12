@@ -12,10 +12,10 @@ public class CartaoCrianca extends Activity {
 	public static String Hash = "";
 	
 	private CheckBox chkDoseUnicaBCG, chkDose1HPTB, chkDose2HPTB, chkDose3HPTB, chkDoseRHPTB,
-					 chkDose1TVLT, chkDose2TVLT, chkDose3TVLT, chkDoseRTVLT, chkDose1VOPV, chkDose2VOPV, 
-					 chkDose3VOPV, chkDoseRVOPV,chkDose1VORHGV, chkDose2VORHGV, chkDose1PNMCA, chkDose2PNMCA, 
-					 chkDose3PNMCA, chkDoseRPNMCA, chkDose1MNGCA, chkDose2MNGCA,chkDoseRMNGCA, chkDose1FBA, 
-					 chkDoseRFBA, chkDose1TV, chkDose2TV, chkDose1TB, chkDoseRTB;
+					 chkDose1PV, chkDose2PV, chkDose3PV, chkDose1VOPI, chkDose2VOPI, 
+					 chkDose3VOPI, chkDoseRVOPI,chkDose1VORH, chkDose2VORH, chkDose1PNMCA, chkDose2PNMCA, 
+					 chkDose3PNMCA, chkDoseRPNMCA, chkDose1MNGCA, chkDose2MNGCA,chkDoseRMNGCA, 
+					 chkDose1TV, chkDose2TV, chkDose1TB, chkDoseRTB;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +33,15 @@ public class CartaoCrianca extends Activity {
 		
 		chkDoseUnicaBCG= (CheckBox) findViewById(R.VacinaAplicada.chkDoseUnicaBCG);
 		chkDose1HPTB   = (CheckBox) findViewById(R.VacinaAplicada.chkDose1HPTB);
-		chkDose2HPTB   = (CheckBox) findViewById(R.VacinaAplicada.chkDose2HPTB);
-		chkDose3HPTB   = (CheckBox) findViewById(R.VacinaAplicada.chkDose3HPTB);
-		chkDoseRHPTB   = (CheckBox) findViewById(R.VacinaAplicada.chkDoseRHPTB);
-		chkDose1TVLT   = (CheckBox) findViewById(R.VacinaAplicada.chkDose1TVLT);
-		chkDose2TVLT   = (CheckBox) findViewById(R.VacinaAplicada.chkDose2TVLT);
-		chkDose3TVLT   = (CheckBox) findViewById(R.VacinaAplicada.chkDose3TVLT);
-		chkDoseRTVLT   = (CheckBox) findViewById(R.VacinaAplicada.chkDoseRTVLT);
-		chkDose1VOPV   = (CheckBox) findViewById(R.VacinaAplicada.chkDose1VOPV);
-		chkDose2VOPV   = (CheckBox) findViewById(R.VacinaAplicada.chkDose2VOPV);
-		chkDose3VOPV   = (CheckBox) findViewById(R.VacinaAplicada.chkDose3VOPV);
-		chkDoseRVOPV   = (CheckBox) findViewById(R.VacinaAplicada.chkDoseRVOPV);
-		chkDose1VORHGV = (CheckBox) findViewById(R.VacinaAplicada.chkDose1VORHGV);
-		chkDose2VORHGV = (CheckBox) findViewById(R.VacinaAplicada.chkDose2VORHGV);
+		chkDose1PV   = (CheckBox) findViewById(R.VacinaAplicada.chkDose1PV);
+		chkDose2PV   = (CheckBox) findViewById(R.VacinaAplicada.chkDose2PV);
+		chkDose3PV   = (CheckBox) findViewById(R.VacinaAplicada.chkDose3PV);
+		chkDose1VOPI   = (CheckBox) findViewById(R.VacinaAplicada.chkDose1VOPI);
+		chkDose2VOPI   = (CheckBox) findViewById(R.VacinaAplicada.chkDose2VOPI);
+		chkDose3VOPI   = (CheckBox) findViewById(R.VacinaAplicada.chkDose3VOPI);
+		chkDoseRVOPI   = (CheckBox) findViewById(R.VacinaAplicada.chkDoseRVOPI);
+		chkDose1VORH = (CheckBox) findViewById(R.VacinaAplicada.chkDose1VORH);
+		chkDose2VORH = (CheckBox) findViewById(R.VacinaAplicada.chkDose2VORH);
 		chkDose1PNMCA  = (CheckBox) findViewById(R.VacinaAplicada.chkDose1PNMCA);
 		chkDose2PNMCA  = (CheckBox) findViewById(R.VacinaAplicada.chkDose2PNMCA);
 		chkDose3PNMCA  = (CheckBox) findViewById(R.VacinaAplicada.chkDose3PNMCA);
@@ -53,8 +49,6 @@ public class CartaoCrianca extends Activity {
 	    chkDose1MNGCA  = (CheckBox) findViewById(R.VacinaAplicada.chkDose1MNGCA);
 		chkDose2MNGCA  = (CheckBox) findViewById(R.VacinaAplicada.chkDose2MNGCA);
 		chkDoseRMNGCA  = (CheckBox) findViewById(R.VacinaAplicada.chkDoseRMNGCA);
-		chkDose1FBA    = (CheckBox) findViewById(R.VacinaAplicada.chkDose1FBA);
-		chkDoseRFBA    = (CheckBox) findViewById(R.VacinaAplicada.chkDoseRFBA);
 		chkDose1TV     = (CheckBox) findViewById(R.VacinaAplicada.chkDose1TV);
 		chkDose2TV     = (CheckBox) findViewById(R.VacinaAplicada.chkDose2TV);
 		chkDose1TB     = (CheckBox) findViewById(R.VacinaAplicada.chkDose1TB);
@@ -101,64 +95,58 @@ public class CartaoCrianca extends Activity {
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 					chkDoseRHPTB.setChecked(true);
 			 }
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TETRAVALENTE"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PENTAVALENTE"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose1TVLT.setChecked(true);
+				 chkDose1PV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TETRAVALENTE"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PENTAVALENTE"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose2TVLT.setChecked(true);
+				 chkDose2PV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TETRAVALENTE"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PENTAVALENTE"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("3"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose3TVLT.setChecked(true);
+				 chkDose3PV.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TETRAVALENTE"))
-					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
-					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDoseRTVLT.setChecked(true);
-				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOPI"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose1VOPV.setChecked(true);
+				 chkDose1VOPI.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOPI"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose2VOPV.setChecked(true);
+				 chkDose2VOPI.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOPI"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("3"))){
-				 chkDose3VOPV.setChecked(true);
+				 chkDose3VOPI.setChecked(true);
 				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOP"))
+			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VOPI"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDoseRVOPV.setChecked(true);
+				 chkDoseRVOPI.setChecked(true);
 				}
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VORH"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose1VORHGV.setChecked(true);
+				 chkDose1VORH.setChecked(true);
 				}
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("VORH"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose2VORHGV.setChecked(true);
+				 chkDose2VORH.setChecked(true);
 				}
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA 10"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
@@ -201,18 +189,6 @@ public class CartaoCrianca extends Activity {
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
 					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 				 chkDoseRMNGCA.setChecked(true);
-				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("FEBRE AMARELA"))
-					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
-					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDose1FBA.setChecked(true);
-				}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("FEBRE AMARELA"))
-					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
-					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				 chkDoseRFBA.setChecked(true);
 				}
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TRIPLICE VIRAL"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))

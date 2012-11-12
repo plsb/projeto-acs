@@ -103,12 +103,11 @@ public void InformacoesFamiliar(){
 			TipoVacina.clear();
 			TipoVacina.add("BCG");
 			TipoVacina.add("HEPATITE B");
-			TipoVacina.add("TETRAVALENTE");
-			TipoVacina.add("VOP");
+			TipoVacina.add("PENTAVALENTE");
+			TipoVacina.add("VOPI");
 			TipoVacina.add("VORH");
-			TipoVacina.add("PNEUMOCOCICA 10");
+			TipoVacina.add("PNEUMOCOCICA");
 			TipoVacina.add("MENINGOCOCICA");
-			TipoVacina.add("FEBRE AMARELA");
 			TipoVacina.add("TRIPLICE VIRAL");
 			TipoVacina.add("TRIPLICE BACTERIANA");			
 		}else if ((_Idade >10)&&(_Idade < 20)){
@@ -148,8 +147,15 @@ public void InformacoesFamiliar(){
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("BCG"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("U-DOSE UNICA");
-		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("HEPATITE B")||(_TipoVacina.equals("TETRAVALENTE")
-				   ||(_TipoVacina.equals("VOP")||(_TipoVacina.equals("PNEUMOCOCICA 10")))))){
+		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("HEPATITE B"))){
+			DoseAplicada.clear();
+			DoseAplicada.add("1");
+		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("PENTAVALENTE"))){
+			DoseAplicada.clear();
+			DoseAplicada.add("1");
+			DoseAplicada.add("2");
+			DoseAplicada.add("3");
+		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VOPI")||(_TipoVacina.equals("PNEUMOCOCICA")))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
@@ -164,10 +170,6 @@ public void InformacoesFamiliar(){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
-			DoseAplicada.add("R-REFORÇO");
-		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("FEBRE AMARELA"))){
-			DoseAplicada.clear();
-			DoseAplicada.add("1");
 			DoseAplicada.add("R-REFORÇO");
 		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("TRIPLICE BACTERIANA"))){
 			DoseAplicada.clear();
