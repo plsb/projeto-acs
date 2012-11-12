@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+
+ 	   <LinearLayout 
+			android:paddingTop="10dp"
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+	   >
+		       
+		        
+			    <TextView
+			        android:id="@+acomphanseniase/TxtMedicacaoDiaria"
+			        android:text=" Toma Medicação Diaria:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
+			        />
+			    
+			    <RadioGroup 
+			        android:id="@+acomphanseniase/RgMedicacaoDiaria"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:layout_marginBottom="5dp">
+			       
+			    
+			    <RadioButton 
+			        android:text="Sim"
+			        android:id="@+acomphanseniase/RbMSim"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+
+			        />
+			    
+			    <RadioButton 
+			        android:id="@+acomphanseniase/RbMNao"
+			        android:text="Não"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    </RadioGroup>
+			    
+			    <TextView
+			        android:id="@+acomphanseniase/TxtDataUltimaDose" 
+			        android:text="Data da ultima dose supervisionada:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
+			        />
+			    
+			    <EditText 
+			        android:id="@+acomphanseniase/EdtDtUltimaDose"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
+
+			        />
+			    
+			    <TextView
+			        android:id="@+acomphanseniase/TxtFazCuidados" 
+			        android:text="Faz autos Cuidados:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:layout_marginBottom="3dp"
+			        android:textStyle="bold"
+			        />
+			    
+			    <RadioGroup 
+			        android:id="@+acomphanseniase/RgAutoCuidados"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:layout_marginBottom="5dp">
+			    
+			    
+			    <RadioButton 
+			        android:text="Sim"
+			        android:id="@+acomphanseniase/RbASim"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    
+			    <RadioButton 
+			        android:id="@+acomphanseniase/RbANao"
+			        android:text="Não"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        />
+			    
+			    </RadioGroup>
+			    
+			    <TextView
+			        android:id="@+acomphanseniase/TxtComunicantes" 
+			        android:text="Comunicantes Examinados:"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="15dp"
+			        android:textColor="#000"
+			        android:textStyle="bold"
+			       />
+			    
+				<EditText 
+				    android:id="@+acomphanseniase/EdtCe"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:hint="Nº"
+				    android:layout_marginBottom="5dp"
+				    android:inputType="number"
+				        />
+			    
+			   <TextView
+			       android:id="@+acomphanseniase/TxtBCG" 
+			       android:text="Comunicantes que receberam BCG:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+			      />
+			   
+		      <EditText 
+				   android:id="@+acomphanseniase/EdtMenor5Bcg"
+				   android:layout_width="fill_parent"
+				   android:layout_height="wrap_content"
+				   android:hint="Nº"
+				   android:layout_marginBottom="5dp"
+				   android:inputType="number"
+				        />
+		      		      
+		       <TextView 
+		          android:id="@+acomphanseniase/TxtDtUltimaConsulta" 
+			       android:text="Data Ultima Consulta:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+		          />
+		       
+		        <EditText 
+			        android:id="@+acomphanseniase/EdtDtUltimaConsulta"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
+			        />
+		        
+		      <TextView 
+		          android:id="@+acomphanseniase/TxtObs" 
+			       android:text="Observações:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"
+		          />
+		      
+		      <EditText
+		          android:id="@+acomphanseniase/EdtObs"
+		          android:layout_width="match_parent"
+		          android:layout_height="wrap_content"
+		          android:ems="10"	
+		          android:hint="Observações"
+		          android:layout_marginBottom="5dp"	          
+		          android:inputType="textMultiLine" 
+		          />	          
+
+		          
+    </LinearLayout>
+
+</ScrollView>

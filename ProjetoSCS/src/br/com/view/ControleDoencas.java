@@ -2,9 +2,11 @@ package br.com.view;
 
 import br.com.control.Banco;
 import br.com.control.Gestante;
+import br.com.control.Hanseniase;
 import br.com.control.Hipertensao;
 import br.com.control.Mensagem;
 import br.com.scs.R;
+import br.com.scs.R.acomphanseniase;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.database.Cursor;
@@ -67,6 +69,13 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			Acomp_Gestante.Hash = _Hash;
 			Acomp_Gestante.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("0").setIndicator("Gestante", getResources().getDrawable(R.drawable.gravida)).setContent(intent);        
+	        th.addTab(spec);
+		}
+		if (hanseniase == true){
+			intent = new Intent().setClass(this, Acomp_Hanseniase.class);
+			Acomp_Gestante.Hash = _Hash;
+			Acomp_Gestante.DtAcompanhamento = dataAcomp;
+			spec = th.newTabSpec("1").setIndicator("Hanseníase", getResources().getDrawable(R.drawable.hanseniase)).setContent(intent);        
 	        th.addTab(spec);
 		}
 		if (hipertensao == true) {
@@ -193,6 +202,56 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			}
 		}
 		
+		if (hanseniase == true){
+			
+			Hanseniase h = null;
+			int Transacao = 0;
+			
+			try{
+				h = new Hanseniase();
+				
+				h.DT_ULTIMA_CONSULTA        = Acomp_Hanseniase.EdtDtUltimaConsulta.getText().toString().trim();
+				h.DT_ULTIMA_DOSE            = Acomp_Hanseniase.EdtDtUltimadose.getText().toString().trim();
+				h.COMUNICANTES_BCG          = Integer.valueOf(Acomp_Hanseniase.EdtM5Bcg.getText().toString().trim());
+				h.OBS                       = Acomp_Hanseniase.EdtObservacao.getText().toString().trim();
+				h.COMUNICANTES_EXAMINADOS   = Integer.valueOf(Acomp_Hanseniase.EdtCe.getText().toString().trim());
+				
+				//Toma Medicacao Diaria
+				if (Acomp_Hanseniase.RbMdNao.isChecked()){
+					h.AUTO_CUIDADOS = "N";
+				}else{
+					h.AUTO_CUIDADOS = "S";
+				}
+				
+				//Faz Autos Cuidados
+				if (Acomp_Hanseniase.RbAcNao.isChecked()){
+					h.TOMA_MEDICACAO = "N";
+				}else{
+					h.TOMA_MEDICACAO = "S";
+				}
+				
+				Transacao = Acomp_Hanseniase.getIdTransacao();
+				
+				if (Transacao == 0){
+					if (h.Inserir(this)== true){
+						msgInsercao += "Hanseniase - Gravado\n";
+					}else{
+						msgInsercao += "Hanseniase - Erro\n";
+					}
+				}else{
+					if (h.Atualizar(this, Transacao) == true){
+						msgInsercao += "Hanseniase - Atualizado\n";
+					}else{
+						msgInsercao += "Hanseniase - Erro\n";
+					}
+				}
+			}catch (Exception e){
+				
+			}finally{
+				h = null;
+			}
+		}
+		
 		if (hipertensao == true){
 			
 			Hipertensao hi = null;
@@ -243,7 +302,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			}
 			
 		}/*FIM HIPERTENSÃO*/
-		
+
 		Mensagem.exibeMessagem(this, "SCS - Acompanhamento", msgInsercao,2000);
 		new Handler().postDelayed(new Runnable() {		
 			public void run() {
