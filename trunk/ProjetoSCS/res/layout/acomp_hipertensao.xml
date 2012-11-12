@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+>	
+	<LinearLayout
+       android:id="@+teladoenca/tabHipertensao"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" >
+				    
+                   
+     <LinearLayout 
+	     android:paddingTop="10dp"
+	     android:orientation="vertical"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	 >
+				                  
+				    
+		<TextView
+		    android:id="@+acompanhamentohipertensao/TxtHtFazDieta" 
+		    android:text=" Faz Dieta:"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="15dp"
+		    android:textColor="#000"
+		    android:layout_marginBottom="3dp"				       
+		/>
+	              
+	    <RadioGroup 
+			android:id="@+acompanhamentohipertensao/RgHtDieta"  
+			android:layout_marginBottom="5dp"
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+		>
+			    
+	                    
+			<RadioButton 
+				android:text="Sim"
+				android:id="@+acompanhamentohipertensao/RbHtDietaSim"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:textSize="15dp"
+				android:textColor="#000"
+			/>
+				    
+			<RadioButton 
+				android:id="@+acompanhamentohipertensao/RbHtDietaNao"
+				android:text="Não"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:textSize="15dp"
+				android:textColor="#000"			  
+			/>  
+	                    
+    	</RadioGroup>
+			     	
+	    <TextView 
+	    	android:id="@+acompanhamentohipertensao/TxtHtTomaMedicacao"
+			android:text=" Toma a Medicação:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+	                
+	    <RadioGroup 
+			android:id="@+acompanhamentohipertensao/RgHtMedicacao"  
+			android:layout_marginBottom="5dp"
+			android:layout_width="fill_parent"
+			android:orientation="horizontal"
+			android:layout_height="wrap_content"
+		>
+			    
+	                    
+			<RadioButton 
+				android:text="Sim"
+				android:id="@+acompanhamentohipertensao/RbHtMedicacaoSim"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:textSize="15dp"
+				android:textColor="#000"		
+			/>
+			    
+			<RadioButton 
+				android:id="@+acompanhamentohipertensao/RbHtMedicacaoNao"
+				android:text="Não"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:textSize="15dp"
+			    android:textColor="#000"			
+			/>  
+	                    
+		</RadioGroup>
+			     	
+	    <TextView
+	    	android:id="@+acompanhamentohipertensao/TxtHtFazExercicio" 
+			android:text="  Faz Exercicios Fisicos:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+	                
+	    <RadioGroup
+	    	android:id="@+acompanhamentohipertensao/RgHtFazExercicio" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginBottom="5dp"
+		>   
+	     
+	        <RadioButton 
+				android:id="@+acompanhamentohipertensao/RbHtFazExercicioSim" 
+				android:text="Sim" 
+				android:textSize="15dp"
+				android:textColor="#000"
+				android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"						     	
+			/>
+	                
+	                  
+	        <RadioButton 
+				android:id="@+acompanhamentohipertensao/RbHtFazExercicioNao" 
+				android:text="Não"
+				android:textSize="15dp"
+				android:textColor="#000"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" 
+			    android:layout_weight="1"
+		 	/>
+	                
+	   </RadioGroup>
+	                 
+	   <TextView
+	   		android:id="@+acompanhamentohipertensao/TxtHtPressaoArterial" 
+			android:text=" Pressao Arterial:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+	                
+        <EditText 
+        	android:id="@+acompanhamentohipertensao/EdtHtPressaoArterial"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:hint="Digite Aqui"
+        />
+                   
+        <TextView
+        	android:id="@+acompanhamentohipertensao/TxtHtDtUltimaVisita" 
+			android:text=" Data da Ultima Visita:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+                   
+		<EditText 
+			android:id="@+acompanhamentohipertensao/DtUltimaVisita"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="5dp"
+			android:focusable="false"
+		/>
+                   
+		<TextView 
+			android:id="@+acompanhamentohipertensao/TxtHtObs" 
+			android:text="Observações:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:textStyle="bold"
+		/>
+		      
+		<EditText
+			android:id="@+acompanhamentohipertensao/EdtHtObs"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+			android:inputType="textMultiLine"
+		/>
+		
+		</LinearLayout>
+			   
+	</LinearLayout>
+    
+</ScrollView>

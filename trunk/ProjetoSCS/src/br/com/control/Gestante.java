@@ -34,12 +34,12 @@ public class Gestante {
 			dtUltimaRegra     = formatador.parse(DT_ULTIMA_REGRA);
 	    	dtProvavelParto   = formatador.parse(DT_PROVAVEL_PARTO);
 	    	dtPreNatal        = formatador.parse(DT_PRE_NATAL);
-	    	dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);			
+	    	//dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);			
 			c.clear();
 			c.put("HASH", HASH); 		
 			c.put("DT_ULTIMA_REGRA",formatador.format(dtUltimaRegra));		
 			c.put("DT_PROVAVEL_PARTO",formatador.format(dtProvavelParto));
-			c.put("DT_CONSULTA_PUERBIO",formatador.format(dtConsultaPuerbio));
+			c.put("DT_CONSULTA_PUERBIO","");//formatador.format(dtConsultaPuerbio));
 			c.put("DT_PRE_NATAL",formatador.format(dtPreNatal));
 			c.put("EST_NUTRICIONAL",EST_NUTRICIONAL);		        		
 			c.put("FATORES_RISCO",FATORES_RISCO);		
@@ -66,12 +66,12 @@ public class Gestante {
 			dtUltimaRegra     = formatador.parse(DT_ULTIMA_REGRA);
 	    	dtProvavelParto   = formatador.parse(DT_PROVAVEL_PARTO);
 	    	dtPreNatal        = formatador.parse(DT_PRE_NATAL);
-	    	dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);	    	
+	    	//dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);	    	
 			c.clear();
 			c.put("HASH", HASH); 		
 			c.put("DT_ULTIMA_REGRA",formatador.format(dtUltimaRegra));		
 			c.put("DT_PROVAVEL_PARTO",formatador.format(dtProvavelParto));
-			c.put("DT_CONSULTA_PUERBIO",formatador.format(dtConsultaPuerbio));
+			c.put("DT_CONSULTA_PUERBIO","");//formatador.format(dtConsultaPuerbio));
 			c.put("DT_PRE_NATAL",formatador.format(dtPreNatal));
 			c.put("EST_NUTRICIONAL",EST_NUTRICIONAL);		        		
 			c.put("FATORES_RISCO",FATORES_RISCO);		
@@ -85,6 +85,7 @@ public class Gestante {
 			Limpar();
 			return true;
 		}catch(Exception e){
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}

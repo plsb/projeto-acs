@@ -1,12 +1,14 @@
 package br.com.view;
 
 import br.com.control.Banco;
+import br.com.control.Gestante;
 import br.com.control.Mensagem;
 import br.com.scs.R;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -75,7 +77,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		}
 		
 		if (v == btnSalvar) {
-			Mensagem.exibeMessagem(this, "", Acomp_Gestante.EdtDtPreNatal.getText().toString());
+			Inserir();
 		}
 	}
 
@@ -84,6 +86,112 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		_Hash = "";
 		dataAcomp = null;
 		editando  = false;
+		gestante = false;
+		hipertensao = false;
+		hanseniase = false;
+		tuberculose = false;
+		diabetes = false;
 		super.onDestroy();
 	}
+	
+	public void Inserir() {
+	
+		int _IdTransacao   = 0;
+		String msgInsercao = "";
+	
+		if (gestante == true){
+			
+			Gestante g = null;
+			
+			try{
+				String fatores_risco = "";
+				g = new Gestante();
+				g.DT_ULTIMA_REGRA     = Acomp_Gestante.EdtDtUltimaRegra.getText().toString().trim();
+				g.DT_PROVAVEL_PARTO   = Acomp_Gestante.EdtDtProvavelParto.getText().toString().trim();			
+				g.DT_PRE_NATAL        = Acomp_Gestante.EdtDtPreNatal.getText().toString().trim();
+				g.DT_CONSULTA_PUERBIO = "";				
+				g.MES_GESTACAO        = Acomp_Gestante.EdtDtUltimaRegra.getText().toString().trim();
+				g.OBSERVACAO          = Acomp_Gestante.EdtGObs.getText().toString();
+				g.HASH                = _Hash;
+				
+				//Estado Nutricional
+				if (Acomp_Gestante.RbNutrida.isChecked()){
+					g.EST_NUTRICIONAL = "N";     
+				}else{
+					g.EST_NUTRICIONAL = "D";
+				}
+				
+				//Fatores de Risco
+				if (Acomp_Gestante.ChGGestacoes.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGIdade36.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGSangue.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGDiabetes.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGAborto.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGIdade20.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGEdema.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				if (Acomp_Gestante.ChGPressao.isChecked())
+					fatores_risco += "S";
+				else
+					fatores_risco += "N";
+				
+				g.FATORES_RISCO = fatores_risco;
+				
+				//Resultado Gestação
+				if (Acomp_Gestante.ChkGAB.isChecked())
+					g.RESULTADO_GESTACAO = "AB";
+				else if (Acomp_Gestante.ChkGNV.isChecked())
+					g.RESULTADO_GESTACAO = "NV";
+				else if (Acomp_Gestante.ChkGNM.isChecked())
+					g.RESULTADO_GESTACAO = "NM";
+				
+				_IdTransacao = Acomp_Gestante.getIdTransacao();
+				
+				if (_IdTransacao == 0){
+					if (g.Inserir(this) == true){
+						msgInsercao += "Gestante - Gravado\n";
+					}else{
+						msgInsercao += "Gestante - Erro\n";
+					}
+				}else{
+					if (g.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Gestante - Atualizado\n";
+					}else{
+						msgInsercao += "Gestante - Erro\n";
+					}
+				}				
+			}finally{
+				g = null;			
+			}
+		}
+		
+		Mensagem.exibeMessagem(this, "SCS - Acompanhamento", msgInsercao,2000);
+		new Handler().postDelayed(new Runnable() {		
+			public void run() {
+				finish();
+			}
+		}, 2000);
+		
+	}
+	
 }
