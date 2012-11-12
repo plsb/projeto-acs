@@ -50,6 +50,7 @@
         <activity android:name="br.com.view.AcompanhamentosRealizados" android:label="Acompanhamentos Realizados"></activity>
         <activity android:name="br.com.view.Acomp_Gestante" android:label="Gestante"></activity>
         <activity android:name="br.com.view.ControleDoencas" android:label="Doenças"></activity>
+        <activity android:name="br.com.view.Acomp_Hanseniase" android:label="Hanseniase"></activity>
         <activity android:name="br.com.view.Acomp_Hipertensao" android:label="Hipertensao"></activity>
     </application>
 
