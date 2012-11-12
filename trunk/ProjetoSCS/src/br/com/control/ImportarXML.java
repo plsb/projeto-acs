@@ -26,7 +26,8 @@ public class ImportarXML extends Activity {
 	private ProgressDialog mprogressDialog;
 	private Handler mhandler;
 	
-	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,cHan,cHa,cDia,cTb,cGes,cVacina = null;
+	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,
+		   cHan,cHa,cDia,cTb,cGes,cVacina = null;
 	
 	String msg = "";
 	
@@ -169,7 +170,7 @@ public class ImportarXML extends Activity {
 	}//Fim do MÃ©todo ImportarUsuarios
 	
 	public void ImportaBairros(){
-		//I M P O R T A Ã‡ Ãƒ O   D O S   B A I R R O S					
+		//I M P O R T A Ç Ã O   D O S   B A I R R O S					
 		try {
 			
 			if (!(xml.carregar("scs.xml","bairro") == null)){
@@ -205,7 +206,7 @@ public class ImportarXML extends Activity {
 	}//Fim do MÃ©todo ImportaBairros
 	
 	public void ImportaRuas(){
-		//I M P O R T A Ã‡ Ãƒ O   D O S   L O G R A D O U R O S		
+		//I M P O R T A Ç Ã O   D O S   L O G R A D O U R O S		
 		try {
 			if (!(xml.carregar("scs.xml","rua") == null)){
 				List<Element> ruas = xml.carregar("scs.xml","rua"); 
@@ -307,7 +308,7 @@ public class ImportarXML extends Activity {
 			System.out.println("Erro Importando ResidÃªncias: "+e.getMessage());
 		}
 		
-	}//Fim do MÃ©todo ResidÃªncias
+	}//Fim do Método ImportaResidencia
 	
 	public void ImportaFamiliar(){
 		

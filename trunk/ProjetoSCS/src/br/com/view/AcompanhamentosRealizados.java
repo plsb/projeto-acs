@@ -275,9 +275,26 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
     	 
     	 Data = mAdapter.getChild(groupPosition, childPosition).toString();    	     	 
     	 Data = Data.substring(Data.lastIndexOf(":")+2);    	 
-    	 Data = Data.substring(0, Data.length()-1);    	 
+    	 Data = Data.substring(0, Data.length()-1);   
     	 
-    	 Intent td = new Intent(this, TelaDoenca.class);
+    	 Intent td = new Intent(this, ControleDoencas.class);
+    	 ControleDoencas._Hash = Hash;
+    	 ControleDoencas.editando = true;
+    	 ControleDoencas.dataAcomp = Data;
+    	 
+    	 if (TipoDoenca.trim().equals("HAN")){
+    		ControleDoencas.hanseniase = true;
+     	 }else if (TipoDoenca.trim().equals("HA")){
+     		ControleDoencas.hipertensao = true;
+     	 }else if (TipoDoenca.trim().equals("GES")){
+     		ControleDoencas.gestante = true;
+     	 }else if (TipoDoenca.trim().equals("TB")){
+     		ControleDoencas.tuberculose = true;
+     	 }else if (TipoDoenca.trim().equals("DIA")){
+     		ControleDoencas.diabetes = true;
+     	 }
+    	 
+    	 /*Intent td = new Intent(this, TelaDoenca.class);
     	 TelaDoenca._editando = true;
     	 TelaDoenca._HASH = Hash;
     	 TelaDoenca._dataVisita = Data;
@@ -297,7 +314,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
     	 }else if (TipoDoenca.trim().equals("DIA")){
     		TelaDoenca._tabelaDoenca = "diabete";
     		TelaDoenca._Diabetes = true;
-    	 }
+    	 }*/
     	 
     	 startActivity(td);
 
