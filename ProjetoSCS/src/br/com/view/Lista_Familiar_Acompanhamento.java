@@ -50,7 +50,7 @@ public class Lista_Familiar_Acompanhamento extends ListActivity implements OnCli
         
         ListarResidentes(true);
         
-    }//Fim do mï¿½todo Main
+    }//Fim do método Main
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
