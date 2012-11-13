@@ -12,7 +12,6 @@
 			android:layout_height="fill_parent"
 	   >
 		       
-		        
 			    <TextView
 			        android:id="@+acomphanseniase/TxtMedicacaoDiaria"
 			        android:text=" Toma Medicação Diaria:"
@@ -188,8 +187,7 @@
 		          android:hint="Observações"
 		          android:layout_marginBottom="5dp"	          
 		          android:inputType="textMultiLine" 
-		          />	          
-
+		          />	  
 		          
     </LinearLayout>
 

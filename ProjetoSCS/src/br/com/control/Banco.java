@@ -188,8 +188,10 @@ public class Banco{
 																		   "POSSUI_PLANO TEXT,		   	 "+
 																		   "NUM_PESSOAS_COM_PLANO TEXT,  "+
 																		   "NOME_PLANO_SAUDE TEXT,       "+
-																		   "MEIO_TRANSPORTE TEXT,        "+
-																		   "MEIO_TRANSPORTE_OUTRO TEXT); "};
+																		   "MEIO_TRANSPORTE TEXT,        "+																		 
+																		   "MEIO_TRANSPORTE_OUTRO TEXT,	 "+
+																		   "NUM_COMODOS TEXT, 			 "+ 
+																		   "FL_ENERGIA TEXT);            "};
 
 		
 		

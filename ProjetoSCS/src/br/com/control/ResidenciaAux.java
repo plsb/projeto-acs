@@ -40,6 +40,8 @@ public class ResidenciaAux {
 	public String MEIO_COMUNICACAO_OUTROS;
 	public String PART_GRUPOS_OUTROS;
 	public String MEIO_TRANSPORTE_OUTROS;
+	public String NUM_COMODOS;
+	public String FL_ENERGIA;
 	
 	
 	public boolean Inserir(Context contexto){
@@ -77,6 +79,8 @@ public class ResidenciaAux {
 			c.put("MEIO_TRANSPORTE_OUTRO", MEIO_TRANSPORTE_OUTROS);
 			c.put("PART_GRUPOS_OUTRO", PART_GRUPOS_OUTROS);
 			c.put("MEIO_COMUNICACAO_OUTRO", MEIO_COMUNICACAO_OUTROS);
+			c.put("NUM_COMODOS", NUM_COMODOS);
+			c.put("FL_ENERGIA", FL_ENERGIA);
 			
 			_bd.open();
 			_bd.inserirRegistro("residencia", c);
@@ -124,6 +128,8 @@ public class ResidenciaAux {
 			c.put("MEIO_TRANSPORTE_OUTRO", MEIO_TRANSPORTE_OUTROS);
 			c.put("PART_GRUPOS_OUTRO", PART_GRUPOS_OUTROS);
 			c.put("MEIO_COMUNICACAO_OUTRO", MEIO_COMUNICACAO_OUTROS);
+			c.put("NUM_COMODOS", NUM_COMODOS);
+			c.put("FL_ENERGIA", FL_ENERGIA);
 			
 			_bd.open();
 			_bd.atualizarDadosTabela("residencia",indice, c);
@@ -163,6 +169,8 @@ public class ResidenciaAux {
 		MEIO_COMUNICACAO_OUTROS = "";
 		PART_GRUPOS_OUTROS      = "";
 		MEIO_TRANSPORTE_OUTROS  = "";
+		NUM_COMODOS             = "";
+		FL_ENERGIA              = "";
 		
 	}
 }

@@ -185,6 +185,72 @@
 			        android:layout_marginBottom="5dp"
 			        />
 			    
+			    <LinearLayout 
+				    android:orientation="horizontal"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_marginBottom="5dp"
+				>
+	                
+					<TextView 
+					    android:id="@+imovel/TxtEnergiaEletrica"
+					    android:text=" Possui Energia:"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:layout_weight="1"
+					/>
+					<TextView 
+					    android:id="@+imovel/TxtNumeroComodos"
+					    android:text="Nº Cômodos:"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:layout_weight="1"
+					/>
+					
+				</LinearLayout>
+				    
+				    <LinearLayout 
+				        android:orientation="horizontal"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        >
+				     
+				     <RadioGroup 
+				         android:orientation="horizontal"
+				         android:layout_width="130dp"
+				         android:layout_height="wrap_content"
+				         android:id="@+imovel/RgPossuiEletricidade"
+				         >
+				             
+				         <RadioButton 
+				             android:id="@+imovel/RbEnergiaSim"
+				             android:text="S"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				         <RadioButton 
+				             android:id="@+imovel/RbEnergiaNao"
+				             android:text="N"				             
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				     </RadioGroup>  
+				    
+
+				    <EditText
+				        android:id="@+imovel/EdtNumComodos"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginLeft="25dp"
+				        android:inputType="number"
+				    />
+
+				    </LinearLayout>
+			    
 		    </LinearLayout>
     
 

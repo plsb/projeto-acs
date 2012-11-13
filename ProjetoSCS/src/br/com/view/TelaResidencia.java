@@ -29,12 +29,12 @@ import android.widget.TabHost.TabSpec;
 public class TelaResidencia extends Activity implements OnClickListener {
 	
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
-	EditText EdtTipoCasa; //TAB2
+	EditText EdtTipoCasa, EdtNumComodos; //TAB2
     EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano, EdtMeioComunic, EdtGruposComunit, EdtMeioTransp; //TAB3
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3  
-    RadioButton RbSim, RbNao;
+    RadioButton RbSim, RbNao, RbEnergia_S, RbEnergia_N;
     
     Button btnVoltar, btnSalvar;
     
@@ -82,7 +82,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		EdtNomePlano          = (EditText)	  findViewById(R.imovel.EdtNomePlano);
 		EdtMeioComunic        = (EditText)	  findViewById(R.imovel.EdtMeioComunicacao);
 		EdtGruposComunit      = (EditText)	  findViewById(R.imovel.EdtGrupoComunitario);
-		EdtMeioTransp         = (EditText)	  findViewById(R.imovel.EdtMeioTransporte); 
+		EdtMeioTransp         = (EditText)	  findViewById(R.imovel.EdtMeioTransporte);
+		EdtNumComodos         = (EditText)    findViewById(R.imovel.EdtNumComodos);
 		SpTipoCasa   	      = (Spinner) 	  findViewById(R.imovel.SpTipoCasa);		
 		SpDestinoLixo    	  = (Spinner) 	  findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	  = (Spinner) 	  findViewById(R.imovel.SpTratamentoAgua);
@@ -94,12 +95,16 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	    SpTransporteUtilizado = (Spinner)     findViewById(R.imovel.SpMeioTransporte);	
 	    RbSim				  = (RadioButton) findViewById(R.imovel.RbSim);
 	    RbNao				  = (RadioButton) findViewById(R.imovel.RbNao);
+	    RbEnergia_S           = (RadioButton) findViewById(R.imovel.RbEnergiaSim);
+	    RbEnergia_N           = (RadioButton) findViewById(R.imovel.RbEnergiaNao);
 	    btnVoltar             = (Button)      findViewById(R.imovel.btnVoltarFamiliar);
 	    btnSalvar             = (Button)      findViewById(R.imovel.btnSalvarFamiliar);
 	    btnVoltar.setOnClickListener(this);
 	    btnSalvar.setOnClickListener(this);
 		RbSim.setOnClickListener(this);
 		RbNao.setOnClickListener(this);
+		RbEnergia_S.setOnClickListener(this);
+		RbEnergia_N.setOnClickListener(this);
 	    
 		th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
@@ -156,6 +161,12 @@ public class TelaResidencia extends Activity implements OnClickListener {
 											 c.getString(c.getColumnIndex("TRAT_AGUA")).toString(), 
 											 c.getString(c.getColumnIndex("DEST_FEZES")).toString(), 
 											 c.getString(c.getColumnIndex("ABAST_AGUA")).toString());
+						EdtNumComodos.setText(c.getString(c.getColumnIndex("NUM_COMODOS")).toString());
+						if (c.getString(c.getColumnIndex("FL_ENERGIA")).toString().trim().equals("S")){
+							RbEnergia_S.setChecked(true);
+						}else{
+							RbEnergia_N.setChecked(true);
+						}
 					}else if(pTab == 3){
 						setOpcoesSpinnerTab3(c.getString(c.getColumnIndex("CASO_DOENCA")).toString(), 
 										     c.getString(c.getColumnIndex("MEIO_COMUNICACAO")).toString(), 
@@ -291,7 +302,20 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			retorno = false;
 		}else{
 			retorno = true;
+		}		
+		if ((!RbEnergia_S.isChecked())&&(!RbEnergia_N.isChecked())) {
+			msgPendecias += "-> Selecione a opção de energia da casa!\n";
+			retorno = false;
+		}else{
+			retorno = true;
 		}
+		if (EdtNumComodos.getText().toString().trim().length()<=0) {
+			msgPendecias += "-> Informe o número de cômodos da casa!\n";
+			retorno = false;
+		}else{
+			retorno = true;
+		}
+		
 		
 		if (msgPendecias.trim().length() > 0){
 			Mensagem.exibeMessagem(this, "Pendências", msgPendecias);
@@ -306,7 +330,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		setOpcoesEnderecos(pEndereco, pBairro);
 	}
 
-	public void setOpcoesSpinnerTab2(String pTpCasa, String pDestLixo, String pTratAgua, String pDestFezes,String pAbastAgua){
+	public void setOpcoesSpinnerTab2(String pTpCasa, String pDestLixo, String pTratAgua, 
+									 String pDestFezes,String pAbastAgua){
 		setOpcoesTipoCasa(pTpCasa);
 		setOpcoesDestLixo(pDestLixo);	
 		setOpcoesTratAgua(pTratAgua);
@@ -532,6 +557,13 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		r.MEIO_COMUNICACAO_OUTROS = EdtMeioComunic.getText().toString();
 		r.MEIO_TRANSPORTE_OUTROS  = EdtMeioTransp.getText().toString();
 		r.PART_GRUPOS_OUTROS      = EdtGruposComunit.getText().toString();
+		r.NUM_COMODOS             = EdtNumComodos.getText().toString().trim();
+		
+		if (RbEnergia_S.isChecked()){
+			r.FL_ENERGIA = "S";
+		}else{
+			r.FL_ENERGIA = "N";
+		}
 		
 		if (RbSim.isChecked()){
 			r.POSSUI_PLANO  = "S";
