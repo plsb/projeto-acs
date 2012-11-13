@@ -258,7 +258,7 @@ public class ImportarXML extends Activity {
 				for(Element residencia : residencias){
 					
 					c.clear();					
-					c.put("ENDERECO", residencia.getChildText("nomeRuaResicencia"));
+					c.put("ENDERECO", residencia.getChildText("nomeRuaResicencia")); 
 					c.put("NUMERO", residencia.getChildText("num_residenciaResidencia"));
 					c.put("BAIRRO", residencia.getChildText("nomeBairroResidencia"));
 					c.put("COD_BAIRRO", residencia.getChildText("codigoBairroResidencia").trim());
@@ -276,15 +276,17 @@ public class ImportarXML extends Activity {
 					c.put("ABAST_AGUA", residencia.getChildText("abastecimentoaguaResidencia").trim());
 					c.put("DEST_FEZES", residencia.getChildText("destfezesResidencia").trim());
 					c.put("CASO_DOENCA", residencia.getChildText("casodoencaResidencia").trim());
-					c.put("CASO_DOENCA_OUTROS", residencia.getChildText("ourtocasodoencaResidencia").trim());
+					c.put("CASO_DOENCA_OUTROS", residencia.getChildText("ourtocasodoencaResidencia").trim()); 
 					c.put("MEIO_COMUNICACAO", residencia.getChildText("meiocomunicacaoResidencia").trim());
 					c.put("PART_GRUPOS", residencia.getChildText("participagrupoResidencia").trim());
-					c.put("MEIO_TRANSPORTE", residencia.getChildText("meiotransporteResidencia").trim());
+					c.put("MEIO_TRANSPORTE", residencia.getChildText("meiotransporteResidencia").trim());					
 					c.put("POSSUI_PLANO", ((residencia.getChildText("possuiplanosaude").trim().equals("N") || residencia.getChildText("possuiplanosaude").trim().equals("") || residencia.getChildText("possuiplanosaude").trim().equals("null")) ? "N" : residencia.getChildText("possuiplanosaude").trim()));
 					c.put("NUM_PESSOAS_COM_PLANO", ((residencia.getChildText("possuiplanosaude").trim().equals("N") || residencia.getChildText("possuiplanosaude").trim().equals("") || residencia.getChildText("possuiplanosaude").trim().equals("null")) ? "0": residencia.getChildText("numeropessoascobertasplanosaude").trim()));
 					c.put("MEIO_COMUNICACAO_OUTRO", (residencia.getChildText("meiocomunicacaoResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outromeiocomunicacao").toString() : ""));
 					c.put("PART_GRUPOS_OUTRO", (residencia.getChildText("participagrupoResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outroparticipagrupo").toString() : ""));
 					c.put("MEIO_TRANSPORTE_OUTRO", (residencia.getChildText("meiotransporteResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outromeiotransporte").toString() : ""));
+					c.put("FL_ENERGIA", residencia.getChildText("possuienergiaeletrica"));
+					c.put("NUM_COMODOS", residencia.getChildText("numerocomodos"));
 										
 					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? ",  new String[] { residencia.getChildText("codigoRuaResidencia").trim(), residencia.getChildText("num_residenciaResidencia").trim() }, null, null, null, null);
 					cResidencia.moveToFirst();						
