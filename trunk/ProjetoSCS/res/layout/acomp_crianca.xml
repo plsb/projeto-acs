@@ -27,6 +27,7 @@
 			android:layout_height="wrap_content"
 			android:hint="Digite Aqui"
 			android:layout_marginBottom="5dp"
+			android:inputType="numberDecimal"
     	/>
     	
     	<TextView 
@@ -44,6 +45,7 @@
 			android:layout_height="wrap_content"
 			android:hint="Digite Aqui"
 			android:layout_marginBottom="5dp"
+			android:inputType="numberDecimal"
     	/>
     	
     	<TextView 
@@ -55,13 +57,30 @@
 			android:layout_marginBottom="3dp"
 		/>
     
-    	<EditText 
-    	    android:id="@+acompcrianca/EdtSituacao"
-        	android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginBottom="5dp"
-			android:enabled="false"
-    	/>
+    	<RadioGroup 
+		    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+acompcrianca/RgSituacao"
+		>
+				         
+		    <RadioButton 
+		         android:id="@+acompcrianca/RbNutrida"
+		         android:text="Nutrida"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+		    
+		    <RadioButton 
+		         android:id="@+acompcrianca/RbDesnutrida"
+		         android:text="Desnutrida"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+				         
+		</RadioGroup>
     	
     	<TextView 
         	android:text=" Perímetro Cefálico:"
@@ -78,6 +97,25 @@
 			android:layout_height="wrap_content"
 			android:hint="Digite Aqui"
 			android:layout_marginBottom="5dp"
+			android:inputType="numberDecimal"
+    	/>
+    	
+    	<TextView 
+        	android:text=" Apgar 5:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<EditText
+    	    android:id="@+acompcrianca/EdtApgar5" 
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+			android:inputType="numberDecimal"
     	/>
     	
     	<TextView 
@@ -89,11 +127,38 @@
 			android:layout_marginBottom="3dp"
 		/>
     	
-    	<Spinner 
-    		android:id="@+acompcrianca/SpTipoParto"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-		/>
+		<RadioGroup 
+		    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+acompcrianca/RgTipoParto"
+		>
+		             
+		    <RadioButton 
+		         android:id="@+acompcrianca/RbCesario"
+		         android:text="Cesário"
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+		    />
+				         
+		    <RadioButton 
+		         android:id="@+acompcrianca/RbNormal"
+		         android:text="Normal"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+		    
+		    <RadioButton 
+		         android:id="@+acompcrianca/RbForceps"
+		         android:text="Fórceps"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+				         
+		</RadioGroup>
     	
     	<TextView 
         	android:text=" Observação:"

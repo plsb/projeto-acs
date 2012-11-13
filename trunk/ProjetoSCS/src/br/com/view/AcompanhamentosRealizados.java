@@ -40,7 +40,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	
 	public static int _ID = 0;
 	
-	/*/ F I M  D E C L A R A ï¿½ ï¿½ E S /*/
+	/*/ F I M  D E C L A R A Ç Õ E S /*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         _bd.open();
         
         try{        	
-        	Cursor _cursor,_cHan,_cHip,_Ges,_Tb,_Dia = null;
+        	Cursor _cursor,_cHan,_cHip,_Ges,_Tb,_Dia, _Cri = null;
         	
         	
         	_cursor = _bd.consulta("residente", new String[] { "*" },"_ID = "+String.valueOf(_ID).trim(),null,null,null,"_ID",null);          	        	
@@ -226,6 +226,33 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     /*******************************************************************************/		          
         		}
         		
+        		Map<String, String> curGroupMap = new HashMap<String, String>();
+                curGroupMap.put(TITULO, "CRIANÇA");
+                curGroupMap.put(SUBTITULO, "CRI-Acompanhamento");
+                groupData.add(curGroupMap);
+                List<Map<String, String>> children = new ArrayList<Map<String, String>>();
+                
+                /*******************************************************************************/
+                _Cri = _bd.consulta("crianca", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
+                _Cri.moveToFirst();
+                if (_Cri.getCount()>0){
+                    do{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+                        children.add(curChildMap);
+                        curChildMap.put(TITULO,"Data: "+ _Cri.getString(_Cri.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, "Obs: "+_Cri.getString(_Cri.getColumnIndex("OBSERVACAO")).toString());
+                    }while(_Cri.moveToNext());
+                    childData.add(children);
+                }else{
+                	Map<String, String> curChildMap = new HashMap<String, String>();
+                    children.add(curChildMap);
+                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+                    childData.add(children); 
+                }
+                _Cri.close();                    
+                /*******************************************************************************/
+        		
         		
 	        	mAdapter = new SimpleExpandableListAdapter(
 	                    this,
@@ -292,7 +319,9 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
      		ControleDoencas.tuberculose = true;
      	 }else if (TipoDoenca.trim().equals("DIA")){
      		ControleDoencas.diabetes = true;
-     	 }
+     	 }else if (TipoDoenca.trim().equals("CRI")){
+      		ControleDoencas.crianca  = true;
+      	 }
     	 
     	 /*Intent td = new Intent(this, TelaDoenca.class);
     	 TelaDoenca._editando = true;

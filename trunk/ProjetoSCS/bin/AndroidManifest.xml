@@ -49,6 +49,7 @@
         <activity android:name="br.com.view.Acomp_Hipertensao" android:label="Hipertensao"></activity>
         <activity android:name="br.com.view.Acomp_Tuberculose" android:label="Tuberculose"></activity>
         <activity android:name="br.com.view.Acomp_Diabetes" android:label="Diabetes"></activity>
+        <activity android:name="br.com.view.Acomp_Crianca" android:label="Crianças"></activity>
         <activity android:label="Autenticação" android:name="br.com.scs.MainActivity">
             <intent-filter android:icon="@drawable/btnfamilia" android:label="Sistema SCS">
                 <action android:name="android.intent.action.MAIN" />
