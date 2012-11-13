@@ -37,7 +37,19 @@ public class Banco{
 																	       "DT_AGENDAMENTO text,	   "+
 																	       "FL_URGENTE text,		   "+
 																		   "TIPO_AGENDAMENTO text,	   "+
-																		   "DESCRICAO text);			   "};
+																		   "DESCRICAO text);		   "};
+		
+		public static final String[] _sqlTabelaCrianca =  new String[] {"CREATE TABLE if not exists crianca (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+														  		        "HASH text not null, 	   "+
+																        "DT_VISITA text,	       "+
+																        "DT_ATUALIZACAO text,	   "+
+																        "ALTURA text,		   	   "+
+																        "PESO text,		   	       "+
+																        "PER_CEFALICO text,	       "+
+																	    "APGAR5 text,	           "+
+																	    "TP_PARTO text,	       	   "+
+																	    "SITUACAO text,	           "+
+																	    "OBSERVACAO text);		   "};
 		
 		public static final String[] _sqlTabelaVacina =  new String[] {"CREATE TABLE if not exists vacinas (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																	   "HASH text not null,          "+

@@ -1,6 +1,10 @@
 package br.com.view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import br.com.control.Banco;
+import br.com.control.CriancaAux;
 import br.com.control.Diabete;
 import br.com.control.Gestante;
 import br.com.control.Hanseniase;
@@ -25,7 +29,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 	static String _Hash = "";
 	static boolean editando  = false;
 	static String  dataAcomp = null;
-	static boolean gestante,hipertensao, hanseniase,tuberculose, diabetes = false;
+	static boolean gestante,hipertensao, hanseniase,tuberculose, diabetes, crianca = false;
 	
 	private Button btnVoltar, btnSalvar;
 	
@@ -51,11 +55,18 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				_doencas = _bd.consulta("residente", new String[]{"*"}, "hash = '"+_Hash+"'", null, null, null, null, "1");
 				_doencas.moveToFirst();
 				if (_doencas.getCount() > 0){
-					gestante    = (_doencas.getString(_doencas.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S"));
-					tuberculose = (_doencas.getString(_doencas.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S"));
-					hipertensao = (_doencas.getString(_doencas.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S"));
-					hanseniase  = (_doencas.getString(_doencas.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S"));
-					diabetes    = (_doencas.getString(_doencas.getColumnIndex("FL_DIABETE")).toString().trim().equals("S"));
+					
+					if (CalculaIdade(Integer.valueOf(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().substring(0, _doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))),
+							Integer.valueOf(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().substring(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1,
+							Integer.valueOf(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().substring(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1))) < 2) {
+						crianca = true;
+					} else {					
+						gestante    = (_doencas.getString(_doencas.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S"));
+						tuberculose = (_doencas.getString(_doencas.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S"));
+						hipertensao = (_doencas.getString(_doencas.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S"));
+						hanseniase  = (_doencas.getString(_doencas.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S"));
+						diabetes    = (_doencas.getString(_doencas.getColumnIndex("FL_DIABETE")).toString().trim().equals("S"));
+					}
 				}
 			} catch(Exception e) {
 				System.out.println("Exceção: "+e.getMessage());
@@ -97,11 +108,18 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			spec = th.newTabSpec("0").setIndicator("Tuberculose", getResources().getDrawable(R.drawable.tuberculose)).setContent(intent);        
 	        th.addTab(spec);
 		}		
-		if (diabetes == true){
+		if (diabetes == true) {
 			intent = new Intent().setClass(this, Acomp_Diabetes.class);
 			Acomp_Diabetes.Hash = _Hash;
 			Acomp_Diabetes.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("0").setIndicator("Diabetes", getResources().getDrawable(R.drawable.diabetes)).setContent(intent);        
+	        th.addTab(spec);
+		}
+		if (crianca == true) {
+			intent = new Intent().setClass(this, Acomp_Crianca.class);
+			Acomp_Crianca.Hash = _Hash;
+			Acomp_Crianca.DtAcompanhamento = dataAcomp;
+			spec = th.newTabSpec("0").setIndicator("Criança", getResources().getDrawable(R.drawable.child)).setContent(intent);        
 	        th.addTab(spec);
 		}
 	}	
@@ -132,8 +150,58 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 	public void Inserir() {
 		
 		String msgInsercao = "";
+		
+		if (crianca == true) {
+			CriancaAux c;			
+			int _IdTransacao = 0;
+			
+			try {
+				c = new CriancaAux();
+				c.HASH         = Acomp_Crianca.Hash;
+				c.ALTURA       = Acomp_Crianca.EdtAltura.getText().toString();
+				c.PESO         = Acomp_Crianca.EdtPeso.getText().toString();
+				c.PER_CEFALICO = Acomp_Crianca.EdtPerCefalico.getText().toString();
+				c.APGAR5       = Acomp_Crianca.EdtApgar5.getText().toString();
+				c.OBS          = Acomp_Crianca.EdtObs.getText().toString();
+				
+				if (Acomp_Crianca.RbCesario.isChecked()) {
+					c.TP_PARTO = "C";
+				} else if (Acomp_Crianca.RbNormal.isChecked()) {
+					c.TP_PARTO = "N";
+				} else {
+					c.TP_PARTO = "F";
+				}
+				
+				if (Acomp_Crianca.RbNutrido.isChecked()) {
+					c.SITUACAO = "N";
+				} else {
+					c.SITUACAO = "D";
+				}
+				
+				_IdTransacao = Acomp_Crianca.getIdTransacao();
+				
+				if (_IdTransacao == 0){
+					if (c.Inserir(this) == true){
+						msgInsercao += "Criança - Gravado\n";
+					}else{
+						msgInsercao += "Criança - Erro\n";
+					}
+				}else{
+					if (c.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Criança - Atualizado\n";
+					}else{
+						msgInsercao += "Criança - Erro\n";
+					}
+				}
+				
+			} catch (Exception e) {
+				System.out.println("Exceção ao tentar salvar acompanhar de crinça. "+e.getMessage());
+			} finally {
+				c = null;
+			}
+		}
 	
-		if (gestante == true){
+		if (gestante == true) {
 			
 			Gestante g = null;
 			int _IdTransacao = 0;
@@ -443,6 +511,21 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			}
 		}, 2000);
 		
+	}
+	
+	public int CalculaIdade(int _dia, int _mes, int _ano){
+		SimpleDateFormat f;	
+		f = new SimpleDateFormat("dd");
+		int dia = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));
+		f = new SimpleDateFormat("MM");
+		int mes = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));
+		f = new SimpleDateFormat("yyyy");
+		int ano = Integer.valueOf(f.format(new Date(System.currentTimeMillis())));	
+		if ((_dia <= dia)&&(_mes <= mes)){
+			return (ano - _ano);
+		}else{
+			return ((ano - _ano) -1);
+		}
 	}
 	
 }
