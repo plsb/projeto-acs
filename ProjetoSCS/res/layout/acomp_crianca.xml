@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        >
+    
+    	<TextView 
+        	android:text=" Altura:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<EditText 
+    	    android:id="@+acompcrianca/EdtAltura"
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+    	/>
+    	
+    	<TextView 
+        	android:text=" Peso:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<EditText
+    	    android:id="@+acompcrianca/EdtPeso" 
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+    	/>
+    	
+    	<TextView 
+        	android:text=" Situação:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<EditText 
+    	    android:id="@+acompcrianca/EdtSituacao"
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="5dp"
+			android:enabled="false"
+    	/>
+    	
+    	<TextView 
+        	android:text=" Perímetro Cefálico:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<EditText
+    	    android:id="@+acompcrianca/EdtPerimetroCefalico" 
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+    	/>
+    	
+    	<TextView 
+        	android:text=" Tipo de Parto:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    	
+    	<Spinner 
+    		android:id="@+acompcrianca/SpTipoParto"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+		/>
+    	
+    	<TextView 
+        	android:text=" Observação:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<EditText
+    	    android:id="@+acompcrianca/EdtObs" 
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+    	/>
+    	
+    </LinearLayout>
+    
+</ScrollView>
