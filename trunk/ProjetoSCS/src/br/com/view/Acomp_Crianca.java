@@ -1,7 +1,5 @@
 package br.com.view;
 
-import java.util.ArrayList;
-
 import br.com.control.Banco;
 import br.com.scs.R;
 import android.app.Activity;
