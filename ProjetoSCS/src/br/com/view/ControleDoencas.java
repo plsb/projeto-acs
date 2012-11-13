@@ -96,8 +96,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			Acomp_Tuberculose.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("0").setIndicator("Tuberculose", getResources().getDrawable(R.drawable.tuberculose)).setContent(intent);        
 	        th.addTab(spec);
-		}
-		
+		}		
 		if (diabetes == true){
 			intent = new Intent().setClass(this, Acomp_Diabetes.class);
 			Acomp_Diabetes.Hash = _Hash;
