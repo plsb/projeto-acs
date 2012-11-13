@@ -27,7 +27,7 @@ public class ImportarXML extends Activity {
 	private Handler mhandler;
 	
 	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,
-		   cHan,cHa,cDia,cTb,cGes,cVacina = null;
+		   cHan,cHa,cDia,cTb,cGes,cVacina,cCri = null;
 	
 	String msg = "";
 	
@@ -50,7 +50,7 @@ public class ImportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(11);
+        mprogressDialog.setMax(12);
         
         mprogressDialog.show();
         
@@ -80,6 +80,8 @@ public class ImportarXML extends Activity {
                     mprogressDialog.incrementProgressBy(1);
                     ImportaVacinas();
                     mprogressDialog.incrementProgressBy(1);
+                    ImportaCriancas();
+                    mprogressDialog.incrementProgressBy(1);
                     
                 } catch (Exception e) {
                     Log.e("tag", e.getMessage());
@@ -88,7 +90,6 @@ public class ImportarXML extends Activity {
                 //Exibe mensagem apenas informando o fim da execução da thread
                 mhandler.post(new Runnable() {
                     public void run() {
-                    	//Mensagem.exibeMessagem(getApplication(), "Importados:", msg);
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     }
                 });            
@@ -98,31 +99,6 @@ public class ImportarXML extends Activity {
                 finish();
             }
         }.start();
-        
-        
-        
-		/*try{
-			ImportaRuas();
-			ImportaBairros();
-			ImportaUsuarios();
-			ImportaResidencias(); 
-			ImportaFamiliar();
-			ImportaHan();
-			ImportaHa();
-			ImportaDia();
-			ImportaTb();
-			ImportaGes();
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-		
-		Mensagem.exibeMessagem(this, "Importados:", msg,4000);	
-					
-		new Handler().postDelayed(new Runnable() {		
-			public void run() {
-				finish();
-			}
-		}, 4000);*/
 		
 	}//Fim do OnCreate	
 	
@@ -374,11 +350,11 @@ public class ImportarXML extends Activity {
 			System.out.println("Erro Importando Familiares: "+e.getMessage());
 		}
 		
-	}//Fim do MÃ©todo Familiar
+	}//Fim do Método Familiar
 	
 	
 	public void ImportaHan(){
-		//I M P O R T A Ã‡ Ãƒ O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
 		try {
 			if (!(xml.carregar("scs.xml","hanseniase") == null)){
 				List<Element> Lista_Han = xml.carregar("scs.xml","hanseniase"); 
@@ -418,8 +394,49 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Acompanhamento Hanseniase: "+e.getMessage());				
 			}
-	}//Fim do MÃ©todo Importahan
+	}//Fim do Método Importahan
 	
+	public void ImportaCriancas(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  C R I A N Ç A		
+		try {
+			if (!(xml.carregar("scs.xml","acompcrianca") == null)){
+				List<Element> Lista_Cri = xml.carregar("scs.xml","acompcrianca"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Cri : Lista_Cri){
+					c.clear();				
+					c.put("HASH", Cri.getChildText("idmd5familiar").trim());					
+					c.put("DT_VISITA", Cri.getChildText("dtvisita"));
+					c.put("DT_ATUALIZACAO", Cri.getChildText("dtvisita"));
+					c.put("ALTURA", Cri.getChildText("altura"));
+					c.put("PESO", Cri.getChildText("peso"));					
+					c.put("PER_CEFALICO", Cri.getChildText("perimetrocefalico"));
+					c.put("APGAR5", Cri.getChildText("apgar"));
+					c.put("TP_PARTO", Cri.getChildText("tipoparto"));
+					c.put("SITUACAO", Cri.getChildText("situacao"));
+					c.put("OBSERVACAO", Cri.getChildText("obs"));					
+					cCri = bd.consulta("crianca", new String[] { "_ID,HASH,DT_VISITA" }, "HASH = '"+Cri.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Cri.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										
+					cCri.moveToFirst();						
+					if (cCri.getCount() > 0){
+						bd.atualizarDadosTabela("crianca",Integer.valueOf(cCri.getString(cCri.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("crianca", c);							
+					}//Fim else
+					cCri.close();
+				}//Fim for
+					msg = msg + "Crianças - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Crianças - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Criança: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Criança: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Criança: "+e.getMessage());				
+			}
+	}//Fim do Método Importahan	
 	
 	public void ImportaHa(){
 		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S ï¿½ O		

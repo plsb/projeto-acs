@@ -51,7 +51,7 @@ public class ExportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(10);
+        mprogressDialog.setMax(11);
         
         mprogressDialog.show();
         
@@ -86,6 +86,9 @@ public class ExportarXML extends Activity {
                 		mprogressDialog.incrementProgressBy(1);
                 	}
                 	if (ExportarAcompanhamentoTuberculose() == true){
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	if (ExportarAcompCriancas() == true){
                 		mprogressDialog.incrementProgressBy(1);
                 	}
                 	if (ApagaAgendamentos() == true){
@@ -295,6 +298,50 @@ public class ExportarXML extends Activity {
 			return false;
 		}
 	}//Fim do Mï¿½todo ExportarFamiliar
+	
+	public boolean ExportarAcompCriancas(){
+		
+		try{			
+			Cursor csr = null;
+			bd.open();
+			csr = bd.consulta("crianca", new String[] {"*"}, null, null, null, null, "_ID", "");
+			csr.moveToFirst();
+			
+			if (csr.getCount()>0){
+				do{	      
+					Element CRIANCA       = new Element("CRIANCA");				
+					Element HASH          = new Element("HASH");				
+					Element DT_VISITA     = new Element("DT_VISITA");
+					Element ALTURA 		  = new Element("ALTURA");
+					Element PESO  		  = new Element("PESO");
+					Element PER_CEFALICO  = new Element("PER_CEFALICO");
+					Element APGAR5 		  = new Element("APGAR5");
+					Element TP_PARTO      = new Element("TP_PARTO");
+					Element SITUACAO  	  = new Element("SITUACAO");
+					Element OBSERVACAO    = new Element("OBSERVACAO");
+					
+					CRIANCA.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
+					CRIANCA.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
+					CRIANCA.addContent(ALTURA.setText(csr.getString(csr.getColumnIndex("ALTURA")).toString()));
+					CRIANCA.addContent(PESO.setText(csr.getString(csr.getColumnIndex("PESO")).toString()));
+					CRIANCA.addContent(PER_CEFALICO.setText(csr.getString(csr.getColumnIndex("PER_CEFALICO")).toString()));
+					CRIANCA.addContent(APGAR5.setText(csr.getString(csr.getColumnIndex("APGAR5")).toString()));
+					CRIANCA.addContent(TP_PARTO.setText(csr.getString(csr.getColumnIndex("TP_PARTO")).toString()));
+					CRIANCA.addContent(SITUACAO.setText(csr.getString(csr.getColumnIndex("SITUACAO")).toString()));
+					CRIANCA.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));
+					
+					SCS.addContent(CRIANCA);
+					
+				}while (csr.moveToNext());
+			}//Fim if		
+			csr.close();
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Log.i("Erro Exportando Crianças:", e.getMessage());
+			return false;
+		}
+	}//Fim do MÃ©todo ExportarVacinas
 	
 	public boolean ExportarVacinas(){
 		

@@ -136,14 +136,15 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		_Hash = "";
-		dataAcomp = null;
-		editando  = false;
-		gestante = false;
+		_Hash       = "";
+		dataAcomp   = null;
+		editando    = false;
+		gestante    = false;
 		hipertensao = false;
-		hanseniase = false;
+		hanseniase  = false;
 		tuberculose = false;
-		diabetes = false;
+		diabetes    = false;
+		crianca     = false;
 		super.onDestroy();
 	}
 	
