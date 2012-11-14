@@ -29,7 +29,8 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 	static String _Hash = "";
 	static boolean editando  = false;
 	static String  dataAcomp = null;
-	static boolean gestante,hipertensao, hanseniase,tuberculose, diabetes, crianca = false;
+	static boolean gestante,hipertensao, hanseniase,
+				   tuberculose, diabetes, crianca = false;
 	
 	private Button btnVoltar, btnSalvar;
 	
