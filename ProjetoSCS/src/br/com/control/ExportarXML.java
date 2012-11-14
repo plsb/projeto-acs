@@ -168,7 +168,6 @@ public class ExportarXML extends Activity {
 					Element SEG_TERRIT   	 = new Element("SEGTERRITORIAL");
 					Element AREA 		 	 = new Element("AREA");
 					Element MICROAREA    	 = new Element("MICROAREA");
-					//Element COD_FAMILIA  	 = new Element("CODFAMILIA");
 					Element DATA_CADASTRO	 = new Element("DATACADASTRO");
 					Element TIPO_CASA    	 = new Element("TIPOCASA");
 					Element DEST_LIXO     	 = new Element("DESTLIXO");
@@ -187,6 +186,8 @@ public class ExportarXML extends Activity {
 					Element MCOMUNIC_OUTROS  = new Element("MEIOCOMUNICACAO_OUTROS");
 					Element MTRANSP_OUTROS   = new Element("MEIOTRANSPORTE_OUTROS");
 					Element PGRUPOS_OUTROS   = new Element("PARTICIPAGRUPO_OUTROS");
+					Element POSSUI_ENERGIA   = new Element("POSSUI_ENERGIA_ELETRICA");
+					Element NUM_COMODOS      = new Element("NUM_COMODOS");
 					
 					RESIDENCIA.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					RESIDENCIA.addContent(ENDERECO.setText(csr.getString(csr.getColumnIndex("COD_ENDERECO")).toString()));
@@ -208,6 +209,8 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(PART_GRUPOS.setText(csr.getString(csr.getColumnIndex("PART_GRUPOS")).toString())); 
 					RESIDENCIA.addContent(MEIO_TRANSPORTE.setText(csr.getString(csr.getColumnIndex("MEIO_TRANSPORTE")).toString()));
 					RESIDENCIA.addContent(FL_PLANO_SAUDE.setText(csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString()));
+					RESIDENCIA.addContent(POSSUI_ENERGIA.setText(csr.getString(csr.getColumnIndex("FL_ENERGIA")).toString().trim()));
+					RESIDENCIA.addContent(NUM_COMODOS.setText(csr.getString(csr.getColumnIndex("NUM_COMODOS")).toString().trim()));					
 					RESIDENCIA.addContent(PES_COBERTAS.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") || 
 																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("null") ||
 																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("") ? "" : csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString())));

@@ -439,7 +439,7 @@ public class ImportarXML extends Activity {
 	}//Fim do Método Importahan	
 	
 	public void ImportaHa(){
-		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S ï¿½ O		
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S Ã O		
 		try {
 			if (!(xml.carregar("scs.xml","hipertensao") == null)){
 				List<Element> Lista_Ha = xml.carregar("scs.xml","hipertensao"); 
@@ -481,7 +481,7 @@ public class ImportarXML extends Activity {
 	
 	
 	public void ImportaDia(){
-		//I M P O R T A Ã‡ Ãƒ O   D O S  A C O M P A N H A M E N T O S  H I P E R T E N S Ãƒ O		
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  D I A B E T E S		
 		try {
 			if (!(xml.carregar("scs.xml","diabetes") == null)){
 				List<Element> Lista_Ha = xml.carregar("scs.xml","diabetes"); 
