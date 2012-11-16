@@ -266,6 +266,8 @@ public class ExportarXML extends Activity {
 					Element FL_EPILETICO	 = new Element("EPILETICO");
 					Element HASH  			 = new Element("HASH");
 					Element DATA_ATUALIZACAO = new Element("DTATUALIZACAO");
+					Element NOME_PAI         = new Element("NOME_PAI");
+					Element NOME_MAE         = new Element("NOME_MAE");
 					
 					FAMILIAR.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					FAMILIAR.addContent(NOME.setText(csr.getString(csr.getColumnIndex("NOME")).toString()));
@@ -287,6 +289,8 @@ public class ExportarXML extends Activity {
 					FAMILIAR.addContent(FL_DIABETE.setText(csr.getString(csr.getColumnIndex("FL_DIABETE")).toString()));
 					FAMILIAR.addContent(FL_EPILETICO.setText(csr.getString(csr.getColumnIndex("FL_EPILETICO")).toString())); 
 					FAMILIAR.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));
+					FAMILIAR.addContent(NOME_PAI.setText(csr.getString(csr.getColumnIndex("NOME_PAI")).toString()));
+					FAMILIAR.addContent(NOME_MAE.setText(csr.getString(csr.getColumnIndex("NOME_MAE")).toString()));
 					FAMILIAR.addContent(DATA_ATUALIZACAO.setText(csr.getString(csr.getColumnIndex("DATA_ATUALIZACAO")).toString()));
 					
 					SCS.addContent(FAMILIAR);

@@ -15,17 +15,17 @@ import android.widget.Button;
 
 public class TelaSincronizar extends Activity implements OnClickListener{
 	
-	  private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar,btnExportarVisitas,btnConfigWS;
+	private Button  btnImportarXmls,btnVisulizarUsuarios,btnVoltar,btnExportarVisitas,btnConfigWS;
 	
-	  @Override
-	  public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
 
-	        setContentView(R.layout.telasincronizar);        	        
+	    setContentView(R.layout.telasincronizar);        	        
 	        
-	        InicializaObjetos();	
-	  }
-
+	    InicializaObjetos();	
+	}
+	
 	public void onClick(View v) {
 		
 		if (v==btnImportarXmls){				

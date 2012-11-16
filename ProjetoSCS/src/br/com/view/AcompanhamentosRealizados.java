@@ -91,7 +91,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                    	Map<String, String> curChildMap = new HashMap<String, String>();
 	                        children.add(curChildMap);
 	                        curChildMap.put(TITULO,"Data: "+ _cHan.getString(_cHan.getColumnIndex("DT_VISITA")).toString());
-	                        curChildMap.put(SUBTITULO, "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString());
+	                        curChildMap.put(SUBTITULO, (_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString().trim().equalsIgnoreCase("") ? "Sem Observação" : "Obs: "+_cHan.getString(_cHan.getColumnIndex("OBSERVACAO")).toString()));
 	                    }while(_cHan.moveToNext());
 	                    childData.add(children);
                     }else{
@@ -122,7 +122,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                    	Map<String, String> curChildMap = new HashMap<String, String>();
 	                        children.add(curChildMap);
 	                        curChildMap.put(TITULO,"Data: "+ _cHip.getString(_cHip.getColumnIndex("DT_VISITA")).toString());
-	                        curChildMap.put(SUBTITULO, "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString());
+	                        curChildMap.put(SUBTITULO, (_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString().trim().equalsIgnoreCase("") ? "Sem Observação" : "Obs: "+_cHip.getString(_cHip.getColumnIndex("OBSERVACAO")).toString()));
 	                    }while(_cHip.moveToNext());
 	                    childData.add(children);
                     }else{
@@ -152,7 +152,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                    	Map<String, String> curChildMap = new HashMap<String, String>();
 	                        children.add(curChildMap);
 	                        curChildMap.put(TITULO,"Data: "+ _Ges.getString(_Ges.getColumnIndex("DT_VISITA")).toString());
-	                        curChildMap.put(SUBTITULO, "Obs: "+_Ges.getString(_Ges.getColumnIndex("OBSERVACAO")).toString());
+	                        curChildMap.put(SUBTITULO, "Mês da Gestação: "+_Ges.getString(_Ges.getColumnIndex("MES_GESTACAO")).toString()+"º");
 	                    }while(_Ges.moveToNext());
 	                    childData.add(children);
                     }else{
@@ -182,7 +182,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 		                   	Map<String, String> curChildMap = new HashMap<String, String>();
 		                    children.add(curChildMap);
 		                    curChildMap.put(TITULO,"Data: "+ _Tb.getString(_Tb.getColumnIndex("DT_VISITA")).toString());
-		                    curChildMap.put(SUBTITULO, "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString());
+		                    curChildMap.put(SUBTITULO, (_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString().trim().equalsIgnoreCase("") ? "Sem Observação" : "Obs: "+_Tb.getString(_Tb.getColumnIndex("OBSERVACAO")).toString()));
 		                }while(_Tb.moveToNext());
 		                childData.add(children);                    	
                     }else{
@@ -212,7 +212,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
 	                    	Map<String, String> curChildMap = new HashMap<String, String>();
 	                        children.add(curChildMap);
 	                        curChildMap.put(TITULO,"Data: "+ _Dia.getString(_Dia.getColumnIndex("DT_VISITA")).toString());
-	                        curChildMap.put(SUBTITULO, "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString());
+	                        curChildMap.put(SUBTITULO, (_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString().trim().equalsIgnoreCase("") ? "Sem Observação" : "Obs: "+_Dia.getString(_Dia.getColumnIndex("OBSERVACAO")).toString()));
 	                    }while(_Dia.moveToNext());
 	                    childData.add(children);
                     }else{
@@ -240,7 +240,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                     	Map<String, String> curChildMap = new HashMap<String, String>();
                         children.add(curChildMap);
                         curChildMap.put(TITULO,"Data: "+ _Cri.getString(_Cri.getColumnIndex("DT_VISITA")).toString());
-                        curChildMap.put(SUBTITULO, "Obs: "+_Cri.getString(_Cri.getColumnIndex("OBSERVACAO")).toString());
+                        curChildMap.put(SUBTITULO, (_Cri.getString(_Cri.getColumnIndex("OBSERVACAO")).toString().trim().equalsIgnoreCase("") ? "Sem Observação" : "Obs: "+_Cri.getString(_Cri.getColumnIndex("OBSERVACAO")).toString()));
                     }while(_Cri.moveToNext());
                     childData.add(children);
                 }else{
