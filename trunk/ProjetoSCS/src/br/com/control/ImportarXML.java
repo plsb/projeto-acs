@@ -143,7 +143,7 @@ public class ImportarXML extends Activity {
 			System.out.println("Erro Importando Usuários: "+e.getMessage());
 		}
 		
-	}//Fim do MÃ©todo ImportarUsuarios
+	}//Fim do Método ImportarUsuarios
 	
 	public void ImportaBairros(){
 		//I M P O R T A Ç Ã O   D O S   B A I R R O S					
@@ -324,8 +324,8 @@ public class ImportarXML extends Activity {
 					c.put("FL_EPILETICO", familiar.getChildText("epilepsiaFamiliar"));			
 					c.put("COD_ENDERECO", familiar.getChildText("codigoRuaFamiliar"));
 					c.put("HASH", familiar.getChildText("idMD5Familiar").trim());
-					c.put("NOME_PAI", "");
-					c.put("NOME_MAE", "");
+					c.put("NOME_PAI", familiar.getChildText("nomepai"));
+					c.put("NOME_MAE", familiar.getChildText("nomemae"));
 					c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 										
 					cFamiliar = bd.consulta("residente", new String[] { "_ID" }, "HASH = ? ",  new String[] { familiar.getChildText("idMD5Familiar").trim() }, null, null, null, null);
