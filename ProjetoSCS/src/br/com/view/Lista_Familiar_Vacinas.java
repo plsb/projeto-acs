@@ -71,7 +71,11 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     	
     	System.out.println(_ID);
     	
-    	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+    	OpcoesVacina._ID = _ID;
+    	Intent i = new Intent(this, OpcoesVacina.class);
+    	startActivity(i);
+    	
+    	/*AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     	dialog.setMessage("Escolha uma Opção:");
     	dialog.setIcon(R.drawable.iconscs);
     	dialog.setPositiveButton("Agendar", new
@@ -90,12 +94,12 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 		});
 		dialog.setTitle("Vacinação");
 		dialog.show();
-    	
+    	*/
     }
-    
+    /*
     public void AtualizaVacina(){
-    	Intent i = new Intent(this, OpcoesVacina.class); 
-    	OpcoesVacina._ID = Integer.valueOf(_ID.trim());    
+    	Intent i = new Intent(this, OpcoesCartaoVacina.class); 
+    	OpcoesCartaoVacina._ID = Integer.valueOf(_ID.trim());    
 	    startActivity(i);
     }
     
@@ -118,6 +122,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     	CartoesVacinacao._CartaoGestante = ( c.getString(c.getColumnIndex("SEXO")).toString().trim().equals("F") ? true : false);
     	startActivity(i);    	
     }
+    */
     
     public void ListarResidentes(boolean usaFiltro){
     	HashMap<String,String> item;

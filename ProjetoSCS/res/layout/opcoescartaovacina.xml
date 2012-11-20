@@ -22,7 +22,7 @@
         >
         
         	<Button 
-            	android:id="@+opcaovacina/btnCrianca"
+            	android:id="@+opcaocartaovacina/btnCrianca"
             	android:drawableTop="@drawable/kids"
             	android:background="@null"
             	android:text="Cartão Criança"
@@ -34,7 +34,7 @@
             />
         
         	<Button 
-            	android:id="@+opcaovacina/btnAdolescente"
+            	android:id="@+opcaocartaovacina/btnAdolescente"
             	android:drawableTop="@drawable/teen"
             	android:background="@null"
             	android:text="Cartão Adolescente"
@@ -54,7 +54,7 @@
         >
         	
         	<Button
-             	android:id="@+opcaovacina/btnAdulto"
+             	android:id="@+opcaocartaovacina/btnAdulto"
             	android:drawableTop="@drawable/adultoidoso"
             	android:background="@null"
             	android:text="Cartão Adulto"
@@ -66,7 +66,7 @@
             />
         
         	<Button 
-            	android:id="@+opcaovacina/btnGestante"
+            	android:id="@+opcaocartaovacina/btnGestante"
             	android:drawableTop="@drawable/pregnant"
             	android:background="@null"
             	android:text="Cartão Gestante"
@@ -85,7 +85,7 @@
 		   android:gravity="center">
         	
            <Button 
-	     	    android:id="@+opcaovacina/btnVoltar"
+	     	    android:id="@+opcaocartaovacina/btnVoltar"
 	     	    android:text="Voltar"
 	     	    android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
