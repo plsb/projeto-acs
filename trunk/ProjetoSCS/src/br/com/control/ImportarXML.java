@@ -263,8 +263,13 @@ public class ImportarXML extends Activity {
 					c.put("MEIO_TRANSPORTE_OUTRO", (residencia.getChildText("meiotransporteResidencia").toString().trim().equals("Outro") ? residencia.getChildText("outromeiotransporte").toString() : ""));
 					c.put("FL_ENERGIA", residencia.getChildText("possuienergiaeletrica"));
 					c.put("NUM_COMODOS", residencia.getChildText("numerocomodos"));
+					c.put("COD_FAMILIA", residencia.getChildText("numero_familia"));
+					c.put("COMPLEMENTO", residencia.getChildText("complemento"));
 										
-					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? ",  new String[] { residencia.getChildText("codigoRuaResidencia").trim(), residencia.getChildText("num_residenciaResidencia").trim() }, null, null, null, null);
+					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? and COMPLEMENTO = ? ",  
+																					new String[] { residencia.getChildText("codigoRuaResidencia").trim(), 
+																								   residencia.getChildText("num_residenciaResidencia").trim(), 
+																								   residencia.getChildText("complemento")}, null, null, null, null);
 					cResidencia.moveToFirst();						
 					if (cResidencia.getCount() > 0){
 						bd.atualizarDadosTabela("residencia",Integer.valueOf(cResidencia.getString(cResidencia.getColumnIndex("_ID")).toString()),c);													
@@ -326,6 +331,7 @@ public class ImportarXML extends Activity {
 					c.put("HASH", familiar.getChildText("idMD5Familiar").trim());
 					c.put("NOME_PAI", familiar.getChildText("nomepai"));
 					c.put("NOME_MAE", familiar.getChildText("nomemae"));
+					c.put("COMPLEMENTO", familiar.getChildText("complemento"));
 					c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 										
 					cFamiliar = bd.consulta("residente", new String[] { "_ID" }, "HASH = ? ",  new String[] { familiar.getChildText("idMD5Familiar").trim() }, null, null, null, null);

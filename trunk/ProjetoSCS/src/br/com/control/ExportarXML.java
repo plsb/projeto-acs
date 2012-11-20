@@ -188,6 +188,8 @@ public class ExportarXML extends Activity {
 					Element PGRUPOS_OUTROS   = new Element("PARTICIPAGRUPO_OUTROS");
 					Element POSSUI_ENERGIA   = new Element("POSSUI_ENERGIA_ELETRICA");
 					Element NUM_COMODOS      = new Element("NUM_COMODOS");
+					Element NUMERO_FAMILIA   = new Element("NUMERO_FAMILIA");
+					Element COMPLEMENTO      = new Element("COMPLEMENTO");
 					
 					RESIDENCIA.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					RESIDENCIA.addContent(ENDERECO.setText(csr.getString(csr.getColumnIndex("COD_ENDERECO")).toString()));
@@ -211,6 +213,8 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(FL_PLANO_SAUDE.setText(csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString()));
 					RESIDENCIA.addContent(POSSUI_ENERGIA.setText(csr.getString(csr.getColumnIndex("FL_ENERGIA")).toString().trim()));
 					RESIDENCIA.addContent(NUM_COMODOS.setText(csr.getString(csr.getColumnIndex("NUM_COMODOS")).toString().trim()));					
+					RESIDENCIA.addContent(NUMERO_FAMILIA.setText(csr.getString(csr.getColumnIndex("COD_FAMILIA")).toString().trim()));
+					RESIDENCIA.addContent(COMPLEMENTO.setText(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString().trim()));
 					RESIDENCIA.addContent(PES_COBERTAS.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") || 
 																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("null") ||
 																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("") ? "" : csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString())));
@@ -268,6 +272,7 @@ public class ExportarXML extends Activity {
 					Element DATA_ATUALIZACAO = new Element("DTATUALIZACAO");
 					Element NOME_PAI         = new Element("NOME_PAI");
 					Element NOME_MAE         = new Element("NOME_MAE");
+					Element COMPLEMENTO      = new Element("COMPLEMENTO");
 					
 					FAMILIAR.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					FAMILIAR.addContent(NOME.setText(csr.getString(csr.getColumnIndex("NOME")).toString()));
@@ -292,6 +297,7 @@ public class ExportarXML extends Activity {
 					FAMILIAR.addContent(NOME_PAI.setText(csr.getString(csr.getColumnIndex("NOME_PAI")).toString()));
 					FAMILIAR.addContent(NOME_MAE.setText(csr.getString(csr.getColumnIndex("NOME_MAE")).toString()));
 					FAMILIAR.addContent(DATA_ATUALIZACAO.setText(csr.getString(csr.getColumnIndex("DATA_ATUALIZACAO")).toString()));
+					FAMILIAR.addContent(COMPLEMENTO.setText(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString()));
 					
 					SCS.addContent(FAMILIAR);
 					

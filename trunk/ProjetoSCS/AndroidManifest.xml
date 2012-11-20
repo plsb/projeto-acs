@@ -14,43 +14,43 @@
         android:icon="@drawable/iconscs"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >        
-        <activity android:name="br.com.view.OpcoesVacina" android:label="SCS - Vacinação" ></activity>
-        <activity android:name="br.com.view.Acompanhamento_Vacinas" android:label="SCS - Vacinação" ></activity>
-        <activity android:name="br.com.view.CartoesVacinacao" android:label="Cartões de Vacinação" ></activity>
-        <activity android:name="br.com.view.CartaoCrianca" android:label="Cartão Criança" ></activity>
-        <activity android:name="br.com.view.CartaoAdolescente" android:label="Cartão Adolescente" ></activity>
-        <activity android:name="br.com.view.CartaoGestante" android:label="Cartão Gestante" ></activity>
-        <activity android:name="br.com.view.CartaoAdulto" android:label="Cartão Adulto/Idoso" ></activity>
-        <activity android:name="br.com.view.TelaPrincipal" android:label="@string/title_activity_main" ></activity>
-        <activity android:name="br.com.view.TelaVacinas" android:label="SCS - Vacinação" ></activity>
-        <activity android:name="br.com.view.InsereAgendamento" android:label="SCS - Agendamento" ></activity>
-        <activity android:name="br.com.view.Lista_Familiar_Agendamento" android:label="Familiares Cadastrados" ></activity>
-        <activity android:name="br.com.view.Lista_Familiar_Acompanhamento" android:label="Familiares Cadastrados" ></activity>
-        <activity android:name="br.com.view.Lista_Familiar_Vacinas" android:label="SCS - Vacinação" ></activity>
-        <activity android:name="br.com.view.Lista_Usuarios" android:label="Usuários Cadastrados" ></activity>
-        <activity android:name="br.com.control.ExportarXML" android:label="Exportando XML" android:theme="@style/Theme.Transparent" ></activity>
-        <activity android:name="br.com.control.ImportarXML" android:label="Importação de XML" android:theme="@style/Theme.Transparent" ></activity>
-        <activity android:name="br.com.view.Lista_Residencias" android:label="Residencias Cadastradas"></activity>
-        <activity android:name="br.com.view.Lista_Residentes" android:label="Familiares Cadastrados"></activity>
-        <activity android:name="br.com.view.TelaInfo" android:label="Informações do Aparelho"></activity>
-        <activity android:name="br.com.view.TelaFamilia" android:label="Familia"></activity>
-        <activity android:name="br.com.view.TelaAgendamento" android:label="Agendamento"></activity>
-        <activity android:name="br.com.view.TelaAcompanhamento" android:label="Acompanhamento"></activity>
-        <activity android:name="br.com.view.TelaUsuario" android:label="Usuários"></activity>
-        <activity android:name="br.com.view.TelaSincronizar" android:label="Sincronizar"></activity>
-        <activity android:name="br.com.view.TelaSobre" android:label="Sobre"></activity>
-        <activity android:name="br.com.view.TelaResidencia" android:label="Sistema Controle de Saúde"></activity>
-        <activity android:name="br.com.view.TelaCadastroFamilia" android:label="Sistema Controle de Saúde"></activity>
-        <activity android:name="br.com.view.TelaDoenca" android:label="Doenças"></activity>
-        <activity android:name="br.com.view.AcompanhamentosRealizados" android:label="Acompanhamentos Realizados"></activity>
-        <activity android:name="br.com.view.Acomp_Gestante" android:label="Gestante"></activity>
-        <activity android:name="br.com.view.ControleDoencas" android:label="Doenças"></activity>
-        <activity android:name="br.com.view.Acomp_Hanseniase" android:label="Hanseniase"></activity>
-        <activity android:name="br.com.view.Acomp_Hipertensao" android:label="Hipertensao"></activity>
-        <activity android:name="br.com.view.Acomp_Tuberculose" android:label="Tuberculose"></activity>
-        <activity android:name="br.com.view.Acomp_Diabetes" android:label="Diabetes"></activity>
-        <activity android:name="br.com.view.Acomp_Crianca" android:label="Crianças"></activity>
-        <activity android:label="Autenticação" android:name="br.com.scs.MainActivity">
+        <activity android:name="br.com.view.OpcoesVacina" android:label="SCS - Vacinação" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Acompanhamento_Vacinas" android:label="SCS - Vacinação" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.CartoesVacinacao" android:label="Cartões de Vacinação" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.CartaoCrianca" android:label="Cartão Criança" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.CartaoAdolescente" android:label="Cartão Adolescente" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.CartaoGestante" android:label="Cartão Gestante" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.CartaoAdulto" android:label="Cartão Adulto/Idoso" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.TelaPrincipal" android:label="@string/title_activity_main" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.TelaVacinas" android:label="SCS - Vacinação" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.InsereAgendamento" android:label="SCS - Agendamento" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Lista_Familiar_Agendamento" android:label="Familiares Cadastrados" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Lista_Familiar_Acompanhamento" android:label="Familiares Cadastrados" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Lista_Familiar_Vacinas" android:label="SCS - Vacinação" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Lista_Usuarios" android:label="Usuários Cadastrados" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.control.ExportarXML" android:label="Exportando XML" android:theme="@style/Theme.Transparent" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.control.ImportarXML" android:label="Importação de XML" android:theme="@style/Theme.Transparent" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Lista_Residencias" android:label="Residencias Cadastradas" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Lista_Residentes" android:label="Familiares Cadastrados" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaInfo" android:label="Informações do Aparelho" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaFamilia" android:label="Familia" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaAgendamento" android:label="Agendamento" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaAcompanhamento" android:label="Acompanhamento" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaUsuario" android:label="Usuários" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaSincronizar" android:label="Sincronizar" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaSobre" android:label="Sobre" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaResidencia" android:label="Sistema Controle de Saúde" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaCadastroFamilia" android:label="Sistema Controle de Saúde" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.TelaDoenca" android:label="Doenças" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.AcompanhamentosRealizados" android:label="Acompanhamentos Realizados" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Acomp_Gestante" android:label="Gestante" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.ControleDoencas" android:label="Doenças" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Acomp_Hanseniase" android:label="Hanseniase" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Acomp_Hipertensao" android:label="Hipertensao" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Acomp_Tuberculose" android:label="Tuberculose" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Acomp_Diabetes" android:label="Diabetes" android:screenOrientation="portrait"></activity>
+        <activity android:name="br.com.view.Acomp_Crianca" android:label="Crianças" android:screenOrientation="portrait"></activity>
+        <activity android:label="Autenticação" android:name="br.com.scs.MainActivity" android:screenOrientation="portrait">
             <intent-filter android:icon="@drawable/btnfamilia" android:label="Sistema SCS">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
