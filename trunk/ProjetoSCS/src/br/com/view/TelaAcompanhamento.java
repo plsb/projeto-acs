@@ -67,11 +67,16 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
     	
     	String numero = o.toString();
     	
-    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(","));
+    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(", l"));
+    	
+    	String complemento = o.toString();
+    	
+    	complemento = complemento.substring(complemento.indexOf(":")+2, complemento.lastIndexOf(","));
     	
     	Intent i = new Intent(this, Lista_Familiar_Acompanhamento.class);    
     	Lista_Familiar_Acompanhamento.END = endereco;
-    	Lista_Familiar_Acompanhamento.NUM = numero;    	
+    	Lista_Familiar_Acompanhamento.NUM = numero; 
+    	Lista_Familiar_Acompanhamento.COMPLEMENTO = complemento;
     	startActivity(i);
     	
     }
@@ -93,9 +98,9 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
 	        	do{	
 	        	  item = new HashMap<String,String>();
 	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
-						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
-	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
+ 			  			 _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
+	        	  item.put( "line2", "Complemento: "+_cursor.getString(_cursor.getColumnIndex("COMPLEMENTO")).toString()+", BAIRRO: "+
+ 			  			 _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString());	        	  
 		          list.add( item );
 		        }while (_cursor.moveToNext());	
         	}

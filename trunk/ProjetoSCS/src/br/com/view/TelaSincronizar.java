@@ -49,7 +49,7 @@ public class TelaSincronizar extends Activity implements OnClickListener{
 		}
 		
 		if (v == btnConfigWS){
-			Mensagem.exibeMessagem(this, "Web Service", "Função em desenvolvimento");
+			Mensagem.exibeMessagem(this, "Web Service", "Função não habilitada.");
 		}
 	}//Fim do Onclick  
 	

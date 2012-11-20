@@ -31,7 +31,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
 	
-	public static String END,NUM = "";	
+	public static String END,NUM,COMPLEMENTO = "";	
 	
 	String _ID;
 	
@@ -128,7 +128,7 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
         	if (!usaFiltro){
         		_cursor = _bd.consulta("residente", new String[] { "*" },null,null,null,null,"_ID",null);  
         	}else{
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente", new String[] { "*" },"endereco = '"+END+"' AND numero = '"+NUM.trim()+"' and complemento = '"+COMPLEMENTO+"' and nome like'%"+edtFiltro.getText().toString()+"%'",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
@@ -194,6 +194,14 @@ public class Lista_Familiar_Vacinas extends ListActivity implements OnClickListe
     	}else{
     		return ((ano - _ano) -1);
     	}
+    }
+    
+    @Override
+    protected void onDestroy() {
+    	END = "";
+    	NUM = "";
+    	COMPLEMENTO = "";
+    	super.onDestroy();
     }
 }
 

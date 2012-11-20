@@ -100,8 +100,8 @@ public class Lista_Residencias extends ListActivity implements OnClickListener {
 	        	  item.put( "line1", _cursor.getString(_cursor.getColumnIndex("_ID")).toString()+"-"+
 	        			  			 _cursor.getString(_cursor.getColumnIndex("ENDERECO")).toString()+", Nº "+
 						             _cursor.getString(_cursor.getColumnIndex("NUMERO")).toString());
-	        	  item.put( "line2", _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString()+" - "+
-	        			  			 _cursor.getString(_cursor.getColumnIndex("MUNICIPIO")).toString());
+	        	  item.put( "line2", "Complemento: "+_cursor.getString(_cursor.getColumnIndex("COMPLEMENTO")).toString()+", Bairro: "+
+	        			  			 _cursor.getString(_cursor.getColumnIndex("BAIRRO")).toString());
 		          list.add( item );
 		        }while (_cursor.moveToNext());	
         	}

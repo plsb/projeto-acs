@@ -57,7 +57,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
     Cursor c = null;
     
 
-	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero;
+	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero, SpComplemento;
 	CheckBox    Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante, Alcolismo, Chagas, Deficiencia, Malaria, Epilepsia;
 	EditText    EdtNome, EdtOcupacao, DtNascimento, EdtNomePai, EdtNomeMae; 
 	RadioGroup  RdSexo;
@@ -69,6 +69,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	ArrayList<String> Idade  = new ArrayList<String>();
 	ArrayList<String> Ruas   = new ArrayList<String>();
 	ArrayList<String> Num    = new ArrayList<String>();
+	ArrayList<String> Comp   = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		SpFreqEscola   = (Spinner)    findViewById(R.cadastrofamilia.SpFrequenEsc);
 		SpRua          = (Spinner)    findViewById(R.cadastrofamilia.SpRua);
 		SpNumero 	   = (Spinner)    findViewById(R.cadastrofamilia.SpNumero);
+		SpComplemento  = (Spinner)    findViewById(R.cadastrofamilia.SpComplemento);
 		DtNascimento   = (EditText)   findViewById(R.cadastrofamilia.EdtDataNascimento);
 		Hanseniase     = (CheckBox)   findViewById(R.cadastrofamilia.ChHanseniase);
 		Hipertensao    = (CheckBox)   findViewById(R.cadastrofamilia.ChHipertensao);
@@ -105,6 +107,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		btnVoltar.setOnClickListener(this);
 		btnSalvar.setOnClickListener(this);
 		DtNascimento.setOnClickListener(this);
+		RdbMasculino.setOnClickListener(this);
+		RdbFeminino.setOnClickListener(this);
 		
 		OpcaoAlfabetizado("");
 		OpcaoFreqEscola("");		
@@ -126,10 +130,9 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 					setOpcoesEnderecos(c.getString(c.getColumnIndex("COD_ENDERECO")).toString()+"-"+
 									   c.getString(c.getColumnIndex("ENDERECO")).toString());
 					setOpcoesNumeros(c.getString(c.getColumnIndex("NUMERO")).toString());
+					setOpcoesComplemento(c.getString(c.getColumnIndex("COMPLEMENTO")).toString());
 					DtNascimento.setText(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString());
-					//DtNascimento.updateDate(Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1)), 
-						//	Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1, 
-							//Integer.valueOf(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().substring(0, c.getString(c.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/"))));
+					
 					if (c.getString(c.getColumnIndex("SEXO")).toString().equals("M")){
 						RdbMasculino.setChecked(true);
 						RdbFeminino.setChecked(false);
@@ -273,10 +276,13 @@ private void setOpcoesEnderecos(String pEnd){
 
 private void setOpcoesNumeros(String pNumero){
 	Num.clear();
-	if (pNumero.length()>0){
+	Comp.clear();
+	if (pNumero.length() > 0){
 		Num.add(pNumero);
 	}
-	Cursor csr = null;	
+	
+	Cursor csr = null;
+	
 	if (SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().trim().length() > 0){
 		try{
 			try{
@@ -288,6 +294,7 @@ private void setOpcoesNumeros(String pNumero){
 				if (csr.getCount() > 0){
 					for (int i = 0;i < csr.getCount(); i++){
 						Num.add(csr.getString(csr.getColumnIndex("NUMERO")).toString());
+						Comp.add(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString());
 						csr.moveToNext();
 					}
 				}
@@ -295,6 +302,43 @@ private void setOpcoesNumeros(String pNumero){
 				PreencheSpinner(SpNumero, Num);
 			}catch(Exception e){
 				Log.i("Método SetOpcoesNumeros", e.getMessage());
+			}
+		}finally{
+			bd.fechaBanco();
+		}
+	}
+}
+
+private void setOpcoesComplemento(String pComplemento){
+	
+	Comp.clear();
+	
+	if (pComplemento.trim().length() > 0){
+		Comp.add(pComplemento);
+	}
+	
+	Cursor csr = null;
+	//Comp.add("");
+	
+	if (SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().trim().length() > 0){
+		try{
+			try{
+				bd.open();
+				csr = bd.consulta("residencia", new String[]{"*"}, "ENDERECO = '"+SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().substring(
+																				  SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().indexOf("-")+1)+"' AND "+
+																				  "NUMERO = '"+SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString()+"' ", 
+								  null, null, null, null, null);
+				csr.moveToFirst();
+				if (csr.getCount() > 0){
+					for (int i = 0;i < csr.getCount(); i++){						
+						Comp.add(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString());
+						csr.moveToNext();
+					}
+				}
+				csr.close();
+				PreencheSpinner(SpComplemento, Comp);
+			}catch(Exception e){
+				Log.i("Método SetOpcoesComplemento", e.getMessage());
 			}
 		}finally{
 			bd.fechaBanco();
@@ -333,6 +377,9 @@ public void PreencheSpinner(final Spinner s,ArrayList<String> a){
 			if (s == SpRua){
 				setOpcoesNumeros("");
 			}
+			if (s == SpNumero){
+				setOpcoesComplemento("");
+			}
 		} 
 
 		public void onNothingSelected(AdapterView<?> parent) {
@@ -350,6 +397,7 @@ public void InsereBD(){
 		r.NOME         = EdtNome.getText().toString();
 		r.ENDERECO     = SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString();
 		r.NUMERO       = SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString();
+		r.COMPLEMENTO  = SpComplemento.getItemAtPosition(SpComplemento.getSelectedItemPosition()).toString();
 		r.DTNASCIMENTO = DtNascimento.getText().toString().trim();//String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth()+1)+"/"+String.valueOf(DtNascimento.getYear());
 		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString().substring(0, 1);
 		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString().substring(0, 1);
@@ -493,6 +541,12 @@ public void InsereBD(){
 		}
 		if (v == DtNascimento){			
 			showDialog(DATE_DIALOG_ID);
+		}
+		if (v == RdbMasculino){
+			Gestante.setEnabled(false);
+		}
+		if (v == RdbFeminino){
+			Gestante.setEnabled(true);
 		}
 		
 	}

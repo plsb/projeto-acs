@@ -197,7 +197,7 @@ public class ImportarXML extends Activity {
 					c.put("COD_SEGMENTO", rua.getChildText("codigoSegmentoRua"));					
 					c.put("USU_VINCULADO", rua.getChildText("codigoAgenteRua"));
 					c.put("COD_BAIRRO", rua.getChildText("codigoBairroRua"));
-					cRuas = bd.consulta("ruas", new String[] { "_ID" }, "COD_RET = "+rua.getChildText("codigoRua").trim(), null, null, null, null, null);										
+					cRuas = bd.consulta("ruas", new String[] { "_ID" }, "COD_RET = "+rua.getChildText("codigoRua").trim()+" AND USU_VINCULADO = "+rua.getChildText("codigoAgenteRua"), null, null, null, null, null);										
 					cRuas.moveToFirst();						
 					if (cRuas.getCount() > 0){
 						bd.atualizarDadosTabela("ruas",Integer.valueOf(cRuas.getString(cRuas.getColumnIndex("_ID")).toString()),c);													

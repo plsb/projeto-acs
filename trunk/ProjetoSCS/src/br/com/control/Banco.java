@@ -170,6 +170,7 @@ public class Banco{
 																		   "HASH TEXT,			   		  "+
 																		   "NOME_PAI TEXT,		   		  "+
 																		   "NOME_MAE TEXT,		   		  "+
+																		   "COMPLEMENTO TEXT,             "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
@@ -203,6 +204,7 @@ public class Banco{
 																		   "MEIO_TRANSPORTE TEXT,        "+																		 
 																		   "MEIO_TRANSPORTE_OUTRO TEXT,	 "+
 																		   "NUM_COMODOS TEXT, 			 "+ 
+																		   "COMPLEMENTO TEXT,            "+
 																		   "FL_ENERGIA TEXT);            "};
 
 		

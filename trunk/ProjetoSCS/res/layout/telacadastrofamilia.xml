@@ -98,30 +98,55 @@
         
       </LinearLayout>
       
-      <TextView 
-            android:text="Número"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            />  
-      
       <LinearLayout 
           android:orientation="horizontal"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="5dp"
-          >  
+          > 
       
-      <Spinner
-            android:id="@+cadastrofamilia/SpNumero" 
-            android:text="Nº"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+	      <TextView 
+	            android:text="Número"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:textStyle="bold"
+	            />  
       
-      </LinearLayout>
+       	  <TextView 
+	            android:text="Complemento"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:textStyle="bold"
+	            />  
+	   </LinearLayout>         	
+          
+       <LinearLayout 
+     	    android:orientation="horizontal"
+     	    android:layout_width="fill_parent"
+     	    android:layout_height="wrap_content"
+     	    android:paddingBottom="5dp"
+     	    >   
+      
+	       <Spinner
+	            android:id="@+cadastrofamilia/SpNumero" 
+	            android:text="Nº"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            />
+	      
+	       <Spinner
+	            android:id="@+cadastrofamilia/SpComplemento" 
+	            android:text="Nº"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            />
+      
+       </LinearLayout>
+            
         
   		<TextView 
             	android:text="Data Nascimento"
@@ -209,16 +234,17 @@
      	    <Spinner 
      	        android:id="@+cadastrofamilia/SpFrequenEsc"
      	        android:layout_width="fill_parent"
-     	        android:layout_height="40dp"
+     	        android:layout_height="wrap_content"
      	        android:layout_weight="1"
      	        />
      	    
      	    <Spinner 
      	        android:id="@+cadastrofamilia/SpAlfabetizado"
      	        android:layout_width="fill_parent"
-     	        android:layout_height="40dp"
+     	        android:layout_height="wrap_content"
      	        android:layout_weight="1"
      	        />
+     	    
      	</LinearLayout>
      	
     <TextView 
