@@ -3,10 +3,13 @@ package br.com.control;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+
 import br.com.control.Banco;
 
+@SuppressLint("SimpleDateFormat")
 public class ResidenciaAux {
 	
 	private static Banco _bd;	
@@ -42,6 +45,7 @@ public class ResidenciaAux {
 	public String MEIO_TRANSPORTE_OUTROS;
 	public String NUM_COMODOS;
 	public String FL_ENERGIA;
+	public String COMPLEMENTO;
 	
 	
 	public boolean Inserir(Context contexto){
@@ -81,6 +85,7 @@ public class ResidenciaAux {
 			c.put("MEIO_COMUNICACAO_OUTRO", MEIO_COMUNICACAO_OUTROS);
 			c.put("NUM_COMODOS", NUM_COMODOS);
 			c.put("FL_ENERGIA", FL_ENERGIA);
+			c.put("COMPLEMENTO", COMPLEMENTO);
 			
 			_bd.open();
 			_bd.inserirRegistro("residencia", c);
@@ -130,6 +135,7 @@ public class ResidenciaAux {
 			c.put("MEIO_COMUNICACAO_OUTRO", MEIO_COMUNICACAO_OUTROS);
 			c.put("NUM_COMODOS", NUM_COMODOS);
 			c.put("FL_ENERGIA", FL_ENERGIA);
+			c.put("COMPLEMENTO", COMPLEMENTO);
 			
 			_bd.open();
 			_bd.atualizarDadosTabela("residencia",indice, c);
@@ -171,6 +177,7 @@ public class ResidenciaAux {
 		MEIO_TRANSPORTE_OUTROS  = "";
 		NUM_COMODOS             = "";
 		FL_ENERGIA              = "";
+		COMPLEMENTO             = "";
 		
 	}
 }

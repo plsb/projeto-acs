@@ -31,7 +31,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
 	EditText EdtTipoCasa, EdtNumComodos; //TAB2
     EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano, EdtMeioComunic, EdtGruposComunit, EdtMeioTransp; //TAB3
-	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea; //TAB1
+	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea, EdtNumeroFamilia,EdtComplemento; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3  
     RadioButton RbSim, RbNao, RbEnergia_S, RbEnergia_N;
@@ -84,6 +84,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		EdtGruposComunit      = (EditText)	  findViewById(R.imovel.EdtGrupoComunitario);
 		EdtMeioTransp         = (EditText)	  findViewById(R.imovel.EdtMeioTransporte);
 		EdtNumComodos         = (EditText)    findViewById(R.imovel.EdtNumComodos);
+		EdtNumeroFamilia      = (EditText)    findViewById(R.imovel.EdtNumeroFamilia);
+		EdtComplemento        = (EditText)    findViewById(R.imovel.EdtComplemento);
 		SpTipoCasa   	      = (Spinner) 	  findViewById(R.imovel.SpTipoCasa);		
 		SpDestinoLixo    	  = (Spinner) 	  findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	  = (Spinner) 	  findViewById(R.imovel.SpTratamentoAgua);
@@ -152,6 +154,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
 											  c.getString(c.getColumnIndex("BAIRRO")).toString());
 						EdtCep.setText(c.getString(c.getColumnIndex("CEP")).toString());
 						EdtNumero.setText(c.getString(c.getColumnIndex("NUMERO")).toString());
+						EdtComplemento.setText(c.getString(c.getColumnIndex("COMPLEMENTO")).toString());
+						EdtNumeroFamilia.setText(c.getString(c.getColumnIndex("COD_FAMILIA")).toString());
 						EdtSegTerritorial.setText(c.getString(c.getColumnIndex("SEG_TERRIT")).toString());
 						EdtArea.setText(c.getString(c.getColumnIndex("AREA")).toString());
 						EdtMicArea.setText(c.getString(c.getColumnIndex("MICROAREA")).toString());
@@ -219,30 +223,12 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		boolean retorno = false;
 		String msgPendecias = "";
 		
-		if (EdtNumero.getText().toString().length() == 0){
-			EdtNumero.setError("Informe o Número da Casa!");
+		if (EdtNumero.getText().toString().length() == 0){			
+			msgPendecias += "-> Informe o Número da Casa!\n";
 			retorno = false;
 		}else{
 			retorno = true;
-		}
-		if (EdtSegTerritorial.getText().toString().length() == 0){
-			EdtSegTerritorial.setError("Informe o Seguimento Territorial!");
-			retorno = false;
-		}else{
-			retorno = true;
-		}
-		if (EdtArea.getText().toString().length() == 0){
-			EdtArea.setError("Informe o Código da Área!");
-			retorno = false;
-		}else{
-			retorno = true;
-		}
-		if (EdtMicArea.getText().toString().length() == 0){
-			EdtMicArea.setError("Informe o Código da Microarea!");
-			retorno = false;
-		}else{
-			retorno = true;
-		}
+		}		
 		if (SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o município!\n";
 			retorno = false;
@@ -302,21 +288,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			retorno = false;
 		}else{
 			retorno = true;
-		}		
-		if ((!RbEnergia_S.isChecked())&&(!RbEnergia_N.isChecked())) {
-			msgPendecias += "-> Selecione a opção de energia da casa!\n";
-			retorno = false;
-		}else{
-			retorno = true;
-		}
-		if (EdtNumComodos.getText().toString().trim().length()<=0) {
-			msgPendecias += "-> Informe o número de cômodos da casa!\n";
-			retorno = false;
-		}else{
-			retorno = true;
-		}
-		
-		
+		}	
 		if (msgPendecias.trim().length() > 0){
 			Mensagem.exibeMessagem(this, "Pendências", msgPendecias);
 		}
@@ -433,9 +405,10 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		}
 		GruposComunitarios.add("Selecione");
 		GruposComunitarios.add("Cooperativa");
-		GruposComunitarios.add("Grupo Religioso");
+		GruposComunitarios.add("Grupo Religioso"); 
 		GruposComunitarios.add("Associacoes");
 		GruposComunitarios.add("Outro");
+		GruposComunitarios.add("Nao Participa");
 		PreencheSpinner(SpGruposComunitarios, GruposComunitarios);
 	}
 	
@@ -558,6 +531,8 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		r.MEIO_TRANSPORTE_OUTROS  = EdtMeioTransp.getText().toString();
 		r.PART_GRUPOS_OUTROS      = EdtGruposComunit.getText().toString();
 		r.NUM_COMODOS             = EdtNumComodos.getText().toString().trim();
+		r.COD_FAMILIA             = EdtNumeroFamilia.getText().toString().trim();
+		r.COMPLEMENTO             = EdtComplemento.getText().toString();
 		
 		if (RbEnergia_S.isChecked()){
 			r.FL_ENERGIA = "S";

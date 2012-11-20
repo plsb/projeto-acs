@@ -32,6 +32,7 @@ public class ResidenteAux {
 	public String HASH;
 	public String NOME_PAI;
 	public String NOME_MAE;
+	public String COMPLEMENTO;
 	private java.util.Date dtNascimento; 
 	
 	public boolean Inserir(Context contexto){
@@ -60,6 +61,7 @@ public class ResidenteAux {
 			c.put("FL_EPILETICO", FL_EPILETICO);
 			c.put("NOME_PAI", NOME_PAI);
 			c.put("NOME_MAE", NOME_MAE);
+			c.put("COMPLEMENTO", COMPLEMENTO);
 			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
 			c.put("HASH", HASH);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
@@ -101,6 +103,7 @@ public class ResidenteAux {
 			c.put("FL_EPILETICO", FL_EPILETICO);	
 			c.put("NOME_PAI", NOME_PAI);
 			c.put("NOME_MAE", NOME_MAE);
+			c.put("COMPLEMENTO", COMPLEMENTO);
 			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
 			c.put("HASH", HASH);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
@@ -136,6 +139,7 @@ public class ResidenteAux {
 		HASH           = "";
 		NOME_PAI       = "";
 		NOME_MAE       = "";
+		COMPLEMENTO    = "";
 		DTNASCIMENTO   = null;
 	}
 	

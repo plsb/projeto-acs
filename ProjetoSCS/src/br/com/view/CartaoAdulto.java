@@ -52,62 +52,64 @@ public class CartaoAdulto extends Activity {
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))
+					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))
+					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
 					chkDose1HPTB.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDose2HPTB.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("3"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDose3HPTB.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("DUPLA ADULTO"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDoseZDA.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("TRIPLICE VIRAL"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDoseUnicaTRV.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("FEBRE AMARELA"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDoseZFBA.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("INFLUENZA SAZONAL"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDoseAINSA.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("MENINGOCOCICA"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDose1MNCA.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("MENINGOCOCICA"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDose2MNCA.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("MENINGOCOCICA"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDoseRMNCA.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PNEUMOCOCICA 23"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))){
+					    &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
 					chkDoseUnicaPNCA23.setChecked(true);
 			    }
 				
