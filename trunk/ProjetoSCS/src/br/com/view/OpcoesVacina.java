@@ -1,70 +1,94 @@
 package br.com.view;
 
+
+import br.com.control.Banco;
 import br.com.scs.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class OpcoesVacina extends Activity implements OnClickListener {
+public class OpcoesVacina extends Activity implements OnClickListener{
 	
-	private Button btnCartaoCrianca, btnCartaoAdolescente, btnCartaoAdulto, btnCartaoGestante, btnVoltar; 
+	public static String _ID;
 	
-	public static int _ID = 0;
-
+	Banco _bd = new Banco(this);
+	
+	private Button BtnAgendamento, BtnCartaoVacina, BtnEditarAgendamento, BtnVoltar;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {		
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.opcoesvacina);
+		
 		InicializaObjetos();
 	}
 	
 	public void InicializaObjetos(){
-		btnCartaoCrianca     = (Button) findViewById(R.opcaovacina.btnCrianca);
-		btnCartaoAdolescente = (Button) findViewById(R.opcaovacina.btnAdolescente);		
-		btnCartaoAdulto      = (Button) findViewById(R.opcaovacina.btnAdulto);
-		btnCartaoGestante    = (Button) findViewById(R.opcaovacina.btnGestante);
-		btnVoltar            = (Button) findViewById(R.opcaovacina.btnVoltar);
-		btnCartaoCrianca.setOnClickListener(this);
-		btnCartaoAdolescente.setOnClickListener(this);
-		btnCartaoAdulto.setOnClickListener(this);
-		btnCartaoGestante.setOnClickListener(this);
-		btnVoltar.setOnClickListener(this);
-	}
-	
-	public void onClick(View v) {
-		Intent i = null;
+		BtnAgendamento = (Button) findViewById(R.opcoesvacina.btnAgendamento);
+		BtnCartaoVacina = (Button) findViewById(R.opcoesvacina.btnCartaoVacina);
+		BtnEditarAgendamento = (Button) findViewById(R.opcoesvacina.btnEditarAgendamento);
+		BtnVoltar = (Button) findViewById(R.opcoesvacina.btnVoltar);
+		BtnAgendamento.setOnClickListener(this);
+		BtnCartaoVacina.setOnClickListener(this);
+		BtnEditarAgendamento.setOnClickListener(this);
+		BtnVoltar.setOnClickListener(this);
 		
-		if (v == btnVoltar){
+	}
+
+	public void onClick(View v) {		
+		
+		if (v == BtnVoltar){
 			finish();
-		}else if (v == btnCartaoCrianca){
-			i = new Intent(this,Acompanhamento_Vacinas.class);
-			Acompanhamento_Vacinas._ID = _ID;
-			Acompanhamento_Vacinas.IdadeFamiliar = 8;
-		}else if (v == btnCartaoAdolescente){
-			i = new Intent(this,Acompanhamento_Vacinas.class);
-			Acompanhamento_Vacinas._ID = _ID;
-			Acompanhamento_Vacinas.IdadeFamiliar = 16;
-		}else if (v == btnCartaoAdulto){
-			i = new Intent(this,Acompanhamento_Vacinas.class);
-			Acompanhamento_Vacinas._ID = _ID;
-			Acompanhamento_Vacinas.IdadeFamiliar = 25;
-		}else if (v == btnCartaoGestante){
-			i = new Intent(this,Acompanhamento_Vacinas.class);
-			Acompanhamento_Vacinas._ID = _ID;
-			Acompanhamento_Vacinas.FalimiarGestante = true;
 		}
-		if (i != null){
-			startActivity(i);
+		if (v == BtnAgendamento){
+			AtualizaVacina();
 		}
+		if (v == BtnCartaoVacina){
+			VisualizarCartaoVacina();
+			
+		}
+		if (v == BtnEditarAgendamento){
+					
+		}
+	
 		
 	}
 	
-	@Override
+	public void VisualizarCartaoVacina(){
+    	String Hash = "";
+    	Cursor c = null;
+    	try{
+    		_bd.open();
+    		c = _bd.consulta("residente", new String[]{"*"}, "_ID = "+String.valueOf(_ID), null, null, null, null, null);
+    		c.moveToFirst();    		
+    		if (c.getCount() > 0){
+    			Hash = c.getString(c.getColumnIndex("HASH")).toString().trim();    	
+    		}    		    
+    		
+    	}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}    	
+    	Intent i = new Intent(this,CartoesVacinacao.class);
+    	CartoesVacinacao._Hash = Hash;
+    	CartoesVacinacao._CartaoGestante = ( c.getString(c.getColumnIndex("SEXO")).toString().trim().equals("F") ? true : false);
+    	startActivity(i);    	
+    }
+	
+	 public void AtualizaVacina(){
+	    	Intent i = new Intent(this, OpcoesCartaoVacina.class); 
+	    	OpcoesCartaoVacina._ID = Integer.valueOf(_ID.trim());    
+		    startActivity(i);
+	    }
+	 
+	 @Override
 	protected void onDestroy() {
-		_ID = 0;
+	    _ID = null;
 		super.onDestroy();
 	}
 
