@@ -66,10 +66,10 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	
 	ArrayList<String> Alfabetizado = new ArrayList<String>();
 	ArrayList<String> FrqEscola    = new ArrayList<String>();
-	ArrayList<String> Idade  = new ArrayList<String>();
-	ArrayList<String> Ruas   = new ArrayList<String>();
-	ArrayList<String> Num    = new ArrayList<String>();
-	ArrayList<String> Comp   = new ArrayList<String>();
+	ArrayList<String> Idade 	   = new ArrayList<String>();
+	ArrayList<String> Ruas   	   = new ArrayList<String>();
+	ArrayList<String> Num   	   = new ArrayList<String>();
+	ArrayList<String> Comp  	   = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -276,7 +276,6 @@ private void setOpcoesEnderecos(String pEnd){
 
 private void setOpcoesNumeros(String pNumero){
 	Num.clear();
-	Comp.clear();
 	if (pNumero.length() > 0){
 		Num.add(pNumero);
 	}
@@ -374,10 +373,10 @@ public void PreencheSpinner(final Spinner s,ArrayList<String> a){
 	s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 		
 		public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
-			if (s == SpRua){
+			if ((s == SpRua) && (ID == 0)){
 				setOpcoesNumeros("");
 			}
-			if (s == SpNumero){
+			if ((s == SpNumero) && (ID == 0)){
 				setOpcoesComplemento("");
 			}
 		} 
