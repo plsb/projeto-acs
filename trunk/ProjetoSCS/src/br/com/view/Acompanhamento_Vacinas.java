@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -34,7 +35,8 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 	private EditText EdtFamiliar,EdtLote;
 	private Spinner  SpTipoVacina, SpDoseAplicada;
 	private EditText DtDataAPlicacao;
-	private CheckBox ChkAplicado;	
+	private CheckBox ChkAplicado;
+	private Button BtnVoltar, BtnGravar;
 	private String 	 Hash = "";
 	
 	private java.util.Date data = null;
@@ -89,6 +91,10 @@ public void InformacoesFamiliar(){
 		SpDoseAplicada  = (Spinner)    findViewById(R.telavacina.SpDose);
 		DtDataAPlicacao = (EditText)   findViewById(R.telavacina.DtDataAplicacao);
 		ChkAplicado     = (CheckBox)   findViewById(R.telavacina.ChkFLAplicada);
+		BtnGravar       = (Button)     findViewById(R.telavacina.btnSalvarVacina);
+		BtnVoltar       = (Button)     findViewById(R.telavacina.btnVoltarVacina);
+		BtnGravar.setOnClickListener(this);
+		BtnVoltar.setOnClickListener(this);
 		DtDataAPlicacao.setOnClickListener(this);
 		
 	}//Fim InicializaObjetos
@@ -218,16 +224,23 @@ public void InformacoesFamiliar(){
 		if (v == DtDataAPlicacao){
 			showDialog(DATE_DIALOG_ID);
 		}
+		if (v == BtnVoltar){
+			finish();
+		}
+		if (v == BtnGravar){
+			Inserir();
+		}
 	}//Fim onClick
 	
 	public boolean CamposValidos(){
 		
-		if (EdtLote.getText().toString().trim().length() <= 0){
-			EdtLote.setError("O campo lote deve ser preenchido.");
+		if (DtDataAPlicacao.getText().toString().trim().length() <= 0){
+			Mensagem.exibeMessagem(this, "Atenção", "O campo Data Aplicação deve ser preenchido.");
 			return false;
 		}else{
 			return true;
-		}		
+		}
+				
 	}
 	
 	public void Inserir(){
