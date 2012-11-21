@@ -35,14 +35,14 @@ public final class R {
         public static final int txtInfluenza=0x7f140009;
     }
     public static final class MenuTelaFamilia {
-        public static final int menu_gravar=0x7f1f0000;
+        public static final int menu_gravar=0x7f210000;
     }
     public static final class TelaInfo {
-        public static final int btnVoltarInfo=0x7f1b0004;
-        public static final int dataInfo=0x7f1b0003;
-        public static final int imeiCelular=0x7f1b0000;
-        public static final int numeUsuInfo=0x7f1b0002;
-        public static final int respCelular=0x7f1b0001;
+        public static final int btnVoltarInfo=0x7f1d0004;
+        public static final int dataInfo=0x7f1d0003;
+        public static final int imeiCelular=0x7f1d0000;
+        public static final int numeUsuInfo=0x7f1d0002;
+        public static final int respCelular=0x7f1d0001;
     }
     public static final class VacinaAplicada {
         public static final int chkDose1HPTB=0x7f130003;
@@ -207,32 +207,32 @@ public final class R {
     public static final class attr {
     }
     public static final class cadastrofamilia {
-        public static final int ChAlcolismo=0x7f190014;
-        public static final int ChChagas=0x7f190015;
-        public static final int ChDeficiencia=0x7f190016;
-        public static final int ChDiabetes=0x7f190018;
-        public static final int ChEpilepsia=0x7f190019;
-        public static final int ChGestante=0x7f190012;
-        public static final int ChHanseniase=0x7f190010;
-        public static final int ChHipertensao=0x7f190011;
-        public static final int ChMalaria=0x7f190017;
-        public static final int ChTuberculose=0x7f190013;
-        public static final int EdtDataNascimento=0x7f190007;
-        public static final int EdtNome=0x7f190003;
-        public static final int EdtNomeMae=0x7f19000d;
-        public static final int EdtNomePai=0x7f19000e;
-        public static final int EdtOcupacao=0x7f19000f;
-        public static final int RbFeminino=0x7f19000a;
-        public static final int RbMasculino=0x7f190009;
-        public static final int RgSexo=0x7f190008;
-        public static final int SpAlfabetizado=0x7f19000c;
-        public static final int SpComplemento=0x7f190006;
-        public static final int SpFrequenEsc=0x7f19000b;
-        public static final int SpNumero=0x7f190005;
-        public static final int SpRua=0x7f190004;
-        public static final int btnSalvarFamiliar=0x7f190002;
-        public static final int btnVoltarFamiliar=0x7f190000;
-        public static final int tableRow1=0x7f190001;
+        public static final int ChAlcolismo=0x7f1b0014;
+        public static final int ChChagas=0x7f1b0015;
+        public static final int ChDeficiencia=0x7f1b0016;
+        public static final int ChDiabetes=0x7f1b0018;
+        public static final int ChEpilepsia=0x7f1b0019;
+        public static final int ChGestante=0x7f1b0012;
+        public static final int ChHanseniase=0x7f1b0010;
+        public static final int ChHipertensao=0x7f1b0011;
+        public static final int ChMalaria=0x7f1b0017;
+        public static final int ChTuberculose=0x7f1b0013;
+        public static final int EdtDataNascimento=0x7f1b0007;
+        public static final int EdtNome=0x7f1b0003;
+        public static final int EdtNomeMae=0x7f1b000d;
+        public static final int EdtNomePai=0x7f1b000e;
+        public static final int EdtOcupacao=0x7f1b000f;
+        public static final int RbFeminino=0x7f1b000a;
+        public static final int RbMasculino=0x7f1b0009;
+        public static final int RgSexo=0x7f1b0008;
+        public static final int SpAlfabetizado=0x7f1b000c;
+        public static final int SpComplemento=0x7f1b0006;
+        public static final int SpFrequenEsc=0x7f1b000b;
+        public static final int SpNumero=0x7f1b0005;
+        public static final int SpRua=0x7f1b0004;
+        public static final int btnSalvarFamiliar=0x7f1b0002;
+        public static final int btnVoltarFamiliar=0x7f1b0000;
+        public static final int tableRow1=0x7f1b0001;
     }
     public static final class cartaoAdulto {
         public static final int TxtDA=0x7f120004;
@@ -271,69 +271,72 @@ public final class R {
         public static final int adolescente=0x7f020002;
         public static final int adulto=0x7f020003;
         public static final int adultoidoso=0x7f020004;
-        public static final int android=0x7f020005;
-        public static final int bdmadeira=0x7f020006;
-        public static final int bg=0x7f020007;
-        public static final int bgabout=0x7f020008;
-        public static final int bgbucar=0x7f020009;
-        public static final int bgitemum=0x7f02000a;
-        public static final int bglistabottom=0x7f02000b;
-        public static final int bgprincipal=0x7f02000c;
-        public static final int bgtop=0x7f02000d;
-        public static final int btnfamilia=0x7f02000e;
-        public static final int btnsobre=0x7f02000f;
-        public static final int buscar=0x7f020010;
-        public static final int buscarpequeno=0x7f020011;
-        public static final int calendar=0x7f020012;
-        public static final int calendar_off=0x7f020013;
-        public static final int casa=0x7f020014;
-        public static final int child=0x7f020015;
-        public static final int diabetes=0x7f020016;
-        public static final int editar=0x7f020017;
-        public static final int exit=0x7f020018;
-        public static final int export=0x7f020019;
-        public static final int exportarxml=0x7f02001a;
-        public static final int familia=0x7f02001b;
-        public static final int filtro=0x7f02001c;
-        public static final int filtropequeno=0x7f02001d;
-        public static final int gestante=0x7f02001e;
-        public static final int gravida=0x7f02001f;
-        public static final int hanseniase=0x7f020020;
-        public static final int hipertensao=0x7f020021;
-        public static final int home=0x7f020022;
-        public static final int home_add=0x7f020023;
-        public static final int home_off=0x7f020024;
-        public static final int ic_action_search=0x7f020025;
-        public static final int ic_launcher=0x7f020026;
-        public static final int iconscs=0x7f020027;
-        public static final int importfile=0x7f020028;
-        public static final int importuser=0x7f020029;
-        public static final int incluir=0x7f02002a;
-        public static final int kids=0x7f02002b;
-        public static final int listarfamiliar=0x7f02002c;
-        public static final int login=0x7f02002d;
-        public static final int outros=0x7f02002e;
-        public static final int people_add=0x7f02002f;
-        public static final int pregnant=0x7f020030;
-        public static final int prosseguir=0x7f020031;
-        public static final int ruasimportar=0x7f020032;
-        public static final int saneamento=0x7f020033;
-        public static final int save=0x7f020034;
-        public static final int savesmall=0x7f020035;
-        public static final int scs_icone=0x7f020036;
-        public static final int semsincronia=0x7f020037;
-        public static final int sincronizar=0x7f020038;
-        public static final int sincronizar_off=0x7f020039;
-        public static final int sobre=0x7f02003a;
-        public static final int sobre_off=0x7f02003b;
-        public static final int sync=0x7f02003c;
-        public static final int teen=0x7f02003d;
-        public static final int tuberculose=0x7f02003e;
-        public static final int users=0x7f02003f;
-        public static final int vacina=0x7f020040;
-        public static final int voltar=0x7f020041;
-        public static final int voltarpequeno=0x7f020042;
-        public static final int webservice=0x7f020043;
+        public static final int agendavacina=0x7f020005;
+        public static final int android=0x7f020006;
+        public static final int bdmadeira=0x7f020007;
+        public static final int bg=0x7f020008;
+        public static final int bgabout=0x7f020009;
+        public static final int bgbucar=0x7f02000a;
+        public static final int bgitemum=0x7f02000b;
+        public static final int bglistabottom=0x7f02000c;
+        public static final int bgprincipal=0x7f02000d;
+        public static final int bgtop=0x7f02000e;
+        public static final int btnfamilia=0x7f02000f;
+        public static final int btnsobre=0x7f020010;
+        public static final int buscar=0x7f020011;
+        public static final int buscarpequeno=0x7f020012;
+        public static final int calendar=0x7f020013;
+        public static final int calendar_off=0x7f020014;
+        public static final int cartaovacinacao=0x7f020015;
+        public static final int casa=0x7f020016;
+        public static final int child=0x7f020017;
+        public static final int diabetes=0x7f020018;
+        public static final int editar=0x7f020019;
+        public static final int editavacina=0x7f02001a;
+        public static final int exit=0x7f02001b;
+        public static final int export=0x7f02001c;
+        public static final int exportarxml=0x7f02001d;
+        public static final int familia=0x7f02001e;
+        public static final int filtro=0x7f02001f;
+        public static final int filtropequeno=0x7f020020;
+        public static final int gestante=0x7f020021;
+        public static final int gravida=0x7f020022;
+        public static final int hanseniase=0x7f020023;
+        public static final int hipertensao=0x7f020024;
+        public static final int home=0x7f020025;
+        public static final int home_add=0x7f020026;
+        public static final int home_off=0x7f020027;
+        public static final int ic_action_search=0x7f020028;
+        public static final int ic_launcher=0x7f020029;
+        public static final int iconscs=0x7f02002a;
+        public static final int importfile=0x7f02002b;
+        public static final int importuser=0x7f02002c;
+        public static final int incluir=0x7f02002d;
+        public static final int kids=0x7f02002e;
+        public static final int listarfamiliar=0x7f02002f;
+        public static final int login=0x7f020030;
+        public static final int outros=0x7f020031;
+        public static final int people_add=0x7f020032;
+        public static final int pregnant=0x7f020033;
+        public static final int prosseguir=0x7f020034;
+        public static final int ruasimportar=0x7f020035;
+        public static final int saneamento=0x7f020036;
+        public static final int save=0x7f020037;
+        public static final int savesmall=0x7f020038;
+        public static final int scs_icone=0x7f020039;
+        public static final int semsincronia=0x7f02003a;
+        public static final int sincronizar=0x7f02003b;
+        public static final int sincronizar_off=0x7f02003c;
+        public static final int sobre=0x7f02003d;
+        public static final int sobre_off=0x7f02003e;
+        public static final int sync=0x7f02003f;
+        public static final int teen=0x7f020040;
+        public static final int tuberculose=0x7f020041;
+        public static final int users=0x7f020042;
+        public static final int vacina=0x7f020043;
+        public static final int voltar=0x7f020044;
+        public static final int voltarpequeno=0x7f020045;
+        public static final int webservice=0x7f020046;
     }
     public static final class id {
         public static final int BtnAcompanhamento=0x7f0f000f;
@@ -353,66 +356,56 @@ public final class R {
         public static final int line_a=0x7f0f0007;
         public static final int line_b=0x7f0f0008;
         public static final int linearLayout1=0x7f0f000c;
-        public static final int menu_gravar=0x7f0f0020;
-        public static final int menu_settings=0x7f0f001f;
-        public static final int panel1=0x7f0f0016;
-        public static final int panel2=0x7f0f0018;
-        public static final int panel3=0x7f0f001a;
-        public static final int panel4=0x7f0f001c;
-        public static final int panel5=0x7f0f001e;
+        public static final int menu_gravar=0x7f0f0016;
+        public static final int menu_settings=0x7f0f0015;
         public static final int tabhost=0x7f0f0006;
         public static final int tableRow1=0x7f0f0001;
-        public static final int text1=0x7f0f0015;
-        public static final int text2=0x7f0f0017;
-        public static final int text3=0x7f0f0019;
-        public static final int text4=0x7f0f001b;
-        public static final int text5=0x7f0f001d;
         public static final int textView1=0x7f0f0004;
         public static final int viewFlipperPrincipal=0x7f0f0005;
     }
     public static final class imovel {
-        public static final int EdtCasoDoente=0x7f1c0023;
-        public static final int EdtComplemento=0x7f1c0017;
-        public static final int EdtGrupoComunitario=0x7f1c0027;
-        public static final int EdtMeioComunicacao=0x7f1c0025;
-        public static final int EdtMeioTransporte=0x7f1c0029;
-        public static final int EdtNomePlano=0x7f1c0021;
-        public static final int EdtNumComodos=0x7f1c0010;
-        public static final int EdtNumPessoasCobertas=0x7f1c0020;
-        public static final int EdtNumeroFamilia=0x7f1c0012;
-        public static final int EdtTipoCasa=0x7f1c0006;
-        public static final int RbEnergiaNao=0x7f1c000f;
-        public static final int RbEnergiaSim=0x7f1c000e;
-        public static final int RbNao=0x7f1c001f;
-        public static final int RbSim=0x7f1c001e;
-        public static final int RgPlanoSaude=0x7f1c001d;
-        public static final int RgPossuiEletricidade=0x7f1c000d;
-        public static final int SpAbastecimentoAgua=0x7f1c0008;
-        public static final int SpCasoDoente=0x7f1c0022;
-        public static final int SpDestFezesUrina=0x7f1c000a;
-        public static final int SpDestinoLixo=0x7f1c0007;
-        public static final int SpEndereco=0x7f1c0013;
-        public static final int SpGrupoComunitario=0x7f1c0026;
-        public static final int SpMeioComunicacao=0x7f1c0024;
-        public static final int SpMeioTransporte=0x7f1c0028;
-        public static final int SpMunicipio=0x7f1c0018;
-        public static final int SpTipoCasa=0x7f1c0005;
-        public static final int SpTratamentoAgua=0x7f1c0009;
-        public static final int TxtEnergiaEletrica=0x7f1c000b;
-        public static final int TxtNumeroComodos=0x7f1c000c;
-        public static final int btnSalvarFamiliar=0x7f1c0003;
-        public static final int btnVoltarFamiliar=0x7f1c0001;
-        public static final int edtArea=0x7f1c001a;
-        public static final int edtBairro=0x7f1c0014;
-        public static final int edtCEP=0x7f1c0015;
-        public static final int edtMicroArea=0x7f1c001b;
-        public static final int edtNumero=0x7f1c0016;
-        public static final int edtSegTerritorial=0x7f1c0019;
-        public static final int tabCadastroResidencia=0x7f1c0011;
-        public static final int tabMoradiaSaneamento=0x7f1c0004;
-        public static final int tabOutras=0x7f1c001c;
-        public static final int tabhost=0x7f1c0000;
-        public static final int tableRow1=0x7f1c0002;
+        public static final int EdtCasoDoente=0x7f1e0023;
+        public static final int EdtComplemento=0x7f1e0017;
+        public static final int EdtGrupoComunitario=0x7f1e0027;
+        public static final int EdtMeioComunicacao=0x7f1e0025;
+        public static final int EdtMeioTransporte=0x7f1e0029;
+        public static final int EdtNomePlano=0x7f1e0021;
+        public static final int EdtNumComodos=0x7f1e0010;
+        public static final int EdtNumPessoasCobertas=0x7f1e0020;
+        public static final int EdtNumeroFamilia=0x7f1e0012;
+        public static final int EdtTipoCasa=0x7f1e0006;
+        public static final int RbEnergiaNao=0x7f1e000f;
+        public static final int RbEnergiaSim=0x7f1e000e;
+        public static final int RbNao=0x7f1e001f;
+        public static final int RbSim=0x7f1e001e;
+        public static final int RgPlanoSaude=0x7f1e001d;
+        public static final int RgPossuiEletricidade=0x7f1e000d;
+        public static final int SpAbastecimentoAgua=0x7f1e0008;
+        public static final int SpCasoDoente=0x7f1e0022;
+        public static final int SpDestFezesUrina=0x7f1e000a;
+        public static final int SpDestinoLixo=0x7f1e0007;
+        public static final int SpEndereco=0x7f1e0013;
+        public static final int SpGrupoComunitario=0x7f1e0026;
+        public static final int SpMeioComunicacao=0x7f1e0024;
+        public static final int SpMeioTransporte=0x7f1e0028;
+        public static final int SpMunicipio=0x7f1e0018;
+        public static final int SpTipoCasa=0x7f1e0005;
+        public static final int SpTratamentoAgua=0x7f1e0009;
+        public static final int TxtEnergiaEletrica=0x7f1e000b;
+        public static final int TxtNumeroComodos=0x7f1e000c;
+        public static final int btnSalvarFamiliar=0x7f1e0003;
+        public static final int btnVoltarFamiliar=0x7f1e0001;
+        public static final int edtArea=0x7f1e001a;
+        public static final int edtBairro=0x7f1e0014;
+        public static final int edtCEP=0x7f1e0015;
+        public static final int edtMicroArea=0x7f1e001b;
+        public static final int edtNumero=0x7f1e0016;
+        public static final int edtSegTerritorial=0x7f1e0019;
+        public static final int tabCadastroResidencia=0x7f1e0011;
+        public static final int tabMoradiaSaneamento=0x7f1e0004;
+        public static final int tabOutras=0x7f1e001c;
+        public static final int tabhost=0x7f1e0000;
+        public static final int tableRow1=0x7f1e0002;
     }
     public static final class layout {
         public static final int acomp_crianca=0x7f030000;
@@ -434,21 +427,22 @@ public final class R {
         public static final int listafilho=0x7f030010;
         public static final int listapai=0x7f030011;
         public static final int listaresidente=0x7f030012;
-        public static final int listax=0x7f030013;
-        public static final int opcoesvacina=0x7f030014;
-        public static final int telaacompanhamento=0x7f030015;
-        public static final int telaagendamento=0x7f030016;
-        public static final int telacadastrofamilia=0x7f030017;
-        public static final int teladoenca=0x7f030018;
-        public static final int telafamilia=0x7f030019;
-        public static final int telainfo=0x7f03001a;
-        public static final int telaprinc=0x7f03001b;
-        public static final int telaresidencia=0x7f03001c;
-        public static final int telasincronizar=0x7f03001d;
-        public static final int telasobre=0x7f03001e;
-        public static final int telausuario=0x7f03001f;
-        public static final int telavacina=0x7f030020;
-        public static final int teste=0x7f030021;
+        public static final int listavacinasmarcadas=0x7f030013;
+        public static final int listax=0x7f030014;
+        public static final int opcoescartaovacina=0x7f030015;
+        public static final int opcoesvacina=0x7f030016;
+        public static final int telaacompanhamento=0x7f030017;
+        public static final int telaagendamento=0x7f030018;
+        public static final int telacadastrofamilia=0x7f030019;
+        public static final int teladoenca=0x7f03001a;
+        public static final int telafamilia=0x7f03001b;
+        public static final int telainfo=0x7f03001c;
+        public static final int telaprinc=0x7f03001d;
+        public static final int telaresidencia=0x7f03001e;
+        public static final int telasincronizar=0x7f03001f;
+        public static final int telasobre=0x7f030020;
+        public static final int telausuario=0x7f030021;
+        public static final int telavacina=0x7f030022;
     }
     public static final class listaResidente {
         public static final int btnFiltrar=0x7f160003;
@@ -457,7 +451,13 @@ public final class R {
         public static final int tableRow1=0x7f160001;
     }
     public static final class listaresidencia {
-        public static final int menu_filtrar=0x7f200000;
+        public static final int menu_filtrar=0x7f220000;
+    }
+    public static final class listavacinas {
+        public static final int btnFiltrar=0x7f170003;
+        public static final int btnVoltarLista=0x7f170000;
+        public static final int edtFiltro=0x7f170002;
+        public static final int tableRow1=0x7f170001;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
@@ -465,12 +465,18 @@ public final class R {
         public static final int listaresidencia=0x7f070002;
         public static final int telaresidencia=0x7f070003;
     }
-    public static final class opcaovacina {
-        public static final int btnAdolescente=0x7f170001;
-        public static final int btnAdulto=0x7f170002;
-        public static final int btnCrianca=0x7f170000;
-        public static final int btnGestante=0x7f170003;
-        public static final int btnVoltar=0x7f170004;
+    public static final class opcaocartaovacina {
+        public static final int btnAdolescente=0x7f180001;
+        public static final int btnAdulto=0x7f180002;
+        public static final int btnCrianca=0x7f180000;
+        public static final int btnGestante=0x7f180003;
+        public static final int btnVoltar=0x7f180004;
+    }
+    public static final class opcoesvacina {
+        public static final int btnAgendamento=0x7f190000;
+        public static final int btnCartaoVacina=0x7f190001;
+        public static final int btnEditarAgendamento=0x7f190002;
+        public static final int btnVoltar=0x7f190003;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -484,30 +490,30 @@ public final class R {
         public static final int Theme_Transparent=0x7f060001;
     }
     public static final class telaAgendamento {
-        public static final int ChkFLUrgente=0x7f180007;
-        public static final int EdtDescricao=0x7f180009;
-        public static final int EdtPessoa=0x7f180004;
-        public static final int SpTipoAgendamento=0x7f180006;
-        public static final int TxtDescricao=0x7f180008;
-        public static final int TxtPessoa=0x7f180003;
-        public static final int TxtTipoAgendamento=0x7f180005;
-        public static final int btnSalvarTelaAgend=0x7f180002;
-        public static final int btnVoltarTelaAgend=0x7f180000;
-        public static final int tableRow1=0x7f180001;
+        public static final int ChkFLUrgente=0x7f1a0007;
+        public static final int EdtDescricao=0x7f1a0009;
+        public static final int EdtPessoa=0x7f1a0004;
+        public static final int SpTipoAgendamento=0x7f1a0006;
+        public static final int TxtDescricao=0x7f1a0008;
+        public static final int TxtPessoa=0x7f1a0003;
+        public static final int TxtTipoAgendamento=0x7f1a0005;
+        public static final int btnSalvarTelaAgend=0x7f1a0002;
+        public static final int btnVoltarTelaAgend=0x7f1a0000;
+        public static final int tableRow1=0x7f1a0001;
     }
     public static final class telaFamilia {
-        public static final int btnEditar=0x7f1a0001;
-        public static final int btnEditarFamiliar=0x7f1a0003;
-        public static final int btnIncluir=0x7f1a0000;
-        public static final int btnIncluirFamiliar=0x7f1a0002;
-        public static final int btnVoltar=0x7f1a0004;
+        public static final int btnEditar=0x7f1c0001;
+        public static final int btnEditarFamiliar=0x7f1c0003;
+        public static final int btnIncluir=0x7f1c0000;
+        public static final int btnIncluirFamiliar=0x7f1c0002;
+        public static final int btnVoltar=0x7f1c0004;
     }
     public static final class telaSincrozinar {
-        public static final int btnConfigWS=0x7f1d0003;
-        public static final int btnExportarXML=0x7f1d0002;
-        public static final int btnImportarXmls=0x7f1d0000;
-        public static final int btnVisualizarUsuarios=0x7f1d0001;
-        public static final int btnVoltar=0x7f1d0004;
+        public static final int btnConfigWS=0x7f1f0003;
+        public static final int btnExportarXML=0x7f1f0002;
+        public static final int btnImportarXmls=0x7f1f0000;
+        public static final int btnVisualizarUsuarios=0x7f1f0001;
+        public static final int btnVoltar=0x7f1f0004;
     }
     public static final class teladoenca {
         public static final int ChGAborto=0x7f0c004f;
@@ -630,16 +636,19 @@ public final class R {
         public static final int btnLogin=0x7f100001;
     }
     public static final class telavacina {
-        public static final int ChkFLAplicada=0x7f1e0008;
-        public static final int DtDataAplicacao=0x7f1e000a;
-        public static final int EdtLoteVacina=0x7f1e0007;
-        public static final int EdtPessoa=0x7f1e0001;
-        public static final int SpDose=0x7f1e0005;
-        public static final int SpTipoVacina=0x7f1e0003;
-        public static final int TxtDataAplicacao=0x7f1e0009;
-        public static final int TxtDose=0x7f1e0004;
-        public static final int TxtLoteVacina=0x7f1e0006;
-        public static final int TxtPessoa=0x7f1e0000;
-        public static final int TxtTipoVacina=0x7f1e0002;
+        public static final int ChkFLAplicada=0x7f20000b;
+        public static final int DtDataAplicacao=0x7f20000d;
+        public static final int EdtLoteVacina=0x7f20000a;
+        public static final int EdtPessoa=0x7f200004;
+        public static final int SpDose=0x7f200008;
+        public static final int SpTipoVacina=0x7f200006;
+        public static final int TxtDataAplicacao=0x7f20000c;
+        public static final int TxtDose=0x7f200007;
+        public static final int TxtLoteVacina=0x7f200009;
+        public static final int TxtPessoa=0x7f200003;
+        public static final int TxtTipoVacina=0x7f200005;
+        public static final int btnSalvarVacina=0x7f200002;
+        public static final int btnVoltarVacina=0x7f200000;
+        public static final int tableRow1=0x7f200001;
     }
 }

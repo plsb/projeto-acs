@@ -30,6 +30,7 @@ public class TelaAgendamento extends ListActivity implements OnClickListener{
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
 	private SimpleAdapter sa;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

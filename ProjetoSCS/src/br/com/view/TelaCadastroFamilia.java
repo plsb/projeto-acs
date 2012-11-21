@@ -17,22 +17,15 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.FeatureInfo;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -150,6 +143,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 					}else{
 						OpcaoFreqEscola("Nao");
 					}
+					
 					EdtOcupacao.setText(c.getString(c.getColumnIndex("OCUPACAO")).toString());
 					EdtNomeMae.setText(c.getString(c.getColumnIndex("NOME_MAE")).toString());
 					EdtNomePai.setText(c.getString(c.getColumnIndex("NOME_PAI")).toString());
@@ -286,14 +280,13 @@ private void setOpcoesNumeros(String pNumero){
 		try{
 			try{
 				bd.open();
-				csr = bd.consulta("residencia", new String[]{"*"}, "ENDERECO = '"+SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().substring(
+				csr = bd.consulta("residencia", new String[]{"distinct *"}, "ENDERECO = '"+SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().substring(
 																				  SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString().indexOf("-")+1)+"' ", 
 								  null, null, null, null, null);
 				csr.moveToFirst();
 				if (csr.getCount() > 0){
 					for (int i = 0;i < csr.getCount(); i++){
 						Num.add(csr.getString(csr.getColumnIndex("NUMERO")).toString());
-						Comp.add(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString());
 						csr.moveToNext();
 					}
 				}

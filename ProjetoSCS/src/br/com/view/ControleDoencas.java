@@ -99,28 +99,28 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			intent = new Intent().setClass(this, Acomp_Hipertensao.class);
 			Acomp_Hipertensao.Hash = _Hash;
 			Acomp_Hipertensao.DtAcompanhamento = dataAcomp;
-			spec = th.newTabSpec("0").setIndicator("Hipertensão", getResources().getDrawable(R.drawable.hipertensao)).setContent(intent);        
+			spec = th.newTabSpec("2").setIndicator("Hipertensão", getResources().getDrawable(R.drawable.hipertensao)).setContent(intent);        
 	        th.addTab(spec);
 		}
 		if (tuberculose == true) {
 			intent = new Intent().setClass(this, Acomp_Tuberculose.class);
 			Acomp_Tuberculose.Hash = _Hash;
 			Acomp_Tuberculose.DtAcompanhamento = dataAcomp;
-			spec = th.newTabSpec("0").setIndicator("Tuberculose", getResources().getDrawable(R.drawable.tuberculose)).setContent(intent);        
+			spec = th.newTabSpec("3").setIndicator("Tuberculose", getResources().getDrawable(R.drawable.tuberculose)).setContent(intent);        
 	        th.addTab(spec);
 		}		
 		if (diabetes == true) {
 			intent = new Intent().setClass(this, Acomp_Diabetes.class);
 			Acomp_Diabetes.Hash = _Hash;
 			Acomp_Diabetes.DtAcompanhamento = dataAcomp;
-			spec = th.newTabSpec("0").setIndicator("Diabetes", getResources().getDrawable(R.drawable.diabetes)).setContent(intent);        
+			spec = th.newTabSpec("4").setIndicator("Diabetes", getResources().getDrawable(R.drawable.diabetes)).setContent(intent);        
 	        th.addTab(spec);
 		}
 		if (crianca == true) {
 			intent = new Intent().setClass(this, Acomp_Crianca.class);
 			Acomp_Crianca.Hash = _Hash;
 			Acomp_Crianca.DtAcompanhamento = dataAcomp;
-			spec = th.newTabSpec("0").setIndicator("Criança", getResources().getDrawable(R.drawable.child)).setContent(intent);        
+			spec = th.newTabSpec("5").setIndicator("Criança", getResources().getDrawable(R.drawable.child)).setContent(intent);        
 	        th.addTab(spec);
 		}
 	}	

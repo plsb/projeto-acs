@@ -36,7 +36,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"
-		        android:enabled="false"		        
+		        android:focusable="false"
+		        android:clickable="false"	        
 		    />
 		    
 		    <CheckBox
@@ -45,7 +46,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"        
 		    />
 		    
 		    <CheckBox
@@ -54,7 +56,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"        
 		    />
 		    
 		</LinearLayout>
@@ -86,7 +89,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"        
 		    />
 		    
 		    <CheckBox
@@ -95,7 +99,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"	        
 		    />
 		    
 		    <CheckBox
@@ -104,7 +109,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"        
 		    />
 		    
 		    <CheckBox
@@ -113,7 +119,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"        
 		    />
 		    		  
 		</LinearLayout>
@@ -144,7 +151,8 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"	
-		        android:enabled="false"	        
+		        android:focusable="false"
+		        android:clickable="false"        
 		    />
 		    
 		</LinearLayout>		

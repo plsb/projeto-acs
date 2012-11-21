@@ -37,8 +37,7 @@ public class OpcoesVacina extends Activity implements OnClickListener{
 		BtnAgendamento.setOnClickListener(this);
 		BtnCartaoVacina.setOnClickListener(this);
 		BtnEditarAgendamento.setOnClickListener(this);
-		BtnVoltar.setOnClickListener(this);
-		
+		BtnVoltar.setOnClickListener(this);		
 	}
 
 	public void onClick(View v) {		
@@ -54,7 +53,7 @@ public class OpcoesVacina extends Activity implements OnClickListener{
 			
 		}
 		if (v == BtnEditarAgendamento){
-					
+			visualizaVacinasAgendadas();
 		}
 	
 		
@@ -85,6 +84,12 @@ public class OpcoesVacina extends Activity implements OnClickListener{
 	    	OpcoesCartaoVacina._ID = Integer.valueOf(_ID.trim());    
 		    startActivity(i);
 	    }
+	
+	private void visualizaVacinasAgendadas() {
+		Intent i = new Intent(this, Lista_Agendamento_Vacina.class); 
+		Lista_Agendamento_Vacina._ID = Integer.valueOf(_ID.trim());    
+	    startActivity(i);
+	}
 	 
 	 @Override
 	protected void onDestroy() {

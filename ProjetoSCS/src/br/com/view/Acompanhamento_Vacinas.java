@@ -36,14 +36,15 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 	private Spinner  SpTipoVacina, SpDoseAplicada;
 	private EditText DtDataAPlicacao;
 	private CheckBox ChkAplicado;
-	private Button BtnVoltar, BtnGravar;
-	private String 	 Hash = "";
+	private Button   BtnVoltar, BtnGravar;	
 	
 	private java.util.Date data = null;
 	static final int DATE_DIALOG_ID = 0;
 	
 	public static int _ID = 0;
+	public static int _CODVACINA = 0;
 	public static int IdadeFamiliar = 0;
+	public static String Hash = "";
 	public static boolean FalimiarGestante = false;
 		
 	
@@ -57,9 +58,16 @@ public class Acompanhamento_Vacinas extends Activity implements OnClickListener 
 		
 		InicializaObjetos();
 		
-		InformacoesFamiliar();
+		if (_CODVACINA == 0) {
 		
-		PreencheTipoVacina(IdadeFamiliar, FalimiarGestante);
+			InformacoesFamiliar();		
+			PreencheTipoVacina(IdadeFamiliar, FalimiarGestante);
+		
+		} else {
+			
+			Editadados();
+			
+		}
 		
 	}//Fim onCreate
 	
@@ -272,16 +280,50 @@ public void InformacoesFamiliar(){
 			else
 				va.FL_APLICADA = "N";
 			
-			if (va.Inserir(this) == true){
-				Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar.", 2000);
-				new Handler().postDelayed(new Runnable() {		
-					public void run() {
-						finish();
-					}
-				}, 2000);
+			if (_CODVACINA == 0) {
+				if (va.Inserir(this) == true){
+					Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Gravar.", 2000);
+					new Handler().postDelayed(new Runnable() {		
+						public void run() {
+							finish();
+						}
+					}, 2000);
+				}
+			} else {
+				if (va.Atualizar(this,_CODVACINA) == true){
+					Mensagem.exibeMessagem(this, "SCS", "Sucesso ao Atualizar.", 2000);
+					new Handler().postDelayed(new Runnable() {		
+						public void run() {
+							finish();
+						}
+					}, 2000);
+				}
 			}
 			
 		}
+	}
+	
+	private void Editadados() {
+		try{
+			Banco bd = new Banco(this); 
+			bd.open();
+			Cursor c = bd.consulta("vacinas", new String[]{"*"},"_ID = "+_CODVACINA, null, null, null, null, null);
+			c.moveToFirst();
+			if (c.getCount() > 0){
+				TipoVacina.clear();
+				TipoVacina.add(c.getString(c.getColumnIndex("TIPO_VACINA")).toString());
+				PreencheSpinner(SpTipoVacina, TipoVacina);
+				DoseAplicada.clear();
+				DoseAplicada.add(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString());
+				PreencheSpinner(SpDoseAplicada, DoseAplicada);
+				InformacoesFamiliar();
+				DtDataAPlicacao.setText(c.getString(c.getColumnIndex("DT_APLICACAO")).toString());
+				EdtLote.setText(c.getString(c.getColumnIndex("LOTE")).toString());
+			}
+			bd.fechaBanco();	
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		} 
 	}
 	
     public void PreencheSpinner(final Spinner s,ArrayList<String> a){
@@ -329,6 +371,7 @@ public void InformacoesFamiliar(){
     protected void onDestroy() {
     	FalimiarGestante = false;
     	IdadeFamiliar = 0;
+    	_CODVACINA = 0;
     	Hash = "";
     	super.onDestroy();
     }
