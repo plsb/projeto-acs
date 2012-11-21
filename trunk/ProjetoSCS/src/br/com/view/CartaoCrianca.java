@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 
 public class CartaoCrianca extends Activity {
 	
@@ -74,29 +75,11 @@ public class CartaoCrianca extends Activity {
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))
 				&&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 				&&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
-				||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))
+				&&((c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))
 				||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))
-				||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))){
-				 chkDose1HPTB.setChecked(true);
-			 }
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))
-				 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-				 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("2"))
-				 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-				chkDose2HPTB.setChecked(true);
-			}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))
-					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("3"))
-					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-					chkDose3HPTB.setChecked(true);
-			}
-			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))
-					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
-					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("R"))
-					 &&(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
-					chkDoseRHPTB.setChecked(true);
-			 }
+				||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D")))){				 
+				 chkDose1HPTB.setChecked(true);			
+			 }			 
 			 if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("PENTAVALENTE"))
 					 &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					 &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))

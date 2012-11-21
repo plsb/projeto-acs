@@ -52,9 +52,9 @@ public class CartaoAdulto extends Activity {
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))					 
 					    &&(c.getString(c.getColumnIndex("FL_APLICADA")).toString().trim().equals("S"))
 					    &&(c.getString(c.getColumnIndex("DOSE_APLICADA")).toString().trim().equals("1"))
-					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))
+					    &&((c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("D"))
 					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("A"))
-					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C"))){
+					    ||(c.getString(c.getColumnIndex("TIPO")).toString().trim().equals("C")))){
 					chkDose1HPTB.setChecked(true);
 			    }
 				if ((c.getString(c.getColumnIndex("TIPO_VACINA")).toString().equals("HEPATITE B"))					 

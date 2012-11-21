@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        >
+        >             
        	
        	<LinearLayout
         	android:layout_width="wrap_content"
@@ -23,9 +23,9 @@
         
         	<Button 
             	android:id="@+opcoesvacina/btnAgendamento"
-            	android:drawableTop="@drawable/acompanhamento"
+            	android:drawableTop="@drawable/agendavacina"
             	android:background="@null"
-            	android:text="Agendamento"
+            	android:text="Marcar Vacinas"
             	android:layout_width="150dp"
             	android:layout_height="100dp"
             	android:textSize="14dp"
@@ -35,7 +35,7 @@
         
         	<Button 
             	android:id="@+opcoesvacina/btnCartaoVacina"
-            	android:drawableTop="@drawable/cartoesvacinas"
+            	android:drawableTop="@drawable/cartaovacinacao"
             	android:background="@null"
             	android:text="Cartões de Vacinas "
             	android:layout_width="150dp"
@@ -55,14 +55,14 @@
         	
         	<Button
              	android:id="@+opcoesvacina/btnEditarAgendamento"
-            	android:drawableTop="@drawable/editar"
+            	android:drawableTop="@drawable/editavacina"
             	android:background="@null"
-            	android:text="Editar Agendamento"
+            	android:text="Listar Vacinas Marcadas" 
             	android:layout_width="150dp"
             	android:layout_height="100dp"
             	android:textSize="14dp"
             	android:textStyle="bold"
-            	android:layout_marginBottom="15dp"
+            	android:layout_marginBottom="15dp" 
             />
         
         	<Button 
@@ -80,4 +80,5 @@
        
        
     </LinearLayout>
+    
 </ScrollView>
