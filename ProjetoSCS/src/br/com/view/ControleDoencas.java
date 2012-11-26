@@ -61,12 +61,13 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 							Integer.valueOf(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().substring(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().indexOf("/")+1,_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")))-1,
 							Integer.valueOf(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().substring(_doencas.getString(_doencas.getColumnIndex("DTNASCIMENTO")).toString().lastIndexOf("/")+1))) < 2) {
 						crianca = true;
-					} else {					
+					} else {							
 						gestante    = (_doencas.getString(_doencas.getColumnIndex("FL_GESTANTE")).toString().trim().equals("S"));
 						tuberculose = (_doencas.getString(_doencas.getColumnIndex("FL_TUBERCULOSE")).toString().trim().equals("S"));
 						hipertensao = (_doencas.getString(_doencas.getColumnIndex("FL_HIPERTENSAO")).toString().trim().equals("S"));
 						hanseniase  = (_doencas.getString(_doencas.getColumnIndex("FL_HANSENIASE")).toString().trim().equals("S"));
-						diabetes    = (_doencas.getString(_doencas.getColumnIndex("FL_DIABETE")).toString().trim().equals("S"));
+						diabetes    = (_doencas.getString(_doencas.getColumnIndex("FL_DIABETE")).toString().trim().equals("S"));					
+						
 					}
 				}
 			} catch(Exception e) {
@@ -80,7 +81,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 		th.setup(this.getLocalActivityManager());
 		TabHost.TabSpec spec;
 		Intent intent;  
-		
+			
 		if (gestante == true) {
 			intent = new Intent().setClass(this, Acomp_Gestante.class);
 			Acomp_Gestante.Hash = _Hash;
@@ -122,6 +123,13 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			Acomp_Crianca.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("5").setIndicator("Criança", getResources().getDrawable(R.drawable.child)).setContent(intent);        
 	        th.addTab(spec);
+		}
+		if ((gestante == false)&&(hanseniase == false)&&(hipertensao == false)&&(tuberculose == false)&&(diabetes == false)){
+			intent = new Intent().setClass(this, Acomp_Padrao.class);
+			Acomp_Padrao.Hash = _Hash;
+			Acomp_Padrao.DtAcompanhamento = dataAcomp;
+			spec = th.newTabSpec("0").setIndicator("Acompanhamento", getResources().getDrawable(R.drawable.acompanhamento)).setContent(intent);
+			th.addTab(spec);
 		}
 	}	
 

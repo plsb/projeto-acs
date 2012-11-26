@@ -15,6 +15,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >        
         <activity android:name="br.com.view.OpcoesVacina" android:label="SCS - Vacinação" android:screenOrientation="portrait" ></activity>
+        <activity android:name="br.com.view.Acomp_Padrao" android:label="Acompanhamento Padrão" android:screenOrientation="portrait" ></activity>
         <activity android:name="br.com.view.Acompanhamento_Vacinas" android:label="SCS - Vacinação" android:screenOrientation="portrait" ></activity>
         <activity android:name="br.com.view.CartoesVacinacao" android:label="Cartões de Vacinação" android:screenOrientation="portrait" ></activity>
         <activity android:name="br.com.view.CartaoCrianca" android:label="Cartão Criança" android:screenOrientation="portrait" ></activity>
