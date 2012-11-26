@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        >
+    
+    	<TextView 
+        	android:text=" Hospitalizado: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<RadioGroup 
+		    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+acomppadrao/RgHospitalizacao"
+		    android:layout_marginBottom="5dp"
+		>
+				         
+		    <RadioButton 
+		         android:id="@+acomppadrao/RbHSim"
+		         android:text="Sim"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+		    
+		    <RadioButton 
+		         android:id="@+acomppadrao/RbHNao"
+		         android:text="Não"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+				         
+		</RadioGroup>
+		
+    	<TextView 
+        	android:text=" Motivo Hospitalização: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    	
+    	<Spinner 
+    	    android:id="@+acomppadrao/SpHospitalizacao"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="50dp"
+    	    android:layout_marginBottom="5dp"
+    	    />
+    	
+    	<TextView 
+        	android:text=" Doente: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    
+    	<RadioGroup 
+		    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+acomppadrao/RgDoente"
+		    android:layout_marginBottom="5dp"
+		>
+				         
+		    <RadioButton 
+		         android:id="@+acomppadrao/RbDSim"
+		         android:text="Sim"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+		    
+		    <RadioButton 
+		         android:id="@+acomppadrao/RbDNao"
+		         android:text="Não"				             
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1"
+			/>
+				         
+		</RadioGroup>
+		
+    	<TextView 
+        	android:text=" Qual Doença: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    	
+    	<Spinner 
+    	    android:id="@+acomppadrao/SpDoente"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="50dp"
+    	    android:layout_marginBottom="5dp"
+    	    />
+    	
+    	<TextView 
+        	android:text=" Observação: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+    	
+    	<EditText 
+    	    android:id="@+acomppadrao/EdtObs"
+        	android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Digite Aqui"
+			android:layout_marginBottom="5dp"
+    	/>
+	
+	</LinearLayout>
+    
+
+</ScrollView>
