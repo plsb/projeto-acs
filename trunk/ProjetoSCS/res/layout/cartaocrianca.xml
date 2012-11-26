@@ -126,9 +126,52 @@
 		    /> 
 		    
 		</LinearLayout>
-				
+		
 		
 		<!-- VIRAL ORAL POLIOMELITE INATIVADA -->
+		<TextView 
+		    android:id="@+VacinaAplicada/txtVIPI"
+		    android:textSize="14dp"	    
+		    android:textColor="#FFFFFF"    
+		    android:textStyle="bold"
+		    android:layout_width="fill_parent"
+		    android:layout_height="25dp"	      
+		    android:text="Viral Injetada Poliomielite Inativada"  
+		    android:gravity="center"
+		    android:background="#00688B"
+	    />    
+	    
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			
+		>
+			
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose1VIP"
+		        android:text="D. 1" 		        
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:focusable="false"
+		        android:clickable="false"        
+		    />
+		    
+		    <CheckBox
+		        android:id="@+VacinaAplicada/chkDose2VIP"
+		        android:text="D. 2" 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"	
+		        android:focusable="false"
+		        android:clickable="false"       
+		    />
+		    		    
+		</LinearLayout>
+				
+		
+		<!-- VIRAL ORAL POLIOMIELITE INATIVADA -->
 		<TextView 
 		    android:id="@+VacinaAplicada/txtVOPI"
 		    android:textSize="14dp"	    
@@ -136,7 +179,7 @@
 		    android:textStyle="bold"
 		    android:layout_width="fill_parent"
 		    android:layout_height="25dp"	      
-		    android:text="Viral Oral Poliomelite Inativada"  
+		    android:text="Viral Oral Poliomielite Inativada"  
 		    android:gravity="center"
 		    android:background="#00688B"
 	    />    
@@ -168,7 +211,7 @@
 		        android:clickable="false"       
 		    />
 		    
-		    <CheckBox
+		    <!-- <CheckBox
 		        android:id="@+VacinaAplicada/chkDose3VOPI"
 		        android:text="D. 3" 
 		        android:layout_width="fill_parent"
@@ -186,7 +229,7 @@
 		        android:layout_weight="1"
 		        android:focusable="false"
 		        android:clickable="false"	        
-		    />
+		    /> -->
 		    
 		</LinearLayout>
 		

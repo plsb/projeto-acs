@@ -579,6 +579,65 @@
 				        android:inputType="textCapCharacters"
 				        android:layout_marginBottom="5dp"
 				        />
+                    
+                    <TextView 
+				        android:text=" A família é apta a receber benefício?"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                    
+                    <RadioGroup 
+				         android:orientation="horizontal"
+				         android:layout_width="fill_parent"
+				         android:layout_height="wrap_content"
+				         android:id="@+imovel/RgPlanoSaude" >
+				             
+				         <RadioButton 
+				             android:id="@+imovel/RbBeneficioSim"
+				             android:text="Sim"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				         <RadioButton 
+				             android:id="@+imovel/RbBeneficioNao"
+				             android:text="Não"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				         <RadioButton 
+				             android:id="@+imovel/RbBeneficioJaRecebe"
+				             android:text="Já Recebe"
+				             android:layout_width="fill_parent"
+				             android:layout_height="wrap_content"
+				             android:layout_weight="1"
+				             />
+				         
+				    </RadioGroup>
+				    
+                    <TextView 
+				        android:text=" Especificar se recebe benefício:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+                    
+                    <EditText 
+				        android:id="@+imovel/EdtBenificio"
+				        android:layout_width="fill_parent"
+				        android:layout_height="45dp"
+				        android:enabled="false"
+				        android:inputType="textCapCharacters"
+				        android:layout_marginBottom="5dp"
+				        />
 		        
 			        <TextView 
 				        android:text=" Em caso de doença procura:"

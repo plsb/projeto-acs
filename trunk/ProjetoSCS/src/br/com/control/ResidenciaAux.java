@@ -46,6 +46,8 @@ public class ResidenciaAux {
 	public String NUM_COMODOS;
 	public String FL_ENERGIA;
 	public String COMPLEMENTO;
+	public String NOME_BENEFICIO;
+	public String FL_APTO_BENEFICIO;
 	
 	
 	public boolean Inserir(Context contexto){
@@ -86,6 +88,8 @@ public class ResidenciaAux {
 			c.put("NUM_COMODOS", NUM_COMODOS);
 			c.put("FL_ENERGIA", FL_ENERGIA);
 			c.put("COMPLEMENTO", COMPLEMENTO);
+			c.put("FL_APTO_BENEFICIO", FL_APTO_BENEFICIO);
+			c.put("NOME_BENEFICIO", NOME_BENEFICIO);
 			
 			_bd.open();
 			_bd.inserirRegistro("residencia", c);
@@ -136,6 +140,8 @@ public class ResidenciaAux {
 			c.put("NUM_COMODOS", NUM_COMODOS);
 			c.put("FL_ENERGIA", FL_ENERGIA);
 			c.put("COMPLEMENTO", COMPLEMENTO);
+			c.put("FL_APTO_BENEFICIO", FL_APTO_BENEFICIO);
+			c.put("NOME_BENEFICIO", NOME_BENEFICIO);
 			
 			_bd.open();
 			_bd.atualizarDadosTabela("residencia",indice, c);
@@ -178,6 +184,8 @@ public class ResidenciaAux {
 		NUM_COMODOS             = "";
 		FL_ENERGIA              = "";
 		COMPLEMENTO             = "";
+		NOME_BENEFICIO          = "";
+		FL_APTO_BENEFICIO       = "";
 		
 	}
 }

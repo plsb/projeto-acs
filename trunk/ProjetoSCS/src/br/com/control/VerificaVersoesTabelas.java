@@ -35,6 +35,7 @@ public class VerificaVersoesTabelas {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaVacina, "vacinas");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaAgendamento, "agendamento");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaCrianca, "crianca");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaVisita, "visita");
 	}
 
 }

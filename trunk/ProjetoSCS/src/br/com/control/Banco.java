@@ -32,6 +32,15 @@ public class Banco{
 																		"USU_ATIVO text NOT NULL,          "+
 																		"USU_FL_ADMIN integer NOT NULL);   "};
 		
+		public static final String[] _sqlTabelaVisita=  new String[] {"CREATE TABLE if not exists visita (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																		"DATA   text NOT NULL,                "+
+																		"HORA   text NOT NULL,                "+
+																		"AGENTE text NOT NULL,                "+
+																		"ENDERECO text NOT NULL,      	      "+
+																		"NUMERO text NOT NULL,			      "+
+																		"FL_CASA_FECHADA TEXT DAFAULT 'N',    "+
+																		"VISITA_CONFIRMADA TEXT DAFAULT 'N'); "};
+		
 		public static final String[] _sqlTabelaAgendamento=  new String[] {"CREATE TABLE if not exists agendamento (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 															  		       "HASH text not null, 	   "+
 																	       "DT_AGENDAMENTO text,	   "+
@@ -170,42 +179,44 @@ public class Banco{
 																		   "HASH TEXT,			   		  "+
 																		   "NOME_PAI TEXT,		   		  "+
 																		   "NOME_MAE TEXT,		   		  "+
-																		   "COMPLEMENTO TEXT,             "+
+																		   "COMPLEMENTO TEXT DEFAULT '',  "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
-																		   "ENDERECO TEXT NOT NULL, 	 "+
-																		   "NUMERO TEXT NOT NULL, 		 "+
-																		   "BAIRRO TEXT NOT NULL, 		 "+
-																		   "COD_BAIRRO TEXT,    		 "+
-																		   "COD_ENDERECO TEXT,   		 "+
-																		   "CEP TEXT, 					 "+
-																		   "MUNICIPIO TEXT NOT NULL, 	 "+
-																		   "SEG_TERRIT TEXT, 			 "+
-																		   "AREA TEXT, 					 "+
-																		   "MICROAREA TEXT, 			 "+																		   
-																		   "COD_FAMILIA TEXT,   		 "+
-																		   "DATA_CADASTRO TEXT NOT NULL, "+
-																		   "TIPO_CASA TEXT, 			 "+
-																		   "TIPO_CASA_OUTROS TEXT, 		 "+
-																		   "DEST_LIXO TEXT, 			 "+
-																		   "TRAT_AGUA TEXT,				 "+
-																		   "ABAST_AGUA TEXT,			 "+
-																		   "DEST_FEZES TEXT,			 "+
-																		   "CASO_DOENCA TEXT,			 "+
-																		   "CASO_DOENCA_OUTROS TEXT,	 "+
-																		   "MEIO_COMUNICACAO TEXT,		 "+
-																		   "MEIO_COMUNICACAO_OUTRO TEXT, "+
-																		   "PART_GRUPOS TEXT,		   	 "+
-																		   "PART_GRUPOS_OUTRO TEXT,      "+
-																		   "POSSUI_PLANO TEXT,		   	 "+
-																		   "NUM_PESSOAS_COM_PLANO TEXT,  "+
-																		   "NOME_PLANO_SAUDE TEXT,       "+
-																		   "MEIO_TRANSPORTE TEXT,        "+																		 
-																		   "MEIO_TRANSPORTE_OUTRO TEXT,	 "+
-																		   "NUM_COMODOS TEXT, 			 "+ 
-																		   "COMPLEMENTO TEXT,            "+
-																		   "FL_ENERGIA TEXT);            "};
+																		   "ENDERECO TEXT NOT NULL, 	 		   "+
+																		   "NUMERO TEXT NOT NULL, 		 		   "+
+																		   "BAIRRO TEXT NOT NULL, 		 		   "+
+																		   "COD_BAIRRO TEXT,    		 		   "+
+																		   "COD_ENDERECO TEXT,   		 		   "+
+																		   "CEP TEXT, 					  		   "+
+																		   "MUNICIPIO TEXT NOT NULL, 	 		   "+
+																		   "SEG_TERRIT TEXT, 			 		   "+
+																		   "AREA TEXT, 					 		   "+
+																		   "MICROAREA TEXT, 			 		   "+																		   
+																		   "COD_FAMILIA TEXT,   				   "+
+																		   "DATA_CADASTRO TEXT NOT NULL, 		   "+
+																		   "TIPO_CASA TEXT, 			 		   "+
+																		   "TIPO_CASA_OUTROS TEXT, 		 		   "+
+																		   "DEST_LIXO TEXT, 			 		   "+
+																		   "TRAT_AGUA TEXT,				 		   "+
+																		   "ABAST_AGUA TEXT,			 		   "+
+																		   "DEST_FEZES TEXT,				       "+
+																		   "CASO_DOENCA TEXT,			           "+
+																		   "CASO_DOENCA_OUTROS TEXT,	           "+
+																		   "MEIO_COMUNICACAO TEXT,		           "+
+																		   "MEIO_COMUNICACAO_OUTRO TEXT,           "+
+																		   "PART_GRUPOS TEXT,		   	           "+
+																		   "PART_GRUPOS_OUTRO TEXT,                "+
+																		   "POSSUI_PLANO TEXT DEFAULT 'N',         "+
+																		   "NUM_PESSOAS_COM_PLANO TEXT DEFAULT '', "+
+																		   "NOME_PLANO_SAUDE TEXT DEFAULT '',      "+
+																		   "MEIO_TRANSPORTE TEXT,                  "+																		 
+																		   "MEIO_TRANSPORTE_OUTRO TEXT,	           "+
+																		   "NUM_COMODOS TEXT, 			           "+ 
+																		   "COMPLEMENTO TEXT TEXT DEFAULT '',      "+
+																		   "FL_APTO_BENEFICIO TEXT DEFAULT '',     "+
+																		   "NOME_BENEFICIO TEXT DEFAULT '',        "+
+																		   "FL_ENERGIA TEXT);                      "};
 
 		
 		
