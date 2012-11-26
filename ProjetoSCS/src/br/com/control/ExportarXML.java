@@ -190,6 +190,8 @@ public class ExportarXML extends Activity {
 					Element NUM_COMODOS      = new Element("NUM_COMODOS");
 					Element NUMERO_FAMILIA   = new Element("NUMERO_FAMILIA");
 					Element COMPLEMENTO      = new Element("COMPLEMENTO");
+					Element FL_APTO_BENEF    = new Element("FL_APTO_BENEFICIO");
+					Element NOME_BENEFICIO   = new Element("NOME_BENEFICIO");
 					
 					RESIDENCIA.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					RESIDENCIA.addContent(ENDERECO.setText(csr.getString(csr.getColumnIndex("COD_ENDERECO")).toString()));
@@ -215,6 +217,8 @@ public class ExportarXML extends Activity {
 					RESIDENCIA.addContent(NUM_COMODOS.setText(csr.getString(csr.getColumnIndex("NUM_COMODOS")).toString().trim()));					
 					RESIDENCIA.addContent(NUMERO_FAMILIA.setText(csr.getString(csr.getColumnIndex("COD_FAMILIA")).toString().trim()));
 					RESIDENCIA.addContent(COMPLEMENTO.setText(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString().trim()));
+					RESIDENCIA.addContent(FL_APTO_BENEF.setText(csr.getString(csr.getColumnIndex("FL_APTO_BENEFICIO")).toString().trim()));
+					RESIDENCIA.addContent(NOME_BENEFICIO.setText(csr.getString(csr.getColumnIndex("NOME_BENEFICIO")).toString().trim()));
 					RESIDENCIA.addContent(PES_COBERTAS.setText((csr.getString(csr.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("N") || 
 																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("null") ||
 																csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString().trim().equals("") ? "" : csr.getString(csr.getColumnIndex("NUM_PESSOAS_COM_PLANO")).toString())));

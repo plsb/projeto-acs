@@ -90,9 +90,8 @@
 				         android:layout_width="130dp"
 				         android:layout_height="wrap_content"
 				         android:id="@+acompanhamentogestante/RgEstNut"
-				         >
-				             
-				         <RadioButton 
+				     >
+				     	 <RadioButton 
 				             android:id="@+acompanhamentogestante/RbNutrida"
 				             android:text="N"
 				             android:layout_width="fill_parent"
@@ -108,8 +107,8 @@
 				             android:layout_weight="1"
 				             />
 				         
-				     </RadioGroup>  
-				    
+				     </RadioGroup>    
+				         
 				    <Spinner
 				        android:id="@+acompanhamentogestante/SpMesGestacao"
 				        android:layout_width="match_parent"

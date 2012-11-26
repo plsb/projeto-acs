@@ -77,11 +77,11 @@ public class VacinaAux {
 			_bd = new Banco(contexto);			
 			c.clear();
 			c.put("HASH", HASH);
-			c.put("TIPO_VACINA", TP_VACINA);
-			c.put("DOSE_APLICADA", DS_VACINA);
+			//c.put("TIPO_VACINA", TP_VACINA);
+			//c.put("DOSE_APLICADA", DS_VACINA);
 			c.put("DT_APLICACAO", DT_APLICACAO);
 			c.put("LOTE", LOTE);
-			c.put("TIPO", TIPO);
+			//c.put("TIPO", TIPO);
 			c.put("FL_APLICADA", FL_APLICADA);
 			_bd.open();
 			_bd.atualizarDadosTabela("vacinas",indice, c);

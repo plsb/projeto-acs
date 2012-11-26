@@ -46,7 +46,7 @@ public class ImportarXML extends Activity {
         mprogressDialog.setMessage("Importando Dados...");
  
         //define o estilo como horizontal que nesse caso signifca que ter√° 
-        //barra de progress√£o/contagem
+        //barra de progresso/contagem
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
@@ -265,6 +265,8 @@ public class ImportarXML extends Activity {
 					c.put("NUM_COMODOS", residencia.getChildText("numerocomodos"));
 					c.put("COD_FAMILIA", residencia.getChildText("numero_familia"));
 					c.put("COMPLEMENTO", residencia.getChildText("complemento"));
+					c.put("FL_APTO_BENEFICIO", residencia.getChildText("utiliza_beneficio"));
+					c.put("NOME_BENEFICIO", residencia.getChildText("nomebeneficio")); 
 										
 					cResidencia = bd.consulta("residencia", new String[] { "_ID" }, "COD_ENDERECO = ? and NUMERO = ? and COMPLEMENTO = ? ",  
 																					new String[] { residencia.getChildText("codigoRuaResidencia").trim(), 
@@ -529,7 +531,7 @@ public class ImportarXML extends Activity {
 	
 	
 	public void ImportaGes(){
-		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  G E S T A N T E S	
+		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  G E S T A N T E S	
 		try {
 			if (!(xml.carregar("scs.xml","gestante") == null)){
 				List<Element> Lista_Ges = xml.carregar("scs.xml","gestante"); 
@@ -575,7 +577,7 @@ public class ImportarXML extends Activity {
 
 	
 	public void ImportaTb(){
-		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  T U B E R C U L O S E		
+		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  T U B E R C U L O S E		
 		try {
 			if (!(xml.carregar("scs.xml","tuberculose") == null)){
 				List<Element> Lista_Tb = xml.carregar("scs.xml","tuberculose"); 
@@ -617,7 +619,7 @@ public class ImportarXML extends Activity {
 	
 	public void ImportaVacinas(){
 		
-		//I M P O R T A √á √É O   D O S  A C O M P A N H A M E N T O S  V A C I N A S 	
+		//I M P O R T A « √ O   D O S  A C O M P A N H A M E N T O S  V A C I N A S 	
 		try {
 			if (!(xml.carregar("scs.xml","vacinas") == null)){
 				List<Element> Lista_Vacinas = xml.carregar("scs.xml","vacinas"); 

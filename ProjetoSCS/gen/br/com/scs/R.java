@@ -46,36 +46,37 @@ public final class R {
     }
     public static final class VacinaAplicada {
         public static final int chkDose1HPTB=0x7f130003;
-        public static final int chkDose1MNGCA=0x7f130016;
-        public static final int chkDose1PNMCA=0x7f130011;
+        public static final int chkDose1MNGCA=0x7f130017;
+        public static final int chkDose1PNMCA=0x7f130012;
         public static final int chkDose1PV=0x7f130005;
-        public static final int chkDose1TB=0x7f13001d;
-        public static final int chkDose1TV=0x7f13001a;
-        public static final int chkDose1VOPI=0x7f130009;
-        public static final int chkDose1VORH=0x7f13000e;
-        public static final int chkDose2MNGCA=0x7f130017;
-        public static final int chkDose2PNMCA=0x7f130012;
+        public static final int chkDose1TB=0x7f13001e;
+        public static final int chkDose1TV=0x7f13001b;
+        public static final int chkDose1VIP=0x7f130009;
+        public static final int chkDose1VOPI=0x7f13000c;
+        public static final int chkDose1VORH=0x7f13000f;
+        public static final int chkDose2MNGCA=0x7f130018;
+        public static final int chkDose2PNMCA=0x7f130013;
         public static final int chkDose2PV=0x7f130006;
-        public static final int chkDose2TV=0x7f13001b;
-        public static final int chkDose2VOPI=0x7f13000a;
-        public static final int chkDose2VORH=0x7f13000f;
-        public static final int chkDose3PNMCA=0x7f130013;
+        public static final int chkDose2TV=0x7f13001c;
+        public static final int chkDose2VIP=0x7f13000a;
+        public static final int chkDose2VOPI=0x7f13000d;
+        public static final int chkDose2VORH=0x7f130010;
+        public static final int chkDose3PNMCA=0x7f130014;
         public static final int chkDose3PV=0x7f130007;
-        public static final int chkDose3VOPI=0x7f13000b;
-        public static final int chkDoseRMNGCA=0x7f130018;
-        public static final int chkDoseRPNMCA=0x7f130014;
-        public static final int chkDoseRTB=0x7f13001e;
-        public static final int chkDoseRVOPI=0x7f13000c;
+        public static final int chkDoseRMNGCA=0x7f130019;
+        public static final int chkDoseRPNMCA=0x7f130015;
+        public static final int chkDoseRTB=0x7f13001f;
         public static final int chkDoseUnicaBCG=0x7f130001;
         public static final int txtBCG=0x7f130000;
         public static final int txtHepatiteB=0x7f130002;
-        public static final int txtMeningococica=0x7f130015;
+        public static final int txtMeningococica=0x7f130016;
         public static final int txtPentavalente=0x7f130004;
-        public static final int txtPneumococica=0x7f130010;
-        public static final int txtRotavirus=0x7f13000d;
-        public static final int txtTpBacteriana=0x7f13001c;
-        public static final int txtTpViral=0x7f130019;
-        public static final int txtVOPI=0x7f130008;
+        public static final int txtPneumococica=0x7f130011;
+        public static final int txtRotavirus=0x7f13000e;
+        public static final int txtTpBacteriana=0x7f13001d;
+        public static final int txtTpViral=0x7f13001a;
+        public static final int txtVIPI=0x7f130008;
+        public static final int txtVOPI=0x7f13000b;
     }
     public static final class acompanhamentogestante {
         public static final int ChGAborto=0x7f0a000f;
@@ -364,16 +365,20 @@ public final class R {
         public static final int viewFlipperPrincipal=0x7f0f0005;
     }
     public static final class imovel {
-        public static final int EdtCasoDoente=0x7f1e0023;
+        public static final int EdtBenificio=0x7f1e0025;
+        public static final int EdtCasoDoente=0x7f1e0027;
         public static final int EdtComplemento=0x7f1e0017;
-        public static final int EdtGrupoComunitario=0x7f1e0027;
-        public static final int EdtMeioComunicacao=0x7f1e0025;
-        public static final int EdtMeioTransporte=0x7f1e0029;
+        public static final int EdtGrupoComunitario=0x7f1e002b;
+        public static final int EdtMeioComunicacao=0x7f1e0029;
+        public static final int EdtMeioTransporte=0x7f1e002d;
         public static final int EdtNomePlano=0x7f1e0021;
         public static final int EdtNumComodos=0x7f1e0010;
         public static final int EdtNumPessoasCobertas=0x7f1e0020;
         public static final int EdtNumeroFamilia=0x7f1e0012;
         public static final int EdtTipoCasa=0x7f1e0006;
+        public static final int RbBeneficioJaRecebe=0x7f1e0024;
+        public static final int RbBeneficioNao=0x7f1e0023;
+        public static final int RbBeneficioSim=0x7f1e0022;
         public static final int RbEnergiaNao=0x7f1e000f;
         public static final int RbEnergiaSim=0x7f1e000e;
         public static final int RbNao=0x7f1e001f;
@@ -381,13 +386,13 @@ public final class R {
         public static final int RgPlanoSaude=0x7f1e001d;
         public static final int RgPossuiEletricidade=0x7f1e000d;
         public static final int SpAbastecimentoAgua=0x7f1e0008;
-        public static final int SpCasoDoente=0x7f1e0022;
+        public static final int SpCasoDoente=0x7f1e0026;
         public static final int SpDestFezesUrina=0x7f1e000a;
         public static final int SpDestinoLixo=0x7f1e0007;
         public static final int SpEndereco=0x7f1e0013;
-        public static final int SpGrupoComunitario=0x7f1e0026;
-        public static final int SpMeioComunicacao=0x7f1e0024;
-        public static final int SpMeioTransporte=0x7f1e0028;
+        public static final int SpGrupoComunitario=0x7f1e002a;
+        public static final int SpMeioComunicacao=0x7f1e0028;
+        public static final int SpMeioTransporte=0x7f1e002c;
         public static final int SpMunicipio=0x7f1e0018;
         public static final int SpTipoCasa=0x7f1e0005;
         public static final int SpTratamentoAgua=0x7f1e0009;
@@ -484,6 +489,7 @@ public final class R {
         public static final int id=0x7f050004;
         public static final int menu_settings=0x7f050002;
         public static final int title_activity_main=0x7f050003;
+        public static final int versao=0x7f050005;
     }
     public static final class style {
         public static final int AppTheme=0x7f060000;

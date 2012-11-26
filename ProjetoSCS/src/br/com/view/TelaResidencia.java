@@ -30,11 +30,11 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	
 	Spinner  SpUF, SpMunicipio,SpEndereco; //TAB1
 	EditText EdtTipoCasa, EdtNumComodos; //TAB2
-    EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano, EdtMeioComunic, EdtGruposComunit, EdtMeioTransp; //TAB3
+    EditText EdtCasoDoenca,EdtNumPessoas,EdtNomePlano, EdtMeioComunic, EdtGruposComunit, EdtMeioTransp, EdtBeneficio; //TAB3
 	EditText Edtbairro, EdtCep, EdtNumero, EdtSegTerritorial, EdtArea, EdtMicArea, EdtNumeroFamilia,EdtComplemento; //TAB1
 	Spinner  SpTipoCasa, SpDestinoLixo, SpTratamentoAgua, SpDestFezesUrina, SpAbastecimentoAgua; //TAB2	
     Spinner  SpCasoDoente, SpMeiosComunicacao, SpGruposComunitarios, SpTransporteUtilizado; //TAB3  
-    RadioButton RbSim, RbNao, RbEnergia_S, RbEnergia_N;
+    RadioButton RbSim, RbNao, RbEnergia_S, RbEnergia_N, RbBeneficioSIM, RbBeneficioNAO, RbBeneficioRecebe;
     
     Button btnVoltar, btnSalvar;
     
@@ -67,7 +67,6 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.telaresidencia);	
 		
-		//SpUF                  = (Spinner)  findViewById(R.imovel.SpUF);
 		SpMunicipio           = (Spinner) 	  findViewById(R.imovel.SpMunicipio);
 		SpEndereco            = (Spinner) 	  findViewById(R.imovel.SpEndereco);
 		Edtbairro 		      = (EditText)	  findViewById(R.imovel.edtBairro);
@@ -86,6 +85,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		EdtNumComodos         = (EditText)    findViewById(R.imovel.EdtNumComodos);
 		EdtNumeroFamilia      = (EditText)    findViewById(R.imovel.EdtNumeroFamilia);
 		EdtComplemento        = (EditText)    findViewById(R.imovel.EdtComplemento);
+		EdtBeneficio          = (EditText)    findViewById(R.imovel.EdtBenificio);
 		SpTipoCasa   	      = (Spinner) 	  findViewById(R.imovel.SpTipoCasa);		
 		SpDestinoLixo    	  = (Spinner) 	  findViewById(R.imovel.SpDestinoLixo);
 		SpTratamentoAgua 	  = (Spinner) 	  findViewById(R.imovel.SpTratamentoAgua);
@@ -99,6 +99,9 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	    RbNao				  = (RadioButton) findViewById(R.imovel.RbNao);
 	    RbEnergia_S           = (RadioButton) findViewById(R.imovel.RbEnergiaSim);
 	    RbEnergia_N           = (RadioButton) findViewById(R.imovel.RbEnergiaNao);
+	    RbBeneficioSIM        = (RadioButton) findViewById(R.imovel.RbBeneficioSim);
+	    RbBeneficioNAO        = (RadioButton) findViewById(R.imovel.RbBeneficioNao);
+	    RbBeneficioRecebe     = (RadioButton) findViewById(R.imovel.RbBeneficioJaRecebe);
 	    btnVoltar             = (Button)      findViewById(R.imovel.btnVoltarFamiliar);
 	    btnSalvar             = (Button)      findViewById(R.imovel.btnSalvarFamiliar);
 	    btnVoltar.setOnClickListener(this);
@@ -107,6 +110,9 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		RbNao.setOnClickListener(this);
 		RbEnergia_S.setOnClickListener(this);
 		RbEnergia_N.setOnClickListener(this);
+		RbBeneficioSIM.setOnClickListener(this);
+		RbBeneficioNAO.setOnClickListener(this);
+		RbBeneficioRecebe.setOnClickListener(this);
 	    
 		th = (TabHost) findViewById(R.imovel.tabhost);
         th.setup();
@@ -172,7 +178,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
 							RbEnergia_N.setChecked(true);
 						}
 					}else if(pTab == 3){
-						setOpcoesSpinnerTab3(c.getString(c.getColumnIndex("CASO_DOENCA")).toString(), 
+						setOpcoesSpinnerTab3(c.getString(c.getColumnIndex("CASO_DOENCA")).toString(),  
 										     c.getString(c.getColumnIndex("MEIO_COMUNICACAO")).toString(), 
 										     c.getString(c.getColumnIndex("PART_GRUPOS")).toString(), 
 										     c.getString(c.getColumnIndex("MEIO_TRANSPORTE")).toString(),
@@ -181,7 +187,17 @@ public class TelaResidencia extends Activity implements OnClickListener {
 										     (c.getString(c.getColumnIndex("POSSUI_PLANO")).toString().trim().equals("S") ? c.getString(c.getColumnIndex("NOME_PLANO_SAUDE")).toString() : ""),
 										     (c.getString(c.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("MEIO_TRANSPORTE_OUTRO")).toString()),
 										     (c.getString(c.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("MEIO_COMUNICACAO_OUTRO")).toString()),
-										     (c.getString(c.getColumnIndex("PART_GRUPOS_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("PART_GRUPOS_OUTRO")).toString()));					
+										     (c.getString(c.getColumnIndex("PART_GRUPOS_OUTRO")).toString().trim().length() < 1 ? "" : c.getString(c.getColumnIndex("PART_GRUPOS_OUTRO")).toString()));
+						
+						if (c.getString(c.getColumnIndex("FL_APTO_BENEFICIO")).toString().equals("") || 
+						   (c.getString(c.getColumnIndex("FL_APTO_BENEFICIO")).toString().equals("N"))) {
+							RbBeneficioNAO.setChecked(true);
+						}else if (c.getString(c.getColumnIndex("FL_APTO_BENEFICIO")).toString().equals("S")) {
+							RbBeneficioSIM.setChecked(true);
+						}else if (c.getString(c.getColumnIndex("FL_APTO_BENEFICIO")).toString().equals("R")) {
+							RbBeneficioRecebe.setChecked(true);
+							EdtBeneficio.setText(c.getString(c.getColumnIndex("NOME_BENEFICIO")).toString());
+						}	
 					} 
 					
 				}
@@ -288,10 +304,17 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			retorno = false;
 		}else{
 			retorno = true;
-		}	
+		}
+		if ((!RbBeneficioSIM.isChecked()) && (!RbBeneficioNAO.isChecked()) && (!RbBeneficioRecebe.isChecked())) {
+			msgPendecias += "-> Selecione se a família recebe benefício!\n";
+			retorno = false;		
+		} else {
+			retorno = true;
+		}		
 		if (msgPendecias.trim().length() > 0){
 			Mensagem.exibeMessagem(this, "Pendências", msgPendecias);
 		}
+		
 		
 		return retorno;
 	}
@@ -540,6 +563,17 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			r.FL_ENERGIA = "N";
 		}
 		
+		if (RbBeneficioNAO.isChecked()){
+			r.FL_APTO_BENEFICIO = "N";
+			r.NOME_BENEFICIO    = "";
+		}else if (RbBeneficioSIM.isChecked()){
+			r.FL_APTO_BENEFICIO = "S";
+			r.NOME_BENEFICIO    = "";
+		}else if (RbBeneficioRecebe.isChecked()){
+			r.FL_APTO_BENEFICIO = "R";	
+			r.NOME_BENEFICIO    = EdtBeneficio.getText().toString();			
+		}
+		
 		if (RbSim.isChecked()){
 			r.POSSUI_PLANO  = "S";
 			r.NUM_COM_PLANO = EdtNumPessoas.getText().toString().trim();
@@ -704,6 +738,12 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		if (v == RbNao){
 			EdtNumPessoas.setEnabled(false);
 			EdtNomePlano.setEnabled(false);
+		}
+		if ((v == RbBeneficioRecebe)) {
+			EdtBeneficio.setEnabled(true);
+		}
+		if ((v == RbBeneficioNAO) || (v == RbBeneficioSIM)){
+			EdtBeneficio.setEnabled(false);
 		}
 		
 	}

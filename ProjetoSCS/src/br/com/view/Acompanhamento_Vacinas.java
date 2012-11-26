@@ -118,6 +118,7 @@ public void InformacoesFamiliar(){
 			TipoVacina.add("BCG");
 			TipoVacina.add("HEPATITE B");
 			TipoVacina.add("PENTAVALENTE");
+			TipoVacina.add("VIP");
 			TipoVacina.add("VOPI");
 			TipoVacina.add("VORH");
 			TipoVacina.add("PNEUMOCOCICA");
@@ -169,14 +170,14 @@ public void InformacoesFamiliar(){
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 			DoseAplicada.add("3");
-		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VOPI")||(_TipoVacina.equals("PNEUMOCOCICA")))){
+		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("PNEUMOCOCICA"))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
 			DoseAplicada.add("3");
 			DoseAplicada.add("R-REFORÇO");
-		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VORH")
-				   ||(_TipoVacina.equals("TRIPLICE VIRAL")))){
+		}else if ((IdadeFamiliar <= 10 )&&(_TipoVacina.equals("VORH")||(_TipoVacina.equals("VOPI"))
+				   ||(_TipoVacina.equals("TRIPLICE VIRAL"))||(_TipoVacina.equals("VIP")))){
 			DoseAplicada.clear();
 			DoseAplicada.add("1");
 			DoseAplicada.add("2");
@@ -265,6 +266,8 @@ public void InformacoesFamiliar(){
 			va.HASH         = Hash;
 			va.LOTE         = EdtLote.getText().toString();
 			
+			if (_CODVACINA == 0) {
+			
 			if (FalimiarGestante == true){
 				va.TIPO = "G";
 			}else if (IdadeFamiliar <=10){
@@ -273,6 +276,8 @@ public void InformacoesFamiliar(){
 				va.TIPO = "A";
 			}else if (IdadeFamiliar >= 20){
 				va.TIPO = "D";
+			}
+			
 			}
 			
 			if (ChkAplicado.isChecked())
@@ -336,9 +341,11 @@ public void InformacoesFamiliar(){
 		s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
-								
-				if (s == SpTipoVacina){
-					PreecheDoseAplicada(SpTipoVacina.getItemAtPosition(posicao).toString(), IdadeFamiliar, FalimiarGestante);
+				
+				if (_CODVACINA == 0) {
+					if (s == SpTipoVacina) {
+						PreecheDoseAplicada(SpTipoVacina.getItemAtPosition(posicao).toString(), IdadeFamiliar, FalimiarGestante);
+					}
 				}
 			}
 

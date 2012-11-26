@@ -388,8 +388,8 @@ public void InsereBD(){
 		r.Limpar();
 		r.NOME         = EdtNome.getText().toString();
 		r.ENDERECO     = SpRua.getItemAtPosition(SpRua.getSelectedItemPosition()).toString();
-		r.NUMERO       = SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString();
-		r.COMPLEMENTO  = SpComplemento.getItemAtPosition(SpComplemento.getSelectedItemPosition()).toString();
+		r.NUMERO       = SpNumero.getItemAtPosition(SpNumero.getSelectedItemPosition()).toString(); 
+		r.COMPLEMENTO  = (!SpComplemento.isSelected()?"":SpComplemento.getItemAtPosition(SpComplemento.getSelectedItemPosition()).toString());
 		r.DTNASCIMENTO = DtNascimento.getText().toString().trim();//String.valueOf(DtNascimento.getDayOfMonth())+"/"+String.valueOf(DtNascimento.getMonth()+1)+"/"+String.valueOf(DtNascimento.getYear());
 		r.FREQ_ESCOLA  = SpFreqEscola.getItemAtPosition(SpFreqEscola.getSelectedItemPosition()).toString().substring(0, 1);
 		r.ALFABETIZADO = SpAlfabetizado.getItemAtPosition(SpAlfabetizado.getSelectedItemPosition()).toString().substring(0, 1);
