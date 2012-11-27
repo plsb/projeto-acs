@@ -59,7 +59,7 @@ public class Acomp_Crianca extends Activity implements OnClickListener {
 	public void PreencheCampos() {
 		try{
 			_bd.open();
-			_cCriancas = _bd.consulta("crianca", new String[]{"*"}, "hash = '"+Hash+"'", null, null, null, null, "1");
+			_cCriancas = _bd.consulta("crianca", new String[]{"*"}, "hash = '"+Hash+"' and dt_visita = '"+DtAcompanhamento+"' ", null, null, null, null, "1");
 			_cCriancas.moveToFirst();
 			if (_cCriancas.getCount() > 0){
 				setIdTransacao(Integer.valueOf(_cCriancas.getString(_cCriancas.getColumnIndex("_ID")).toString()));

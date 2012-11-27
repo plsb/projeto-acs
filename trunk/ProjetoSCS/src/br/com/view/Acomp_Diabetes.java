@@ -74,7 +74,7 @@ public class Acomp_Diabetes extends Activity implements OnClickListener  {
 	private void PreencheCampos() {
 		try{
 			_bd.open();
-			_cDiabetes = _bd.consulta("diabete", new String[]{"*"}, "hash = '"+Hash+"'", null, null, null, null, "1");
+			_cDiabetes = _bd.consulta("diabete", new String[]{"*"}, "hash = '"+Hash+"' and dt_visita = '"+DtAcompanhamento+"' ", null, null, null, null, "1");
 			_cDiabetes.moveToFirst();
 			if (_cDiabetes.getCount() > 0){
 				setIdTransacao(Integer.valueOf(_cDiabetes.getString(_cDiabetes.getColumnIndex("_ID")).toString()));
