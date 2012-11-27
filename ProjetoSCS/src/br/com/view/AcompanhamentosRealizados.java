@@ -22,7 +22,7 @@ import android.widget.SimpleExpandableListAdapter;
 
 public class AcompanhamentosRealizados extends ExpandableListActivity implements OnChildClickListener {
     
-	/*/ D E C L A R A ï¿½ ï¿½ E S /*/
+	/*/ D E C L A R A Ç Õ E S /*/
 	
 	private static final String TITULO = "NAME";
     private static final String SUBTITULO = "IS_EVEN";
@@ -34,7 +34,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
     
     String Hash = "";
     
-    Banco _bd;	
+    Banco _bd;	 
     
 	ArrayList<HashMap<String,String>> list;	
 	

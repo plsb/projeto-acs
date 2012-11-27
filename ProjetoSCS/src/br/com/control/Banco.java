@@ -22,7 +22,6 @@ public class Banco{
 		
 		private final Context ctx;
 		
-		
 		public static final String[] _sqlTabelaUsuario =  new String[] {"CREATE TABLE if not exists usuarios (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		"USU_MATRICULA text NOT NULL,      "+
 																		"USU_NOME text NOT NULL,           "+
@@ -38,6 +37,7 @@ public class Banco{
 																		"AGENTE text NOT NULL,                "+
 																		"ENDERECO text NOT NULL,      	      "+
 																		"NUMERO text NOT NULL,			      "+
+																		"COMPLEMENTO text,                    "+
 																		"FL_CASA_FECHADA TEXT DEFAULT 'N',    "+
 																		"VISITA_CONFIRMADA TEXT DEFAULT 'N'); "};
 		
