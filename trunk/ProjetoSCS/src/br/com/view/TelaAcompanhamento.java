@@ -1,11 +1,17 @@
 package br.com.view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import br.com.control.Banco;
+import br.com.control.Sessao;
 import br.com.scs.R;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -20,13 +26,40 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast; 
 
-@SuppressLint("ParserError")
+@SuppressLint({ "ParserError", "SimpleDateFormat" })
 public class TelaAcompanhamento extends ListActivity implements OnClickListener{
 	
 	Banco _bd = new Banco(this);
 	
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
+	
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	private String endereco, numero, complemento;
+		
 	
 	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
 
@@ -61,24 +94,81 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
     	
     	Log.i("Retorno", o.toString());
     	    	
-    	String endereco = o.toString();
+    	this.endereco = o.toString();
     	
-    	endereco = endereco.substring(endereco.indexOf("{line1=")+7, endereco.indexOf(", Nº"));
+    	this.endereco = this.endereco.substring(this.endereco.indexOf("{line1=")+7, this.endereco.indexOf(", Nº"));
     	
-    	String numero = o.toString();
+    	this.numero = o.toString();
     	
-    	numero = numero.substring(numero.indexOf(", Nº")+4, numero.lastIndexOf(", l"));
+    	this.numero = this.numero.substring(this.numero.indexOf(", Nº")+4, this.numero.lastIndexOf(", l"));
     	
-    	String complemento = o.toString();
+    	this.complemento = o.toString();
     	
-    	complemento = complemento.substring(complemento.indexOf(":")+2, complemento.lastIndexOf(","));
+    	this.complemento = this.complemento.substring(this.complemento.indexOf(":")+2, this.complemento.lastIndexOf(","));    	    
     	
-    	Intent i = new Intent(this, Lista_Familiar_Acompanhamento.class);    
-    	Lista_Familiar_Acompanhamento.END = endereco;
-    	Lista_Familiar_Acompanhamento.NUM = numero; 
-    	Lista_Familiar_Acompanhamento.COMPLEMENTO = complemento;
-    	startActivity(i);
+    	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+    	dialog.setMessage("Escolha uma Opção:");
+    	dialog.setIcon(R.drawable.iconscs);
+    	dialog.setTitle("Acompanhamento");
+    	dialog.setPositiveButton("Iniciar", new
+				DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Intent i = new Intent(TelaAcompanhamento.this, Lista_Familiar_Acompanhamento.class);    
+				    	Lista_Familiar_Acompanhamento.END = getEndereco();
+				    	Lista_Familiar_Acompanhamento.NUM = getNumero(); 
+				    	Lista_Familiar_Acompanhamento.COMPLEMENTO = getComplemento();
+				    	
+				    	InsereVisita(getEndereco(), getNumero(), getComplemento(), "N", "S");
+				    	
+				    	startActivity(i);
+				    	
+					}
+    	});
     	
+    	dialog.setNeutralButton("Casa Fechada", new
+				DialogInterface.OnClickListener() {
+				 
+				public void onClick(DialogInterface di, int arg) {
+					InsereVisita(getEndereco(), getNumero(), getComplemento(), "S", "N");
+				}
+		});
+		dialog.show();
+    	
+    }
+        
+	@SuppressLint("SimpleDateFormat")
+	private void InsereVisita(String _Endereco,String _Numero, String _Comp,
+    						  String _FlCasaFechada, String _VisitaConf) {
+    	
+    	ContentValues c = new ContentValues();
+    	SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+    	SimpleDateFormat formataHora = new SimpleDateFormat("HH:mm:ss");
+    	try {
+    		
+    		c.clear();
+        	c.put("DATA", formatador.format(new Date(System.currentTimeMillis())));
+        	c.put("HORA", formataHora.format(new Date(System.currentTimeMillis())));
+        	c.put("AGENTE", Sessao.SESSAO.getMatriculaUsuario(this));
+        	c.put("ENDERECO", _Endereco);
+        	c.put("NUMERO", _Numero);
+        	c.put("COMPLEMENTO", _Comp);
+        	c.put("FL_CASA_FECHADA", _FlCasaFechada);
+        	c.put("VISITA_CONFIRMADA", _VisitaConf);
+
+        	if ((_Endereco.trim().length() > 0)&&(_Numero.trim().length() > 0)) {
+        		Banco banco = new Banco(TelaAcompanhamento.this);
+        		banco.open();
+        		banco.inserirRegistro("visita", c);
+        		banco.fechaBanco();
+        	}
+        	
+    	} catch(Exception e) {
+    		System.out.println("Problema ao tentar inserir visita no banco!"+e.getMessage());
+    	} finally {
+    		formatador = null;
+    		formataHora = null;
+    		
+    	}
     }
     
     public void ListarResidencias(boolean usaFiltro){
