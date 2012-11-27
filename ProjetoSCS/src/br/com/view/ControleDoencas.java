@@ -3,6 +3,7 @@ package br.com.view;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import br.com.control.AcompanhamentoAux;
 import br.com.control.Banco;
 import br.com.control.CriancaAux;
 import br.com.control.Diabete;
@@ -30,7 +31,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 	static boolean editando  = false;
 	static String  dataAcomp = null;
 	static boolean gestante,hipertensao, hanseniase,
-				   tuberculose, diabetes, crianca = false;
+				   tuberculose, diabetes, crianca,acomp_padrao = false;
 	
 	private Button btnVoltar, btnSalvar;
 	
@@ -130,6 +131,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			Acomp_Padrao.DtAcompanhamento = dataAcomp;
 			spec = th.newTabSpec("0").setIndicator("Acompanhamento", getResources().getDrawable(R.drawable.acompanhamento)).setContent(intent);
 			th.addTab(spec);
+			acomp_padrao = true;
 		}
 	}	
 
@@ -145,21 +147,71 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		_Hash       = "";
-		dataAcomp   = null;
-		editando    = false;
-		gestante    = false;
-		hipertensao = false;
-		hanseniase  = false;
-		tuberculose = false;
-		diabetes    = false;
-		crianca     = false;
+		_Hash        = "";
+		dataAcomp    = null;
+		editando     = false;
+		gestante     = false;
+		hipertensao  = false;
+		hanseniase   = false;
+		tuberculose  = false;
+		diabetes     = false;
+		crianca      = false;
+		acomp_padrao = false;
 		super.onDestroy();
 	}
 	
 	public void Inserir() {
 		
 		String msgInsercao = "";
+		
+		if (acomp_padrao == true) {
+			AcompanhamentoAux c;			
+			int _IdTransacao = 0;
+			
+			try {
+				c = new AcompanhamentoAux();
+				c.HASH = Acomp_Padrao.Hash;
+				c.OBS  = Acomp_Padrao.EdtObs.getText().toString();
+				
+				if (Acomp_Padrao.rbHospitSIM.isChecked()) {
+					c.FL_HOSPITALIZADA = "S";
+					c.MOTIVO_HOSPITALIZACAO = Acomp_Padrao.SpMotivoHospit.getItemAtPosition(Acomp_Padrao.SpMotivoHospit.getSelectedItemPosition()).toString();
+				} else {
+					c.FL_HOSPITALIZADA = "N";
+					c.MOTIVO_HOSPITALIZACAO = "";
+				}
+				
+				if (Acomp_Padrao.rbDoenteSIM.isChecked()) {
+					c.FL_DOENTE = "S";
+					c.DESC_DOENCA = Acomp_Padrao.SpDoenca.getItemAtPosition(Acomp_Padrao.SpDoenca.getSelectedItemPosition()).toString();
+				} else {
+					c.FL_DOENTE = "N";
+					c.DESC_DOENCA = "";
+				}
+				
+				
+				_IdTransacao = Acomp_Padrao.getIdTransacao();
+				
+				if (_IdTransacao == 0){
+					if (c.Inserir(this) == true){
+						msgInsercao += "Acompanhamento - Gravado\n";
+					}else{
+						msgInsercao += "Acompanhamento - Erro\n";
+					}
+				}else{
+					if (c.Atualizar(this,_IdTransacao) == true){
+						msgInsercao += "Acompanhamento - Atualizado\n";
+					}else{
+						msgInsercao += "Acompanhamento - Erro\n";
+					}
+				}
+				
+			} catch (Exception e) {
+				System.out.println("Exceção ao tentar salvar acompanhamento padrão. "+e.getMessage());
+			} finally {
+				c = null;
+			}
+		}
 		
 		if (crianca == true) {
 			CriancaAux c;			

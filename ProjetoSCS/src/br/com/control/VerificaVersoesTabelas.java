@@ -12,14 +12,14 @@ public class VerificaVersoesTabelas {
 	private static VerificaVersoesTabelas _veri;
 	
 	public static VerificaVersoesTabelas verificaVersoesTabelas(Context ctx) {
-		if (_veri==null){
+		if (_veri == null) {
 			_veri = new VerificaVersoesTabelas();
 		}
 		verificaDAO(ctx);
 		return _veri;		
 	}
 
-	private static void verificaDAO(Context contexto) {
+	private static void verificaDAO(Context contexto) { 
 		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuario, "usuarios");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaUsuarioAux, "usuariosAux");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaResidencia, "residencia");
@@ -36,6 +36,7 @@ public class VerificaVersoesTabelas {
 		BancoDados.getDAO(contexto, Banco._sqlTabelaAgendamento, "agendamento");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaCrianca, "crianca");
 		BancoDados.getDAO(contexto, Banco._sqlTabelaVisita, "visita");
+		BancoDados.getDAO(contexto, Banco._sqlTabelaAcompanhamento, "acompanhamento");
 	}
 
 }

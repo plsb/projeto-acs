@@ -63,7 +63,7 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
         _bd.open();
         
         try{        	
-        	Cursor _cursor,_cHan,_cHip,_Ges,_Tb,_Dia, _Cri = null;
+        	Cursor _cursor,_cHan,_cHip,_Ges,_Tb,_Dia, _Cri, _Padrao = null;
         	
         	
         	_cursor = _bd.consulta("residente", new String[] { "*" },"_ID = "+String.valueOf(_ID).trim(),null,null,null,"_ID",null);          	        	
@@ -252,6 +252,33 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
                 }
                 _Cri.close();                    
                 /*******************************************************************************/
+                
+                Map<String, String> curGroupMapAcomp = new HashMap<String, String>();
+                curGroupMapAcomp.put(TITULO, "ACOMPANHAMENTO ROTINA");
+                curGroupMapAcomp.put(SUBTITULO, "PDR-Acompanhamento");
+                groupData.add(curGroupMapAcomp);
+                List<Map<String, String>> childrenAcomp = new ArrayList<Map<String, String>>();
+                
+                /*******************************************************************************/
+                _Padrao = _bd.consulta("acompanhamento", new String[] { "*" },"HASH = '"+Hash+"'",null,null,null,null,null);
+                _Padrao.moveToFirst();
+                if (_Padrao.getCount()>0){
+                    do{
+                    	Map<String, String> curChildMap = new HashMap<String, String>();
+                    	childrenAcomp.add(curChildMap);
+                        curChildMap.put(TITULO,"Data: "+ _Padrao.getString(_Padrao.getColumnIndex("DT_VISITA")).toString());
+                        curChildMap.put(SUBTITULO, (_Padrao.getString(_Padrao.getColumnIndex("OBSERVACAO")).toString().trim().equalsIgnoreCase("") ? "Sem Observação" : "Obs: "+_Padrao.getString(_Padrao.getColumnIndex("OBSERVACAO")).toString()));
+                    }while(_Padrao.moveToNext());
+                    childData.add(childrenAcomp);
+                }else{
+                	Map<String, String> curChildMap = new HashMap<String, String>();
+                	childrenAcomp.add(curChildMap);
+                    curChildMap.put(TITULO,"NENHUM ACOMP. REGISTRADO");
+                    curChildMap.put(SUBTITULO, "One Team Tecnologia");
+                    childData.add(childrenAcomp); 
+                }
+                _Padrao.close();                    
+                /*******************************************************************************/
         		
         		
 	        	mAdapter = new SimpleExpandableListAdapter(
@@ -321,6 +348,8 @@ public class AcompanhamentosRealizados extends ExpandableListActivity implements
      		ControleDoencas.diabetes = true;
      	 }else if (TipoDoenca.trim().equals("CRI")){
       		ControleDoencas.crianca  = true;
+      	 }else if (TipoDoenca.trim().equals("PDR")){
+      		ControleDoencas.acomp_padrao = true;
       	 }
     	 
     	 /*Intent td = new Intent(this, TelaDoenca.class);

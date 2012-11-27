@@ -32,21 +32,31 @@ public class Banco{
 																		"USU_ATIVO text NOT NULL,          "+
 																		"USU_FL_ADMIN integer NOT NULL);   "};
 		
-		public static final String[] _sqlTabelaVisita=  new String[] {"CREATE TABLE if not exists visita (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+		public static final String[] _sqlTabelaVisita =  new String[] {"CREATE TABLE if not exists visita (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 																		"DATA   text NOT NULL,                "+
 																		"HORA   text NOT NULL,                "+
 																		"AGENTE text NOT NULL,                "+
 																		"ENDERECO text NOT NULL,      	      "+
 																		"NUMERO text NOT NULL,			      "+
-																		"FL_CASA_FECHADA TEXT DAFAULT 'N',    "+
-																		"VISITA_CONFIRMADA TEXT DAFAULT 'N'); "};
+																		"FL_CASA_FECHADA TEXT DEFAULT 'N',    "+
+																		"VISITA_CONFIRMADA TEXT DEFAULT 'N'); "};
 		
-		public static final String[] _sqlTabelaAgendamento=  new String[] {"CREATE TABLE if not exists agendamento (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
-															  		       "HASH text not null, 	   "+
-																	       "DT_AGENDAMENTO text,	   "+
-																	       "FL_URGENTE text,		   "+
-																		   "TIPO_AGENDAMENTO text,	   "+
-																		   "DESCRICAO text);		   "};
+		public static final String[] _sqlTabelaAcompanhamento =  new String[] {"CREATE TABLE if not exists acompanhamento (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+																				"DT_VISITA text,                        "+
+																				"DT_ATUALIZACAO text,	                "+
+																				"HASH text NOT NULL,                    "+
+																				"FL_HOSPITALIZADA text DEFAULT 'N',     "+
+																				"MOTIVO_HOSPITALIZACAO text DEFAULT '', "+
+																				"FL_DOENTE text DEFAULT 'N',			"+
+																				"DESC_DOENCA TEXT DEFAULT '',           "+
+																				"OBSERVACAO text DEFAULT '');           "};
+		
+		public static final String[] _sqlTabelaAgendamento =  new String[] {"CREATE TABLE if not exists agendamento (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
+															  		        "HASH text not null, 	   "+
+																	        "DT_AGENDAMENTO text,	   "+
+																	        "FL_URGENTE text,		   "+
+																		    "TIPO_AGENDAMENTO text,	   "+
+																		    "DESCRICAO text);		   "};
 		
 		public static final String[] _sqlTabelaCrianca =  new String[] {"CREATE TABLE if not exists crianca (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 														  		        "HASH text not null, 	   "+
