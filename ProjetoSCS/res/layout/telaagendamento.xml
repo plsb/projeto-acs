@@ -85,6 +85,7 @@
 	         android:orientation="horizontal"
 	         android:layout_width="fill_parent"
 	         android:layout_height="wrap_content"
+	         android:layout_marginBottom="5dp"
          >
       
 		      <Spinner 
@@ -104,6 +105,74 @@
 		      />
       
          </LinearLayout>
+         
+	<TextView 
+        android:id="@+telaAgendamento/TxtProfissional"
+        android:text="Profissional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        />
+	
+	<Spinner 
+		android:id="@+telaAgendamento/SpProfissional"
+		android:layout_width="fill_parent"
+	    android:layout_height="43dp"
+		android:layout_weight="1"
+		android:layout_marginBottom="5dp"
+	/>
+	
+	<LinearLayout 
+	         android:orientation="horizontal"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_marginBottom="5dp"
+         >
+	
+		<TextView 
+	    	android:id="@+telaAgendamento/TxtData"
+        	android:text="Data"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:layout_marginBottom="3dp"
+	    	/>
+	
+		<TextView 
+	    	android:id="@+telaAgendamento/TxtHora"
+        	android:text="Hora"
+        	android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+        	android:layout_marginBottom="3dp"
+       	 	android:layout_weight="1"
+	   		/>
+	
+	</LinearLayout>
+	
+	<LinearLayout 
+	         android:orientation="horizontal"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_marginBottom="5dp"
+         >
+		
+	    <EditText 
+			android:id="@+telaAgendamento/EdtData"
+			android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:focusable="false"
+		/>
+	    
+	    <EditText 
+			android:id="@+telaAgendamento/EdtHora"
+			android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:focusable="false"
+		/>
+	    
+	</LinearLayout>    	
     
     <TextView 
         android:id="@+telaAgendamento/TxtDescricao"
@@ -116,12 +185,9 @@
     <EditText
 		android:id="@+telaAgendamento/EdtDescricao"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="100dp"
 		android:ems="10"	
-		android:hint="Descrição
-		
-		
-		"
+		android:hint="Descrição"
 		android:layout_marginBottom="5dp"        
 		android:inputType="textMultiLine" >	          
 	</EditText>
