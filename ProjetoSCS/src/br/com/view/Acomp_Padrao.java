@@ -150,6 +150,7 @@ public class Acomp_Padrao extends Activity implements OnClickListener{
 	}
 	
 	private void setDoencas(String pDoenca) {
+		
 		Doencas.clear();
 		if (pDoenca.length() > 0) {
 			Doencas.add(pDoenca);
@@ -161,7 +162,7 @@ public class Acomp_Padrao extends Activity implements OnClickListener{
 		Doencas.add("Infeccao");
 		Doencas.add("Excesso Alcool");
 		Doencas.add("Vomito");
-		Doencas.add("Outro");
+		Doencas.add("Outros");
 		
 		PreencheSpinner(SpDoenca, Doencas);
 	}

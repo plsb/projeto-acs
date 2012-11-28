@@ -67,11 +67,32 @@ public class Lista_Familiar_Agendamento extends ListActivity implements OnClickL
     	
     	_ID = _ID.substring(_ID.indexOf("=")+1,_ID.indexOf("-"));
     	
-    	System.out.println(_ID);
-
-    	Intent i = new Intent(this, InsereAgendamento.class); 
-    	InsereAgendamento._ID = Integer.valueOf(_ID.trim());    	    
-	    startActivity(i);
+    	System.out.println(_ID);    	
+	    
+	    AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+    	dialog.setMessage("Escolha uma Opção:");
+    	dialog.setIcon(R.drawable.iconscs);
+    	dialog.setTitle("Agendamento");
+    	dialog.setPositiveButton("Novo", new
+				DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						Intent i = new Intent(Lista_Familiar_Agendamento.this, InsereAgendamento.class); 
+				    	InsereAgendamento._ID = Integer.valueOf(_ID.trim());    	    
+					    startActivity(i);
+				    	
+					}
+    	});
+    	
+    	dialog.setNeutralButton("Visualizar", new
+				DialogInterface.OnClickListener() {
+				 
+				public void onClick(DialogInterface di, int arg) {
+					Intent i = new Intent(Lista_Familiar_Agendamento.this, Lista_Agendamentos_Marcados.class); 
+					Lista_Agendamentos_Marcados.ID_Familiar = _ID.trim();    	    
+				    startActivity(i);
+				}
+		});
+		dialog.show();
     	
     }
     

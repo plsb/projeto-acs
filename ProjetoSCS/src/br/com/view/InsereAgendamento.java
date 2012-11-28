@@ -58,6 +58,7 @@ public class InsereAgendamento extends Activity implements OnClickListener {
 		InicializaObjetos();		
 		BuscaHash();
 		setOpcoesTpAgendamento();
+		setOpcoesProfissional();
 	}
 	
 	public void BuscaHash(){
@@ -94,7 +95,7 @@ public class InsereAgendamento extends Activity implements OnClickListener {
 		 if (c.getCount() > 0){
 			 
 			 while (c.moveToNext()){
-				 Profissional.add(c.getString(c.getColumnIndex("NOME")).toString());
+				 Profissional.add(c.getString(c.getColumnIndex("COD_RET")).toString()+"-"+c.getString(c.getColumnIndex("NOME")).toString());
 			 }
 		 }
 			
@@ -162,7 +163,7 @@ public class InsereAgendamento extends Activity implements OnClickListener {
 			c.put("FL_URGENTE",(ChkUrgente.isChecked()?"S":"N"));			
 			c.put("TIPO_AGENDAMENTO",SpTipoAgendamento.getItemAtPosition(SpTipoAgendamento.getSelectedItemPosition()).toString());
 			c.put("DESCRICAO",EdtDescricao.getText().toString());
-			c.put("PROFISSIONAL", SpProfissional.getItemAtPosition(SpProfissional.getSelectedItemPosition()).toString());
+			c.put("PROFISSIONAL", SpProfissional.getItemAtPosition(SpProfissional.getSelectedItemPosition()).toString().substring(0,SpProfissional.getItemAtPosition(SpProfissional.getSelectedItemPosition()).toString().indexOf("-")));
 			c.put("DT_AGENDAMENTO", EdtData.getText().toString().trim());
 			c.put("HR_AGENDAMENTO", EdtHora.getText().toString().trim());
 			_bd.open();

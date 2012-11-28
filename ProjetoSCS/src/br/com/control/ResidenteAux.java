@@ -33,6 +33,8 @@ public class ResidenteAux {
 	public String NOME_PAI;
 	public String NOME_MAE;
 	public String COMPLEMENTO;
+	public String FL_OBITO;
+	public String FL_MUDOU_SE;
 	private java.util.Date dtNascimento; 
 	
 	public boolean Inserir(Context contexto){
@@ -64,6 +66,8 @@ public class ResidenteAux {
 			c.put("COMPLEMENTO", COMPLEMENTO);
 			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
 			c.put("HASH", HASH);
+			c.put("FL_FALECEU", FL_OBITO);
+			c.put("FL_MUDOU_SE", FL_MUDOU_SE);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			
 			_bd.open();
@@ -106,6 +110,8 @@ public class ResidenteAux {
 			c.put("COMPLEMENTO", COMPLEMENTO);
 			c.put("COD_ENDERECO", ENDERECO.substring(0, ENDERECO.indexOf("-")));
 			c.put("HASH", HASH);
+			c.put("FL_FALECEU", FL_OBITO);
+			c.put("FL_MUDOU_SE", FL_MUDOU_SE);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.atualizarDadosTabela("residente",indice, c);
@@ -140,6 +146,8 @@ public class ResidenteAux {
 		NOME_PAI       = "";
 		NOME_MAE       = "";
 		COMPLEMENTO    = "";
+		FL_OBITO       = "";
+		FL_MUDOU_SE    = "";
 		DTNASCIMENTO   = null;
 	}
 	

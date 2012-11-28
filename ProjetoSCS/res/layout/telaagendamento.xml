@@ -90,7 +90,7 @@
       
 		      <Spinner 
 		          android:id="@+telaAgendamento/SpTipoAgendamento"
-		          android:layout_width="fill_parent"
+		          android:layout_width="fill_parent" 
 		          android:layout_height="43dp"
 		          android:layout_weight="1"
 		          android:layout_marginBottom="5dp"
@@ -185,7 +185,7 @@
     <EditText
 		android:id="@+telaAgendamento/EdtDescricao"
 		android:layout_width="match_parent"
-		android:layout_height="100dp"
+		android:layout_height="wrap_content"
 		android:ems="10"	
 		android:hint="Descrição"
 		android:layout_marginBottom="5dp"        

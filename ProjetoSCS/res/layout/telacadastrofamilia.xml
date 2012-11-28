@@ -420,8 +420,91 @@
             />
         
     </LinearLayout>
-  
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
         
+        <TextView 
+	        android:text="Mudou-se?"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textStyle="bold"
+	        android:layout_weight="1"
+	        />
+    
+	    <TextView 
+	        android:text="Óbito?"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:textStyle="bold"
+	        android:layout_weight="1"
+	        />	    	    
+    
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <RadioGroup 
+         android:orientation="horizontal"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:id="@+cadastrofamilia/RgMudouse"
+         >
+             
+	         <RadioButton 
+	             android:id="@+cadastrofamilia/RbMudouSIM"
+	             android:text="SIM"
+	             android:layout_width="fill_parent"
+	             android:layout_height="wrap_content"
+	             android:layout_weight="1"
+	             />
+	         
+	         <RadioButton 
+	             android:id="@+cadastrofamilia/RbMudouNAO"
+	             android:text="NAO"
+	             android:layout_width="fill_parent"
+	             android:layout_height="wrap_content"
+	             android:layout_weight="1"
+	             />
+         
+        </RadioGroup>
+        
+        <RadioGroup 
+         android:orientation="horizontal"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:id="@+cadastrofamilia/RgObito"
+         >
+             
+	         <RadioButton 
+	             android:id="@+cadastrofamilia/RbObitoSIM"
+	             android:text="SIM"
+	             android:layout_width="fill_parent"
+	             android:layout_height="wrap_content"
+	             android:layout_weight="1"
+	             />
+	         
+	         <RadioButton 
+	             android:id="@+cadastrofamilia/RbObitoNAO"
+	             android:text="NÃO"
+	             android:layout_width="fill_parent"
+	             android:layout_height="wrap_content"
+	             android:layout_weight="1"
+	             />
+         
+        </RadioGroup>
+        
+    </LinearLayout>
+  
     </LinearLayout>
    
 </ScrollView>
