@@ -193,6 +193,8 @@ public class Banco{
 																		   "NOME_PAI TEXT,		   		  "+
 																		   "NOME_MAE TEXT,		   		  "+
 																		   "COMPLEMENTO TEXT DEFAULT '',  "+
+																		   "FL_FALECEU TEXT DEFAULT 'N',  "+
+																		   "FL_MUDOU_SE TEXT DEFAULT 'N', "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
@@ -232,11 +234,11 @@ public class Banco{
 																		   "FL_ENERGIA TEXT);                      "};
 
 		
-		private static final String[] _sqlTabelaProfissional = new String[] {"CREATE TABLE if not exists profissional (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
+		public static final String[] _sqlTabelaProfissional = new String[] {"CREATE TABLE if not exists profissional (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
 				   															 "NOME TEXT NOT NULL, 	 		   "+
 				   															 "TIPO TEXT NOT NULL, 		 	   "+
 				   															 "ESPECIALIDADE TEXT NOT NULL, 	   "+
-				   															 "COD_BAIRRO TEXT,    		 	   "};
+				   															 "COD_RET TEXT);    		 	   "};
 				   														
 		
 		private static final String _sqlTabelaVersao = "create table versao (_id integer primary key autoincrement, "+

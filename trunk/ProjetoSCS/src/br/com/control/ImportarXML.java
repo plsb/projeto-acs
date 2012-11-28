@@ -27,7 +27,8 @@ public class ImportarXML extends Activity {
 	private Handler mhandler;
 	
 	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,
-		   cHan,cHa,cDia,cTb,cGes,cVacina,cCri, cAgendamentos = null;
+		   cHan,cHa,cDia,cTb,cGes,cVacina,cCri,cProf,cAcomp,cAgendamentos = null;
+
 	
 	String msg = "";
 	
@@ -82,6 +83,10 @@ public class ImportarXML extends Activity {
                     mprogressDialog.incrementProgressBy(1);
                     ImportaCriancas();
                     mprogressDialog.incrementProgressBy(1);
+                    ImportaProfissionais();
+                    mprogressDialog.incrementProgressBy(1);
+                    ImportaAcompPadrao();
+                    mprogressDialog.incrementProgressBy(1);
                     ImportaAgendamento();
                     mprogressDialog.incrementProgressBy(1);
                     
@@ -103,6 +108,47 @@ public class ImportarXML extends Activity {
         }.start();
 		
 	}//Fim do OnCreate	
+	
+	public void ImportaProfissionais() {
+		
+		try {			
+			if (!(xml.carregar("scs.xml","profissional") == null)){		
+				//I M P O R T A Ç Ã O   D E   U S U Á R I O S
+				@SuppressWarnings("rawtypes")
+				List<Element> profissionais = xml.carregar("scs.xml","profissional");
+				bd = bd.open();				
+				ContentValues c = new ContentValues();	 
+				
+				for(Element profissional : profissionais){					
+					c.clear();					
+					c.put("NOME", profissional.getChildText("nome"));
+					c.put("TIPO", profissional.getChildText("tipo"));
+					c.put("ESPECIALIDADE", profissional.getChildText("especialidade"));
+					c.put("COD_RET", profissional.getChildText("id"));
+									
+					cProf = bd.consulta("profissional", new String[] { "_ID" }, "COD_RET = "+profissional.getChildText("id"), null, null, null, null, null);
+					cProf.moveToFirst();						
+					if (cProf.getCount() > 0){
+						bd.atualizarDadosTabela("profissional",Integer.valueOf(cProf.getString(cProf.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("profissional", c);							
+					}//Fim else
+					cProf.close();
+				}	
+				msg = msg + "Profissionais - SIM\n";				
+				bd.fechaBanco();
+			} else {
+				msg = msg + "Profissionais - NÃO\n";			
+			}//Fim else
+		} catch (FileNotFoundException e) {
+			System.out.println("Erro Importando Profissionais: "+e.getMessage());
+		} catch (IOException e) {
+			System.out.println("Erro Importando Profissionais: "+e.getMessage());
+		} catch (JDOMException e) {
+			System.out.println("Erro Importando Profissionais: "+e.getMessage());
+		}
+		
+	}//Fim do Método ImportarUsuarios
 	
 	public void ImportaUsuarios(){
 		
@@ -362,6 +408,48 @@ public class ImportarXML extends Activity {
 		
 	}//Fim do Método Familiar
 	
+
+	public void ImportaAcompPadrao(){
+		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
+		try {
+			if (!(xml.carregar("scs.xml","acomppadrao") == null)){
+				List<Element> Lista_Acomp = xml.carregar("scs.xml","acomppadrao"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element Acomp : Lista_Acomp){
+					c.clear();				
+					c.put("HASH", Acomp.getChildText("idfamiliar").trim());					
+					c.put("DT_VISITA", Acomp.getChildText("datavisita"));
+					c.put("DT_ATUALIZACAO", Acomp.getChildText("datavisita"));
+					c.put("FL_HOSPITALIZADA", Acomp.getChildText("hospitalizada"));
+					c.put("MOTIVO_HOSPITALIZACAO", Acomp.getChildText("motivo_hospitalizacao"));					
+					c.put("FL_DOENTE", Acomp.getChildText("doente"));
+					c.put("DESC_DOENCA", Acomp.getChildText("qual_doenca"));
+					c.put("OBSERVACAO", Acomp.getChildText("observacao"));
+					
+					cAcomp = bd.consulta("acompanhamento", new String[] { "_ID,HASH,DT_VISITA" }, "HASH = '"+Acomp.getChildText("idfamiliar").trim()+"' AND DT_VISITA = '"+Acomp.getChildText("datavisita").trim()+"'", null, null, null, null, null);										
+					cAcomp.moveToFirst();						
+					if (cAcomp.getCount() > 0){
+						bd.atualizarDadosTabela("acompanhamento",Integer.valueOf(cAcomp.getString(cAcomp.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("acompanhamento", c);							
+					}//Fim else
+					cAcomp.close();
+				}//Fim for
+					msg = msg + "Acompanhamento - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Acompanhamento - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Acompanhamento Padrão: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Acompanhamento Padrão: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Acompanhamento Padrão: "+e.getMessage());				
+			}
+	}//Fim do Método Importahan
+
 	public void ImportaAgendamento(){
 		//I M P O R T A Ç Ã O   D O S   A G E N D A M E N T O S		
 		try {
@@ -379,7 +467,7 @@ public class ImportarXML extends Activity {
 					c.put("DT_AGENDAMENTO", agendamento.getChildText("dtagendamento"));
 					c.put("HR_AGENDAMENTO", agendamento.getChildText("hora"));
 					c.put("DESCRICAO", agendamento.getChildText("descricao"));
-					cAgendamentos = bd.consulta("agendamento", new String[] { "_ID, HASH,PROFISSIONAL" }, "HASH = "+agendamento.getChildText("idfamiliar").trim()+" AND PROFISSIONAL = "+agendamento.getChildText("profissional"), null, null, null, null, null);										
+					cAgendamentos = bd.consulta("agendamento", new String[] { "_ID, HASH,PROFISSIONAL" }, "HASH = '"+agendamento.getChildText("idfamiliar").trim()+"' AND PROFISSIONAL = '"+agendamento.getChildText("profissional")+"' AND DT_AGENDAMENTO = '"+agendamento.getChildText("dtagendamento")+"' ", null, null, null, null, null);										
 					cAgendamentos.moveToFirst();						
 					if (cAgendamentos.getCount() > 0){
 						bd.atualizarDadosTabela("agendamento",Integer.valueOf(cAgendamentos.getString(cAgendamentos.getColumnIndex("_ID")).toString()),c);													
@@ -401,6 +489,7 @@ public class ImportarXML extends Activity {
 				System.out.println("Erro Importando Agendamentos: "+e.getMessage());				
 			}
 	}//Fim do Metódo Importar Agendamentos
+
 	
 	
 	public void ImportaHan(){

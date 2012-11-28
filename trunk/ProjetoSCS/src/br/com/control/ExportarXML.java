@@ -51,7 +51,7 @@ public class ExportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(11);
+        mprogressDialog.setMax(13);
         
         mprogressDialog.show();
         
@@ -91,7 +91,13 @@ public class ExportarXML extends Activity {
                 	if (ExportarAcompCriancas() == true){
                 		mprogressDialog.incrementProgressBy(1);
                 	}
-                	if (ApagaAgendamentos() == true){
+                	if (ExportarVisitas() == true) {
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	if (ApagaAgendamentos() == true) {
+                		mprogressDialog.incrementProgressBy(1);
+                	}
+                	if (ExportarAcompPadrao() == true) {
                 		mprogressDialog.incrementProgressBy(1);
                 	}
                 	
@@ -242,6 +248,52 @@ public class ExportarXML extends Activity {
 		}
 	}
 	
+	public boolean ExportarVisitas() {
+		
+		try{			
+			Cursor csr = null;
+			bd.open();
+			csr = bd.consulta("visita", new String[] {"*"}, null, null, null, null, "_ID", "");
+			csr.moveToFirst();
+			
+			if (csr.getCount()>0){
+				do{	      
+					Element VISITA           = new Element("VISITA");				
+					Element ID           	 = new Element("ID");				
+					Element DATA     	 	 = new Element("DATA");
+					Element HORA             = new Element("HORA");
+					Element AGENTE      	 = new Element("COD_AGENTE");
+					Element ENDERECO   	     = new Element("ENDERECO");
+					Element NUMERO 		 	 = new Element("NUMERO");
+					Element COMPLEMENTO    	 = new Element("COMPLEMENTO");
+					Element FL_CASA_FECHADA  = new Element("FL_CASA_FECHADA");
+					Element FL_VISITA_CONF	 = new Element("FL_VISITA_CONFIRMADA");
+					
+					
+					VISITA.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
+					VISITA.addContent(DATA.setText(csr.getString(csr.getColumnIndex("DATA")).toString()));
+					VISITA.addContent(HORA.setText(csr.getString(csr.getColumnIndex("HORA")).toString()));
+					VISITA.addContent(AGENTE.setText(csr.getString(csr.getColumnIndex("AGENTE")).toString()));
+					VISITA.addContent(ENDERECO.setText(csr.getString(csr.getColumnIndex("ENDERECO")).toString()));
+					VISITA.addContent(NUMERO.setText(csr.getString(csr.getColumnIndex("NUMERO")).toString()));
+					VISITA.addContent(COMPLEMENTO.setText(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString()));
+					VISITA.addContent(FL_CASA_FECHADA.setText(csr.getString(csr.getColumnIndex("FL_CASA_FECHADA")).toString()));
+					VISITA.addContent(FL_VISITA_CONF.setText(csr.getString(csr.getColumnIndex("VISITA_CONFIRMADA")).toString()));
+					
+					
+					SCS.addContent(VISITA);
+					
+				}while (csr.moveToNext());
+			}//Fim if		
+			csr.close();
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Log.i("Erro Exportando Visitas:", e.getMessage());
+			return false;
+		}
+	}//Fim do Método ExportarFamiliar
+	
 	public boolean ExportarFamiliares(){
 		
 		try{			
@@ -277,6 +329,8 @@ public class ExportarXML extends Activity {
 					Element NOME_PAI         = new Element("NOME_PAI");
 					Element NOME_MAE         = new Element("NOME_MAE");
 					Element COMPLEMENTO      = new Element("COMPLEMENTO");
+					Element FL_OBITO         = new Element("FL_OBITO");
+					Element FL_MUDOU_SE      = new Element("FL_MUDOU_SE");
 					
 					FAMILIAR.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					FAMILIAR.addContent(NOME.setText(csr.getString(csr.getColumnIndex("NOME")).toString()));
@@ -302,6 +356,8 @@ public class ExportarXML extends Activity {
 					FAMILIAR.addContent(NOME_MAE.setText(csr.getString(csr.getColumnIndex("NOME_MAE")).toString()));
 					FAMILIAR.addContent(DATA_ATUALIZACAO.setText(csr.getString(csr.getColumnIndex("DATA_ATUALIZACAO")).toString()));
 					FAMILIAR.addContent(COMPLEMENTO.setText(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString()));
+					FAMILIAR.addContent(FL_OBITO.setText(csr.getString(csr.getColumnIndex("FL_FALECEU")).toString()));
+					FAMILIAR.addContent(FL_MUDOU_SE.setText(csr.getString(csr.getColumnIndex("FL_MUDOU_SE")).toString()));
 					
 					SCS.addContent(FAMILIAR);
 					
@@ -314,7 +370,7 @@ public class ExportarXML extends Activity {
 			Log.i("Erro Exportando Familiares:", e.getMessage());
 			return false;
 		}
-	}//Fim do Mï¿½todo ExportarFamiliar
+	}//Fim do Método ExportarFamiliar
 	
 	public boolean ExportarAcompCriancas(){
 		
@@ -655,16 +711,22 @@ public class ExportarXML extends Activity {
 				do{	      
 					Element AGENDAMENTO      = new Element("AGENDAMENTO");				
 					Element HASH             = new Element("HASH");				
-					Element DT_AGENDAMENTO   = new Element("DT_AGENDAMENTO");
+					//Element DT_AGENDAMENTO   = new Element("DT_REGISTRO");
 					Element FL_URGENTE       = new Element("URGENTE");
 					Element TIPO_AGENDAMENTO = new Element("TIPO_AGENDAMENTO");
 					Element DESCRICAO   	 = new Element("DESCRICAO");
+					Element DATA             = new Element("DT_AGENDAMENTO"); 
+					Element HORA             = new Element("HORA_AGENDAMENTO");
+					Element PROFISSIONAL     = new Element("PROFISSIONAL");
 					
 					AGENDAMENTO.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
-					AGENDAMENTO.addContent(DT_AGENDAMENTO.setText(csr.getString(csr.getColumnIndex("DT_AGENDAMENTO")).toString()));
+					//AGENDAMENTO.addContent(DT_AGENDAMENTO.setText(csr.getString(csr.getColumnIndex("DT_REGISTRO")).toString()));
 					AGENDAMENTO.addContent(FL_URGENTE.setText(csr.getString(csr.getColumnIndex("FL_URGENTE")).toString()));
 					AGENDAMENTO.addContent(TIPO_AGENDAMENTO.setText(csr.getString(csr.getColumnIndex("TIPO_AGENDAMENTO")).toString()));
 					AGENDAMENTO.addContent(DESCRICAO.setText(csr.getString(csr.getColumnIndex("DESCRICAO")).toString()));
+					AGENDAMENTO.addContent(DATA.setText(csr.getString(csr.getColumnIndex("DT_AGENDAMENTO")).toString()));
+					AGENDAMENTO.addContent(HORA.setText(csr.getString(csr.getColumnIndex("HR_AGENDAMENTO")).toString()));
+					AGENDAMENTO.addContent(PROFISSIONAL.setText(csr.getString(csr.getColumnIndex("PROFISSIONAL")).toString()));
 					
 					SCS.addContent(AGENDAMENTO);
 					
@@ -675,6 +737,46 @@ public class ExportarXML extends Activity {
 			return true;
 		}catch(Exception e){
 			Log.i("Erro Exportando Agendamentos:", e.getMessage());
+			return false;
+		}
+	}//Fim do Mï¿½todo ExportarAgendamento
+	
+	public boolean ExportarAcompPadrao(){
+		
+		try{			
+			Cursor csr = null;
+			bd.open();
+			csr = bd.consulta("acompanhamento", new String[] {"*"}, null, null, null, null, "_ID", "");
+			csr.moveToFirst();
+			
+			if (csr.getCount()>0){
+				do{	      
+					Element ACOMPPADRAO           = new Element("ACOMPPADRAO");				
+					Element HASH                  = new Element("HASH");				
+					Element DT_VISITA             = new Element("DT_VISITA");
+					Element FL_HOSPITALIZADA      = new Element("FL_HOSPITALIZADA");
+					Element MOTIVO_HOSPITALIZACAO = new Element("MOTIVO_HOSPITALIZACAO");
+					Element FL_DOENTE   	      = new Element("FL_DOENTE");
+					Element DESC_DOENCA           = new Element("DESC_DOENCA"); 
+					Element OBSERVACAO            = new Element("OBSERVACAO");					
+					
+					ACOMPPADRAO.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
+					ACOMPPADRAO.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
+					ACOMPPADRAO.addContent(FL_HOSPITALIZADA.setText(csr.getString(csr.getColumnIndex("FL_HOSPITALIZADA")).toString()));
+					ACOMPPADRAO.addContent(MOTIVO_HOSPITALIZACAO.setText(csr.getString(csr.getColumnIndex("MOTIVO_HOSPITALIZACAO")).toString()));
+					ACOMPPADRAO.addContent(FL_DOENTE.setText(csr.getString(csr.getColumnIndex("FL_DOENTE")).toString()));
+					ACOMPPADRAO.addContent(DESC_DOENCA.setText(csr.getString(csr.getColumnIndex("DESC_DOENCA")).toString()));
+					ACOMPPADRAO.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));					
+					
+					SCS.addContent(ACOMPPADRAO);
+					
+				}while (csr.moveToNext());
+			}//Fim if		
+			csr.close();
+			bd.fechaBanco();
+			return true;
+		}catch(Exception e){
+			Log.i("Erro Exportando Acompanhamentos:", e.getMessage());
 			return false;
 		}
 	}//Fim do Mï¿½todo ExportarAgendamento

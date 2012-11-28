@@ -54,7 +54,7 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	CheckBox    Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante, Alcolismo, Chagas, Deficiencia, Malaria, Epilepsia;
 	EditText    EdtNome, EdtOcupacao, DtNascimento, EdtNomePai, EdtNomeMae; 
 	RadioGroup  RdSexo;
-	RadioButton RdbMasculino, RdbFeminino;
+	RadioButton RdbMasculino, RdbFeminino, RbMudouSIM, RbMudouNAO, RbObitoSim, RbObitoNAO;
 	Button      btnVoltar,btnSalvar;
 	
 	ArrayList<String> Alfabetizado = new ArrayList<String>();
@@ -95,8 +95,12 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		RdSexo         = (RadioGroup) findViewById(R.cadastrofamilia.RgSexo);
 		RdbMasculino   = (RadioButton)findViewById(R.cadastrofamilia.RbMasculino);
 		RdbFeminino    = (RadioButton)findViewById(R.cadastrofamilia.RbFeminino);
+		RbObitoSim     = (RadioButton)findViewById(R.cadastrofamilia.RbObitoSIM);
+		RbObitoNAO     = (RadioButton)findViewById(R.cadastrofamilia.RbObitoNAO);
+		RbMudouSIM     = (RadioButton)findViewById(R.cadastrofamilia.RbMudouSIM);
+		RbMudouNAO     = (RadioButton)findViewById(R.cadastrofamilia.RbMudouNAO);
 		btnVoltar      = (Button)     findViewById(R.cadastrofamilia.btnVoltarFamiliar);
-		btnSalvar      = (Button)     findViewById(R.cadastrofamilia.btnSalvarFamiliar);
+		btnSalvar      = (Button)     findViewById(R.cadastrofamilia.btnSalvarFamiliar);		
 		btnVoltar.setOnClickListener(this);
 		btnSalvar.setOnClickListener(this);
 		DtNascimento.setOnClickListener(this);
@@ -133,6 +137,19 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 						RdbMasculino.setChecked(false);
 						RdbFeminino.setChecked(true);
 					}
+					
+					if (c.getString(c.getColumnIndex("FL_FALECEU")).toString().equals("S")) {
+						RbObitoSim.setChecked(true);
+					} else {
+						RbObitoNAO.setChecked(true);
+					}
+					
+					if (c.getString(c.getColumnIndex("FL_MUDOU_SE")).toString().equals("S")) {
+						RbMudouSIM.setChecked(true);
+					} else {
+						RbMudouNAO.setChecked(true);
+					}
+					
 					if (c.getString(c.getColumnIndex("ALFABETIZADO")).toString().equals("S")){
 						OpcaoAlfabetizado("Sim");
 					}else{
@@ -397,6 +414,22 @@ public void InsereBD(){
 		r.NOME_MAE     = EdtNomeMae.getText().toString();
 		r.NOME_PAI     = EdtNomePai.getText().toString();
 		
+		if (RbObitoSim.isChecked()) {
+			r.FL_OBITO = "S";
+		} else if (RbObitoNAO.isChecked()) {
+			r.FL_OBITO = "N";
+		} else {
+			r.FL_OBITO = "N";
+		}
+		
+		if (RbMudouSIM.isChecked()) {
+			r.FL_MUDOU_SE = "S";
+		} else if (RbMudouNAO.isChecked()) {
+			r.FL_MUDOU_SE = "N";
+		} else {
+			r.FL_MUDOU_SE = "N";
+		}
+		
 		if (Hanseniase.isChecked())
 			r.FL_HANSENIASE = "S";
 		else
@@ -525,19 +558,19 @@ public void InsereBD(){
 	 
 
 	public void onClick(View v) {
-		if (v == btnVoltar){
+		if (v == btnVoltar) {
 			finish();
 		}
-		if (v == btnSalvar){
+		if (v == btnSalvar) {
 			InsereBD();
 		}
-		if (v == DtNascimento){			
+		if (v == DtNascimento) {			
 			showDialog(DATE_DIALOG_ID);
 		}
-		if (v == RdbMasculino){
+		if (v == RdbMasculino) {
 			Gestante.setEnabled(false);
 		}
-		if (v == RdbFeminino){
+		if (v == RdbFeminino) {
 			Gestante.setEnabled(true);
 		}
 		

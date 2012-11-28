@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="#FFFFFF" 
+  >
+  
+  <LinearLayout 
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="#FFFFFF" >  
+  
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="56dp"
+      android:gravity="left"
+      android:orientation="horizontal"
+      android:paddingTop="5dp"
+      android:background="@drawable/bgbucar" >
+      
+      <Button
+          android:id="@+agend_marcados/btnVoltarLista"
+          android:layout_width="wrap_content"
+          android:layout_height="48dp"
+          android:drawableTop="@drawable/voltarpequeno" />
+
+      <TableLayout
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_weight="1" >
+
+          <TableRow
+              android:id="@+agend_marcados/tableRow1"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content" >
+              
+              <EditText
+			      android:id="@+agend_marcados/edtFiltro"
+			      android:layout_width="fill_parent"
+			      android:layout_height="wrap_content"
+			      android:layout_weight="1"
+			      android:focusable="false"			      
+			      android:hint="Filtro por Data" />
+              
+          </TableRow>
+          
+      </TableLayout>
+      
+      <Button
+          android:id="@+agend_marcados/btnFiltrar"
+          android:layout_width="wrap_content"
+          android:layout_height="48dp"  
+          android:drawableTop="@drawable/filtropequeno" />
+           
+  </LinearLayout>
+  
+  <ListView android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:id="@+id/android:list"
+    />
+  </LinearLayout>
+  
+  </RelativeLayout> 
