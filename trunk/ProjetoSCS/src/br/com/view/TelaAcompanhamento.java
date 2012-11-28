@@ -34,6 +34,13 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
 	private Button   btnFiltrar,btnVoltar;
 	private EditText edtFiltro;
 	
+	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
+
+	private SimpleAdapter sa;
+
+	
+	private String endereco, numero, complemento;
+	
 	public String getEndereco() {
 		return endereco;
 	}
@@ -57,14 +64,8 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-
-	private String endereco, numero, complemento;
-		
-	
-	ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
-
-	private SimpleAdapter sa;
-    @Override
+				
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listax);
