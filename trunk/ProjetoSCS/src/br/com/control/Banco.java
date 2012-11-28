@@ -53,9 +53,12 @@ public class Banco{
 		
 		public static final String[] _sqlTabelaAgendamento =  new String[] {"CREATE TABLE if not exists agendamento (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
 															  		        "HASH text not null, 	   "+
-																	        "DT_AGENDAMENTO text,	   "+
+																	        "DT_REGISTRO text,	       "+
 																	        "FL_URGENTE text,		   "+
 																		    "TIPO_AGENDAMENTO text,	   "+
+																		    "PROFISSIONAL text,	       "+
+																		    "DT_AGENDAMENTO text,	   "+
+																		    "HR_AGENDAMENTO text,	   "+
 																		    "DESCRICAO text);		   "};
 		
 		public static final String[] _sqlTabelaCrianca =  new String[] {"CREATE TABLE if not exists crianca (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
@@ -229,6 +232,12 @@ public class Banco{
 																		   "FL_ENERGIA TEXT);                      "};
 
 		
+		private static final String[] _sqlTabelaProfissional = new String[] {"CREATE TABLE if not exists profissional (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
+				   															 "NOME TEXT NOT NULL, 	 		   "+
+				   															 "TIPO TEXT NOT NULL, 		 	   "+
+				   															 "ESPECIALIDADE TEXT NOT NULL, 	   "+
+				   															 "COD_BAIRRO TEXT,    		 	   "};
+				   														
 		
 		private static final String _sqlTabelaVersao = "create table versao (_id integer primary key autoincrement, "+
 				 									   "nometabela text not null, versao integer not null);";
