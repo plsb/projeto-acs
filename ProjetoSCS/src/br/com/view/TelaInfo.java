@@ -6,6 +6,7 @@ import br.com.control.Sessao;
 import br.com.scs.R;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Button;
 public class TelaInfo extends Activity implements OnClickListener {
 	
 	private static TextView tvIMEI, tvResponsavel, tvUsuario, tvDataAtual;
-	private static Button   btnVoltar;
+	private static Button   btnVoltar, btnCasasFechadas;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,15 +29,21 @@ public class TelaInfo extends Activity implements OnClickListener {
 		tvResponsavel = (TextView) findViewById(R.TelaInfo.respCelular);
 		tvUsuario     = (TextView) findViewById(R.TelaInfo.numeUsuInfo);
 		btnVoltar     = (Button) findViewById(R.TelaInfo.btnVoltarInfo);
+		btnCasasFechadas = (Button) findViewById(R.TelaInfo.btnCasaFechada);
 		btnVoltar.setOnClickListener(this);
+		btnCasasFechadas.setOnClickListener(this);
 		
 		InfoResponsavelDispo();
 	}	
 
 	public void onClick(View v) {
 		
-		if (v==btnVoltar){
+		if (v == btnVoltar){
 			finish();
+		}
+		if (v == btnCasasFechadas) {
+			Intent i = new Intent(this, Lista_Casas_Fechadas.class);
+			startActivity(i);
 		}
 		
 	}
