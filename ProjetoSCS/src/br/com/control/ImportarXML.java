@@ -27,7 +27,7 @@ public class ImportarXML extends Activity {
 	private Handler mhandler;
 	
 	Cursor cUsuario,cBairro,cRuas,cResidencia,cFamiliar,
-		   cHan,cHa,cDia,cTb,cGes,cVacina,cCri = null;
+		   cHan,cHa,cDia,cTb,cGes,cVacina,cCri, cAgendamentos = null;
 	
 	String msg = "";
 	
@@ -50,7 +50,7 @@ public class ImportarXML extends Activity {
         mprogressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			
         mprogressDialog.setProgress(0);
-        mprogressDialog.setMax(12);
+        mprogressDialog.setMax(14);
         
         mprogressDialog.show();
         
@@ -81,6 +81,8 @@ public class ImportarXML extends Activity {
                     ImportaVacinas();
                     mprogressDialog.incrementProgressBy(1);
                     ImportaCriancas();
+                    mprogressDialog.incrementProgressBy(1);
+                    ImportaAgendamento();
                     mprogressDialog.incrementProgressBy(1);
                     
                 } catch (Exception e) {
@@ -359,6 +361,46 @@ public class ImportarXML extends Activity {
 		}
 		
 	}//Fim do Método Familiar
+	
+	public void ImportaAgendamento(){
+		//I M P O R T A Ç Ã O   D O S   A G E N D A M E N T O S		
+		try {
+			if (!(xml.carregar("scs.xml","agendamento") == null)){
+				List<Element> agendamentos = xml.carregar("scs.xml","agendamento"); 
+				bd = bd.open();
+				ContentValues c = new ContentValues();					
+				for(Element agendamento : agendamentos){
+					c.clear();				
+					c.put("HASH", agendamento.getChildText("idfamiliar"));					
+					c.put("DT_REGISTRO", "");
+					c.put("FL_URGENTE", agendamento.getChildText("urgente"));
+					c.put("TIPO_AGENDAMENTO", agendamento.getChildText("tpconsulta"));
+					c.put("PROFISSIONAL", agendamento.getChildText("profissional"));					
+					c.put("DT_AGENDAMENTO", agendamento.getChildText("dtagendamento"));
+					c.put("HR_AGENDAMENTO", agendamento.getChildText("hora"));
+					c.put("DESCRICAO", agendamento.getChildText("descricao"));
+					cAgendamentos = bd.consulta("agendamento", new String[] { "_ID, HASH,PROFISSIONAL" }, "HASH = "+agendamento.getChildText("idfamiliar").trim()+" AND PROFISSIONAL = "+agendamento.getChildText("profissional"), null, null, null, null, null);										
+					cAgendamentos.moveToFirst();						
+					if (cAgendamentos.getCount() > 0){
+						bd.atualizarDadosTabela("agendamento",Integer.valueOf(cAgendamentos.getString(cAgendamentos.getColumnIndex("_ID")).toString()),c);													
+					}else{								
+						bd.inserirRegistro("agendamento", c);							
+					}//Fim else
+					cAgendamentos.close();
+				}//Fim for
+					msg = msg + "Agendamento - SIM\n";
+					bd.fechaBanco();
+				} else {
+					msg = msg + "Agendamento - NÃO\n";
+				}//Fim else
+			} catch (FileNotFoundException e) {
+				System.out.println("Erro Importando Agendamentos: "+e.getMessage());
+			} catch (IOException e) {
+				System.out.println("Erro Importando Agendamentos: "+e.getMessage());
+			} catch (JDOMException e) {
+				System.out.println("Erro Importando Agendamentos: "+e.getMessage());				
+			}
+	}//Fim do Metódo Importar Agendamentos
 	
 	
 	public void ImportaHan(){
