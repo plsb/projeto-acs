@@ -120,7 +120,7 @@ public class TelaResidencia extends Activity implements OnClickListener {
         
         //Primeria Aba
         ts = th.newTabSpec("tag1");
-        ts.setContent(R.imovel.tabCadastroResidencia);
+        ts.setContent(R.imovel.tabCadastroResidencia); 
         ts.setIndicator("Residencia",getResources().getDrawable(R.drawable.casa));
         setOpcoesSpinnersTab1("","","");
         PreencheCampos(String.valueOf(ID), 1);
@@ -234,89 +234,96 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		return true;
 	}
 	
-	public boolean validaCampos(){
+	public boolean validaCampos(){			
+		boolean _Num, _Municipio, _TpCasa, _DestLixo, _AbastAgua, _TratAgua, _DestUrina, _CasoDoente, _MeiosComunicacao,
+				_GruposComunitarios, _TransporteUtilizado, _Beneficio = false;
 		
-		boolean retorno = false;
+		//boolean retorno = false;
 		String msgPendecias = "";
 		
 		if (EdtNumero.getText().toString().length() == 0){			
 			msgPendecias += "-> Informe o Número da Casa!\n";
-			retorno = false;
+			_Num = false;
 		}else{
-			retorno = true;
+			_Num = true;
 		}		
 		if (SpMunicipio.getItemAtPosition(SpMunicipio.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o município!\n";
-			retorno = false;
+			_Municipio = false;
 		}else{
-			retorno = true;
+			_Municipio = true;
 		}
 		if (SpTipoCasa.getItemAtPosition(SpTipoCasa.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o tipo de casa!\n";
-			retorno = false;
+			_TpCasa = false;
 		}else{
-			retorno = true;
+			_TpCasa = true;
 		}
 		if (SpDestinoLixo.getItemAtPosition(SpDestinoLixo.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o destino do lixo!\n";
-			retorno = false;
+			_DestLixo = false;
 		}else{
-			retorno = true;
+			_DestLixo = true;
 		}
 		if (SpAbastecimentoAgua.getItemAtPosition(SpAbastecimentoAgua.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o tipo de abastecimento de Água!\n";
-			retorno = false;
+			_AbastAgua = false;
 		}else{
-			retorno = true;
+			_AbastAgua = true;
 		}		
 		if (SpTratamentoAgua.getItemAtPosition(SpTratamentoAgua.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o tipo de tratamento de Água!\n";
-			retorno = false;
+			_TratAgua = false;
 		}else{
-			retorno = true;
+			_TratAgua = true;
 		}
 		if (SpDestFezesUrina.getItemAtPosition(SpDestFezesUrina.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o destino das fezes e urina!\n";
-			retorno = false;
+			_DestUrina = false;
 		}else{
-			retorno = true;
+			_DestUrina = true;
 		}
 		if (SpCasoDoente.getItemAtPosition(SpCasoDoente.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o que procura em caso de doença!\n";
-			retorno = false;
+			_CasoDoente = false;
 		}else{
-			retorno = true;
+			_CasoDoente = true;
 		}
 		if (SpMeiosComunicacao.getItemAtPosition(SpMeiosComunicacao.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o meio de comunicação mais utilizado!\n";
-			retorno = false;
+			_MeiosComunicacao = false;
 		}else{
-			retorno = true;
+			_MeiosComunicacao = true;
 		}
 		if (SpGruposComunitarios.getItemAtPosition(SpGruposComunitarios.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione se participa de grupos comunitários!\n";
-			retorno = false;
+			_GruposComunitarios = false;
 		}else{
-			retorno = true;
+			_GruposComunitarios = true;
 		}
 		if (SpTransporteUtilizado.getItemAtPosition(SpTransporteUtilizado.getSelectedItemPosition()).toString().trim().equals("Selecione")){			
 			msgPendecias += "-> Selecione o meio de transporte mais utilizado!\n";
-			retorno = false;
+			_TransporteUtilizado = false;
 		}else{
-			retorno = true;
+			_TransporteUtilizado = true;
 		}
 		if ((!RbBeneficioSIM.isChecked()) && (!RbBeneficioNAO.isChecked()) && (!RbBeneficioRecebe.isChecked())) {
 			msgPendecias += "-> Selecione se a família recebe benefício!\n";
-			retorno = false;		
+			_Beneficio = false;		
 		} else {
-			retorno = true;
+			_Beneficio = true;
 		}		
 		if (msgPendecias.trim().length() > 0){
 			Mensagem.exibeMessagem(this, "Pendências", msgPendecias);
 		}
 		
+		if ((_Num==true)&&(_Municipio==true)&&(_TpCasa==true)&&(_DestLixo==true)&&(_AbastAgua==true)&&(_TratAgua==true)&&
+			(_DestUrina==true)&&(_CasoDoente==true)&&(_MeiosComunicacao==true)&&(_GruposComunitarios==true)&&(_TransporteUtilizado==true)&&(_Beneficio==true)) {
+			return true;
+		} else {
+			return false;
+		}
 		
-		return retorno;
 	}
 	
 	private void setOpcoesSpinnersTab1(String pCidade, String pEndereco,String pBairro){

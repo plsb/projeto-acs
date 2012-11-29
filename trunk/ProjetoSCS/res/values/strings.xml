@@ -1,10 +1,10 @@
 <resources>
 
-    <string name="app_name">Sistema SCS</string>
+    <string name="app_name">SCS</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">SCS</string>
     <string name="id">id</string>
-    <string name="versao">1.0</string>
+    <string name="versao">1.5</string>
 
 </resources>
