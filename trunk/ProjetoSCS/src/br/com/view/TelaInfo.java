@@ -17,19 +17,21 @@ import android.widget.Button;
 public class TelaInfo extends Activity implements OnClickListener {
 	
 	private static TextView tvIMEI, tvResponsavel, tvUsuario, tvDataAtual;
-	private static Button   btnVoltar, btnCasasFechadas;
+	private static Button   btnVoltar, btnCasasFechadas, btnRelatorios;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.telainfo);
 		
-		tvDataAtual   = (TextView) findViewById(R.TelaInfo.dataInfo);
-		tvIMEI        = (TextView) findViewById(R.TelaInfo.imeiCelular);
-		tvResponsavel = (TextView) findViewById(R.TelaInfo.respCelular);
-		tvUsuario     = (TextView) findViewById(R.TelaInfo.numeUsuInfo);
-		btnVoltar     = (Button) findViewById(R.TelaInfo.btnVoltarInfo);
+		tvDataAtual      = (TextView) findViewById(R.TelaInfo.dataInfo);
+		tvIMEI           = (TextView) findViewById(R.TelaInfo.imeiCelular);
+		tvResponsavel    = (TextView) findViewById(R.TelaInfo.respCelular);
+		tvUsuario        = (TextView) findViewById(R.TelaInfo.numeUsuInfo);
+		btnVoltar        = (Button) findViewById(R.TelaInfo.btnVoltarInfo);
 		btnCasasFechadas = (Button) findViewById(R.TelaInfo.btnCasaFechada);
+		btnRelatorios    = (Button) findViewById(R.TelaInfo.btnRelatorios);
+		btnRelatorios.setOnClickListener(this);
 		btnVoltar.setOnClickListener(this);
 		btnCasasFechadas.setOnClickListener(this);
 		
@@ -43,6 +45,10 @@ public class TelaInfo extends Activity implements OnClickListener {
 		}
 		if (v == btnCasasFechadas) {
 			Intent i = new Intent(this, Lista_Casas_Fechadas.class);
+			startActivity(i);
+		}
+		if (v == btnRelatorios){
+			Intent i = new Intent(this, Rel_Parametros.class);
 			startActivity(i);
 		}
 		

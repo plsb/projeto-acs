@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+    	android:orientation="vertical"
+    	android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+        >
+        
+        <LinearLayout
+      		android:layout_width="fill_parent"
+      		android:layout_height="56dp"
+      		android:orientation="horizontal"
+      		android:paddingTop="5dp"
+      		android:background="@drawable/bgbucar" >
+      
+      		<Button
+          		android:id="@+relparametros/btnVoltar"
+          		android:layout_width="wrap_content"
+          		android:layout_height="48dp"
+          		android:layout_weight="1"
+          		android:drawableTop="@drawable/voltarpequeno" />
+
+      		<Button
+      		    android:id="@+relparametros/btnFiltrar"
+      		    android:layout_width="wrap_content"
+      		    android:layout_height="48dp"
+      		    android:layout_weight="1"
+      		    android:drawableTop="@drawable/filtropequeno" />
+           
+  		 </LinearLayout>
+        
+                   
+	    <TextView
+	    	android:id="@+relparametros/TxtParametrosRel" 
+			android:text=" Parametros para Relatório"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:paddingTop="5dp"
+			android:layout_marginBottom="15dp"
+			android:textStyle="bold"
+			android:layout_gravity="center"
+		/>
+	    
+	    
+        <TextView
+			android:text=" Faixa Etária: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+        
+        <LinearLayout
+      		android:layout_width="fill_parent"
+      		android:layout_height="56dp"
+      		android:gravity="left"
+      		android:orientation="horizontal"
+      		android:paddingTop="5dp">
+
+            
+            <EditText     
+				android:id="@+relparametros/EdtIdadeInicial"  
+				android:layout_marginBottom="5dp"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:focusable="false"
+				android:inputType="number"
+				/>
+            
+            <TextView
+				android:text="  à  "
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15dp"
+				android:textColor="#000"
+				android:gravity="center"
+			/>
+            
+            <EditText     
+				android:id="@+relparametros/EdtIdadeFinal"  
+				android:layout_marginBottom="5dp"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:focusable="false"
+				android:layout_weight="1"
+				android:inputType="number"
+				/>
+
+            
+        </LinearLayout>
+        
+        
+        <TextView 
+            android:text=" Sexo: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+            />
+        
+        <RadioGroup 
+			android:id="@+relparametros/RgSexo"  
+			android:layout_marginBottom="5dp"
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+		>            
+			    
+	    <RadioButton 
+			android:text="Masculino"
+			android:id="@+relparametros/RbSexoM"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:textSize="15dp"
+			android:textColor="#000"
+			/>
+			    
+	    <RadioButton 
+			android:id="@+relparametros/RbSexoF"
+			android:text="Feminino"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:textSize="15dp"
+			android:textColor="#000"
+			/>  
+	                    
+		</RadioGroup>
+		
+        <TextView 
+            android:text=" Condição Referida: "
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+            />
+        
+        <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+relparametros/ChHanseniase"
+            android:text="Hanseníase"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+relparametros/ChHipertensao"
+            android:text="Hipertensão"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+        <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+relparametros/ChGestante"
+            android:text="Gestante"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+relparametros/ChTuberculose"
+            android:text="Tuberculose"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+        <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+relparametros/ChAlcolismo"
+            android:text="Alcolismo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+        <CheckBox 
+            android:id="@+relparametros/ChChagas"
+            android:text="Chagas"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+relparametros/ChDeficiencia"
+            android:text="Deficiência"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+relparametros/ChMalaria"
+            android:text="Malária"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <CheckBox 
+            android:id="@+relparametros/ChDiabetes"
+            android:text="Diabetes"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <CheckBox 
+            android:id="@+relparametros/ChEpilepsia"
+            android:text="Epilepsia"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        
+    </LinearLayout>
+        
+   </LinearLayout>
+
+
+</ScrollView>
