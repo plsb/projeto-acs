@@ -235,10 +235,10 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	}
 	
 	public boolean validaCampos(){			
+		
 		boolean _Num, _Municipio, _TpCasa, _DestLixo, _AbastAgua, _TratAgua, _DestUrina, _CasoDoente, _MeiosComunicacao,
 				_GruposComunitarios, _TransporteUtilizado, _Beneficio = false;
 		
-		//boolean retorno = false;
 		String msgPendecias = "";
 		
 		if (EdtNumero.getText().toString().length() == 0){			
@@ -623,13 +623,13 @@ public class TelaResidencia extends Activity implements OnClickListener {
 	
 	@Override
 	protected void onDestroy() {
-		if (this.ID > 0){
+		if (this.ID > 0) {
 			ClearID();
 		}
 		super.onDestroy();
 	}
 	
-	public void PreencheSpinner(final Spinner s,ArrayList<String> a){
+	public void PreencheSpinner(final Spinner s,ArrayList<String> a) {
 		
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, a);		
 		ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;		

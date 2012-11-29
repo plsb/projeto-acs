@@ -28,16 +28,18 @@
 
       <TableLayout
           android:layout_width="wrap_content"
-          android:layout_height="match_parent" >
+          android:layout_height="match_parent"
+          android:layout_weight="1" >
 
           <TableRow
               android:id="@+listavacinas/tableRow1"
-              android:layout_width="wrap_content"
+              android:layout_width="fill_parent"
               android:layout_height="wrap_content" >
               
               <EditText
 			      android:id="@+listavacinas/edtFiltro"
-			      android:layout_width="215dp"
+			      android:layout_width="fill_parent"
+			      android:layout_weight="1"
 			      android:layout_height="wrap_content"
 			      android:hint="Filtro por Vacinas" />
           </TableRow>
