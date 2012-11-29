@@ -382,6 +382,8 @@ public class ImportarXML extends Activity {
 					c.put("NOME_PAI", familiar.getChildText("nomepai"));
 					c.put("NOME_MAE", familiar.getChildText("nomemae"));
 					c.put("COMPLEMENTO", familiar.getChildText("complemento"));
+					c.put("FL_FALECEU", familiar.getChildText("obito"));
+					c.put("FL_MUDOU_SE", familiar.getChildText("mudou_se"));
 					c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 										
 					cFamiliar = bd.consulta("residente", new String[] { "_ID" }, "HASH = ? ",  new String[] { familiar.getChildText("idMD5Familiar").trim() }, null, null, null, null);
@@ -409,7 +411,7 @@ public class ImportarXML extends Activity {
 	}//Fim do Método Familiar
 	
 
-	public void ImportaAcompPadrao(){
+	public void ImportaAcompPadrao(){ 
 		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  H A N S E N I A S E		
 		try {
 			if (!(xml.carregar("scs.xml","acomppadrao") == null)){
@@ -704,7 +706,7 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Acompanhamento Gestantes: "+e.getMessage());				
 			}
-	}//Fim do MÃ©todo ImportaGes
+	}//Fim do Método ImportaGes
 
 	
 	public void ImportaTb(){
@@ -746,7 +748,7 @@ public class ImportarXML extends Activity {
 			} catch (JDOMException e) {
 				System.out.println("Erro Importando Acompanhamento Tuberculose: "+e.getMessage());				
 			}
-	}//Fim do MÃ©todo ImportaTb
+	}//Fim do Método ImportaTb
 	
 	public void ImportaVacinas(){
 		
@@ -794,7 +796,7 @@ public class ImportarXML extends Activity {
 			System.out.println("Erro Importando Acompanhamento Vacinas: "+e.getMessage());				
 		}
 		
-	}//Fim do MÃ©todo ImportaVacinas
+	}//Fim do Método ImportaVacinas
 	
 			
 	@Override
