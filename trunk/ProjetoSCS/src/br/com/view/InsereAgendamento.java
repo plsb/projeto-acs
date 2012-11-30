@@ -94,9 +94,9 @@ public class InsereAgendamento extends Activity implements OnClickListener {
 		 
 		 if (c.getCount() > 0){
 			 
-			 while (c.moveToNext()){
+			 do {
 				 Profissional.add(c.getString(c.getColumnIndex("COD_RET")).toString()+"-"+c.getString(c.getColumnIndex("NOME")).toString());
-			 }
+			 } while (c.moveToNext());
 		 }
 			
 		}catch(Exception e){
