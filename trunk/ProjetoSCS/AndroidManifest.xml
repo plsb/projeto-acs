@@ -14,6 +14,7 @@
         android:icon="@drawable/iconscs"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >   
+        <activity android:name="br.com.view.Lista_Relatorio" android:label="Relatório" android:screenOrientation="portrait" ></activity>
         <activity android:name="br.com.view.Rel_Parametros" android:label="Relatórios" android:screenOrientation="portrait" ></activity>     
         <activity android:name="br.com.view.Lista_Agendamentos_Marcados" android:label="Agendamentos Marcados" android:screenOrientation="portrait" ></activity>
         <activity android:name="br.com.view.Lista_Casas_Fechadas" android:label="Casas Fechadas" android:screenOrientation="portrait" ></activity>
