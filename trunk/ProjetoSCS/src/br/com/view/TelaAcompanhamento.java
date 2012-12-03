@@ -180,9 +180,9 @@ public class TelaAcompanhamento extends ListActivity implements OnClickListener{
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },"cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
+        		_cursor = _bd.consulta("residencia", new String[] { "*" },"cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+") and microarea in (select distinct cod_microarea from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
         	}else{
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },"endereco like '%"+edtFiltro.getText().toString()+"%' and cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
+        		_cursor = _bd.consulta("residencia", new String[] { "*" },"endereco like '%"+edtFiltro.getText().toString()+"%' and cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+") and microarea in (select distinct cod_microarea from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 

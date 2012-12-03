@@ -83,10 +83,10 @@ Banco _bd = new Banco(this);
         try{
         	list.clear();
         	Cursor _cursor = null;
-        	if (!usaFiltro){
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+")",null,null,null,"_ID",null);  
+        	if (!usaFiltro){        		
+        		_cursor = _bd.consulta("residente re join residencia rs on rs.COD_ENDERECO = re.COD_ENDERECO and rs.NUMERO = re.NUMERO and rs.COMPLEMENTO = re.COMPLEMENTO", new String[] { "re.*" },"rs.microarea in (select distinct cod_microarea from ruas where usu_vinculado = "+Usuario+")",null,null,null,"re.nome",null);  
         	}else{
-        		_cursor = _bd.consulta("residente", new String[] { "*" },"nome like'%"+edtFiltro.getText().toString()+"%' and cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
+        		_cursor = _bd.consulta("residente re join residencia rs on rs.COD_ENDERECO = re.COD_ENDERECO and rs.NUMERO = re.NUMERO and rs.COMPLEMENTO = re.COMPLEMENTO", new String[] { "re.*" },"re.nome like'%"+edtFiltro.getText().toString()+"%' and rs.microarea in (select distinct cod_microarea from ruas where usu_vinculado = "+Usuario+")",null,null,null,"re.nome",null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
