@@ -10,6 +10,7 @@ import br.com.control.Banco;
 import br.com.control.Sessao;
 import br.com.scs.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -70,7 +71,16 @@ public class Rel_Parametros extends Activity implements OnClickListener{
 		
 		if (v == BtnFiltrar){
 			VerificaFiltros();
-			GeraRelatorio();
+			GeraRelatorio();		
+						
+			Intent rel = new Intent(this, Lista_Relatorio.class);
+			/*
+			for(int i = 0;i <= lista.size();i++){
+				Lista_Relatorio.relatorio.add(lista.get(i));
+			}
+			*/
+			Lista_Relatorio.relatorio.addAll(lista);
+			startActivity(rel);
 		}
 		
 	}
