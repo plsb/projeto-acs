@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import br.com.control.Banco;
+import br.com.control.Sessao;
 import br.com.scs.R;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -84,15 +85,16 @@ public class TelaAgendamento extends ListActivity implements OnClickListener{
     }
     
     public void ListarResidencias(boolean usaFiltro){
+    	String Usuario = Sessao.SESSAO.getMatriculaUsuario(this);
     	HashMap<String,String> item;
         _bd.open();
         try{
         	list.clear();
         	Cursor _cursor = null;
         	if (!usaFiltro){
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },null,null,null,null,null,null);
+        		_cursor = _bd.consulta("residencia", new String[] { "*" },"cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
         	}else{
-        		_cursor = _bd.consulta("residencia", new String[] { "*" },"endereco like '%"+edtFiltro.getText().toString()+"%' ",null,null,null,null,null);
+        		_cursor = _bd.consulta("residencia", new String[] { "*" },"endereco like '%"+edtFiltro.getText().toString()+"%' and cod_endereco in (select cod_ret from ruas where usu_vinculado = "+Usuario+")",null,null,null,null,null);
         	}
         	item = new HashMap<String,String>();
         	_cursor.moveToFirst(); 
