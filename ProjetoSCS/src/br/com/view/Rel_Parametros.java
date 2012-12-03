@@ -73,12 +73,8 @@ public class Rel_Parametros extends Activity implements OnClickListener{
 			VerificaFiltros();
 			GeraRelatorio();		
 						
-			Intent rel = new Intent(this, Lista_Relatorio.class);
-			/*
-			for(int i = 0;i <= lista.size();i++){
-				Lista_Relatorio.relatorio.add(lista.get(i));
-			}
-			*/
+			Intent rel = new Intent(this, Lista_Relatorio.class);		
+			
 			Lista_Relatorio.relatorio.addAll(lista);
 			startActivity(rel);
 		}
@@ -97,7 +93,7 @@ public class Rel_Parametros extends Activity implements OnClickListener{
 			} else {
 				Sexo = "F";
 			}	
-		}
+		} 
 	}
 	
 	private void GeraRelatorio() {
@@ -138,8 +134,7 @@ public class Rel_Parametros extends Activity implements OnClickListener{
 						if ((idade >= Integer.valueOf(EdtIdadeInicial.getText().toString()))&&(idade <= Integer.valueOf(EdtIdadeFinal.getText().toString()))) {
 							
 							item = new HashMap<String,String>();
-				        	item.put( "line1", _c.getString(_c.getColumnIndex("_ID")).toString()+"-"+
-				        					   _c.getString(_c.getColumnIndex("NOME")).toString());
+				        	item.put( "line1", _c.getString(_c.getColumnIndex("NOME")).toString());
 				        	item.put( "line2", "Sexo: "+_c.getString(_c.getColumnIndex("SEXO")).toString()+" - Dt. Nascimento: "+
 				        								_c.getString(_c.getColumnIndex("DTNASCIMENTO")).toString());
 					        lista.add( item );

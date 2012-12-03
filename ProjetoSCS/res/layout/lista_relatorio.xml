@@ -18,20 +18,38 @@
       android:gravity="left"
       android:orientation="horizontal"
       android:paddingTop="5dp"
-      android:background="@drawable/bgbucar" >
+      android:background="@drawable/bgtop" >
       
       <Button
           android:id="@+listarelatorio/btnVoltarLista"
           android:layout_width="wrap_content"
           android:layout_height="48dp"
           android:drawableTop="@drawable/voltarpequeno" />
-
       
-      <Button
-          android:id="@+listarelatorio/btnFiltrar"
-          android:layout_width="wrap_content"
-          android:layout_height="48dp"
-          android:drawableTop="@drawable/filtropequeno" />
+      <TableLayout
+          android:layout_width="wrap_content"  
+          android:layout_height="match_parent" 
+          android:layout_weight="1" >
+
+          <TableRow
+              android:id="@+imovel/tableRow1"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center" >
+
+              <TextView
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:paddingTop="5dp"
+                  android:text="Resultado Relatório"
+                  android:textColor="#FFFFFF"
+                  android:textSize="25dp" />
+
+          </TableRow>
+      
+      </TableLayout> 
+            
       
   </LinearLayout>
   
