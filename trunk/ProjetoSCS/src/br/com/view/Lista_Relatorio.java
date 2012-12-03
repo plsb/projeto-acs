@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 
-public class Lista_Relatorio extends ListActivity implements OnClickListener{
+public class Lista_Relatorio extends ListActivity implements OnClickListener {
 	
 	Button BtnVoltar;
 	
@@ -23,17 +23,24 @@ public class Lista_Relatorio extends ListActivity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.lista_relatorio);
 		
 		InicializaObjetos();
 		
-		sa = new SimpleAdapter(this, relatorio, R.layout.lista_residencias, new String[] { "line1, line2" }, new int[] {R.id.line_a, R.id.line_b});
+		HashMap<String,String> item = new HashMap<String,String>();
+		
+		item.put("line1", "TOTAL: "+String.valueOf(relatorio.size())+" PESSOAS.");
+		item.put("line2", "Desenvolvido por One Team Tecnologia");
+		
+		relatorio.add(item);
+		
+		sa = new SimpleAdapter(this, relatorio, R.layout.lista_residencias, new String[] { "line1", "line2" }, new int[] {R.id.line_a, R.id.line_b});
 		setListAdapter(sa);
 	}
 	
 	public void onClick(View v) {
-		if ( v == BtnVoltar){
-			relatorio = null;
+		if ( v == BtnVoltar){			
 			finish();
 		}
 		
@@ -42,6 +49,12 @@ public class Lista_Relatorio extends ListActivity implements OnClickListener{
 	public void InicializaObjetos(){
 		BtnVoltar = (Button) findViewById(R.listarelatorio.btnVoltarLista);
 		BtnVoltar.setOnClickListener(this);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		relatorio.clear();
+		super.onDestroy();
 	}
 
 }
