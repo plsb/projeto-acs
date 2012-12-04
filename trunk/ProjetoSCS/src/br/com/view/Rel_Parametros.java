@@ -108,19 +108,19 @@ public class Rel_Parametros extends Activity implements OnClickListener{
 		HashMap<String,String> item; 
 		try {
 			
-			_c = banco.consulta("residente r join ruas ru on ru.cod_ret = r.cod_endereco", new String[]{"*"},
-							  "ru.usu_vinculado = "+Usuario+(FiltroSexo ? " and sexo ='"+Sexo+"'" : "")+
-							  (ChHanseniase.isChecked()  ? " and fl_hanseniase = 'S' " : "")+
-							  (ChHipertensao.isChecked() ? " and fl_hipertensao = 'S' " : "")+
-							  (ChGestante.isChecked()    ? " and fl_gestante = 'S' " : "")+
-							  (ChTuberculose.isChecked() ? " and fl_tuberculose = 'S' " : "")+
-							  (ChAlcolismo.isChecked()   ? " and fl_alcolismo = 'S' " : "")+
-							  (ChChagas.isChecked()      ? " and fl_chagas = 'S' " : "")+
-							  (ChDeficiente.isChecked()  ? " and fl_deficiente = 'S' " : "")+
-							  (ChMalaria.isChecked()     ? " and fl_malaria = 'S' " : "")+
-							  (ChDiabetes.isChecked()    ? " and fl_diabete = 'S' " : "")+
-							  (ChEplepsia.isChecked()    ? " and fl_epiletico = 'S' " : ""),							  
-							  null, null, null, null, null);
+			_c = banco.consulta("residente re join residencia rs on rs.COD_ENDERECO = re.COD_ENDERECO and rs.NUMERO = re.NUMERO and rs.COMPLEMENTO = re.COMPLEMENTO", new String[]{"re.*"},
+								"rs.microarea in (select distinct cod_microarea from ruas where usu_vinculado = "+Usuario+")"+(FiltroSexo ? " and re.sexo ='"+Sexo+"'" : "")+
+								(ChHanseniase.isChecked()  ? " and re.fl_hanseniase = 'S' " : "")+
+								(ChHipertensao.isChecked() ? " and re.fl_hipertensao = 'S' " : "")+
+								(ChGestante.isChecked()    ? " and re.fl_gestante = 'S' " : "")+
+								(ChTuberculose.isChecked() ? " and re.fl_tuberculose = 'S' " : "")+
+								(ChAlcolismo.isChecked()   ? " and re.fl_alcolismo = 'S' " : "")+
+								(ChChagas.isChecked()      ? " and re.fl_chagas = 'S' " : "")+
+								(ChDeficiente.isChecked()  ? " and re.fl_deficiente = 'S' " : "")+
+								(ChMalaria.isChecked()     ? " and re.fl_malaria = 'S' " : "")+
+								(ChDiabetes.isChecked()    ? " and re.fl_diabete = 'S' " : "")+
+								(ChEplepsia.isChecked()    ? " and re.fl_epiletico = 'S' " : ""),							  
+								null, null, null, null, null);
 			_c.moveToFirst();
 			
 			if (_c.getCount() > 0) {
