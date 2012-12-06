@@ -44,34 +44,6 @@
        
        <TextView 
            android:layout_marginTop="15dp"
-           android:text="Desenvolvedores:"
-           android:textSize="15dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textStyle="bold"
-           android:layout_gravity="center"
-       />
-       
-       <TextView 
-           android:text="Karlos Kelvin A. Santos"
-           android:textSize="15dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textStyle="bold"
-           android:layout_gravity="center"
-       />
-       
-       <TextView 
-           android:text="Lucas de Souza Sales"
-           android:textSize="15dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textStyle="bold"
-           android:layout_gravity="center"
-       />
-       
-       <TextView 
-           android:layout_marginTop="15dp"
            android:text="Site: www.oneteamtecnologia.com"
            android:textSize="15dp"
            android:layout_width="wrap_content"
@@ -92,7 +64,7 @@
        
        <TextView 
            android:layout_marginTop="15dp"
-           android:text="Cel: (88) 9945-0677 / (88) 9968-0484"
+           android:text="Cel: (88) 9945-0677 / (88) 9619-2605"
            android:textSize="15dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"

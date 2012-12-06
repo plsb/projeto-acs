@@ -1,3 +1,10 @@
+/************************************************/
+/** Projeto SCS - Sistema de Controle de Saúde **/
+/************ Desenvolvido por: *****************/
+/********** Lucas de Souza Sales ****************/
+/******* Karlos Kelvin Alves dos Santos *********/
+/************* Pedro Luis Saraiva ***************/
+/************************************************/
 package br.com.view;
 
 
