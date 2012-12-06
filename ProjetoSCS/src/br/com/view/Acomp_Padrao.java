@@ -197,8 +197,7 @@ public class Acomp_Padrao extends Activity implements OnClickListener{
 	
 	@Override
 	protected void onDestroy() {
-		setIdTransacao(0);
-		_bd.fechaBanco();
+		setIdTransacao(0);		
 		DtAcompanhamento = null;
 		Hash             = null;
 		super.onDestroy();
