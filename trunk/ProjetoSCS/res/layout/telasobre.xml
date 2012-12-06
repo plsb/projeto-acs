@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:paddingTop="60dp"
+        android:paddingTop="130dp"
     >
         
        <TextView 
@@ -73,6 +73,36 @@
        <TextView 
            android:layout_marginTop="15dp"
            android:text="Site: www.oneteamtecnologia.com"
+           android:textSize="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+       /> 
+       
+       <TextView 
+           android:layout_marginTop="15dp"
+           android:text="Email: oneteamtecnologia@gmail.com"
+           android:textSize="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+       /> 
+       
+       <TextView 
+           android:layout_marginTop="15dp"
+           android:text="Cel: (88) 9945-0677 / (88) 9968-0484"
+           android:textSize="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_gravity="center"
+       />
+       
+       <TextView 
+           android:layout_marginTop="15dp"
+           android:text="Tel: (88) 3512-6374"
            android:textSize="15dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
