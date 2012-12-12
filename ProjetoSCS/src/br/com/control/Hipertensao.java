@@ -26,6 +26,7 @@ public class Hipertensao {
 	public String PRESSAO_ARTERIAL  = "";
 	public String DT_ULTIMA_VISITA  = "";																		 
 	public String OBSERVACAO        = "";
+	public String FL_FUMANTE        = "";
 	
 	public void Limpar(){
 		HASH              = "";
@@ -35,6 +36,7 @@ public class Hipertensao {
 		PRESSAO_ARTERIAL  = "";
 		DT_ULTIMA_VISITA  = "";																		 
 		OBSERVACAO        = "";
+		FL_FUMANTE        = "";
 		dtUltimaVisita    = null;
 	}//Fim do Método Limpar
 	
@@ -50,6 +52,7 @@ public class Hipertensao {
 			c.put("FL_FAZ_DIETA",FL_FAZ_DIETA);		        		
 			c.put("FL_TOMA_MEDICACAO",FL_TOMA_MEDICACAO);
 			c.put("FL_FAZ_EXERCICIOS",FL_FAZ_EXERCICIOS);
+			c.put("FL_FUMANTE",FL_FUMANTE);
 			c.put("PRESSAO_ARTERIAL",PRESSAO_ARTERIAL);
 			c.put("DT_ULTIMA_VISITA",formatador.format(dtUltimaVisita));
 			c.put("OBSERVACAO",OBSERVACAO);
@@ -75,6 +78,7 @@ public class Hipertensao {
 			c.put("FL_FAZ_DIETA",FL_FAZ_DIETA);		        		
 			c.put("FL_TOMA_MEDICACAO",FL_TOMA_MEDICACAO);
 			c.put("FL_FAZ_EXERCICIOS",FL_FAZ_EXERCICIOS);
+			c.put("FL_FUMANTE",FL_FUMANTE);
 			c.put("PRESSAO_ARTERIAL",PRESSAO_ARTERIAL);
 			c.put("DT_ULTIMA_VISITA",formatador.format(dtUltimaVisita));
 			c.put("OBSERVACAO",OBSERVACAO);

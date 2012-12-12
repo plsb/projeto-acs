@@ -38,7 +38,7 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 	private static int IdTransacao = 0;
 
 	public static CheckBox    ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao,ChkGNV,ChkGNM,ChkGAB;
-	public static EditText    EdtGEn, EdtGObs, EdtDtUltimaRegra, EdtDtProvavelParto, EdtDtPreNatal;
+	public static EditText    EdtGEn, EdtGObs, EdtDtUltimaRegra, EdtDtProvavelParto, EdtDtPreNatal, EdtDtUltimaConsulta;
 	public static RadioGroup  RdgEstadoNutri;
 	public static RadioButton RbNutrida,RbDesnutrida;
 	public static Spinner     SpMesGestacao;
@@ -89,7 +89,9 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 				EdtDtPreNatal.setText(_cGestante.getString(_cGestante.getColumnIndex("DT_PRE_NATAL")).toString());
 				EdtDtProvavelParto.setText(_cGestante.getString(_cGestante.getColumnIndex("DT_PROVAVEL_PARTO")).toString());
 				EdtDtUltimaRegra.setText(_cGestante.getString(_cGestante.getColumnIndex("DT_ULTIMA_REGRA")).toString());
+				EdtDtUltimaConsulta.setText(_cGestante.getString(_cGestante.getColumnIndex("DT_ULTIMA_CONSULTA")).toString());
 				EdtGObs.setText(_cGestante.getString(_cGestante.getColumnIndex("OBSERVACAO")).toString());
+				
 				//Estado Nutricional
 	    		if (_cGestante.getString(_cGestante.getColumnIndex("EST_NUTRICIONAL")).toString().trim().equals("N"))
 	    			RbNutrida.setChecked(true);
@@ -157,6 +159,7 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		EdtDtPreNatal      = (EditText)    findViewById(R.acompanhamentogestante.DtConsultaPreNatal);
 		EdtDtProvavelParto = (EditText)    findViewById(R.acompanhamentogestante.DtProvavelParto);
 		EdtDtUltimaRegra   = (EditText)    findViewById(R.acompanhamentogestante.DtUltimaRegra);
+		EdtDtUltimaConsulta= (EditText)    findViewById(R.acompanhamentogestante.DtUltimaConsulta);
 		EdtGObs            = (EditText)    findViewById(R.acompanhamentogestante.EdtGObs);
 		ChGGestacoes       = (CheckBox)    findViewById(R.acompanhamentogestante.ChGGestacoes); 
 		ChGAborto          = (CheckBox)    findViewById(R.acompanhamentogestante.ChGAborto);  
@@ -176,6 +179,7 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		EdtDtPreNatal.setOnClickListener(this);
 		EdtDtProvavelParto.setOnClickListener(this);
 		EdtDtUltimaRegra.setOnClickListener(this);
+		EdtDtUltimaConsulta.setOnClickListener(this);
 		
 	}
 	
@@ -193,6 +197,10 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		
 		if (v == EdtDtProvavelParto) {
 			DATE_DIALOG_ID = 2;
+			showDialog(DATE_DIALOG_ID);
+		}
+		if (v == EdtDtUltimaConsulta) {
+			DATE_DIALOG_ID = 3;
 			showDialog(DATE_DIALOG_ID);
 		}
 	}
@@ -257,6 +265,9 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
         case 2:
             return new DatePickerDialog(this, mDateSetListener, ano, mes,
                     dia);    
+        case 3:
+            return new DatePickerDialog(this, mDateSetListener, ano, mes,
+                    dia);    
         }
         return null;
     }
@@ -279,6 +290,8 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
             	EdtDtPreNatal.setText(formatador.format(data));
             } else if (DATE_DIALOG_ID == 2) {
             	EdtDtProvavelParto.setText(formatador.format(data));
+            }else if (DATE_DIALOG_ID == 3) {
+            	EdtDtUltimaConsulta.setText(formatador.format(data));
             }
         }
     };

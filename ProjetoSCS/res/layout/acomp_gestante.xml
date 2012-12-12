@@ -309,6 +309,25 @@
 				        />  -->
 				 
 				  <TextView 
+				        android:id="@+acompanhamentogestante/TxtGUltimaConsulta"
+				        android:text=" Data Ultima Consulta:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+			
+				        />
+				    
+				    <EditText 
+				        android:id="@+acompanhamentogestante/DtUltimaConsulta"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:focusable="false"
+				        />
+				 
+				  <TextView 
 		          android:id="@+acompanhamentogestante/TxtGObs" 
 			       android:text=" Observações:"
 			       android:layout_width="wrap_content"

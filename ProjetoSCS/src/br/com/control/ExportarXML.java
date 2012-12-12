@@ -483,7 +483,8 @@ public class ExportarXML extends Activity {
 					Element DT_PROVAVEL_PARTO  = new Element("DT_PROVAVEL_PARTO");
 					Element EST_NUTRICIONAL    = new Element("EST_NUTRICIONAL");
 					Element MES_GESTACAO   	   = new Element("MES_GESTACAO");
-					Element DT_PRE_NATAL  	   = new Element("DT_PRE_NATAL");					
+					Element DT_PRE_NATAL  	   = new Element("DT_PRE_NATAL");
+					Element DT_ULTIMA_CONSULTA = new Element("DT_ULTIMA_CONSULTA");
 					Element RESULTADO_GESTACAO = new Element("RESULTADO_GESTACAO");
 					Element OBSERVACAO  	   = new Element("OBSERVACAO");
 					Element MAIS6GES    	   = new Element("MAIS6GESTACOES");
@@ -504,6 +505,7 @@ public class ExportarXML extends Activity {
 					GESTANTE.addContent(EST_NUTRICIONAL.setText(csr.getString(csr.getColumnIndex("EST_NUTRICIONAL")).toString()));
 					GESTANTE.addContent(MES_GESTACAO.setText(csr.getString(csr.getColumnIndex("MES_GESTACAO")).toString()));
 					GESTANTE.addContent(DT_PRE_NATAL.setText(csr.getString(csr.getColumnIndex("DT_PRE_NATAL")).toString()));
+					GESTANTE.addContent(DT_ULTIMA_CONSULTA.setText(csr.getString(csr.getColumnIndex("DT_ULTIMA_CONSULTA")).toString()));
 					GESTANTE.addContent(MAIS6GES.setText(csr.getString(csr.getColumnIndex("FATORES_RISCO")).toString().substring(0, 1)));
 					GESTANTE.addContent(MAIS36ANOS.setText(csr.getString(csr.getColumnIndex("FATORES_RISCO")).toString().substring(1, 2)));
 					GESTANTE.addContent(SAGRAMENTO.setText(csr.getString(csr.getColumnIndex("FATORES_RISCO")).toString().substring(2, 3)));
@@ -635,6 +637,7 @@ public class ExportarXML extends Activity {
 					Element FL_FAZ_DIETA      = new Element("FAZ_DIETA");
 					Element FL_TOMA_MEDICACAO = new Element("TOMA_MEDICACAO");
 					Element FL_FAZ_EXERCICIOS = new Element("FAZ_EXERCICIOS");
+					Element FL_FUMANTE        = new Element("FUMANTE");
 					Element PRESSAO_ARTERIAL  = new Element("PRESSAO_ARTERIAL");
 					Element DT_ULTIMA_VISITA  = new Element("DT_ULTIMA_VISITA");					
 					Element OBSERVACAO        = new Element("OBSERVACAO");
@@ -645,6 +648,7 @@ public class ExportarXML extends Activity {
 					HIPERTENSAO.addContent(FL_FAZ_DIETA.setText(csr.getString(csr.getColumnIndex("FL_FAZ_DIETA")).toString()));
 					HIPERTENSAO.addContent(FL_TOMA_MEDICACAO.setText(csr.getString(csr.getColumnIndex("FL_TOMA_MEDICACAO")).toString()));
 					HIPERTENSAO.addContent(FL_FAZ_EXERCICIOS.setText(csr.getString(csr.getColumnIndex("FL_FAZ_EXERCICIOS")).toString()));
+					HIPERTENSAO.addContent(FL_FUMANTE.setText(csr.getString(csr.getColumnIndex("FL_FUMANTE")).toString()));
 					HIPERTENSAO.addContent(PRESSAO_ARTERIAL.setText(csr.getString(csr.getColumnIndex("PRESSAO_ARTERIAL")).toString()));
 					HIPERTENSAO.addContent(DT_ULTIMA_VISITA.setText(csr.getString(csr.getColumnIndex("DT_ULTIMA_VISITA")).toString()));
 					HIPERTENSAO.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));										

@@ -416,9 +416,10 @@ public class TelaResidencia extends Activity implements OnClickListener {
 		}
 		CasoDoente.add("Selecione");
 		CasoDoente.add("Hospital");
-		CasoDoente.add("Posto de Saude");
-		CasoDoente.add("Auto Medicar");
-		CasoDoente.add("Outro");			
+		CasoDoente.add("Unidade de Saude");
+		CasoDoente.add("Benzedera");
+		CasoDoente.add("Farmacia");		
+		CasoDoente.add("Outros");
 		PreencheSpinner(SpCasoDoente, CasoDoente);
 	}
 	
@@ -428,10 +429,9 @@ public class TelaResidencia extends Activity implements OnClickListener {
 			MeiosComunicacao.add(pMeiosComunic);
 		}
 		MeiosComunicacao.add("Selecione");
-		MeiosComunicacao.add("Telefone Fixo");
-		MeiosComunicacao.add("Celular");
-		MeiosComunicacao.add("Internet");
-		MeiosComunicacao.add("Outro");		
+		MeiosComunicacao.add("Radio");
+		MeiosComunicacao.add("Televisao");
+		MeiosComunicacao.add("Outros");		
 		PreencheSpinner(SpMeiosComunicacao, MeiosComunicacao);
 	}
 	

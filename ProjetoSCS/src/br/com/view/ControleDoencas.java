@@ -281,7 +281,8 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				g.DT_ULTIMA_REGRA     = Acomp_Gestante.EdtDtUltimaRegra.getText().toString().trim();
 				g.DT_PROVAVEL_PARTO   = Acomp_Gestante.EdtDtProvavelParto.getText().toString().trim();			
 				g.DT_PRE_NATAL        = Acomp_Gestante.EdtDtPreNatal.getText().toString().trim();
-				g.DT_CONSULTA_PUERBIO = "";				
+				g.DT_CONSULTA_PUERBIO = "";		
+				g.DT_ULTIMA_CONSULTA  = Acomp_Gestante.EdtDtUltimaConsulta.getText().toString().trim();
 				g.MES_GESTACAO        = Acomp_Gestante.SpMesGestacao.getItemAtPosition(Acomp_Gestante.SpMesGestacao.getSelectedItemPosition()).toString().trim();
 				g.OBSERVACAO          = Acomp_Gestante.EdtGObs.getText().toString();
 				g.HASH                = _Hash;
@@ -419,6 +420,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				hi.PRESSAO_ARTERIAL = Acomp_Hipertensao.EdtHtPe.getText().toString();
 				hi.OBSERVACAO = Acomp_Hipertensao.EdtHtObs.getText().toString();
 				
+				
 				//Faz Dieta
 				if (Acomp_Hipertensao.RbHiFazDieta_S.isChecked())
 					hi.FL_FAZ_DIETA = "S";
@@ -436,6 +438,12 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 					hi.FL_FAZ_EXERCICIOS = "S";
 				else if (Acomp_Hipertensao.RbHiExcercFisico_N.isChecked())	
 					hi.FL_FAZ_EXERCICIOS = "N";
+				
+				//Fumante
+				if (Acomp_Hipertensao.RbHiFumante_S.isChecked())
+					hi.FL_FUMANTE = "S";
+				else if (Acomp_Hipertensao.RbHiFumante_N.isChecked())	
+					hi.FL_FUMANTE = "N";
 				
 				_IdTransacao = Acomp_Hipertensao.getIdTransacao();
 				
@@ -470,6 +478,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				t.COMUNIC_EXAMINADOS = Acomp_Tuberculose.EdtTCe.getText().toString();
 				t.MENOR_BCG 		 = Acomp_Tuberculose.EdtTM5Bcg.getText().toString();
 				t.OBSERVACAO 	     = Acomp_Tuberculose.EdtTObs.getText().toString();
+				t.DT_ULTIMA_CONSULTA = Acomp_Tuberculose.EdtTUltimaConsulta.getText().toString();
 				
 				//Toma Medicação Diária
 				if (Acomp_Tuberculose.RbTMedicDiaria_S.isChecked())

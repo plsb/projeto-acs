@@ -140,6 +140,47 @@
 		 	/>
 	                
 	   </RadioGroup>
+	   
+	   <TextView
+	    	android:id="@+acompanhamentohipertensao/TxtHtFumante" 
+			android:text="  Fumante:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:textColor="#000"
+			android:layout_marginBottom="3dp"
+		/>
+	                
+	    <RadioGroup
+	    	android:id="@+acompanhamentohipertensao/RgHtFumante" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginBottom="5dp"
+		>   
+	     
+	        <RadioButton 
+				android:id="@+acompanhamentohipertensao/RbHtFumanteSim" 
+				android:text="Sim" 
+				android:textSize="15dp"
+				android:textColor="#000"
+				android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"						     	
+			/>
+	                
+	                  
+	        <RadioButton 
+				android:id="@+acompanhamentohipertensao/RbHtFumanteNao" 
+				android:text="Não"
+				android:textSize="15dp"
+				android:textColor="#000"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" 
+			    android:layout_weight="1"
+		 	/>
+	                
+	   </RadioGroup>
 	                 
 	   <TextView
 	   		android:id="@+acompanhamentohipertensao/TxtHtPressaoArterial" 
@@ -160,7 +201,7 @@
                    
         <TextView
         	android:id="@+acompanhamentohipertensao/TxtHtDtUltimaVisita" 
-			android:text=" Data da Ultima Visita:"
+			android:text=" Data da Ultima Consulta:"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textSize="15dp"

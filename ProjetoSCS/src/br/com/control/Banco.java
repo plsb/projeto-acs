@@ -102,6 +102,7 @@ public class Banco{
 																	     "DT_ULTIMA_REGRA text,		"+
 																	     "DT_PROVAVEL_PARTO text,	"+
 																	     "DT_CONSULTA_PUERBIO text,	"+
+																	     "DT_ULTIMA_CONSULTA text,	"+
 																	     "EST_NUTRICIONAL text,		"+
 																	     "MES_GESTACAO integer,		"+
 																	     "DT_PRE_NATAL text,		"+
@@ -140,7 +141,8 @@ public class Banco{
 																			"FL_FAZ_DIETA text,			  	   "+
 																			"FL_TOMA_MEDICACAO text,	       "+
 																			"FL_FAZ_EXERCICIOS text,		   "+
-																		 	"PRESSAO_ARTERIAL text,	           "+
+																			"FL_FUMANTE text,		           "+
+																			"PRESSAO_ARTERIAL text,	           "+
 																			"DT_ULTIMA_VISITA text,		  	   "+																		 
 																			"OBSERVACAO text);				   "};
 		 
@@ -148,6 +150,7 @@ public class Banco{
 		  															      "HASH text not null, 		       "+
 		  															      "DT_VISITA text,		           "+
 		  															      "DT_ATUALIZACAO text,		       "+
+		  															      "DT_ULTIMA_CONSULTA text,		       "+
 																		  "FL_MEDIC_DIARIA text,		   "+
 																		  "FL_REACOES_IND text,			   "+
 																		  "FL_EXAME_ESCARRO text,	       "+

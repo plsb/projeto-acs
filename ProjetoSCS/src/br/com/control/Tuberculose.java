@@ -18,6 +18,8 @@ public class Tuberculose {
 	private static Banco _bd;	
 	ContentValues c = new ContentValues();
 	
+	private java.util.Date dtUltimaConsulta  = null;
+	
 	public String HASH               = "";
 	public String FL_MEDIC_DIARIA    = "";
 	public String FL_REACOES_IND     = "";
@@ -25,6 +27,7 @@ public class Tuberculose {
 	public String COMUNIC_EXAMINADOS = "";
 	public String MENOR_BCG 		 = "";
 	public String OBSERVACAO         = "";
+	public String DT_ULTIMA_CONSULTA = "";
 	
 	public void Limpar(){
 		HASH			   = "";
@@ -34,6 +37,7 @@ public class Tuberculose {
 		COMUNIC_EXAMINADOS = "";
 		MENOR_BCG 		   = "";
 		OBSERVACAO 		   = "";
+		DT_ULTIMA_CONSULTA = "";
 	}
 	
 	public boolean Inserir(Context contexto){
@@ -41,10 +45,13 @@ public class Tuberculose {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			dtUltimaConsulta  = formatador.parse(DT_ULTIMA_CONSULTA);
+			
 			c.clear();
 			c.put("HASH", HASH);   
 			c.put("DT_VISITA",formatador.format(new Date(System.currentTimeMillis())));
 			c.put("DT_ATUALIZACAO",formatador.format(new Date(System.currentTimeMillis())));
+			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));
 			c.put("FL_MEDIC_DIARIA",FL_MEDIC_DIARIA);		        		
 			c.put("FL_REACOES_IND",FL_REACOES_IND);
 			c.put("FL_EXAME_ESCARRO",FL_EXAME_ESCARRO);
@@ -66,9 +73,12 @@ public class Tuberculose {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			dtUltimaConsulta  = formatador.parse(DT_ULTIMA_CONSULTA);
+			
 			c.clear();
 			c.put("HASH", HASH);   
 			c.put("DT_ATUALIZACAO",formatador.format(new Date(System.currentTimeMillis())));
+			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));
 			c.put("FL_MEDIC_DIARIA",FL_MEDIC_DIARIA);		        		
 			c.put("FL_REACOES_IND",FL_REACOES_IND);
 			c.put("FL_EXAME_ESCARRO",FL_EXAME_ESCARRO);
