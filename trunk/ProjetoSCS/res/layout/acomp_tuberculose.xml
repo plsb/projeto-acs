@@ -185,6 +185,24 @@
 				  	android:layout_marginBottom="5dp"
 				  	android:inputType="number"
 				  />
+				  
+				  <TextView 
+		          android:id="@+acompanhamentotuberculose/TxtTUltimaConsulta" 
+			       android:text="Data Ultima Consulta:"
+			       android:layout_width="wrap_content"
+			       android:layout_height="wrap_content"
+			       android:textSize="15dp"
+			       android:textColor="#000"
+			       android:textStyle="bold"			       
+		          />
+		       
+		        <EditText 
+			        android:id="@+acompanhamentotuberculose/EdtTUltimaConsulta"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
+			        android:focusable="false"
+			        />
 				     
 				  <TextView 
 		          	android:id="@+acompanhamentotuberculose/TxtTObs" 

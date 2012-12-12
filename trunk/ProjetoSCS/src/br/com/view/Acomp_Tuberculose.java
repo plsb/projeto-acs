@@ -7,13 +7,20 @@
 /************************************************/
 package br.com.view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import br.com.control.Banco;
 import br.com.scs.R;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,12 +32,15 @@ public class Acomp_Tuberculose extends Activity implements OnClickListener {
 	Banco _bd = new Banco(this);
 	Cursor _cTuberculose = null;
 	
+	private java.util.Date data;
+	private int DATE_DIALOG_ID = 0;
+	
 	public static String DtAcompanhamento = null;
 	public static String Hash = null; 
 	
 	static RadioGroup RgTMd, RgTRi, RgTEe;
 	static RadioButton RbTMedicDiaria_S,RbTMedicDiaria_N,RbTReacoesIndesejaveis_S,RbTReacoesIndesejaveis_N,RbTExameEscarro_S,RbTExameEscarro_N;
-	static EditText EdtTCe, EdtTM5Bcg, EdtTObs;
+	static EditText EdtTCe, EdtTM5Bcg, EdtTObs, EdtTUltimaConsulta;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +67,9 @@ public class Acomp_Tuberculose extends Activity implements OnClickListener {
 	}
 
 	public void onClick(View v) {
-		
+		if (v == EdtTUltimaConsulta){
+			showDialog(DATE_DIALOG_ID);
+		}
 	}
 	
 	public void InicializaObjetos() {
@@ -73,6 +85,9 @@ public class Acomp_Tuberculose extends Activity implements OnClickListener {
 		EdtTCe					 = (EditText) 	 findViewById(R.acompanhamentotuberculose.EdtTCe);
 		EdtTM5Bcg				 = (EditText) 	 findViewById(R.acompanhamentotuberculose.EdtTMenor5Bcg);
 		EdtTObs					 = (EditText) 	 findViewById(R.acompanhamentotuberculose.EdtTObs);
+		EdtTUltimaConsulta       = (EditText)    findViewById(R.acompanhamentotuberculose.EdtTUltimaConsulta);
+		
+		EdtTUltimaConsulta.setOnClickListener(this);
 	}
 	
 	@Override
@@ -108,6 +123,7 @@ public class Acomp_Tuberculose extends Activity implements OnClickListener {
 	    			RbTExameEscarro_N.setChecked(true);
 	    					    
 	    		EdtTCe.setText(_cTuberculose.getString(_cTuberculose.getColumnIndex("COMUNIC_EXAMINADOS")).toString());
+	    		EdtTUltimaConsulta.setText(_cTuberculose.getString(_cTuberculose.getColumnIndex("DT_ULTIMA_CONSULTA")).toString());
 	    		EdtTM5Bcg.setText(_cTuberculose.getString(_cTuberculose.getColumnIndex("MENOR_BCG")).toString());				 
 	    		EdtTObs.setText(_cTuberculose.getString(_cTuberculose.getColumnIndex("OBSERVACAO")).toString());				
 			}
@@ -117,5 +133,38 @@ public class Acomp_Tuberculose extends Activity implements OnClickListener {
     		_cTuberculose.close();
     	}
     }
+    
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Calendar calendario = Calendar.getInstance();
+         
+        int ano = calendario.get(Calendar.YEAR);
+        int mes = calendario.get(Calendar.MONTH);
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+         
+        switch (id) {
+        case 0:
+            return new DatePickerDialog(this, mDateSetListener, ano, mes,
+                    dia);
+        }
+        return null;
+    }
+	
+	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+                int dayOfMonth) {
+            String data1 = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear+1) + "/" + String.valueOf(year);
+            SimpleDateFormat formatador =  new SimpleDateFormat("dd/MM/yyyy");
+            try {
+            	 data = formatador.parse(data1);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());;
+			}
+            	EdtTUltimaConsulta.setText(formatador.format(data));
+            
+        }
+    };
 
 }

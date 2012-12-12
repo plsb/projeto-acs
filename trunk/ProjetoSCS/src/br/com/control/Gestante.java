@@ -20,6 +20,7 @@ public class Gestante {
 	private java.util.Date dtProvavelParto   = null;
 	private java.util.Date dtPreNatal        = null;
 	private java.util.Date dtConsultaPuerbio = null;
+	private java.util.Date dtUltimaConsulta  = null;
 	
 	ContentValues c = new ContentValues();
 	
@@ -33,6 +34,7 @@ public class Gestante {
 	public String RESULTADO_GESTACAO  = "";	
 	public String OBSERVACAO          = "";
 	public String MES_GESTACAO        = "";
+	public String DT_ULTIMA_CONSULTA  = "";
     
     public boolean Inserir(Context contexto){
 		try{
@@ -41,6 +43,7 @@ public class Gestante {
 			dtUltimaRegra     = formatador.parse(DT_ULTIMA_REGRA);
 	    	dtProvavelParto   = formatador.parse(DT_PROVAVEL_PARTO);
 	    	dtPreNatal        = formatador.parse(DT_PRE_NATAL);
+	    	dtUltimaConsulta  = formatador.parse(DT_ULTIMA_CONSULTA);
 	    	//dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);			
 			c.clear();
 			c.put("HASH", HASH); 		
@@ -48,6 +51,7 @@ public class Gestante {
 			c.put("DT_PROVAVEL_PARTO",formatador.format(dtProvavelParto));
 			c.put("DT_CONSULTA_PUERBIO","");//formatador.format(dtConsultaPuerbio));
 			c.put("DT_PRE_NATAL",formatador.format(dtPreNatal));
+			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));
 			c.put("EST_NUTRICIONAL",EST_NUTRICIONAL);		        		
 			c.put("FATORES_RISCO",FATORES_RISCO);		
 			c.put("RESULTADO_GESTACAO",RESULTADO_GESTACAO);	
@@ -73,6 +77,7 @@ public class Gestante {
 			dtUltimaRegra     = formatador.parse(DT_ULTIMA_REGRA);
 	    	dtProvavelParto   = formatador.parse(DT_PROVAVEL_PARTO);
 	    	dtPreNatal        = formatador.parse(DT_PRE_NATAL);
+	    	dtUltimaConsulta  = formatador.parse(DT_ULTIMA_CONSULTA);
 	    	//dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);	    	
 			c.clear();
 			c.put("HASH", HASH); 		
@@ -80,6 +85,7 @@ public class Gestante {
 			c.put("DT_PROVAVEL_PARTO",formatador.format(dtProvavelParto));
 			c.put("DT_CONSULTA_PUERBIO","");//formatador.format(dtConsultaPuerbio));
 			c.put("DT_PRE_NATAL",formatador.format(dtPreNatal));
+			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));
 			c.put("EST_NUTRICIONAL",EST_NUTRICIONAL);		        		
 			c.put("FATORES_RISCO",FATORES_RISCO);		
 			c.put("RESULTADO_GESTACAO",RESULTADO_GESTACAO);	
@@ -112,5 +118,6 @@ public class Gestante {
     	dtProvavelParto     = null;
     	dtPreNatal          = null;
     	dtConsultaPuerbio   = null;
+    	dtUltimaConsulta    = null;
     }
 }

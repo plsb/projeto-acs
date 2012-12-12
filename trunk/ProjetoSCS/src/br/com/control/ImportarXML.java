@@ -601,6 +601,7 @@ public class ImportarXML extends Activity {
 					c.put("FL_FAZ_DIETA", Ha.getChildText("fzdieta").trim());
 					c.put("FL_TOMA_MEDICACAO", Ha.getChildText("tmmedicacao").trim());					
 					c.put("FL_FAZ_EXERCICIOS", Ha.getChildText("fzexfisicos").trim());
+					//c.put("FL_FUMANTE", Ha.getChildText("fumante").trim());
 					c.put("PRESSAO_ARTERIAL", Ha.getChildText("pressaoarterial"));
 					c.put("DT_ULTIMA_VISITA", Ha.getChildText("dtultvisita"));
 					c.put("OBSERVACAO", Ha.getChildText("obs"));
@@ -685,6 +686,7 @@ public class ImportarXML extends Activity {
 					c.put("DT_ULTIMA_REGRA", Ges.getChildText("dtultregra"));
 					c.put("DT_PROVAVEL_PARTO", Ges.getChildText("dtprovavelparto"));					
 					c.put("DT_CONSULTA_PUERBIO", Ges.getChildText("dtconspuerbio"));
+					//c.put("DT_ULTIMA_CONSULTA", Ges.getChildText("dtultimaconsulta"));
 					c.put("EST_NUTRICIONAL", Ges.getChildText("estnutricional"));
 					c.put("MES_GESTACAO", Ges.getChildText("mesgestacao"));
 					c.put("DT_PRE_NATAL", Ges.getChildText("dtconsulprenatal"));

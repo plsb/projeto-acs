@@ -37,8 +37,8 @@ public class Acomp_Hipertensao extends Activity implements OnClickListener {
 	
 	private int DATE_DIALOG_ID = -1;
 	
-	static RadioGroup RgHtFd, RgHtTm, RgHtFe;
-	static RadioButton RbHiFazDieta_S, RbHiFazDieta_N, RbHiTomaMedic_S, RbHiTomaMedic_N, RbHiExcercFisico_S, RbHiExcercFisico_N; 
+	static RadioGroup RgHtFd, RgHtTm, RgHtFe, RgHtFu;
+	static RadioButton RbHiFazDieta_S, RbHiFazDieta_N, RbHiTomaMedic_S, RbHiTomaMedic_N, RbHiExcercFisico_S, RbHiExcercFisico_N, RbHiFumante_S, RbHiFumante_N ; 
 	static EditText EdtHtPe, EdtHtObs, EdtDtUltimaVisita;
 	
 	private java.util.Date data;
@@ -84,6 +84,8 @@ public class Acomp_Hipertensao extends Activity implements OnClickListener {
 		RbHiTomaMedic_N			 = (RadioButton) findViewById(R.acompanhamentohipertensao.RbHtMedicacaoNao);
 		RbHiExcercFisico_S		 = (RadioButton) findViewById(R.acompanhamentohipertensao.RbHtFazExercicioSim);
 		RbHiExcercFisico_N		 = (RadioButton) findViewById(R.acompanhamentohipertensao.RbHtFazExercicioNao);
+		RbHiFumante_S   		 = (RadioButton) findViewById(R.acompanhamentohipertensao.RbHtFumanteSim);
+		RbHiFumante_N   		 = (RadioButton) findViewById(R.acompanhamentohipertensao.RbHtFumanteNao);
 		EdtHtPe					 = (EditText) 	 findViewById(R.acompanhamentohipertensao.EdtHtPressaoArterial);
 		EdtHtObs				 = (EditText)    findViewById(R.acompanhamentohipertensao.EdtHtObs);
 		EdtDtUltimaVisita        = (EditText)    findViewById(R.acompanhamentohipertensao.DtUltimaVisita);
@@ -157,6 +159,11 @@ public class Acomp_Hipertensao extends Activity implements OnClickListener {
 	            	RbHiExcercFisico_S.setChecked(true);
 	    		}else{
 	    			RbHiExcercFisico_N.setChecked(true);
+	    		}
+	            if (_cHipertensao.getString(_cHipertensao.getColumnIndex("FL_FUMANTE")).toString().trim().equals("S")){
+	            	RbHiFumante_S.setChecked(true);
+	    		}else{
+	    			RbHiFumante_N.setChecked(true);
 	    		}
 
 	            EdtDtUltimaVisita.setText(_cHipertensao.getString(_cHipertensao.getColumnIndex("DT_ULTIMA_VISITA")).toString());
