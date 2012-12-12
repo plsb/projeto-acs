@@ -42,6 +42,8 @@ public class ResidenteAux {
 	public String COMPLEMENTO;
 	public String FL_OBITO;
 	public String FL_MUDOU_SE;
+	public String MOTIVO_OBITO;
+	public String INF_OBITO;
 	private java.util.Date dtNascimento; 
 	
 	public boolean Inserir(Context contexto){
@@ -75,6 +77,8 @@ public class ResidenteAux {
 			c.put("HASH", HASH);
 			c.put("FL_FALECEU", FL_OBITO);
 			c.put("FL_MUDOU_SE", FL_MUDOU_SE);
+			c.put("INF_OBITO", INF_OBITO);
+			c.put("MOTIVO_OBITO", MOTIVO_OBITO);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			
 			_bd.open();
@@ -119,6 +123,8 @@ public class ResidenteAux {
 			c.put("HASH", HASH);
 			c.put("FL_FALECEU", FL_OBITO);
 			c.put("FL_MUDOU_SE", FL_MUDOU_SE);
+			c.put("INF_OBITO", INF_OBITO);
+			c.put("MOTIVO_OBITO", MOTIVO_OBITO);
 			c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.atualizarDadosTabela("residente",indice, c);
@@ -155,6 +161,8 @@ public class ResidenteAux {
 		COMPLEMENTO    = "";
 		FL_OBITO       = "";
 		FL_MUDOU_SE    = "";
+		INF_OBITO      = "";
+		MOTIVO_OBITO   = "";
 		DTNASCIMENTO   = null;
 	}
 	

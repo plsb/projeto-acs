@@ -202,6 +202,8 @@ public class Banco{
 																		   "COMPLEMENTO TEXT DEFAULT '',  "+
 																		   "FL_FALECEU TEXT DEFAULT 'N',  "+
 																		   "FL_MUDOU_SE TEXT DEFAULT 'N', "+
+																		   "MOTIVO_OBITO TEXT DEFAULT '', "+
+																		   "INF_OBITO TEXT DEFAULT '',  "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   

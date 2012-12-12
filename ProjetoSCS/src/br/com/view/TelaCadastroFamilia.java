@@ -57,8 +57,9 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
     Cursor c = null;
     
 
-	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero, SpComplemento;
+	Spinner     SpAlfabetizado, SpFreqEscola, SpRua, SpNumero, SpComplemento, SpMotivoObito, SpInfObito;
 	CheckBox    Hanseniase, Hipertensao, Diabetes, Tuberculose, Gestante, Alcolismo, Chagas, Deficiencia, Malaria, Epilepsia;
+	//CheckBox    ChMenor28Dias, Ch28Dias11Meses, ChMenor1Ano, ChMulher10_49, Ch10_14anos, Ch15_49anos, ChAdolescPorViolencia, ChOutrosObitos;
 	EditText    EdtNome, EdtOcupacao, DtNascimento, EdtNomePai, EdtNomeMae; 
 	RadioGroup  RdSexo;
 	RadioButton RdbMasculino, RdbFeminino, RbMudouSIM, RbMudouNAO, RbObitoSim, RbObitoNAO;
@@ -70,6 +71,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 	ArrayList<String> Ruas   	   = new ArrayList<String>();
 	ArrayList<String> Num   	   = new ArrayList<String>();
 	ArrayList<String> Comp  	   = new ArrayList<String>();
+	ArrayList<String> MotivoObito  = new ArrayList<String>();
+	ArrayList<String> InfObito     = new ArrayList<String>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +87,8 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		SpRua          = (Spinner)    findViewById(R.cadastrofamilia.SpRua);
 		SpNumero 	   = (Spinner)    findViewById(R.cadastrofamilia.SpNumero);
 		SpComplemento  = (Spinner)    findViewById(R.cadastrofamilia.SpComplemento);
+		SpMotivoObito  = (Spinner)    findViewById(R.cadastrofamilia.SpMotivoObito);
+		SpInfObito     = (Spinner)    findViewById(R.cadastrofamilia.SpInformacoesObito);
 		DtNascimento   = (EditText)   findViewById(R.cadastrofamilia.EdtDataNascimento);
 		Hanseniase     = (CheckBox)   findViewById(R.cadastrofamilia.ChHanseniase);
 		Hipertensao    = (CheckBox)   findViewById(R.cadastrofamilia.ChHipertensao);
@@ -94,25 +99,27 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 		Chagas		   = (CheckBox)   findViewById(R.cadastrofamilia.ChChagas);
 		Deficiencia    = (CheckBox)   findViewById(R.cadastrofamilia.ChDeficiencia);
 		Malaria        = (CheckBox)   findViewById(R.cadastrofamilia.ChMalaria);
-		Epilepsia      = (CheckBox)   findViewById(R.cadastrofamilia.ChEpilepsia);
-		EdtNome        = (EditText)   findViewById(R.cadastrofamilia.EdtNome);
-		EdtOcupacao    = (EditText)   findViewById(R.cadastrofamilia.EdtOcupacao);
-		EdtNomeMae     = (EditText)   findViewById(R.cadastrofamilia.EdtNomeMae);
-		EdtNomePai     = (EditText)   findViewById(R.cadastrofamilia.EdtNomePai);
-		RdSexo         = (RadioGroup) findViewById(R.cadastrofamilia.RgSexo);
-		RdbMasculino   = (RadioButton)findViewById(R.cadastrofamilia.RbMasculino);
-		RdbFeminino    = (RadioButton)findViewById(R.cadastrofamilia.RbFeminino);
-		RbObitoSim     = (RadioButton)findViewById(R.cadastrofamilia.RbObitoSIM);
-		RbObitoNAO     = (RadioButton)findViewById(R.cadastrofamilia.RbObitoNAO);
-		RbMudouSIM     = (RadioButton)findViewById(R.cadastrofamilia.RbMudouSIM);
-		RbMudouNAO     = (RadioButton)findViewById(R.cadastrofamilia.RbMudouNAO);
-		btnVoltar      = (Button)     findViewById(R.cadastrofamilia.btnVoltarFamiliar);
-		btnSalvar      = (Button)     findViewById(R.cadastrofamilia.btnSalvarFamiliar);		
+		Epilepsia      = (CheckBox)   findViewById(R.cadastrofamilia.ChEpilepsia);		
+		EdtNome        = (EditText)    findViewById(R.cadastrofamilia.EdtNome);
+		EdtOcupacao    = (EditText)    findViewById(R.cadastrofamilia.EdtOcupacao);
+		EdtNomeMae     = (EditText)    findViewById(R.cadastrofamilia.EdtNomeMae);
+		EdtNomePai     = (EditText)    findViewById(R.cadastrofamilia.EdtNomePai);
+		RdSexo         = (RadioGroup)  findViewById(R.cadastrofamilia.RgSexo);
+		RdbMasculino   = (RadioButton) findViewById(R.cadastrofamilia.RbMasculino);
+		RdbFeminino    = (RadioButton) findViewById(R.cadastrofamilia.RbFeminino);
+		RbObitoSim     = (RadioButton) findViewById(R.cadastrofamilia.RbObitoSIM);
+		RbObitoNAO     = (RadioButton) findViewById(R.cadastrofamilia.RbObitoNAO);
+		RbMudouSIM     = (RadioButton) findViewById(R.cadastrofamilia.RbMudouSIM);
+		RbMudouNAO     = (RadioButton) findViewById(R.cadastrofamilia.RbMudouNAO);
+		btnVoltar      = (Button)      findViewById(R.cadastrofamilia.btnVoltarFamiliar);
+		btnSalvar      = (Button)      findViewById(R.cadastrofamilia.btnSalvarFamiliar);		
 		btnVoltar.setOnClickListener(this);
 		btnSalvar.setOnClickListener(this);
 		DtNascimento.setOnClickListener(this);
 		RdbMasculino.setOnClickListener(this);
 		RdbFeminino.setOnClickListener(this);
+		RbObitoSim.setOnClickListener(this);
+		RbObitoNAO.setOnClickListener(this);
 		
 		OpcaoAlfabetizado("");
 		OpcaoFreqEscola("");		
@@ -133,8 +140,10 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 					EdtNome.setText(c.getString(c.getColumnIndex("NOME")).toString());
 					setOpcoesEnderecos(c.getString(c.getColumnIndex("COD_ENDERECO")).toString()+"-"+
 									   c.getString(c.getColumnIndex("ENDERECO")).toString());
-					setOpcoesNumeros(c.getString(c.getColumnIndex("NUMERO")).toString());
+					setOpcoesNumeros(c.getString(c.getColumnIndex("NUMERO")).toString());					
 					setOpcoesComplemento(c.getString(c.getColumnIndex("COMPLEMENTO")).toString());
+					
+					
 					DtNascimento.setText(c.getString(c.getColumnIndex("DTNASCIMENTO")).toString());
 					
 					if (c.getString(c.getColumnIndex("SEXO")).toString().equals("M")){
@@ -143,10 +152,12 @@ public class TelaCadastroFamilia extends Activity implements OnClickListener{
 					}else{
 						RdbMasculino.setChecked(false);
 						RdbFeminino.setChecked(true);
-					}
+					}										
 					
 					if (c.getString(c.getColumnIndex("FL_FALECEU")).toString().equals("S")) {
 						RbObitoSim.setChecked(true);
+						setMotivosObito(c.getString(c.getColumnIndex("MOTIVO_OBITO")).toString());
+						setInfObito(c.getString(c.getColumnIndex("INF_OBITO")).toString());
 					} else {
 						RbObitoNAO.setChecked(true);
 					}
@@ -259,7 +270,34 @@ public void OpcaoFreqEscola(String opcao){
 	PreencheSpinner(SpFreqEscola, FrqEscola);
 }
 
-private void setOpcoesEnderecos(String pEnd){
+public void setMotivosObito(String pMotivo) {
+	MotivoObito.clear();
+	if (pMotivo.length() > 0) {
+		MotivoObito.add(pMotivo);
+	}
+	MotivoObito.add("Por Diarreia");
+	MotivoObito.add("Por Infeccao Respiratoria");
+	MotivoObito.add("Por Outras Causas");
+	PreencheSpinner(SpMotivoObito, MotivoObito);
+}
+
+public void setInfObito(String pInfObito) {
+	InfObito.clear();
+	if (pInfObito.length() > 0) {
+		InfObito.add(pInfObito);
+	}
+	InfObito.add("Menores de 28 dias");
+	InfObito.add("De 28 dias a 11 meses e 29 dias");
+	InfObito.add("Menores de 1 ano");
+	InfObito.add("Mulheres de 10 a 49 anos");
+	InfObito.add("De 10 a 14 anos");
+	InfObito.add("De 15 a 49 anos");
+	InfObito.add("Outros Óbitos");
+	InfObito.add("Adolescente (10-19 anos) por violência");
+	PreencheSpinner(SpInfObito, InfObito);
+}
+
+private void setOpcoesEnderecos(String pEnd) {
 	Ruas.clear();
 	if (pEnd.length()>0){
 		Ruas.add(pEnd);
@@ -390,11 +428,24 @@ public void PreencheSpinner(final Spinner s,ArrayList<String> a){
 	s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 		
 		public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
-			if ((s == SpRua) && (ID == 0)){
+			if ((s == SpRua) && (ID == 0)) {
 				setOpcoesNumeros("");
 			}
-			if ((s == SpNumero) && (ID == 0)){
+			if ((s == SpNumero) && (ID == 0)) {
 				setOpcoesComplemento("");
+			}
+			if (s == SpInfObito) {
+				
+				if ((SpInfObito.getItemAtPosition(posicao).toString().equals("Menores de 28 dias"))||
+					(SpInfObito.getItemAtPosition(posicao).toString().equals("De 28 dias a 11 meses e 29 dias"))||
+					(SpInfObito.getItemAtPosition(posicao).toString().equals("Menores de 1 ano"))) {						
+					SpMotivoObito.setClickable(true);
+					setMotivosObito("");					
+				} else {
+					SpMotivoObito.setClickable(false);
+					setMotivosObito(" ");				
+				}
+				
 			}
 		} 
 
@@ -420,6 +471,8 @@ public void InsereBD(){
 		r.OCUPACAO     = EdtOcupacao.getText().toString();
 		r.NOME_MAE     = EdtNomeMae.getText().toString();
 		r.NOME_PAI     = EdtNomePai.getText().toString();
+		r.MOTIVO_OBITO = SpMotivoObito.getItemAtPosition(SpMotivoObito.getSelectedItemPosition()).toString();
+		r.INF_OBITO    = SpInfObito.getItemAtPosition(SpInfObito.getSelectedItemPosition()).toString();
 		
 		if (RbObitoSim.isChecked()) {
 			r.FL_OBITO = "S";
@@ -580,6 +633,17 @@ public void InsereBD(){
 		if (v == RdbFeminino) {
 			Gestante.setEnabled(true);
 		}
+		if (v == RbObitoSim) {
+			SpInfObito.setClickable(true);	
+			setInfObito("");
+		}
+		if (v == RbObitoNAO) {
+			SpInfObito.setClickable(false);
+			SpMotivoObito.setClickable(false);
+			setMotivosObito(" ");
+			setInfObito(" ");			
+		}
+		
 		
 	}
 

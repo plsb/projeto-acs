@@ -506,6 +506,55 @@
         </RadioGroup>
         
     </LinearLayout>
+    
+    <TextView 
+	     android:text="Informações sobre Óbito"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:textStyle="bold"
+	     android:layout_weight="1"
+		/>       
+    
+    <LinearLayout 
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+     	    
+        <Spinner 
+     	        android:id="@+cadastrofamilia/SpInformacoesObito"
+     	        android:layout_width="fill_parent"
+     	        android:layout_height="wrap_content"
+     	        android:clickable="false"
+     	        android:layout_weight="1"
+     	        />
+        
+    </LinearLayout>
+    
+    <TextView 
+	     android:text="Motivo Óbito"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:textStyle="bold"
+	     android:layout_weight="1"
+		/>  
+    
+    <LinearLayout 
+     	    android:orientation="horizontal"
+     	    android:layout_width="fill_parent"
+     	    android:layout_height="wrap_content"
+     	    android:paddingBottom="5dp"
+     	    >
+     	    
+     	    <Spinner 
+     	        android:id="@+cadastrofamilia/SpMotivoObito"
+     	        android:layout_width="fill_parent"
+     	        android:layout_height="wrap_content"
+     	        android:clickable="false"
+     	        android:layout_weight="1"
+     	        />
+     	    
+    </LinearLayout> 	    
   
     </LinearLayout>
    

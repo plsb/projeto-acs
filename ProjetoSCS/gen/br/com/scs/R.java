@@ -254,6 +254,8 @@ public final class R {
         public static final int SpAlfabetizado=0x7f21000c;
         public static final int SpComplemento=0x7f210006;
         public static final int SpFrequenEsc=0x7f21000b;
+        public static final int SpInformacoesObito=0x7f210020;
+        public static final int SpMotivoObito=0x7f210021;
         public static final int SpNumero=0x7f210005;
         public static final int SpRua=0x7f210004;
         public static final int btnSalvarFamiliar=0x7f210002;
