@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class Acomp_Gestante extends Activity implements OnClickListener {
 	
@@ -37,11 +38,13 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 	
 	private static int IdTransacao = 0;
 
-	public static CheckBox    ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, ChGPressao,ChkGNV,ChkGNM,ChkGAB;
-	public static EditText    EdtGEn, EdtGObs, EdtDtUltimaRegra, EdtDtProvavelParto, EdtDtPreNatal, EdtDtUltimaConsulta;
+	public static CheckBox    ChGGestacoes, ChGAborto, ChGIdade36, ChGIdade20, ChGSangue, ChGEdema, ChGDiabetes, 
+							  ChGPressao,ChkGNV,ChkGNM,ChkGAB, ChAcompFinal;
+	public static EditText    EdtGEn, EdtGObs, EdtDtUltimaRegra, EdtDtProvavelParto, EdtDtPreNatal, EdtDtUltimaConsulta, EdtDtConsPuerbio;
 	public static RadioGroup  RdgEstadoNutri;
 	public static RadioButton RbNutrida,RbDesnutrida;
 	public static Spinner     SpMesGestacao;
+	public static TextView    TxtProvavelParto;
 	
 	public static String DtAcompanhamento = null;
 	public static String Hash = null;  
@@ -161,6 +164,7 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		EdtDtUltimaRegra   = (EditText)    findViewById(R.acompanhamentogestante.DtUltimaRegra);
 		EdtDtUltimaConsulta= (EditText)    findViewById(R.acompanhamentogestante.DtUltimaConsulta);
 		EdtGObs            = (EditText)    findViewById(R.acompanhamentogestante.EdtGObs);
+		EdtDtConsPuerbio   = (EditText)    findViewById(R.acompanhamentogestante.DtConsultaPuerbio);
 		ChGGestacoes       = (CheckBox)    findViewById(R.acompanhamentogestante.ChGGestacoes); 
 		ChGAborto          = (CheckBox)    findViewById(R.acompanhamentogestante.ChGAborto);  
 		ChGIdade36         = (CheckBox)    findViewById(R.acompanhamentogestante.ChGIdade36);  
@@ -172,14 +176,18 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		ChkGNV			   = (CheckBox)    findViewById(R.acompanhamentogestante.ChkGNV);
 		ChkGNM			   = (CheckBox)    findViewById(R.acompanhamentogestante.ChkGNM);
 		ChkGAB			   = (CheckBox)    findViewById(R.acompanhamentogestante.ChkGAB);
+		ChAcompFinal       = (CheckBox)    findViewById(R.acompanhamentogestante.ChAcompFinal);
 		RdgEstadoNutri     = (RadioGroup)  findViewById(R.acompanhamentogestante.RgEstNut);
 		RbNutrida          = (RadioButton) findViewById(R.acompanhamentogestante.RbNutrida);
 		RbDesnutrida       = (RadioButton) findViewById(R.acompanhamentogestante.RbDesnutrida);
+		TxtProvavelParto   = (TextView)    findViewById(R.acompanhamentogestante.TxtGParto);
 		
 		EdtDtPreNatal.setOnClickListener(this);
 		EdtDtProvavelParto.setOnClickListener(this);
 		EdtDtUltimaRegra.setOnClickListener(this);
 		EdtDtUltimaConsulta.setOnClickListener(this);
+		EdtDtConsPuerbio.setOnClickListener(this);
+		ChAcompFinal.setOnClickListener(this);
 		
 	}
 	
@@ -202,6 +210,53 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
 		if (v == EdtDtUltimaConsulta) {
 			DATE_DIALOG_ID = 3;
 			showDialog(DATE_DIALOG_ID);
+		}
+		if (v == EdtDtConsPuerbio) {
+			DATE_DIALOG_ID = 4;
+			showDialog(DATE_DIALOG_ID);
+		}
+		if (v == ChAcompFinal) {
+			if (ChAcompFinal.isChecked()){
+				ChkGAB.setEnabled(true);
+				ChkGNM.setEnabled(true);
+				ChkGNV.setEnabled(true);
+				TxtProvavelParto.setText("Data do Parto:");
+				EdtDtConsPuerbio.setEnabled(true);
+				EdtDtUltimaRegra.setEnabled(false);
+				EdtDtPreNatal.setEnabled(false);				
+				ChGGestacoes.setEnabled(false);       
+				ChGAborto.setEnabled(false);            
+				ChGIdade36.setEnabled(false);           
+				ChGIdade20.setEnabled(false);          
+				ChGSangue.setEnabled(false);           
+				ChGEdema.setEnabled(false);            
+				ChGDiabetes.setEnabled(false);         
+				ChGPressao.setEnabled(false);
+				setMesGestacao("0");
+				SpMesGestacao.setClickable(false);
+			} else {
+				ChkGAB.setEnabled(false);
+				ChkGNM.setEnabled(false);
+				ChkGNV.setEnabled(false);
+				ChkGAB.setChecked(false);
+				ChkGNM.setChecked(false);
+				ChkGNV.setChecked(false);
+				TxtProvavelParto.setText("Data Provável do Parto:");
+				EdtDtConsPuerbio.setText("");
+				EdtDtConsPuerbio.setEnabled(false);
+				EdtDtUltimaRegra.setEnabled(true);
+				EdtDtPreNatal.setEnabled(true);			
+				ChGGestacoes.setEnabled(true);       
+				ChGAborto.setEnabled(true);            
+				ChGIdade36.setEnabled(true);           
+				ChGIdade20.setEnabled(true);          
+				ChGSangue.setEnabled(true);           
+				ChGEdema.setEnabled(true);            
+				ChGDiabetes.setEnabled(true);         
+				ChGPressao.setEnabled(true);
+				setMesGestacao("");
+				SpMesGestacao.setClickable(true);
+			}
 		}
 	}
 	
@@ -268,6 +323,9 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
         case 3:
             return new DatePickerDialog(this, mDateSetListener, ano, mes,
                     dia);    
+        case 4:
+            return new DatePickerDialog(this, mDateSetListener, ano, mes,
+                    dia);     
         }
         return null;
     }
@@ -292,6 +350,8 @@ public class Acomp_Gestante extends Activity implements OnClickListener {
             	EdtDtProvavelParto.setText(formatador.format(data));
             }else if (DATE_DIALOG_ID == 3) {
             	EdtDtUltimaConsulta.setText(formatador.format(data));
+            }else if (DATE_DIALOG_ID == 4) {
+            	EdtDtConsPuerbio.setText(formatador.format(data));
             }
         }
     };

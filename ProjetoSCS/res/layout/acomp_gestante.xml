@@ -17,6 +17,87 @@
 			        android:layout_width="fill_parent"
 			        android:layout_height="wrap_content"
 		        >
+		        
+                <TextView
+				        android:text=" Marque somente ao final da gestação"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />   
+				
+                <CheckBox 
+           			    android:id="@+acompanhamentogestante/ChAcompFinal"
+            			android:text="Acompanhamento final da gestação"
+            			android:layout_width="fill_parent"
+            			android:layout_height="wrap_content"
+            			android:layout_weight="1"            	
+            			/>
+                
+                <TextView
+				     	android:id="@+acompanhamentogestante/TxtGRga" 
+				        android:text=" Resultado da Gestacão Atual:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+			
+				        /> 
+				        
+				 <LinearLayout 
+				     android:orientation="horizontal"
+				     android:layout_width="fill_parent"
+				     android:layout_height="wrap_content"
+				     >
+        				
+				    <CheckBox 
+				        android:id="@+acompanhamentogestante/ChkGNV"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="NV"
+				        android:enabled="false"
+				        />
+				    
+				    <CheckBox 
+				        android:id="@+acompanhamentogestante/ChkGNM"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="NM"
+				        android:enabled="false"
+				        /> 
+				        
+				    <CheckBox 
+				        android:id="@+acompanhamentogestante/ChkGAB"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="AB"
+				        android:enabled="false"
+				        /> 
+				     
+				 </LinearLayout>
+				 
+				 <TextView
+				        android:text=" Data da Consulta de Puérbio:"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textSize="15dp"
+				        android:textColor="#000"
+				        android:layout_marginBottom="3dp"
+				        />
+				    
+				    <EditText 
+				        android:id="@+acompanhamentogestante/DtConsultaPuerbio"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="5dp"
+				        android:focusable="false"
+				        android:enabled="false"
+				        />
 	                
                 <TextView
                         android:id="@+acompanhamentogestante/TxtGDtUltimaRegra"
@@ -245,49 +326,7 @@
             			/>
         
     			     </LinearLayout>
-				      
-				 <TextView
-				     	android:id="@+acompanhamentogestante/TxtGRga" 
-				        android:text=" Resultado da Gestacão Atual:"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:textSize="15dp"
-				        android:textColor="#000"
-				        android:layout_marginBottom="3dp"
-			
-				        /> 
-				        
-				 <LinearLayout 
-				     android:orientation="horizontal"
-				     android:layout_width="fill_parent"
-				     android:layout_height="wrap_content"
-				     >
-        				
-				    <CheckBox 
-				        android:id="@+acompanhamentogestante/ChkGNV"
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content"
-				        android:layout_weight="1"
-				        android:text="NV"
-				        />
-				    
-				    <CheckBox 
-				        android:id="@+acompanhamentogestante/ChkGNM"
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content"
-				        android:layout_weight="1"
-				        android:text="NM"
-				        /> 
-				        
-				    <CheckBox 
-				        android:id="@+acompanhamentogestante/ChkGAB"
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content"
-				        android:layout_weight="1"
-				        android:text="AB"
-				        /> 
-				     
-				 </LinearLayout>
+				      				 
 				       
 				<!--  <TextView
 				     	android:id="@+acompanhamentogestante/TxtGDtPuerbio" 

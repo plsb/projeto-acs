@@ -5,7 +5,7 @@
 /******* Karlos Kelvin Alves dos Santos *********/
 /************* Pedro Luis Saraiva ***************/
 /************************************************/
-package br.com.control;
+package br.com.control; 
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -204,7 +204,7 @@ public class ImportarXML extends Activity {
 		//I M P O R T A Ç Ã O   D O S   B A I R R O S					
 		try {
 			
-			if (!(xml.carregar("scs.xml","bairro") == null)){
+			if (!(xml.carregar("scs.xml","bairro") == null)) {
 				List<Element> bairros = xml.carregar("scs.xml","bairro");
 				bd = bd.open();
 				ContentValues c = new ContentValues();					
@@ -391,6 +391,8 @@ public class ImportarXML extends Activity {
 					c.put("COMPLEMENTO", familiar.getChildText("complemento"));
 					c.put("FL_FALECEU", familiar.getChildText("obito"));
 					c.put("FL_MUDOU_SE", familiar.getChildText("mudou_se"));
+					c.put("INF_OBITO",familiar.getChildText("info_obito"));
+					c.put("MOTIVO_OBITO", familiar.getChildText("motivo_obito"));
 					c.put("DATA_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 										
 					cFamiliar = bd.consulta("residente", new String[] { "_ID" }, "HASH = ? ",  new String[] { familiar.getChildText("idMD5Familiar").trim() }, null, null, null, null);
@@ -601,7 +603,7 @@ public class ImportarXML extends Activity {
 					c.put("FL_FAZ_DIETA", Ha.getChildText("fzdieta").trim());
 					c.put("FL_TOMA_MEDICACAO", Ha.getChildText("tmmedicacao").trim());					
 					c.put("FL_FAZ_EXERCICIOS", Ha.getChildText("fzexfisicos").trim());
-					//c.put("FL_FUMANTE", Ha.getChildText("fumante").trim());
+					c.put("FL_FUMANTE", Ha.getChildText("e_fumante").trim());
 					c.put("PRESSAO_ARTERIAL", Ha.getChildText("pressaoarterial"));
 					c.put("DT_ULTIMA_VISITA", Ha.getChildText("dtultvisita"));
 					c.put("OBSERVACAO", Ha.getChildText("obs"));
@@ -686,10 +688,11 @@ public class ImportarXML extends Activity {
 					c.put("DT_ULTIMA_REGRA", Ges.getChildText("dtultregra"));
 					c.put("DT_PROVAVEL_PARTO", Ges.getChildText("dtprovavelparto"));					
 					c.put("DT_CONSULTA_PUERBIO", Ges.getChildText("dtconspuerbio"));
-					//c.put("DT_ULTIMA_CONSULTA", Ges.getChildText("dtultimaconsulta"));
+					c.put("DT_ULTIMA_CONSULTA", Ges.getChildText("dtUltimaConsulta"));
 					c.put("EST_NUTRICIONAL", Ges.getChildText("estnutricional"));
 					c.put("MES_GESTACAO", Ges.getChildText("mesgestacao"));
-					c.put("DT_PRE_NATAL", Ges.getChildText("dtconsulprenatal"));
+					c.put("DT_PRE_NATAL", Ges.getChildText("dtconsulprenatal")); 
+					c.put("FL_ACOMP_FINAL", Ges.getChildText("acompa_final"));
 					c.put("FATORES_RISCO", Ges.getChildText("fr6mgestacao")+Ges.getChildText("fr36oumais")+Ges.getChildText("frsangramento")+Ges.getChildText("frdiabetes")+
 										   Ges.getChildText("frnatrimaborto")+Ges.getChildText("frmeno20anos")+Ges.getChildText("fredema")+Ges.getChildText("frpressaoalta"));
 					c.put("RESULTADO_GESTACAO","");
@@ -722,7 +725,7 @@ public class ImportarXML extends Activity {
 		//I M P O R T A Ç Ã O   D O S  A C O M P A N H A M E N T O S  T U B E R C U L O S E		
 		try {
 			if (!(xml.carregar("scs.xml","tuberculose") == null)){
-				List<Element> Lista_Tb = xml.carregar("scs.xml","tuberculose"); 
+				List<Element> Lista_Tb = xml.carregar("scs.xml","tuberculose");  
 				bd = bd.open();
 				ContentValues c = new ContentValues();					
 				for(Element Tb : Lista_Tb){
@@ -734,6 +737,7 @@ public class ImportarXML extends Activity {
 					c.put("FL_REACOES_IND", Tb.getChildText("recindesej"));					
 					c.put("FL_EXAME_ESCARRO", Tb.getChildText("exescar"));
 					c.put("COMUNIC_EXAMINADOS", Tb.getChildText("comexami"));
+					c.put("DT_ULTIMA_CONSULTA","");
 					c.put("MENOR_BCG", Tb.getChildText("mn5anoscombcg"));
 					c.put("OBSERVACAO", Tb.getChildText("obs"));
 					cTb = bd.consulta("tuberculose", new String[] { "_ID, HASH, DT_VISITA" }, "HASH = '"+Tb.getChildText("idmd5familiar").trim()+"' AND DT_VISITA = '"+Tb.getChildText("dtvisita").trim()+"'", null, null, null, null, null);										

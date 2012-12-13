@@ -132,7 +132,7 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 			spec = th.newTabSpec("5").setIndicator("Criança", getResources().getDrawable(R.drawable.child)).setContent(intent);        
 	        th.addTab(spec);
 		}
-		if ((gestante == false)&&(hanseniase == false)&&(hipertensao == false)&&(tuberculose == false)&&(diabetes == false)){
+		if ((gestante == false)&&(hanseniase == false)&&(hipertensao == false)&&(tuberculose == false)&&(diabetes == false)&&(crianca == false)){
 			intent = new Intent().setClass(this, Acomp_Padrao.class);
 			Acomp_Padrao.Hash = _Hash;
 			Acomp_Padrao.DtAcompanhamento = dataAcomp;
@@ -281,11 +281,23 @@ public class ControleDoencas  extends ActivityGroup implements OnClickListener {
 				g.DT_ULTIMA_REGRA     = Acomp_Gestante.EdtDtUltimaRegra.getText().toString().trim();
 				g.DT_PROVAVEL_PARTO   = Acomp_Gestante.EdtDtProvavelParto.getText().toString().trim();			
 				g.DT_PRE_NATAL        = Acomp_Gestante.EdtDtPreNatal.getText().toString().trim();
-				g.DT_CONSULTA_PUERBIO = "";		
+				g.DT_CONSULTA_PUERBIO = Acomp_Gestante.EdtDtConsPuerbio.getText().toString().trim();		
 				g.DT_ULTIMA_CONSULTA  = Acomp_Gestante.EdtDtUltimaConsulta.getText().toString().trim();
 				g.MES_GESTACAO        = Acomp_Gestante.SpMesGestacao.getItemAtPosition(Acomp_Gestante.SpMesGestacao.getSelectedItemPosition()).toString().trim();
 				g.OBSERVACAO          = Acomp_Gestante.EdtGObs.getText().toString();
 				g.HASH                = _Hash;
+				
+				if (Acomp_Gestante.ChAcompFinal.isChecked()) {
+					SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
+					g.FL_ACOMP_FINAL = "S";
+					g.DT_ULTIMA_REGRA     = formatador.format(new Date(System.currentTimeMillis()));								
+					g.DT_PRE_NATAL        = formatador.format(new Date(System.currentTimeMillis()));		
+					g.DT_ULTIMA_CONSULTA  = formatador.format(new Date(System.currentTimeMillis()));
+					g.MES_GESTACAO        = Acomp_Gestante.SpMesGestacao.getItemAtPosition(Acomp_Gestante.SpMesGestacao.getSelectedItemPosition()).toString().trim();
+					formatador = null;
+				}else{
+					g.FL_ACOMP_FINAL = "N";
+				}
 				
 				//Estado Nutricional
 				if (Acomp_Gestante.RbNutrida.isChecked()){

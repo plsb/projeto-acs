@@ -338,6 +338,8 @@ public class ExportarXML extends Activity {
 					Element COMPLEMENTO      = new Element("COMPLEMENTO");
 					Element FL_OBITO         = new Element("FL_OBITO");
 					Element FL_MUDOU_SE      = new Element("FL_MUDOU_SE");
+					Element MOTIVO_OBITO     = new Element("MOTIVO_OBITO");
+					Element INFO_OBITO       = new Element("INFO_OBITO");
 					
 					FAMILIAR.addContent(ID.setText(csr.getString(csr.getColumnIndex("_ID")).toString()));		
 					FAMILIAR.addContent(NOME.setText(csr.getString(csr.getColumnIndex("NOME")).toString()));
@@ -365,6 +367,8 @@ public class ExportarXML extends Activity {
 					FAMILIAR.addContent(COMPLEMENTO.setText(csr.getString(csr.getColumnIndex("COMPLEMENTO")).toString()));
 					FAMILIAR.addContent(FL_OBITO.setText(csr.getString(csr.getColumnIndex("FL_FALECEU")).toString()));
 					FAMILIAR.addContent(FL_MUDOU_SE.setText(csr.getString(csr.getColumnIndex("FL_MUDOU_SE")).toString()));
+					FAMILIAR.addContent(INFO_OBITO.setText(csr.getString(csr.getColumnIndex("INF_OBITO")).toString()));
+					FAMILIAR.addContent(MOTIVO_OBITO.setText(csr.getString(csr.getColumnIndex("MOTIVO_OBITO")).toString()));
 					
 					SCS.addContent(FAMILIAR);
 					
@@ -495,6 +499,8 @@ public class ExportarXML extends Activity {
 					Element MENOS20ANOS        = new Element("MENOS20ANOS");
 					Element EDEMA              = new Element("EDEMA");
 					Element PRESSAOALTA        = new Element("PRESSAOALTA");
+					Element FL_ACOMP_FINAL     = new Element("FL_ACOMP_FINAL");
+					Element DT_CONS_PUERBIO    = new Element("DT_CONSULTA_PUERBIO");
 					
 					
 					GESTANTE.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
@@ -516,6 +522,8 @@ public class ExportarXML extends Activity {
 					GESTANTE.addContent(PRESSAOALTA.setText(csr.getString(csr.getColumnIndex("FATORES_RISCO")).toString().substring(7, 8)));
 					GESTANTE.addContent(RESULTADO_GESTACAO.setText(csr.getString(csr.getColumnIndex("RESULTADO_GESTACAO")).toString()));
 					GESTANTE.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));
+					GESTANTE.addContent(FL_ACOMP_FINAL.setText(csr.getString(csr.getColumnIndex("FL_ACOMP_FINAL")).toString()));
+					GESTANTE.addContent(DT_CONS_PUERBIO.setText(csr.getString(csr.getColumnIndex("DT_CONSULTA_PUERBIO")).toString()));
 					
 					SCS.addContent(GESTANTE);
 					
@@ -575,7 +583,7 @@ public class ExportarXML extends Activity {
 			return false;
 		}
 	}//Fim do M�todo ExportarAcompanhamentoHanseniase
-	
+	 
 	public boolean ExportarAcompanhamentoDiabete(){
 		
 		try{			
@@ -686,6 +694,7 @@ public class ExportarXML extends Activity {
 					Element COMUNIC_EXAMINADOS = new Element("COMUNIC_EXAMINADOS");
 					Element MENOR_BCG  		   = new Element("MENOR_BCG");					
 					Element OBSERVACAO         = new Element("OBSERVACAO");
+					Element DT_ULTIMA_VISITA   = new Element("DT_ULTIMA_VISITA");				
 					
 					TUBERCULOSE.addContent(HASH.setText(csr.getString(csr.getColumnIndex("HASH")).toString()));		
 					TUBERCULOSE.addContent(DT_VISITA.setText(csr.getString(csr.getColumnIndex("DT_VISITA")).toString()));
@@ -696,6 +705,7 @@ public class ExportarXML extends Activity {
 					TUBERCULOSE.addContent(COMUNIC_EXAMINADOS.setText(csr.getString(csr.getColumnIndex("COMUNIC_EXAMINADOS")).toString()));
 					TUBERCULOSE.addContent(MENOR_BCG.setText(csr.getString(csr.getColumnIndex("MENOR_BCG")).toString()));
 					TUBERCULOSE.addContent(OBSERVACAO.setText(csr.getString(csr.getColumnIndex("OBSERVACAO")).toString()));										
+					TUBERCULOSE.addContent(DT_ULTIMA_VISITA.setText(csr.getString(csr.getColumnIndex("DT_ULTIMA_CONSULTA")).toString()));
 					
 					SCS.addContent(TUBERCULOSE);
 					

@@ -10,9 +10,11 @@ package br.com.control;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 
+@SuppressLint("SimpleDateFormat")
 public class Gestante {
 	
 	private static Banco _bd;	
@@ -35,8 +37,9 @@ public class Gestante {
 	public String OBSERVACAO          = "";
 	public String MES_GESTACAO        = "";
 	public String DT_ULTIMA_CONSULTA  = "";
+	public String FL_ACOMP_FINAL      = "";
     
-    public boolean Inserir(Context contexto){
+    public boolean Inserir(Context contexto) {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -44,12 +47,12 @@ public class Gestante {
 	    	dtProvavelParto   = formatador.parse(DT_PROVAVEL_PARTO);
 	    	dtPreNatal        = formatador.parse(DT_PRE_NATAL);
 	    	dtUltimaConsulta  = formatador.parse(DT_ULTIMA_CONSULTA);
-	    	//dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);			
+	    	dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);			
 			c.clear();
 			c.put("HASH", HASH); 		
 			c.put("DT_ULTIMA_REGRA",formatador.format(dtUltimaRegra));		
 			c.put("DT_PROVAVEL_PARTO",formatador.format(dtProvavelParto));
-			c.put("DT_CONSULTA_PUERBIO","");//formatador.format(dtConsultaPuerbio));
+			c.put("DT_CONSULTA_PUERBIO",formatador.format(dtConsultaPuerbio));
 			c.put("DT_PRE_NATAL",formatador.format(dtPreNatal));
 			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));
 			c.put("EST_NUTRICIONAL",EST_NUTRICIONAL);		        		
@@ -57,6 +60,7 @@ public class Gestante {
 			c.put("RESULTADO_GESTACAO",RESULTADO_GESTACAO);	
 			c.put("OBSERVACAO",OBSERVACAO);
 			c.put("MES_GESTACAO",MES_GESTACAO);
+			c.put("FL_ACOMP_FINAL",FL_ACOMP_FINAL);
 			c.put("DT_VISITA", formatador.format(new Date(System.currentTimeMillis())));
 			c.put("DT_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			
@@ -69,8 +73,8 @@ public class Gestante {
 			return false;
 		}
 	}
-    
-    public boolean Atualizar(Context contexto,int indice){
+
+	public boolean Atualizar(Context contexto,int indice) {
 		try{
 			_bd = new Banco(contexto);
 			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -78,12 +82,12 @@ public class Gestante {
 	    	dtProvavelParto   = formatador.parse(DT_PROVAVEL_PARTO);
 	    	dtPreNatal        = formatador.parse(DT_PRE_NATAL);
 	    	dtUltimaConsulta  = formatador.parse(DT_ULTIMA_CONSULTA);
-	    	//dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);	    	
+	    	dtConsultaPuerbio = formatador.parse(DT_CONSULTA_PUERBIO);	    	
 			c.clear();
 			c.put("HASH", HASH); 		
 			c.put("DT_ULTIMA_REGRA",formatador.format(dtUltimaRegra));		
 			c.put("DT_PROVAVEL_PARTO",formatador.format(dtProvavelParto));
-			c.put("DT_CONSULTA_PUERBIO","");//formatador.format(dtConsultaPuerbio));
+			c.put("DT_CONSULTA_PUERBIO",formatador.format(dtConsultaPuerbio));
 			c.put("DT_PRE_NATAL",formatador.format(dtPreNatal));
 			c.put("DT_ULTIMA_CONSULTA",formatador.format(dtUltimaConsulta));
 			c.put("EST_NUTRICIONAL",EST_NUTRICIONAL);		        		
@@ -91,6 +95,7 @@ public class Gestante {
 			c.put("RESULTADO_GESTACAO",RESULTADO_GESTACAO);	
 			c.put("OBSERVACAO",OBSERVACAO);
 			c.put("MES_GESTACAO",MES_GESTACAO);
+			c.put("FL_ACOMP_FINAL",FL_ACOMP_FINAL);
 			c.put("DT_ATUALIZACAO", formatador.format(new Date(System.currentTimeMillis())));
 			_bd.open();
 			_bd.atualizarDadosTabela("gestacao",indice, c);
@@ -103,7 +108,7 @@ public class Gestante {
 		}
 	}
     
-    public void Limpar(){
+    public void Limpar() {
     	HASH 				= ""; 		
         DT_ULTIMA_REGRA 	= "";		
         DT_PROVAVEL_PARTO   = "";	
@@ -114,6 +119,7 @@ public class Gestante {
         RESULTADO_GESTACAO  = "";	
         OBSERVACAO 			= "";
         MES_GESTACAO		= "";
+        FL_ACOMP_FINAL      = "";
         dtUltimaRegra       = null;
     	dtProvavelParto     = null;
     	dtPreNatal          = null;

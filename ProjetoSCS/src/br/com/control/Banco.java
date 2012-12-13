@@ -108,6 +108,7 @@ public class Banco{
 																	     "DT_PRE_NATAL text,		"+
 																	     "FATORES_RISCO text,		"+
 																	     "RESULTADO_GESTACAO text,	"+
+																	     "FL_ACOMP_FINAL text DEFAULT 'N', "+
 																	     "OBSERVACAO text);			"};
 		
 		 public static final String[] _sqlTabelaHanseniase =  new String[] {"CREATE TABLE if not exists hanseniase (_ID integer PRIMARY KEY autoincrement NOT NULL,"+
@@ -150,7 +151,7 @@ public class Banco{
 		  															      "HASH text not null, 		       "+
 		  															      "DT_VISITA text,		           "+
 		  															      "DT_ATUALIZACAO text,		       "+
-		  															      "DT_ULTIMA_CONSULTA text,		       "+
+		  															      "DT_ULTIMA_CONSULTA text,	       "+
 																		  "FL_MEDIC_DIARIA text,		   "+
 																		  "FL_REACOES_IND text,			   "+
 																		  "FL_EXAME_ESCARRO text,	       "+
@@ -206,7 +207,7 @@ public class Banco{
 																		   "FL_FALECEU TEXT DEFAULT 'N',  "+
 																		   "FL_MUDOU_SE TEXT DEFAULT 'N', "+
 																		   "MOTIVO_OBITO TEXT DEFAULT '', "+
-																		   "INF_OBITO TEXT DEFAULT '',  "+
+																		   "INF_OBITO TEXT DEFAULT '',    "+
 																		   "DATA_ATUALIZACAO TEXT);		  "};
 		
 		public static final String[] _sqlTabelaResidencia =  new String[] {"CREATE TABLE if not exists residencia (_ID integer PRIMARY KEY autoincrement NOT NULL, "+																		   
