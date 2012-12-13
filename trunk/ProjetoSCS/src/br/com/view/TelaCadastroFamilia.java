@@ -471,11 +471,12 @@ public void InsereBD(){
 		r.OCUPACAO     = EdtOcupacao.getText().toString();
 		r.NOME_MAE     = EdtNomeMae.getText().toString();
 		r.NOME_PAI     = EdtNomePai.getText().toString();
-		r.MOTIVO_OBITO = SpMotivoObito.getItemAtPosition(SpMotivoObito.getSelectedItemPosition()).toString();
-		r.INF_OBITO    = SpInfObito.getItemAtPosition(SpInfObito.getSelectedItemPosition()).toString();
+		
 		
 		if (RbObitoSim.isChecked()) {
 			r.FL_OBITO = "S";
+			r.MOTIVO_OBITO = SpMotivoObito.getItemAtPosition(SpMotivoObito.getSelectedItemPosition()).toString();
+			r.INF_OBITO    = SpInfObito.getItemAtPosition(SpInfObito.getSelectedItemPosition()).toString();
 		} else if (RbObitoNAO.isChecked()) {
 			r.FL_OBITO = "N";
 		} else {
